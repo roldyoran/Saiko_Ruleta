@@ -74,20 +74,8 @@ button:hover {
   background-color: #4a044d;
 }
 
-.extraInfo {
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
-  padding: 70px;
-  margin-top: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
 
-.extraInfo p {
-  font-size: 20px;
-  line-height: 1.5;
-  color: #1a1919;
-}
+
 
 .icon-button {
   display: flex;
@@ -96,9 +84,9 @@ button:hover {
 }
 
 .small-icon {
-  width: 40px;
-  height: 30px;
-  margin-right: 8px; /* Ajusta el margen entre la imagen y el texto según sea necesario */
+  width: 30px;
+  height: auto;
+  margin-right: 5px; /* Ajusta el margen entre la imagen y el texto según sea necesario */
 }
 
 
@@ -336,13 +324,44 @@ Button togle
   transform: translateY(0);
 }
 
+/* 
+ */
+
+ .extraInfo {
+  /* display: flex; */
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 70px;
+  margin-top: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.image-container {
+  /* flex: 1; */
+  margin-left: 30px; /* Añadimos un margen izquierdo para separar los div */
+}
+
+.extraInfo p {
+  font-size: 20px;
+  line-height: 1.5;
+  color: #1a1919;
+}
+
+.image-port {
+  width: 100%;
+  height: auto;
+}
+
 
 
 /* FOOTER */
 footer {
   font-family: "bold Helvetica", bold Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
 
-  background-color: #ececec;
+  background-color: #e7e7e7;
   color: #fff;
   padding: 20px;
   text-align: center;
