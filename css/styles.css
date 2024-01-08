@@ -178,16 +178,32 @@ input[type="number"] {
     transform: translateY(0);
   }
 
-/* Estilos específicos para dispositivos con un ancho de pantalla mayor a 768px 
-(puedes ajustar este valor según tus necesidades) */
-@media only screen and (max-width: 768px) {
-  .container {
-      flex-direction: column;
-      align-items: center;
+/* Estilos para dispositivos de pantalla grande (mayores a 600px de ancho) */
+@media only screen and (min-width: 600px) {
+  /* Resto de tu código CSS para dispositivos más grandes */
+
+  /* Imagen a la izquierda del contenedor */
+  .responsive-image-left {
+    display: block;  /* Asegura que la imagen esté visible */
+    width: 210px;    /* Ajusta el tamaño según sea necesario */
+    height: auto;
+    float: left;
   }
 
+  /* Imagen a la derecha del contenedor */
+  .responsive-image-right {
+    display: block;  /* Asegura que la imagen esté visible */
+    width: 290px;    /* Ajusta el tamaño según sea necesario */
+    height: auto;
+    float: right;
+  }
+}
+
+/* Estilos para dispositivos más pequeños (menores a 600px de ancho) */
+@media only screen and (max-width: 599px) {
+  /* Oculta las imágenes en dispositivos móviles */
   .responsive-image-left,
   .responsive-image-right {
-      max-width: 100%;
+    display: none;
   }
 }
