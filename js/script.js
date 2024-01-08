@@ -20,6 +20,7 @@ var spinTime = 0;
 var spinTimeTotal = 0;
 var ctx;
 
+
 function updateOptions() {
     var numOptions = parseInt(document.getElementById("numOptions").value);
     if (!isNaN(numOptions) && numOptions > 0) {
@@ -121,10 +122,21 @@ function drawRouletteWheel() {
   }
 }
 
+document.getElementById("spin").addEventListener("click", spin);
+
 function spin() {
   spinAngleStart = Math.random() * 10 + 10;
   spinTime = 0;
+  spinTimeTotal = Math.random() * 6 + 4 * 2000;
+
+  var spinSound = document.getElementById("spinSound");
+  spinSound.currentTime = 0; // Reinicia el audio al hacer clic nuevamente
+  spinSound.play();
+
+  spinAngleStart = Math.random() * 10 + 10;
+  spinTime = 0;
   spinTimeTotal = Math.random() * 8 + 4 * 2000;
+
   rotateWheel();
 }
 
@@ -145,6 +157,14 @@ function stopRotateWheel() {
   var degrees = startAngle * 180 / Math.PI + 90;
   var arcd = arc * 180 / Math.PI;
   var index = Math.floor((360 - degrees % 360) / arcd);
+
+  // Detener el sonido al finalizar el giro
+  var spinSound = document.getElementById("spinSound");
+  var bell = document.getElementById("bell");
+  spinSound.pause();
+  spinSound.currentTime = 0;
+  bell.play();
+
   ctx.save();
   ctx.font = 'bold 70px Helvetica, Arial';
   var text = options[index]

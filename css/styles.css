@@ -1,19 +1,31 @@
+/* Estilos generales */
+
 body {
-    font-family: 'Helvetica', 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f7f7f7;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+  font-size: 16px; /* Tamaño de fuente base */
+  font-family: "bold Helvetica", bold Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
 }
 
 .container {
-    max-width: 800px;
-    text-align: center;
-    margin: 20px;
+  max-width: 90%;
+  margin: 20px auto;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+
+.content {
+  flex-grow: 1;
+}
+
+.responsive-image-left,
+.responsive-image-right {
+  max-width: 18%; /* Ajusta según tus necesidades */
+  height: auto;
+  display: block;
+  margin: 5px;
+}
+
 
 h1 {
     margin: 0;
@@ -165,3 +177,17 @@ input[type="number"] {
     box-shadow: none;
     transform: translateY(0);
   }
+
+/* Estilos específicos para dispositivos con un ancho de pantalla mayor a 768px 
+(puedes ajustar este valor según tus necesidades) */
+@media only screen and (max-width: 768px) {
+  .container {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .responsive-image-left,
+  .responsive-image-right {
+      max-width: 100%;
+  }
+}
