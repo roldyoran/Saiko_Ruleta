@@ -20,11 +20,19 @@ body {
 
 .responsive-image-left,
 .responsive-image-right {
-  max-width: 18%; /* Ajusta según tus necesidades */
   height: auto;
   display: block;
   margin: 5px;
 }
+
+.responsive-image-left {
+  max-width: 18%;
+}
+
+.responsive-image-right {
+  max-width: 21%;
+}
+
 
 
 h1 {
