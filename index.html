@@ -11,10 +11,16 @@
     <link rel="icon" href="public/icono-de-favoritos.png" type="image/x-icon">
     <!-- Opcional: Para navegadores más modernos -->
     <link rel="shortcut icon" href="public/favicon.ico" type="image/x-icon">
+    <!-- Icons Socials -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
+    
     <div class="container">
+        <!-- seccion extra -->
+    <button class="button-23" onclick="toggleExtraInfo()">Ver Info Extra</button>
+
         <img src="public/tania.jpg" alt="Imagen a la izquierda" class="responsive-image-left">
         <div class="content">
             <h1>SAIKO RULETA</h1>
@@ -25,6 +31,8 @@
             <input class="button-28" role="button" type="button" id='spin' value="GIRAR LA RULETA" />
         </div>
         <img src="public/saiko_smith.png" alt="Imagen a la derecha" class="responsive-image-right">
+
+        
     </div>
 
     <audio id="spinSound" src="public/audio.mp3"></audio>
@@ -34,6 +42,35 @@
         <source src="public/video.mp4" type="video/mp4">
         Tu navegador no soporta el elemento de video.
     </video>
+
+
+    <div class="extraInfo" id="extraInfo" style="display: none;">
+        <h2>SAIKOMIC</h2>
+        <p>Su nombre es <b>Elvis Yonathan Garrido</b> (26 años,  cada dia  mas  viejo), pero es conocido como <b>Saikomic</b>. Fue en diciembre de 2020 que su apodo se transformó en un símbolo porque gano un tezuka, y tu ¿que wea has ganado?, nada verdad, lo sabia.</p>
+        <p>
+        Bueno continuando, este hombre, asi como lo ven con su barba frondosa, cuerpo de gimnasta olimpico y voz angelical, si asi como lo ven, no la pone, no porque no quiera, sino porque odia a las mujeres, o  mas bien les teme.</p>
+        <p>
+        Ademas hace rap ... y ya.<br>si quieres saber mas investiga ctm, ¿que quieres?, que uno te diga  todo, aonde, pa eso esta google perquin qliao.<p>
+        <p>    
+        En fin eso es todo, bye.
+        </p>
+         <!-- Botón con imagen de GitHub más pequeña y texto centrado -->
+        <a href="https://medibang.com/mpc/authors/4683825/" target="_blank" role="button">
+            <button class="button-2" role="button">
+                <img src="public/mangaplus.png" alt="mangaplus Icon" class="small-icon">
+                <span class="text">Saikoloco Manguitas</span>
+            </button>
+        </a>
+
+        <footer>
+            <a href="https://www.instagram.com/roldyoran" target="_blank" class="fa fa-instagram">  Mi insta de dibujitos <br>
+                ( Publicidad )</a><
+            <p style="font-size: 12px;">    
+            Pagina de Info hecha a la rapida, no me juzguen xd
+            </p>
+        </footer>
+    </div>
+   
 
     <script src="js/script.js"></script>
 </body>

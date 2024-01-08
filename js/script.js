@@ -1,4 +1,17 @@
- // Función para obtener el valor de 'numOptions' desde localStorage
+function toggleExtraInfo() {
+  var button = document.querySelector('.button-23');
+  var extraInfo = document.getElementById('extraInfo');
+
+  if (extraInfo.style.display === 'none' || extraInfo.style.display === '') {
+      extraInfo.style.display = 'block';
+      extraInfo.scrollIntoView({ behavior: 'smooth' });
+      button.textContent = 'Ocultar Info';
+  } else {
+      extraInfo.style.display = 'none';
+      button.textContent = 'Ver Info Extra';
+  }
+}
+// Función para obtener el valor de 'numOptions' desde localStorage
  function getNumOptions() {
   return parseInt(localStorage.getItem('numOptions')) || 4;
 }
