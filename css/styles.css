@@ -172,7 +172,7 @@ button:hover {
 
 canvas {
     max-width: 90%;
-    margin-top: 0px;
+    margin-top: 4px;
     border: 1px solid #ddd;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -431,4 +431,48 @@ footer {
     width: 100%;     /* Ajusta el ancho para ocupar todo el ancho del contenedor */
     height: auto;
   }
+}
+
+/* aaaaaaaaaaaaaaaaaaaaa */
+.title-word {
+  animation: color-animation 4s linear infinite;
+  font-family: "bold Helvetica", bold Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  padding: 1px 1px;
+  /* --border-color: #210122; Define el color del borde negro */
+  /* -webkit-text-stroke: 1px var(--border-color); Agrega un borde negro al texto */
+
+}
+
+.title-word-1 {
+  --color-1: #9b2caa;
+  --color-2: #3d45ae;
+  --color-3: #9b2caa;
+}
+
+.title-word-2 {
+  --color-1: #51196b;
+  --color-2: #0a7c7c;
+  --color-3: #38198d;
+}
+
+.title-word-3 {
+  --color-1: #9b2caa;
+  --color-2: #3d45ae;
+  --color-3: #9b2caa;
+}
+
+.title-word-4 {
+  --color-1: #51196b;
+  --color-2: #a3d5e4;
+  --color-3: #5d2179;
+}
+
+@keyframes color-animation {
+  0%    {color: var(--color-1)}
+  32%   {color: var(--color-1)}
+  33%   {color: var(--color-2)}
+  65%   {color: var(--color-2)}
+  66%   {color: var(--color-3)}
+  99%   {color: var(--color-3)}
+  100%  {color: var(--color-1)}
 }
