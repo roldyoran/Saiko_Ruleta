@@ -1,0 +1,84 @@
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f2f2f2; /* Color de fondo suave */
+}
+
+#gameBoard {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-gap: 10px;
+    margin-bottom: 20px; /* Agregamos un margen en la parte inferior */
+}
+
+.card {
+    width: 100px;
+    height: 150px;
+    position: relative;
+    perspective: 1000px;
+    cursor: pointer;
+    background-color: #fff; /* Fondo blanco para las cartas */
+    border-radius: 8px; /* Esquinas redondeadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transform-style: preserve-3d; /* Preserva la estructura 3D durante la animación */
+    transition: transform 0.6s ease-in-out, background-color 0.3s;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    backface-visibility: hidden;
+    border-radius: 8px; /* Esquinas redondeadas también para las imágenes */
+    transition: opacity 0.3s ease-in-out; /* Agregamos una transición de opacidad */
+}
+
+.card .back {
+    transform: rotateY(180deg);
+    background-color: #e0e0e0; /* Color de fondo para la parte posterior */
+}
+
+.card.flipped {
+    transform: rotateY(180deg); /* Gira la carta al estado volteado */
+}
+
+.card.flipped .front {
+    transform: rotateY(0deg); /* Gira la parte frontal de la carta */
+    opacity: 0; /* Hacemos que la parte frontal sea transparente durante la animación */
+}
+
+.card.flipped .back {
+    transform: rotateY(180deg); /* Gira la parte posterior de la carta */
+    opacity: 1; /* Aseguramos que la parte posterior sea completamente visible durante la animación */
+}
+
+button, .link {
+    cursor: pointer;
+    background-color: #33a037; /* Color de fondo verde */
+    color: #fff; /* Texto en color blanco */
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    margin: 5px;
+    transition: background-color 0.3s;
+}
+
+button:hover, .link:hover {
+    background-color: #1c1d6d; /* Cambio de color al pasar el mouse */
+}
+
+.link {
+    color: #ffffff; /* Color azul para los enlaces */
+    text-decoration: none;
+}
+
+.link:hover {
+    color: #ffffff; /* Cambio de color al pasar el mouse */
+}
