@@ -1,7 +1,8 @@
 /* Estilos generales */
 
+/* Estilos generales */
 body {
-  font-size: 16px; /* Tamaño de fuente base */
+  font-size: 16px;
   font-family: "bold Helvetica", bold Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
   background-color: #fcfcfc;
 }
@@ -31,8 +32,14 @@ body {
   max-width: 18%;
 }
 
+/* Imagen a la derecha del contenedor */
 .responsive-image-right {
-  max-width: 21%;
+  display: block;
+  max-width: 290px;
+  height: auto;
+  position: absolute;
+  top: 30px; /* Ajusta la posición vertical según sea necesario */
+  right: 90px; /* Ajusta la posición horizontal según sea necesario */
 }
 
 h1 {
@@ -475,4 +482,14 @@ footer {
   66%   {color: var(--color-3)}
   99%   {color: var(--color-3)}
   100%  {color: var(--color-1)}
+}
+
+
+.transition-image {
+  opacity: 1;
+  transition: opacity 1s ease-in-out; /* Puedes ajustar la duración y el efecto de transición aquí */
+}
+
+.hidden {
+  opacity: 0;
 }

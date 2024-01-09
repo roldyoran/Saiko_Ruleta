@@ -138,6 +138,12 @@ function drawRouletteWheel() {
 document.getElementById("spin").addEventListener("click", spin);
 
 function spin() {
+  var rightImage = document.getElementById("rightImage");
+  rightImage.src = "public/stick2.png";
+  setTimeout(function () {
+    rightImage.src = "public/stick1.png";
+  }, 300); // Ajusta el tiempo según sea necesario (en milisegundos)
+
   spinAngleStart = Math.random() * 10 + 10;
   spinTime = 0;
   spinTimeTotal = Math.random() * 6 + 4 * 2000;
