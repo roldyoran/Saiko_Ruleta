@@ -139,9 +139,9 @@ document.getElementById("spin").addEventListener("click", spin);
 
 function spin() {
   var rightImage = document.getElementById("rightImage");
-  rightImage.src = "public/stick2.png";
+  rightImage.src = "public/stick1.png";
   setTimeout(function () {
-    rightImage.src = "public/stick1.png";
+    rightImage.src = "public/stick2.png";
   }, 300); // Ajusta el tiempo según sea necesario (en milisegundos)
 
   
