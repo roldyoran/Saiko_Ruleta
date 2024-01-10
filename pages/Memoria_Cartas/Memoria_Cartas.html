@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=0.9">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Saiko Memoria de Cartas</title>
     <meta name="description" content="Memoria de Cartas">
     <link rel="icon" href="images/saikologo.ico" type="image/x-icon">
@@ -10,20 +10,33 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>JUEGO EN PROCESO NO JUZGAR</h1>
+    <audio id="loseSound" src="audio/youDied.mp3" ></audio>
+    <audio id="victorySound" src="audio/Victorry.mp3" ></audio>
+
+    <h1 class="title">
+        <span class="title-word title-word-1">MEMORIA</span>
+        <span class="title-word title-word-2">CON</span>
+        <span class="title-word title-word-3">CARTAS</span>
+        <span class="title-word title-word-3">DE</span>
+        <span class="title-word title-word-2">LA</span>
+        <span class="title-word title-word-1">COMUNIDAD</span>
+    </h1>
     <div id="gameBoard"></div>
     <div id="botonera">
         <span id="msgContador" class="link">
             <span id="contador">0</span>
-            Clic
+            Clicks
         </span>
         &nbsp;
         <button id="resetButton">Reiniciar Juego</button>
         &nbsp;
         <span id="msgTimer" class="link">
-            <span id="timer">20</span> Segundos
+            <span id="timer">40</span> Segundos
         </span>
     </div>
+    
+    <div id="overlay"></div>
+    <div id="messageContainer"></div>
     <script src="script.js"></script>
 </body>
 </html>

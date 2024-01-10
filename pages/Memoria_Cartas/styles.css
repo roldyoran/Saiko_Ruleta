@@ -11,14 +11,14 @@ body {
 
 #gameBoard {
     display: grid;
-    grid-template-columns: repeat(4, 100px);
+    grid-template-columns: repeat(6, 120px);
     grid-gap: 10px;
     margin-bottom: 20px; /* Agregamos un margen en la parte inferior */
 }
 
 .card {
-    width: 100px;
-    height: 150px;
+    width: 110px;
+    height: 170px;
     position: relative;
     perspective: 1000px;
     cursor: pointer;
@@ -60,25 +60,98 @@ body {
 
 button, .link {
     cursor: pointer;
-    background-color: #33a037; /* Color de fondo verde */
-    color: #fff; /* Texto en color blanco */
+    background-color: transparent; /* Color de fondo verde */
+    color: #27086e; /* Texto en color blanco */
     padding: 10px 15px;
-    border: none;
+    border: 2px solid #27086e;
     border-radius: 5px;
     font-size: 16px;
+    font-weight: 600;
     margin: 5px;
     transition: background-color 0.3s;
 }
 
 button:hover, .link:hover {
+    color: #ffffff; /* Texto en color blanco */
     background-color: #1c1d6d; /* Cambio de color al pasar el mouse */
 }
 
 .link {
-    color: #ffffff; /* Color azul para los enlaces */
+    color: #27086e; /* Color azul para los enlaces */
     text-decoration: none;
 }
 
 .link:hover {
     color: #ffffff; /* Cambio de color al pasar el mouse */
+}
+
+/* aaaaaaaaaaaaaaaaaaaaa */
+.title-word {
+    animation: color-animation 4s linear infinite;
+    font-family: "bold Helvetica", bold Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    padding: 1px 1px;
+    /* --border-color: #210122; Define el color del borde negro */
+    /* -webkit-text-stroke: 1px var(--border-color); Agrega un borde negro al texto */
+  
+  }
+  
+  .title-word-1 {
+    --color-1: #9b2caa;
+    --color-2: #3d45ae;
+    --color-3: #9b2caa;
+  }
+  
+  .title-word-2 {
+    --color-1: #51196b;
+    --color-2: #0a7c7c;
+    --color-3: #38198d;
+  }
+  
+  .title-word-3 {
+    --color-1: #9b2caa;
+    --color-2: #3d45ae;
+    --color-3: #9b2caa;
+  }
+  
+  .title-word-4 {
+    --color-1: #51196b;
+    --color-2: #ad0cad;
+    --color-3: #402179;
+  }
+  
+  @keyframes color-animation {
+    0%    {color: var(--color-1)}
+    32%   {color: var(--color-1)}
+    33%   {color: var(--color-2)}
+    65%   {color: var(--color-2)}
+    66%   {color: var(--color-3)}
+    99%   {color: var(--color-3)}
+    100%  {color: var(--color-1)}
+  }
+  
+  #overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1); /* Fondo semitransparente */
+    z-index: 2; /* Asegura que la capa esté encima del contenido */
+}
+
+#messageContainer {
+    font-family: 'Arial', sans-serif;
+    font-weight: 600;
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px; /* Tamaño del texto */
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 1); /* Fondo semitransparente blanco */
+    border-radius: 10px;
+    z-index: 3; /* Asegura que el mensaje esté encima de la capa de superposición */
 }

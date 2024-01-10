@@ -27,13 +27,23 @@ class MemoryGame {
         'images/carta3.png', 
         'images/carta4.png', 
         'images/carta5.png',
-        'images/carta6.png'];
+        'images/carta6.png',
+        'images/carta8.png',
+        'images/carta8.png',
+        'images/carta9.png',
+        'images/carta9.png',
+        'images/carta10.png',
+        'images/carta10.png'];
         this.pickedCards = [];
         this.pickedCardsIndex = [];
         this.matches = 0;
         this.counter = document.getElementById('contador');
         this.timerElement = document.getElementById('timer');
-        this.timer = 32; // segundos
+        this.overlay = document.getElementById('overlay');
+        this.messageContainer = document.getElementById('messageContainer');
+        this.loseSound = document.getElementById('loseSound');
+        this.victorySound = document.getElementById('victorySound');
+        this.timer = 40; // segundos
         this.timerInterval;
     }
 
@@ -79,16 +89,32 @@ class MemoryGame {
 
     flipCard(cardElement) {
         if (this.pickedCards.length < 2 && !cardElement.classList.contains('flipped')) {
+            
+
             cardElement.classList.add('flipped');
             const index = parseInt(cardElement.dataset.index, 10);
             this.pickedCards.push(this.cards[index]);
             this.pickedCardsIndex.push(index);
 
+            // Incrementar el contador
+            this.counter.textContent = parseInt(this.counter.textContent, 10) + 1;
+
+
             if (this.pickedCards.length === 2) {
                 setTimeout(() => this.checkMatch(), 1000);
+                // this.showOverlay(); // Mostrar la capa de superposición
             }
         }
     }
+
+    showOverlay() {
+        this.overlay.style.display = 'block';
+    }
+
+    hideOverlay() {
+        this.overlay.style.display = 'none';
+    }
+
 
     checkMatch() {
         const [firstIndex, secondIndex] = this.pickedCardsIndex;
@@ -97,7 +123,9 @@ class MemoryGame {
         if (firstCard === secondCard) {
             this.matches++;
             if (this.matches === this.cards.length / 2) {
-                alert('¡Felicidades, has ganado!');
+                // alert('¡Felicidades, has ganado!');
+                this.playVictorySound(); 
+                this.showWinMessage();
                 this.resetGame();
             }
         } else {
@@ -109,6 +137,8 @@ class MemoryGame {
 
         this.pickedCards = [];
         this.pickedCardsIndex = [];
+
+        this.hideOverlay();
     }
 
     startTimer() {
@@ -117,7 +147,9 @@ class MemoryGame {
             this.timerElement.textContent = this.timer;
 
             if (this.timer === 0) {
-                alert('¡Tiempo agotado! Intenta de nuevo.');
+                // alert('¡Tiempo agotado! Intenta de nuevo.');
+                this.playLoseSound(); // Llama a la función para reproducir el sonido
+                this.showLoseMessage();
                 this.resetGame();
             }
         }, 1000);
@@ -128,10 +160,40 @@ class MemoryGame {
         this.pickedCards = [];
         this.pickedCardsIndex = [];
         this.matches = 0;
-        this.timer = 32;
+        this.timer = 40;
         this.timerElement.textContent = this.timer;
+        this.counter.textContent = 0
         this.shuffleCards();
         this.createBoard();
         this.startTimer();
     }
+
+    showWinMessage() {
+        this.messageContainer.textContent = '¡Felicidades, GANASTEEEEE!';
+        this.showMessage();
+    }
+
+    showLoseMessage() {
+        this.messageContainer.textContent = '¡Tiempo agotado! Intenta de nuevo...';
+        this.showMessage();
+    }
+
+    showMessage() {
+        this.messageContainer.style.display = 'block';
+        setTimeout(() => {
+            this.messageContainer.style.display = 'none';
+            this.resetGame();
+        }, 10000);
+    }
+
+    playLoseSound() {
+        this.loseSound.play();
+    }
+
+    
+    playVictorySound() {
+        this.victorySound.play();
+    }
+
+
 }
