@@ -336,7 +336,9 @@ Button togle
     border-color: #6e3108;
   }
   50% {
-    border-color: #ffcaca; /* Puedes ajustar el color que desees durante la animación */
+    border-color: #381602; /* Puedes ajustar el color que desees durante la animación */
+    background-color: #6e3108;
+    color: #fcfcfc;
   }
   100% {
     border-color: #6e3108;
@@ -351,7 +353,7 @@ Button togle
   border-radius: 15px;
   box-sizing: border-box;
   color: #6e3108;
-  animation: borderAnimation 2s infinite; /* Puedes ajustar la duración y repetición de la animación según tus preferencias */
+  animation: borderAnimation 6s infinite; /* Puedes ajustar la duración y repetición de la animación según tus preferencias */
 }
 
 .button-23.blue:hover {

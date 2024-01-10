@@ -145,6 +145,15 @@ class MemoryGame {
         this.timerInterval = setInterval(() => {
             this.timer--;
             this.timerElement.textContent = this.timer;
+            
+            if (this.timer === 10) {
+                // Aplicar la clase 'borderAnimation' al contenedor de la botonera
+                document.getElementById('msgTimer').classList.add('borderAnimation');
+                setTimeout(function () {
+                    document.getElementById('msgTimer').classList.remove('borderAnimation');
+                }, 4000);
+            }
+            
 
             if (this.timer === 0) {
                 // alert('¡Tiempo agotado! Intenta de nuevo.');

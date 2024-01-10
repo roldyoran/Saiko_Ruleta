@@ -85,6 +85,27 @@ button:hover, .link:hover {
     color: #ffffff; /* Cambio de color al pasar el mouse */
 }
 
+@keyframes borderAnimation {
+  0% {
+    border-color: #e93212;
+    background-color: #ff0000;
+    color: #e0e0e0;
+  }
+  50% {
+    border-color: #f12c12;
+  }
+  100% {
+    border-color: #e93212;
+    background-color: #ff0000;
+    color: #e0e0e0;
+  }
+}
+
+.borderAnimation {
+  animation: borderAnimation 6s infinite; /* Ajusta la duración y la función de temporización según tus necesidades */
+}
+
+
 /* aaaaaaaaaaaaaaaaaaaaa */
 .title-word {
     animation: color-animation 4s linear infinite;
@@ -129,7 +150,7 @@ button:hover, .link:hover {
     100%  {color: var(--color-1)}
   }
   
-  #overlay {
+#overlay {
     display: none;
     position: fixed;
     top: 0;
