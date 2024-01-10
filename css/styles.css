@@ -331,14 +331,27 @@ Button togle
   transform: translateY(0);
 }
 
+@keyframes borderAnimation {
+  0% {
+    border-color: #6e3108;
+  }
+  50% {
+    border-color: #ffcaca; /* Puedes ajustar el color que desees durante la animación */
+  }
+  100% {
+    border-color: #6e3108;
+  }
+}
+
 .button-23.blue {
   position: absolute;
-  top: 60px;
+  top: 130px;
   right: 10px;
-  border: 2px solid #6e3108;
+  border: 3px solid #6e3108;
   border-radius: 15px;
   box-sizing: border-box;
   color: #6e3108;
+  animation: borderAnimation 2s infinite; /* Puedes ajustar la duración y repetición de la animación según tus preferencias */
 }
 
 .button-23.blue:hover {
@@ -346,6 +359,7 @@ Button togle
   background-color: #6e3108;
   box-shadow: rgba(23, 10, 109, 0.25) 0 8px 15px;
   transform: translateY(-2px);
+  animation: none; /* Detener la animación durante el hover */
 }
 /* 
  */
