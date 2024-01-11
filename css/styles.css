@@ -353,7 +353,7 @@ Button togle
   border-radius: 15px;
   box-sizing: border-box;
   color: #6e3108;
-  animation: borderAnimation 6s infinite; /* Puedes ajustar la duración y repetición de la animación según tus preferencias */
+  animation: borderAnimation 4s infinite; /* Puedes ajustar la duración y repetición de la animación según tus preferencias */
 }
 
 .button-23.blue:hover {
