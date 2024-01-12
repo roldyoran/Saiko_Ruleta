@@ -172,7 +172,7 @@ button:hover, .link:hover {
     font-size: 30px; /* Tamaño del texto */
     text-align: center;
     padding: 20px;
-    background-color: rgba(255, 255, 255, 1); /* Fondo semitransparente blanco */
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo semitransparente blanco */
     border-radius: 10px;
     z-index: 3; /* Asegura que el mensaje esté encima de la capa de superposición */
 }

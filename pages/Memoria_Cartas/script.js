@@ -4,6 +4,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const resetButton = document.getElementById('resetButton');
     resetButton.addEventListener('click', () => game.resetGame());
+
+    const pauseButton = document.getElementById('pauseButton');
+    pauseButton.addEventListener('click', () => game.togglePause());
+
 });
 
 
@@ -43,14 +47,35 @@ class MemoryGame {
         this.messageContainer = document.getElementById('messageContainer');
         this.loseSound = document.getElementById('loseSound');
         this.victorySound = document.getElementById('victorySound');
-        this.timer = 40; // segundos
+        this.timer = 42; // segundos
         this.timerInterval;
+
+        this.pauseButton = document.getElementById('pauseButton');
+        this.resetButton = document.getElementById('resetButton');
+        this.isPaused = false;
     }
 
     init() {
         this.shuffleCards();
         this.createBoard();
         this.startTimer();
+    }
+
+
+    togglePause() {
+        this.isPaused = !this.isPaused;
+
+        if (this.isPaused) {
+            clearInterval(this.timerInterval);
+            this.board.style.pointerEvents = 'none'; // Deshabilitar la interacción con las cartas
+            this.pauseButton.textContent = 'Reanudar Juego';
+            this.resetButton.disabled = true; // Deshabilitar el botón de reinicio  
+        } else {
+            this.startTimer();
+            this.board.style.pointerEvents = 'auto'; // Habilitar la interacción con las cartas
+            this.pauseButton.textContent = 'Pausar Juego';
+            this.resetButton.disabled = false; // Habilitar el botón de reinicio
+        }
     }
 
     shuffleCards() {
@@ -151,7 +176,7 @@ class MemoryGame {
                 document.getElementById('msgTimer').classList.add('borderAnimation');
                 setTimeout(function () {
                     document.getElementById('msgTimer').classList.remove('borderAnimation');
-                }, 4000);
+                }, 9000);
             }
             
 
@@ -165,26 +190,71 @@ class MemoryGame {
     }
 
     resetGame() {
-        clearInterval(this.timerInterval);
-        this.pickedCards = [];
-        this.pickedCardsIndex = [];
-        this.matches = 0;
-        this.timer = 40;
-        this.timerElement.textContent = this.timer;
-        this.counter.textContent = 0
-        this.shuffleCards();
-        this.createBoard();
-        this.startTimer();
+        if (!this.isPaused) {
+            clearInterval(this.timerInterval);
+            this.pickedCards = [];
+            this.pickedCardsIndex = [];
+            this.matches = 0;
+            this.timer = 42;
+            this.timerElement.textContent = this.timer;
+            this.counter.textContent = 0
+            this.shuffleCards();
+            this.createBoard();
+            this.startTimer();
+        }
+        // clearInterval(this.timerInterval);
+        // this.pickedCards = [];
+        // this.pickedCardsIndex = [];
+        // this.matches = 0;
+        // this.timer = 40;
+        // this.timerElement.textContent = this.timer;
+        // this.counter.textContent = 0
+        // this.shuffleCards();
+        // this.createBoard();
+        // this.startTimer();
     }
 
     showWinMessage() {
-        this.messageContainer.textContent = '¡Felicidades, GANASTEEEEE!';
-        this.showMessage();
+        // this.messageContainer.textContent = '¡Felicidades, GANASTEEEEE!';
+        // this.showMessage();
+        const messageContainer = document.getElementById('messageContainer');
+        messageContainer.innerHTML = ''; // Limpiar el contenido existente
+
+        const image = document.createElement('img');
+        image.src = 'images/mision_passed.png'; // Reemplaza con la ruta correcta de tu imagen
+        image.style.width = '900px'; // Ajusta el tamaño según tus necesidades
+        image.style.height = 'auto'; // Ajusta el tamaño según tus necesidades
+
+        messageContainer.appendChild(image);
+
+        messageContainer.style.display = 'block';
+
+        setTimeout(() => {
+            messageContainer.style.display = 'none';
+            this.resetGame();
+        }, 10000);
     }
 
     showLoseMessage() {
-        this.messageContainer.textContent = '¡Tiempo agotado! Intenta de nuevo...';
-        this.showMessage();
+        // this.messageContainer.textContent = '¡Tiempo agotado! Intenta de nuevo...';
+        // this.showMessage();
+
+        const messageContainer = document.getElementById('messageContainer');
+        messageContainer.innerHTML = ''; // Limpiar el contenido existente
+
+        const image = document.createElement('img');
+        image.src = 'images/mision_failed.png'; // Reemplaza con la ruta correcta de tu imagen
+        image.style.width = '900px'; // Ajusta el tamaño según tus necesidades
+        image.style.height = 'auto'; // Ajusta el tamaño según tus necesidades
+
+        messageContainer.appendChild(image);
+
+        messageContainer.style.display = 'block';
+
+        setTimeout(() => {
+            messageContainer.style.display = 'none';
+            this.resetGame();
+        }, 10000);
     }
 
     showMessage() {
