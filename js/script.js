@@ -145,17 +145,24 @@ function spin() {
   }, 300); // Ajusta el tiempo según sea necesario (en milisegundos)
 
   
-  spinAngleStart = Math.random() * 10 + 10;
+  // Genera un número aleatorio entre 1 y 9 (ambos inclusive)
+  var numeroRandom = Math.floor(Math.random() * 12) + 1;
+  var numeroRandom2 = Math.floor(Math.random() * 17) + 1;
+  // console.log(numeroRandom + "-" + numeroRandom2);
+
+  spinAngleStart = Math.random() * numeroRandom + numeroRandom2;     // el numerorandom era 10 y el otro  10  tambien
   spinTime = 0;
-  spinTimeTotal = Math.random() * 6 + 4 * 2000;
+  spinTimeTotal = Math.random() * 6 + 4 * 2000; // el 4 era 
+
+  // console.log(numeroRandom + "-" + numeroRandom2 + "=" + spinAngleStart);
 
   var spinSound = document.getElementById("spinSound");
   spinSound.currentTime = 0; // Reinicia el audio al hacer clic nuevamente
   spinSound.play();
 
-  spinAngleStart = Math.random() * 10 + 10;
-  spinTime = 0;
-  spinTimeTotal = Math.random() * 8 + 4 * 2000;
+  // spinAngleStart = Math.random() * 10 + 10;
+  // spinTime = 0;
+  // spinTimeTotal = Math.random() * 8 + 4 * 2000;
 
   rotateWheel();
 }
