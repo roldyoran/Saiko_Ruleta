@@ -62,10 +62,14 @@ function getColor(item, maxitem) {
   var center = 128;
   var width = 127;
   var frequency = Math.PI*2/maxitem;
-  
+
+
   red   = Math.sin(frequency*item+2+phase) * width + center;
   green = Math.sin(frequency*item+0+phase) * width + center;
-  blue  = Math.sin(frequency*item+4+phase) * width + center;
+  // blue  = Math.sin(frequency*item+4+phase) * width + center;
+  blue  = Math.sin(frequency*item+5+phase) * width + center;
+
+
   
   return RGB2Color(red,green,blue);
 }
@@ -88,6 +92,8 @@ function drawRouletteWheel() {
     for(var i = 0; i < options.length; i++) {
       var angle = startAngle + i * arc;
       //ctx.fillStyle = colors[i];
+      
+      // var rNC1 = 2
       ctx.fillStyle = getColor(i, options.length);
 
       ctx.beginPath();
@@ -148,13 +154,15 @@ function spin() {
   // Genera un número aleatorio entre 1 y 9 (ambos inclusive)
   var numeroRandom = Math.floor(Math.random() * 12) + 1;
   var numeroRandom2 = Math.floor(Math.random() * 17) + 1;
+  // Combina los números aleatorios de manera creativa
+  var resultadoAleatorio = Math.random() * numeroRandom + numeroRandom2;
   // console.log(numeroRandom + "-" + numeroRandom2);
 
-  spinAngleStart = Math.random() * numeroRandom + numeroRandom2;     // el numerorandom era 10 y el otro  10  tambien
+  spinAngleStart = resultadoAleatorio;     // el numerorandom era 10 y el otro  10  tambien
   spinTime = 0;
   spinTimeTotal = Math.random() * 6 + 4 * 2000; // el 4 era 
 
-  // console.log(numeroRandom + "-" + numeroRandom2 + "=" + spinAngleStart);
+  console.log(numeroRandom + "-" + numeroRandom2 + "=" + spinAngleStart);
 
   var spinSound = document.getElementById("spinSound");
   spinSound.currentTime = 0; // Reinicia el audio al hacer clic nuevamente
@@ -196,11 +204,11 @@ function stopRotateWheel() {
   ctx.font = 'bold 70px Helvetica, Arial';
   var text = options[index]
   var lineHeight = 0; // Puedes ajustar este valor según sea necesario
-  if (text == '11') {
-    text += "\nChupalo Entonces";
-    ctx.font = 'bold 22px Helvetica, Arial';
-    var lineHeight = 30;
-  }// Muestra cada línea de texto por separado
+  // if (text == '11') {
+  //   text += "\nChupalo Entonces";
+  //   ctx.font = 'bold 22px Helvetica, Arial';
+  //   var lineHeight = 30;
+  // }// Muestra cada línea de texto por separado
   var lines = text.split('\n');
   for (var i = 0; i < lines.length; i++) {
     ctx.fillText(lines[i], 250 - ctx.measureText(lines[i]).width / 2, 250 + 10 + i * lineHeight);
