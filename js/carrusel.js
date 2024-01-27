@@ -22,6 +22,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   
     // Configura el intervalo para cambiar automáticamente las imágenes cada 3 segundos (ajusta según sea necesario)
-    setInterval(nextImage, 3000);
+    setInterval(nextImage, 4000);
   });
   
