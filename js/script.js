@@ -162,7 +162,7 @@ function spin() {
   spinTime = 0;
   spinTimeTotal = Math.random() * 6 + 4 * 2000; // el 4 era 
 
-  console.log(numeroRandom + "-" + numeroRandom2 + "=" + spinAngleStart);
+  // console.log(numeroRandom + "-" + numeroRandom2 + "=" + spinAngleStart);
 
   var spinSound = document.getElementById("spinSound");
   spinSound.currentTime = 0; // Reinicia el audio al hacer clic nuevamente
