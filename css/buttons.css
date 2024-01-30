@@ -14,7 +14,7 @@
     min-height: 10px;
     min-width: 0;
     outline: none;
-    padding: 10px 10px;
+    padding: 10px 0px;
     text-align: center;
     text-decoration: none;
     transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
@@ -54,11 +54,27 @@
     border: 2px solid #07226d;
     color: #07226d; 
     background-color: transparent;
+    /* padding-right: 10px; */
   }
 
   .button-2.blue:hover {
     color: #fff;
     background-color: #07226d;
+  }
+
+  .button-2.orange {
+    border: 2px solid #6d4107;
+    color: #6d4107; 
+    background-color: transparent;
+    text-align: none;
+    box-sizing: none;
+    /* display: inline; */
+    /* margin-right: 20rem; */
+  }
+
+  .button-2.orange:hover {
+    color: #fff;
+    background-color: #6d4107;
   }
 
   .button-2.fushia {
