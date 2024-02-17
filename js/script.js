@@ -66,9 +66,10 @@ function getColor(item, maxitem) {
   // 2
   // 0
   // 4
-  red   = Math.sin(frequency*item+0+phase) * width + center;
-  green = Math.sin(frequency*item+0+phase) * width + center;
-  blue  = Math.sin(frequency*item+0+phase) * width + center;
+  cua = Math.PI/3
+  red   = Math.sin(frequency*item+cua+phase) * width + center;
+  green = Math.sin(frequency*item+4+phase) * width + center;
+  blue  = Math.sin(frequency*item+cua*2+phase) * width + center;
 
 
   
@@ -146,9 +147,9 @@ document.getElementById("spin").addEventListener("click", spin);
 
 function spin() {
   var rightImage = document.getElementById("rightImage");
-  rightImage.src = "public/stick1.png";
+  rightImage.src = "public/taniastikc2.png";
   setTimeout(function () {
-    rightImage.src = "public/stick2.png";
+    rightImage.src = "public/taniastikc1.png";
   }, 300); // Ajusta el tiempo según sea necesario (en milisegundos)
 
   
