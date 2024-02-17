@@ -66,9 +66,9 @@ function getColor(item, maxitem) {
   // 2
   // 0
   // 4
-  red   = Math.sin(frequency*item+5+phase) * width + center;
+  red   = Math.sin(frequency*item+0+phase) * width + center;
   green = Math.sin(frequency*item+0+phase) * width + center;
-  blue  = Math.sin(frequency*item+1+phase) * width + center;
+  blue  = Math.sin(frequency*item+0+phase) * width + center;
 
 
   
