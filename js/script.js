@@ -68,11 +68,10 @@ function getColor(item, maxitem) {
   // 4
   cua = Math.PI/3
   red   = Math.sin(frequency*item+cua+phase) * width + center;
-  green = Math.sin(frequency*item+4+phase) * width + center;
-  blue  = Math.sin(frequency*item+cua*2+phase) * width + center;
+  // green = Math.sin(frequency*item+4+phase) * width + center;
+  green = Math.sin(5) * width + center;
+  blue  = Math.sin(frequency*item+cua+phase) * width + center;
 
-
-  
   return RGB2Color(red,green,blue);
 }
 
@@ -154,10 +153,11 @@ function spin() {
 
   
   // Genera un número aleatorio entre 1 y 9 (ambos inclusive)
-  var numeroRandom = Math.floor(Math.random() * 12) + 1;
+  // var numeroRandom = Math.floor(Math.random() * 12) + 1;
+  var nmajah = Math.floor(Math.random() * (12 - 4 + 1)) + 8;
   var numeroRandom2 = Math.floor(Math.random() * 17) + 1;
   // Combina los números aleatorios de manera creativa
-  var resultadoAleatorio = Math.random() * numeroRandom + numeroRandom2;
+  var resultadoAleatorio = Math.random() * nmajah + numeroRandom2;
   // console.log(numeroRandom + "-" + numeroRandom2);
 
   spinAngleStart = resultadoAleatorio;     // el numerorandom era 10 y el otro  10  tambien
