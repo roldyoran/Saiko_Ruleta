@@ -55,7 +55,7 @@ document.getElementById("spin").addEventListener("click", function() {
 // function changeImage(){
 //   var rightImage = document.getElementById("rightImage");
   
-//   // Cambiar a la imagen taniastick2
+//   // Cambiar a la imagen taniataniastikc2
 //   rightImage.src = "public/taniastikc2.png";
   
 //     setTimeout(function () {
@@ -87,7 +87,7 @@ function getColor(item, maxitem) {
   red   = Math.sin(frequency*item+cua+phase) * width + center;
   // green = Math.sin(frequency*item+4+phase) * width + center;
   green = Math.sin(5) * width + center;
-  blue  = Math.sin(frequency*item+cua+phase) * width + center;
+  blue  = Math.sin(frequency*item+cua/2+phase) * width + center;
 
   return RGB2Color(red,green,blue);
 }
@@ -164,7 +164,7 @@ document.getElementById("spin").addEventListener("click", spin);
 function spin() {
   var rightImage = document.getElementById("rightImage");
   
-  // Cambiar a la imagen taniastick2
+  // Cambiar a la imagen taniataniastikc2
   rightImage.src = "public/taniastikc2.webp";
   
   setTimeout(function () {
