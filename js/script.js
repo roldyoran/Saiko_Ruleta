@@ -46,7 +46,24 @@ function updateOptions() {
     }
 }
 
-document.getElementById("spin").addEventListener("click", spin);
+// document.getElementById("spin").addEventListener("click", spin);
+document.getElementById("spin").addEventListener("click", function() {
+  spin(); // Llamando a la primera función
+  // changeImage();
+});
+
+// function changeImage(){
+//   var rightImage = document.getElementById("rightImage");
+  
+//   // Cambiar a la imagen taniastick2
+//   rightImage.src = "public/taniastikc2.png";
+  
+//     setTimeout(function () {
+//       rightImage.src = "public/taniastikc1.png";
+//     }, 300); // Ajusta el tiempo según sea necesario (en milisegundos)
+// }
+
+
 
 function byte2Hex(n) {
   var nybHexString = "0123456789ABCDEF";
@@ -146,10 +163,14 @@ document.getElementById("spin").addEventListener("click", spin);
 
 function spin() {
   var rightImage = document.getElementById("rightImage");
-  rightImage.src = "public/taniastikc2.png";
+  
+  // Cambiar a la imagen taniastick2
+  rightImage.src = "public/taniastikc2.webp";
+  
   setTimeout(function () {
-    rightImage.src = "public/taniastikc1.png";
+    rightImage.src = "public/taniastikc1.webp";
   }, 300); // Ajusta el tiempo según sea necesario (en milisegundos)
+  
 
   
   // Genera un número aleatorio entre 1 y 9 (ambos inclusive)
