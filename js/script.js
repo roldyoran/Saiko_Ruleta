@@ -227,11 +227,17 @@ function stopRotateWheel() {
   ctx.font = 'bold 70px Helvetica, Arial';
   var text = options[index]
   var lineHeight = 0; // Puedes ajustar este valor según sea necesario
-  // if (text == '11') {
-  //   text += "\nChupalo Entonces";
-  //   ctx.font = 'bold 22px Helvetica, Arial';
-  //   var lineHeight = 30;
-  // }// Muestra cada línea de texto por separado
+  if (text == '11') {
+    text += "\nChupalo Entonces";
+    ctx.font = 'bold 22px Helvetica, Arial';
+    var lineHeight = 30;
+  }// Muestra cada línea de texto por separado
+  else if (text == '13') {
+    text += "\nAgarramela ";
+    text += "\nque me Crece"
+    ctx.font = 'bold 20px Helvetica, Arial';
+    var lineHeight = 30;
+  }
   var lines = text.split('\n');
   for (var i = 0; i < lines.length; i++) {
     ctx.fillText(lines[i], 250 - ctx.measureText(lines[i]).width / 2, 250 + 10 + i * lineHeight);
