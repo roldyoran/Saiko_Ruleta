@@ -40,14 +40,14 @@
   
   /* Estilo para el botón verde (puedes cambiar este nombre según tu preferencia) */
   .button-2.green {
-    border: 2px solid #076d07;
-    color: #076d07; 
+    border: 2px solid #11b411;
+    color: #11b411; 
     background-color: transparent;
   }
 
   .button-2.green:hover {
     color: #fff;
-    background-color: #076d07;
+    background-color: #11b411;
   }
 
   .button-2.blue {
@@ -103,7 +103,7 @@
   
   /* Estilos adicionales para el estado :hover */
   .button-2:hover {
-    box-shadow: rgba(23, 10, 109, 0.25) 0 8px 15px;
+    box-shadow: rgba(9, 187, 127, 0.25) 0 8px 15px;
     transform: translateY(-2px);
   }
   
