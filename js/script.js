@@ -55,11 +55,11 @@ document.getElementById("spin").addEventListener("click", function() {
 // function changeImage(){
 //   var rightImage = document.getElementById("rightImage");
   
-//   // Cambiar a la imagen taniataniastikc2
-//   rightImage.src = "public/taniastikc2.png";
+//   // Cambiar a la imagen taniastick2
+//   rightImage.src = "public/stick2.png";
   
 //     setTimeout(function () {
-//       rightImage.src = "public/taniastikc1.png";
+//       rightImage.src = "public/stick1.png";
 //     }, 300); // Ajusta el tiempo según sea necesario (en milisegundos)
 // }
 
@@ -164,11 +164,11 @@ document.getElementById("spin").addEventListener("click", spin);
 function spin() {
   var rightImage = document.getElementById("rightImage");
   
-  // Cambiar a la imagen taniataniastikc2
-  rightImage.src = "public/taniastikc2.webp";
+  // Cambiar a la imagen taniastick2
+  rightImage.src = "public/stick1.webp";
   
   setTimeout(function () {
-    rightImage.src = "public/taniastikc1.webp";
+    rightImage.src = "public/stick2.webp";
   }, 300); // Ajusta el tiempo según sea necesario (en milisegundos)
   
 
