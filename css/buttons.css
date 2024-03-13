@@ -28,43 +28,43 @@
   
   /* Estilo para el botón azul (puedes cambiar este nombre según tu preferencia) */
   .button-2.purple {
-    border: 2px solid #097596; /*27086e*/
-    color: #097596; 
+    border: 2px solid #070505; /*097596*/
+    color: #070505; 
     background-color: transparent;
   }
 
   .button-2.purple:hover {
     color: #fff;
-    background-color: #097596; /*27086e*/
+    background-color: #070505; /*097596*/
   }
   
   /* Estilo para el botón verde (puedes cambiar este nombre según tu preferencia) */
   .button-2.green {
-    border: 2px solid #7c0b92; /*11b411*/
-    color: #7c0b92; 
+    border: 2px solid #070505; /*7c0b92*/
+    color: #070505; 
     background-color: transparent;
   }
 
   .button-2.green:hover {
     color: #fff;
-    background-color: #7c0b92; /*11b411*/
+    background-color: #070505; /*7c0b92*/
   }
 
   .button-2.blue {
-    border: 2px solid #07226d;
-    color: #07226d; 
+    border: 2px solid #070505;  /*07226d*/
+    color: #070505; 
     background-color: transparent;
     /* padding-right: 10px; */
   }
 
   .button-2.blue:hover {
     color: #fff;
-    background-color: #07226d;
+    background-color: #070505;  /*07226d*/
   }
 
   .button-2.orange {
-    border: 2px solid #6d4107;
-    color: #6d4107; 
+    border: 2px solid #070505;   
+    color: #070505; 
     background-color: transparent;
     text-align: none;
     box-sizing: none;
@@ -74,15 +74,15 @@
 
   .button-2.orange:hover {
     color: #fff;
-    background-color: #6d4107;
+    background-color: #070505;
   }
 
   .button-2.fushia {
     font-size: 14px;
     width: 20%;
     padding: 20px 10px;
-    border: 2px solid #790d67;
-    color: #790d67; 
+    border: 2px solid #0705057c;  /*790d67 */
+    color: #0705057c; 
     font-weight: 700;
     background-color: #fafafa;
     /* justify-content: center; */
@@ -90,7 +90,7 @@
 
   .button-2.fushia:hover {
     color: #fff;
-    background-color: #790d67;
+    background-color: #0705057c;  /*790d67 */
   }
   
   

@@ -15,11 +15,11 @@
 }
 
 .custom-input-cua:focus {
-    border-color: #dd408e; /* Cambiar el color del borde al enfocar */
+    border-color: #110009; /*dd408e*/
 }
 
 .custom-input-cua:hover {
     color: #fff;
-    background-color: #dd408e; /* Cambiar el color del fondo al pasar el ratón */
-    border-color: #dd408e; /* Cambiar el color del borde al pasar el ratón */
+    background-color: #110009; /* dd408e*/
+    border-color: #110009; /* dd408e*/
 }
