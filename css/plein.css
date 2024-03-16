@@ -15,11 +15,11 @@
 }
 
 .custom-input-cua:focus {
-    border-color: #110009; /*dd408e*/
+    border-color: #7c0b92; /*dd408e*/
 }
 
 .custom-input-cua:hover {
     color: #fff;
-    background-color: #110009; /* dd408e*/
-    border-color: #110009; /* dd408e*/
+    background-color: #7c0b92; /* dd408e*/
+    border-color: #7c0b92; /* dd408e*/
 }

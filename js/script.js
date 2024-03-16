@@ -55,11 +55,11 @@ document.getElementById("spin").addEventListener("click", function() {
 // function changeImage(){
 //   var rightImage = document.getElementById("rightImage");
   
-//   // Cambiar a la imagen taniastick2
-//   rightImage.src = "public/stick2.png";
+//   // Cambiar a la imagen taniataniaConejitastick2
+//   rightImage.src = "public/taniaConejitastick2.png";
   
 //     setTimeout(function () {
-//       rightImage.src = "public/stick1.png";
+//       rightImage.src = "public/taniaConejitastick1.png";
 //     }, 300); // Ajusta el tiempo según sea necesario (en milisegundos)
 // }
 
@@ -83,12 +83,11 @@ function getColor(item, maxitem) {
   // 2
   // 0
   // 4
-  // cua = Math.PI
-  cua = 0
-  red   = Math.sin(frequency*item+cua/5+phase) * width + center;
-  green = Math.sin(frequency*item+cua+phase) * width + center;
-  // green = Math.sin(5) * width + center;
-  blue  = Math.sin(frequency*item+cua+phase) * width + center;
+  cua = Math.PI
+  red   = Math.sin(frequency*item+cua/3+phase) * width + center;
+  // green = Math.sin(frequency*item+0+phase) * width + center;
+  green = Math.sin(5) * width + center;
+  blue  = Math.sin(frequency*item+cua/4+phase) * width + center;
 
   return RGB2Color(red,green,blue);
 }
@@ -165,11 +164,11 @@ document.getElementById("spin").addEventListener("click", spin);
 function spin() {
   var rightImage = document.getElementById("rightImage");
   
-  // Cambiar a la imagen taniastick2
-  rightImage.src = "public/stick1.webp";
+  // Cambiar a la imagen taniataniaConejitastick2
+  rightImage.src = "public/taniaConejitastick2.webp";
   
   setTimeout(function () {
-    rightImage.src = "public/stick2.webp";
+    rightImage.src = "public/taniaConejitastick1.webp";
   }, 300); // Ajusta el tiempo según sea necesario (en milisegundos)
   
 

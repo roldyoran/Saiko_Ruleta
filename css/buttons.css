@@ -28,43 +28,43 @@
   
   /* Estilo para el botón azul (puedes cambiar este nombre según tu preferencia) */
   .button-2.purple {
-    border: 2px solid #070505; /*097596*/
-    color: #070505; 
+    border: 2px solid #7c0b92; /*097596*/
+    color: #7c0b92; 
     background-color: transparent;
   }
 
   .button-2.purple:hover {
     color: #fff;
-    background-color: #070505; /*097596*/
+    background-color: #7c0b92; /*097596*/
   }
   
   /* Estilo para el botón verde (puedes cambiar este nombre según tu preferencia) */
   .button-2.green {
-    border: 2px solid #070505; /*7c0b92*/
-    color: #070505; 
+    border: 2px solid #7c0b92; /*7c0b92*/
+    color: #7c0b92; 
     background-color: transparent;
   }
 
   .button-2.green:hover {
     color: #fff;
-    background-color: #070505; /*7c0b92*/
+    background-color: #7c0b92; /*7c0b92*/
   }
 
   .button-2.blue {
-    border: 2px solid #070505;  /*07226d*/
-    color: #070505; 
+    border: 2px solid #7c0b92;  /*07226d*/
+    color: #7c0b92; 
     background-color: transparent;
     /* padding-right: 10px; */
   }
 
   .button-2.blue:hover {
     color: #fff;
-    background-color: #070505;  /*07226d*/
+    background-color: #7c0b92;  /*07226d*/
   }
 
   .button-2.orange {
-    border: 2px solid #070505;   
-    color: #070505; 
+    border: 2px solid #7c0b92;   
+    color: #7c0b92; 
     background-color: transparent;
     text-align: none;
     box-sizing: none;
@@ -74,15 +74,15 @@
 
   .button-2.orange:hover {
     color: #fff;
-    background-color: #070505;
+    background-color: #7c0b92;
   }
 
   .button-2.fushia {
     font-size: 14px;
     width: 20%;
     padding: 20px 10px;
-    border: 2px solid #0705057c;  /*790d67 */
-    color: #0705057c; 
+    border: 2px solid #7c0b927c;  /*790d67 */
+    color: #7c0b927c; 
     font-weight: 700;
     background-color: #fafafa;
     /* justify-content: center; */
@@ -90,7 +90,7 @@
 
   .button-2.fushia:hover {
     color: #fff;
-    background-color: #0705057c;  /*790d67 */
+    background-color: #7c0b927c;  /*790d67 */
   }
   
   
@@ -103,7 +103,7 @@
   
   /* Estilos adicionales para el estado :hover */
   .button-2:hover {
-    box-shadow: rgba(9, 187, 127, 0.25) 0 8px 15px;
+    box-shadow: rgba(151, 9, 187, 0.25) 0 8px 15px;
     transform: translateY(-2px);
   }
   
