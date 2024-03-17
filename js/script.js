@@ -83,11 +83,11 @@ function getColor(item, maxitem) {
   // 2
   // 0
   // 4
-  cua = Math.PI
-  red   = Math.sin(frequency*item+cua/3+phase) * width + center;
+  red   = Math.sin(frequency*item+0+phase) * width + center;
   // green = Math.sin(frequency*item+0+phase) * width + center;
   green = Math.sin(5) * width + center;
-  blue  = Math.sin(frequency*item+cua/4+phase) * width + center;
+  blue  = Math.sin(frequency*item+0.5+phase) * width + center;
+
 
   return RGB2Color(red,green,blue);
 }
