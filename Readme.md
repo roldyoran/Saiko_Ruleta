@@ -1,4 +1,4 @@
-# Ruleta Aleatoria de Personajes para Saiko
+# SAIKO RULETA para Saikomic
 
 ¡Bienvenido a la Ruleta Aleatoria para Saiko! Esta aplicación te permite girar una ruleta para seleccionar un numero al azar entre una selección. Cada personaje está representado por un fanart único que se mueve alrededor de la ruleta para darle un toque divertido y emocionante.
 
