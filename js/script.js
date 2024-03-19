@@ -55,10 +55,10 @@ function getColor(item, maxitem) {
   // 2
   // 0
   // 4
-  red   = Math.sin(frequency*item+0+phase) * width + center;
+  red   = Math.sin(frequency*item+1+phase) * width + center;
   // green = Math.sin(frequency*item+0+phase) * width + center;
   green = Math.sin(5) * width + center;
-  blue  = Math.sin(frequency*item+0.5+phase) * width + center;
+  blue  = Math.sin(frequency*item+2+phase) * width + center;
 
 
   return RGB2Color(red,green,blue);
@@ -135,35 +135,22 @@ document.getElementById("spin").addEventListener("click", spin);
 
 function spin() {
   var rightImage = document.getElementById("personaje");
-
-  // var personaje2 = document.getElementById("personaje2");
-  
-  // // Cambiar a la imagen taniataniaConejitastick2
   rightImage.src = "public/taniaConejitastick2.webp";
-
-  // personaje2.src = "public/tagoFuckBoystick2.png";
-  
   setTimeout(function () {
     rightImage.src = "public/taniaConejitastick1.webp";
-
-    // personaje2.src = "public/tagoFuckBoystick1.png";
   }, 350); // Ajusta el tiempo según sea necesario (en milisegundos)
   
 
   
   // Genera un número aleatorio entre 1 y 9 (ambos inclusive)
-  // var numeroRandom = Math.floor(Math.random() * 12) + 1;
   var nmajah = Math.floor(Math.random() * (12 - 4 + 1)) + 8;
   var numeroRandom2 = Math.floor(Math.random() * 17) + 1;
   // Combina los números aleatorios de manera creativa
   var resultadoAleatorio = Math.random() * nmajah + numeroRandom2;
-  // console.log(numeroRandom + "-" + numeroRandom2);
 
-  spinAngleStart = resultadoAleatorio;     // el numerorandom era 10 y el otro  10  tambien
+  spinAngleStart = resultadoAleatorio; 
   spinTime = 0;
   spinTimeTotal = Math.random() * 6 + 4 * 2000; // el 4 era 
-
-  // console.log(numeroRandom + "-" + numeroRandom2 + "=" + spinAngleStart);
 
   var spinSound = document.getElementById("spinSound");
   spinSound.currentTime = 0; // Reinicia el audio al hacer clic nuevamente
