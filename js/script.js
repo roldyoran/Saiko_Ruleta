@@ -1,16 +1,4 @@
-function toggleExtraInfo() {
-  var button = document.querySelector('.button-23');
-  var extraInfo = document.getElementById('extraInfo');
 
-  if (extraInfo.style.display === 'none' || extraInfo.style.display === '') {
-      extraInfo.style.display = 'block';
-      extraInfo.scrollIntoView({ behavior: 'smooth' });
-      button.textContent = 'Ocultar Info';
-  } else {
-      extraInfo.style.display = 'none';
-      button.textContent = 'Ver Info Extra';
-  }
-}
 // Función para obtener el valor de 'numOptions' desde localStorage
  function getNumOptions() {
   return parseInt(localStorage.getItem('numOptions')) || 4;
@@ -46,22 +34,6 @@ function updateOptions() {
     }
 }
 
-// document.getElementById("spin").addEventListener("click", spin);
-document.getElementById("spin").addEventListener("click", function() {
-  spin(); // Llamando a la primera función
-  // changeImage();
-});
-
-// function changeImage(){
-//   var rightImage = document.getElementById("rightImage");
-  
-//   // Cambiar a la imagen taniataniaConejitastick2
-//   rightImage.src = "public/taniaConejitastick2.png";
-  
-//     setTimeout(function () {
-//       rightImage.src = "public/taniaConejitastick1.png";
-//     }, 300); // Ajusta el tiempo según sea necesario (en milisegundos)
-// }
 
 
 
@@ -162,14 +134,20 @@ function drawRouletteWheel() {
 document.getElementById("spin").addEventListener("click", spin);
 
 function spin() {
-  var rightImage = document.getElementById("rightImage");
+  var rightImage = document.getElementById("personaje");
+
+  // var personaje2 = document.getElementById("personaje2");
   
-  // Cambiar a la imagen taniataniaConejitastick2
+  // // Cambiar a la imagen taniataniaConejitastick2
   rightImage.src = "public/taniaConejitastick2.webp";
+
+  // personaje2.src = "public/tagoFuckBoystick2.png";
   
   setTimeout(function () {
     rightImage.src = "public/taniaConejitastick1.webp";
-  }, 300); // Ajusta el tiempo según sea necesario (en milisegundos)
+
+    // personaje2.src = "public/tagoFuckBoystick1.png";
+  }, 350); // Ajusta el tiempo según sea necesario (en milisegundos)
   
 
   

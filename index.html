@@ -1,255 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=0.9" />
-    <title>Saiko Ruleta</title>
-    <meta
-      name="description"
-      content="Una ruleta sin trucos,100% aleatoria, ya que he visto muchas trucadas y ya me canse que siempre salga entre el 15 y el 18"
-    />
-    <link rel="stylesheet" type="text/css" href="css/styles.css" />
-    <link rel="stylesheet" type="text/css" href="css/buttons.css" />
-    <link rel="stylesheet" type="text/css" href="css/carrusel.css" />
-    <link rel="stylesheet" type="text/css" href="css/plein.css" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saiko Ruleta</title>
+  <meta name="description" content="Una ruleta sin trucos, 100% aleatoria, ya que he visto muchas trucadas y ya me canse que siempre salga entre el 15 y el 18" />
+  <link rel="shortcut icon" href="public/saikologo.ico" type="image/x-icon" />
+  <link href="output.css" rel="stylesheet" />
+
+  
+  <style>
+    /* Estilos para el contenedor de imágenes */
+.imagesContainer {
+    width: 210px;
+    height: auto;
+    max-width: 100%;
+    overflow: hidden;
+    position: relative; /* Asegura que el botón de "Ver Info Extra" y otras posiciones se ajusten correctamente */
+  }
+  
+  /* Estilos para el carrusel */
+  .carousel {
+    display: flex;
+    transition: transform 1s ease-in-out;
+    width: 100%; /* Ajusta según sea necesario */
+    box-sizing: border-box; /* Evita que el padding afecte el ancho total */
+  }
+  
+  /* Estilos para las imágenes del carrusel */
+  .carousel-image {
+    flex: 0 0 100%; /* Cada imagen ocupa el 100% del ancho del carrusel */
+    max-width: 100%; /* Evita que las imágenes sean más grandes que el contenedor */
+    height: auto;
+    box-sizing: border-box; /* Evita que el padding afecte la altura total */
+  }
+  
+  /* Resto de tus estilos... */
+/* Estilos para dispositivos más pequeños (menores a 600px de ancho) */
+  @media only screen and (max-width: 1080px) {
+    /* Reduce el tamaño del canvas en dispositivos móviles */
+    #canvas {
+      width: 400px; /* Puedes ajustar este valor según tus necesidades */
+      height: 400px; /* Puedes ajustar este valor según tus necesidades */
+    }
+
+    #updateButton,
+    #numOptions,
+    #spin {
+      font-size: 12px; /* Reducir el tamaño de la fuente */
+      padding: 4px 10px; /* Reducir el relleno */
+      margin: 0; /* Eliminar los márgenes */
+    }
+}
 
 
-    <!-- Agrega la etiqueta link con el ícono -->
-    <link rel="icon" href="public/icono-de-favoritos.webp" type="image/x-icon" />
-    <!-- Opcional: Para navegadores más modernos -->
-    <link rel="shortcut icon" href="public/saikologo.ico" type="image/x-icon" />
-    <!-- Icons Socials -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-  </head>
 
-  <body>
-    <div class="container">
-      <!-- seccion extra -->
-      <button class="button-23" onclick="toggleExtraInfo()">
-        Ver Info Extra
-      </button>
 
-      <!-- <a href="pages/Memoria_Cartas/Memoria_Cartas.html" target="_blank" role="button" block>
-        <button class="button-23 blue" role="button">
-            <span class="text">SAIKO  <br>J U E G O (S)<br></span>
-        </button>
-    </a> -->
+  
+  </style>
+ 
+</head>
+<body>
+  <h2 class="text-center text-3xl py-1 pt-3 font-bold text-purple-900">SAIKO RULETA</h2>
+  
 
-      <div class="imagesContainer">
-        <div class="carousel">
-          <img
-            src="public/ima1.webp"
-            alt="Imagen a la izquierda"
-            class="carousel-image"
-          />
-          <img
-            src="public/ima2.webp"
-            alt="Imagen a la izquierda"
-            class="carousel-image"
-          />
-          <img
-            src="public/ima3.webp"
-            alt="Imagen a la izquierda"
-            class="carousel-image"
-          />
-          <img
-            src="public/ima4.webp"
-            alt="Imagen a la izquierda"
-            class="carousel-image"
-          />
-          <img
-            src="public/ima5.webp"
-            alt="Imagen a la izquierda"
-            class="carousel-image"
-          />
-          <img
-            src="public/tania2.webp"
-            alt="Imagen a la izquierda"
-            class="carousel-image"
-          />
-          <img
-            src="public/ima1.webp"
-            alt="Imagen a la izquierda"
-            class="carousel-image"
-          />
-          <img
-            src="public/tania.jpg"
-            alt="Imagen a la izquierda"
-            class="carousel-image"
-          />
-          <img
-          src="public/tania4.webp"
-          alt="Imagen a la izquierda"
-          class="carousel-image"
-          />
-          <img
-            src="public/ima2.webp"
-            alt="Imagen a la izquierda"
-            class="carousel-image"
-          />
-          <img
-            src="public/ima3.webp"
-            alt="Imagen a la izquierda"
-            class="carousel-image"
-          />
-          <img
-            src="public/tania3.webp"
-            alt="Imagen a la izquierda"
-            class="carousel-image"
-          />
-          <img
-            src="public/ima4.webp"
-            alt="Imagen a la izquierda"
-            class="carousel-image"
-          />
-          <img
-            src="public/ima5.webp"
-            alt="Imagen a la izquierda"
-            class="carousel-image"
-          />
-          <img
-            src="public/ima2.webp"
-            alt="Imagen a la izquierda"
-            class="carousel-image"
-          />
-          <img
-            src="public/tania5.webp"
-            alt="Imagen a la izquierda"
-            class="carousel-image"
-          />
-          <img
-            src="public/ima3.webp"
-            alt="Imagen a la izquierda"
-            class="carousel-image"
-          />
+  <div class="flex justify-between items-center mx-0 md:mx-2">
+    <div class="w-1/4 text-center  hidden sm:block"> <!-- bg-green-200 -->
+      <!-- Carrusel de Imágenes --> 
+      <div class="imagesContainer w-[210px] h-auto max-w-full justify-center overflow-hidden relative ml-12">
+        <div class="carousel flex transition-transform duration-1000 ease-in-out w-full box-border">
+          <img src="public/ima1.webp" alt="Imagen a la izquierda" class="carousel-image flex-0 flex-grow-0 w-full max-w-full h-auto box-border">
+          <img src="public/ima5.webp" alt="Imagen a la izquierda" class="carousel-image flex-0 flex-grow-0 w-full max-w-full h-auto box-border">
+          <img src="public/ima1.webp" alt="Imagen a la izquierda" class="carousel-image flex-0 flex-grow-0 w-full max-w-full h-auto box-border">
+          <img src="public/ima5.webp" alt="Imagen a la izquierda" class="carousel-image flex-0 flex-grow-0 w-full max-w-full h-auto box-border">
+        </div>
+      </div>
+    
+    </div>
+    
+    <div class="w-full lg:w-1/2 text-center"> <!-- bg-blue-200 -->
+      <!-- Contenido del objeto central -->
+      <div class="grid place-items-center m-0">
+        <canvas
+          id="canvas"
+          width="500"
+          height="500"
+          class="relative border border-solid border-gray-300 shadow-md rounded-lg"
+        ></canvas>
 
-          <img
-            src="public/tania.jpg"
-            alt="Imagen a la izquierda"
-            class="carousel-image"
+        <img src="public/taniaConejitastick1.webp" 
+        id="personaje"
+        class="hidden md:block z-10 w-[290px] h-auto ml-[405px] mb-10 absolute"
+        alt="stick1">
+
+        <img src="public/tagoGif.gif" 
+        id="personaje2"
+        class="hidden md:block z-5 w-[288px] h-auto mr-[490px] absolute"
+        alt="stick1">
+
+        <div class="flex mt-1 md:mx-1 place-items-center flex-wrap">
+          <label for="numOptions"></label>
+          <input
+            type="number"
+            id="numOptions"
+            min="2"
+            max="44"
+            value="20"
+            class="py-2 m-1 ml-auto pl-2 border-2 font-bold text-pink-900 border-pink-900 rounded-xl bg-transparent transition-all hover:bg-pink-900 hover:text-white hover:shadow-lg hover:shadow-pink-900/50 hover:-translate-y-0.5"
           />
+          <button
+            id="updateButton"
+            class="border-2 ml-auto border-purple-950 font-bold text-purple-900 hover:bg-purple-950 hover:text-white hover:-translate-y-0.5 hover:shadow-lg hover:shadow-purple-800/50 transition-all rounded-xl py-2 px-8 active:shadow-none active:translate-y-0"
+            onclick="updateOptions()">
+            Actualizar Ruleta
+          </button>
+          <button
+            id="spin"
+            class="border-2 m-1 mr-auto border-pink-700 font-bold text-pink-700 hover:bg-pink-700 hover:text-white hover:-translate-y-0.5 hover:shadow-lg hover:shadow-pink-700/50 transition-all rounded-xl py-2 px-14 active:shadow-none active:translate-y-0"
+          >
+            GIRAR Ruleta
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="w-1/4 text-center  hidden md:block"> <!-- bg-green-200 -->
+      <!-- Carrusel de Imágenes -->
+      <div class="imagesContainer2 w-[210px] h-auto max-w-full justify-center overflow-hidden relative ml-12">
+        <div class="carousel2 flex transition-transform duration-1000 ease-in-out w-full box-border">
+          <img src="public/tania.webp" alt="Imagen a la izquierda" class="carousel-image2 flex-0 flex-grow-0 w-full max-w-full h-auto box-border">
+          <img src="public/tania2.webp" alt="Imagen a la izquierda" class="carousel-image2 flex-0 flex-grow-0 w-full max-w-full h-auto box-border">
+          <img src="public/tania4.webp" alt="Imagen a la izquierda" class="carousel-image2 flex-0 flex-grow-0 w-full max-w-full h-auto box-border">
+          <img src="public/tania3.webp" alt="Imagen a la izquierda" class="carousel-image2 flex-0 flex-grow-0 w-full max-w-full h-auto box-border">
         </div>
       </div>
 
-      <!-- <img src="public/tania.jpg" alt="Imagen a la izquierda" class="responsive-image-left"> -->
-      <div class="content">
-        <h1 class="title">
-          <span class="title-word title-word-1">SAIKO</span>
-          <span class="title-word title-word-2">RULETA</span>
-        </h1>
-        <!-- <h1>SAIKO RULETA</h1> -->
-        <canvas id="canvas" width="500" height="500"></canvas>
-        <label for="numOptions"></label>
-        <input class="custom-input-cua" type="number" id="numOptions" min="2" max="44" value="20" />
-        <button class="button-2 purple" role="button" onclick="updateOptions()">
-          Actualizar Ruleta
-        </button>
-        <input
-          class="button-2 green"
-          role="button"
-          type="button"
-          id="spin"
-          value="GIRAR LA RULETA"
-        />
-      </div>
-      <img
-        src="public/taniaConejitastick1.webp"
-        alt="Imagen a la derecha"
-        class="responsive-image-right"
-        id="rightImage"
-      />
     </div>
+  </div>
 
-    <audio id="spinSound" src="public/audio.mp3"></audio>
-    <audio id="bell" src="public/bell_ring.mp3"></audio>
-    <img src="public/taniaConejitastick2.webp" style="display: none;" alt="Preload Image">
 
-    <video
-      class="mobile-video"
-      controls
-      muted
-      autoplay
-      loop
-      style="width: 100%; height: auto"
-    >
-      <source src="public/video.mp4" type="video/mp4" />
-      Tu navegador no soporta el elemento de video.
-    </video>
+  <audio id="spinSound" src="public/audio.mp3"></audio>
+  <audio id="bell" src="public/bell_ring.mp3"></audio>
+  <img src="public/taniaConejitastick2.webp" style="display: none;" alt="Preload Image">
 
-    <div class="extraInfo" id="extraInfo" style="display: none">
-      <div class="info-container">
-        <h2>SAIKOMIC</h2>
-        <p>
-          Su nombre es <b>Elvis Yonathan Garrido</b> (26 años, cada día más
-          maduro), pero es conocido como <b>Saikomic</b>. Fue en diciembre de
-          2020 que su apodo se transformó en un símbolo porque ganó un tezuka, y
-          tú ¿qué wea has ganado?, nada verdad, lo sabía.
-        </p>
-        <p>
-          Bueno, continuando, este hombre, así como lo ven con su barba
-          frondosa, cuerpo de gimnasta olímpico y voz angelical, sí, así como lo
-          ven, no la pone, no porque no quiera, sino porque odia a las mujeres,
-          o más bien les teme.
-        </p>
-        <p>
-          Además, hace rap ... y ya.<br />Si quieres saber más, te dejo unos
-          datos curiosos del Saiko:
-        </p>
-        <p>1. Le gustan las minitas de Pelo Corto y Lentes</p>
-        <p>2. Si la minita parece hombre, le atrae aun mas</p>
-        <p>3. Su gato se llama Chimi</p>
-        <p>En fin, eso es todo por hoy. Bye.</p>
-        <!-- Botón con imagen de GitHub más pequeña y texto centrado -->
-        <a
-          href="https://medibang.com/mpc/authors/4683825/"
-          target="_blank"
-          role="button"
-        >
-          <button class="button-2 blue" role="button">
-            <img
-              src="public/mangaplus.webp"
-              alt="mangaplus Icon"
-              class="small-icon"
-            />
-            <span class="text">Saikoloco Manguitas<br /></span>
-          </button>
-        </a>
-        <!-- <a href="pages/Memoria_Cartas.html" target="_blank" role="button">
-                <button class="button-2 blue" role="button">
-                    <img src="public/mangaplus.webp" alt="mangaplus Icon" class="small-icon">
-                    <span class="text">Saikoloco<br></span>
-                </button>
-            </a> -->
-      </div>
-      <!-- <div class="image-container">
-            <img src="public/saikopersona.jpg" alt="saikopersona" class="image-port">
-        </div> -->
-      <footer>
-        <a
-          href="https://www.instagram.com/roldyoran"
-          target="_blank"
-          class="button-2 fushia"
-        >
-          <i class="fa fa-instagram"></i> Mi insta de dibujitos<br />(
-          Publicidad )
-        </a>
-        <p>
-          <br />
-          Posdata: Me hicieron cambiar las imagenes ecchi de Tania a ultimo
-          momento :(
-          <br />
-          Posdata 2: Pagina hecha a la rapida, espero les guste
-          <br />
-          Posdata 3: Ruleta 100% aleatoria, la hice porque la otra pagina qlia
-          siempre cae entre el 15 y 18 el 90% de las veces.
-        </p>
-      </footer>
-    </div>
 
-    <script src="js/script.js"></script>
-    <script src="js/carrusel.js"></script>
-  </body>
+  <script src="js/script.js"></script>
+  <script src="js/carrusel.js"></script>
+  <script src="js/carrusel copy.js"></script>
+
+
+</body>
 </html>
