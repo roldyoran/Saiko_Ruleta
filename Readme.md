@@ -4,7 +4,7 @@
 
 ## Contribución
 
-Si te gustaría contribuir a este proyecto, siéntete libre de abrir un issue o enviar un pull request. ¡Todas las contribuciones son bienvenidas! o hablame a mi insta [Abrir @roldyoran](https://www.instagram.com/roldyoran)
+Si te gustaría contribuir a este proyecto, siéntete libre de hablarme a mi insta [Abrir @roldyoran](https://www.instagram.com/roldyoran) o abre un issue o envia un pull request. ¡Todas las contribuciones son bienvenidas!
 
 ----
 
