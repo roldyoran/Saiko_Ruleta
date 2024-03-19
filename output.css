@@ -649,6 +649,10 @@ video {
   inset: -0.25rem;
 }
 
+.inset-0 {
+  inset: 0px;
+}
+
 .end-1 {
   inset-inline-end: 0.25rem;
 }
@@ -661,6 +665,14 @@ video {
   top: 0.75rem;
 }
 
+.left-0 {
+  left: 0px;
+}
+
+.top-0 {
+  top: 0px;
+}
+
 .isolate {
   isolation: isolate;
 }
@@ -671,6 +683,10 @@ video {
 
 .z-10 {
   z-index: 10;
+}
+
+.z-0 {
+  z-index: 0;
 }
 
 .float-start {
@@ -725,11 +741,6 @@ video {
   margin: 0.25rem;
 }
 
-.mx-0 {
-  margin-left: 0px;
-  margin-right: 0px;
-}
-
 .mx-1 {
   margin-left: 0.25rem;
   margin-right: 0.25rem;
@@ -739,24 +750,24 @@ video {
   margin-bottom: 2.5rem;
 }
 
-.ml-10 {
-  margin-left: 2.5rem;
+.ml-14 {
+  margin-left: 3.5rem;
 }
 
-.ml-12 {
-  margin-left: 3rem;
+.ml-16 {
+  margin-left: 4rem;
 }
 
-.ml-\[405px\] {
-  margin-left: 405px;
+.ml-\[402px\] {
+  margin-left: 402px;
 }
 
 .ml-auto {
   margin-left: auto;
 }
 
-.mr-\[490px\] {
-  margin-right: 490px;
+.mr-\[510px\] {
+  margin-right: 510px;
 }
 
 .mr-auto {
@@ -769,62 +780,6 @@ video {
 
 .mt-2 {
   margin-top: 0.5rem;
-}
-
-.ml-14 {
-  margin-left: 3.5rem;
-}
-
-.mr-\[480px\] {
-  margin-right: 480px;
-}
-
-.mr-\[470px\] {
-  margin-right: 470px;
-}
-
-.mr-\[500px\] {
-  margin-right: 500px;
-}
-
-.ml-8 {
-  margin-left: 2rem;
-}
-
-.ml-16 {
-  margin-left: 4rem;
-}
-
-.mr-\[510px\] {
-  margin-right: 510px;
-}
-
-.mr-\[512px\] {
-  margin-right: 512px;
-}
-
-.ml-\[408px\] {
-  margin-left: 408px;
-}
-
-.ml-\[410px\] {
-  margin-left: 410px;
-}
-
-.ml-\[450px\] {
-  margin-left: 450px;
-}
-
-.ml-\[400px\] {
-  margin-left: 400px;
-}
-
-.ml-\[40px\] {
-  margin-left: 40px;
-}
-
-.ml-\[402px\] {
-  margin-left: 402px;
 }
 
 .box-border {
@@ -930,6 +885,18 @@ video {
   height: auto;
 }
 
+.h-full {
+  height: 100%;
+}
+
+.h-screen {
+  height: 100vh;
+}
+
+.min-h-full {
+  min-height: 100%;
+}
+
 .w-1\/4 {
   width: 25%;
 }
@@ -960,6 +927,18 @@ video {
 
 .w-full {
   width: 100%;
+}
+
+.w-screen {
+  width: 100vw;
+}
+
+.w-auto {
+  width: auto;
+}
+
+.min-w-full {
+  min-width: 100%;
 }
 
 .max-w-full {
@@ -1979,11 +1958,6 @@ video {
   background-color: transparent;
 }
 
-.bg-red-200 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(254 202 202 / var(--tw-bg-opacity));
-}
-
 .decoration-slice {
   -webkit-box-decoration-break: slice;
           box-decoration-break: slice;
@@ -2768,22 +2742,11 @@ video {
     margin-right: 0.25rem;
   }
 
-  .md\:mx-2 {
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-  }
-
   .md\:block {
     display: block;
   }
 
   .md\:w-1\/2 {
-    width: 50%;
-  }
-}
-
-@media (min-width: 1024px) {
-  .lg\:w-1\/2 {
     width: 50%;
   }
 }
