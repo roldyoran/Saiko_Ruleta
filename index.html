@@ -108,7 +108,7 @@
 
         <img src="public/tagoGif.gif" 
         id="personaje2"
-        class="hidden md:block z-5 w-[288px] h-auto mr-[510px] absolute"
+        class="hidden md:block z-5 w-[280px] h-[540px] mr-[510px] mb-5 absolute"
         alt="stick1">
 
         <div class="flex mt-1 md:mx-1 place-items-center flex-wrap">
@@ -157,32 +157,13 @@
   <audio id="bell" src="public/bell_ring.mp3"></audio>
   <img src="public/taniaConejitastick2.webp" style="display: none;" alt="Preload Image">
 
-  <audio id="cancion" src="public/bad.mp3"></audio>
+  <audio id="cancion"></audio>
 
 
   <script src="js/script.js"></script>
   <script src="js/carrusel.js"></script>
   <script src="js/carrusel copy.js"></script>
-
-  <script>
-    function playVideo() {
-      const playButton = document.getElementById("playButton");  
-      var audio = document.getElementById("cancion");
-
-        if (audio.paused) {
-          audio.play();
-            playButton.classList.add("text-green-600");
-        } else {
-          audio.pause();
-          playButton.classList.remove("text-green-600");
-            playButton.classList.add("text-black");
-        }
-        audio.addEventListener("ended", function() {
-            playButton.classList.remove("text-green-600");
-            playButton.classList.add("text-black");
-        });
-    }
-</script>
+  <script src="js/audios.js"></script>
 
 
 </body>
