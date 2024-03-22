@@ -1,7 +1,7 @@
 function playVideo() {
   const playButton = document.getElementById("playButton");
 //   const audioFiles = ["bad.mp3", "inspiracion.mp3",  "soygay.mp3", "depilate.mp3", "mujeres.mp3"];
-  const audioFiles = ["depilate.mp3"];  
+  const audioFiles = ["random_op.mp3"];  
   const randomIndex = Math.floor(Math.random() * audioFiles.length);
   const audioSrc = "public/" + audioFiles[randomIndex];
   var audio = document.getElementById("cancion");
