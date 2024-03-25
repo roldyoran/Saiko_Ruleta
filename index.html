@@ -53,12 +53,28 @@
     }
   }
 
+  /* .animate-in {
+  opacity: 1;
+  transform: translateX(+100%);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.animate-out {
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  transform: translateX(-100%);
+} */
+
+
   </style>
  
 </head>
 <body>
-
+  <!-- <div id="animatedImageContainer" class="fixed bottom-0 left-0 opacity-0 transition-opacity duration-500">
+    <img id="animatedImage" src="public/taniaConejitastick1.webp" alt="Imagen animada">
+  </div> -->
   
+  
+
 
   <a href="https://www.instagram.com/roldyoran" target="_blank" class="absolute top-3 left-3 hover:scale-150 transition-all">
     <svg  xmlns="http://www.w3.org/2000/svg"  width="26"  height="26"  viewBox="0 0 24 24"  fill="none"  stroke="#fd0061"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-instagram"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z" /><path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M16.5 7.5l0 .01" /></svg>
@@ -99,17 +115,19 @@
           id="canvas"
           width="500"
           height="500"
-          class="relative border border-solid border-gray-300 shadow-md rounded-lg"
+          class="relative border border-solid shadow-purple-200 shadow-md rounded-lg"
         ></canvas>
-
-        <img src="public/taniaConejitastick1.webp" 
+        
+        <!-- PERSONAJE QUE GIRA LA RULETA -->
+        <img src="public/taniaElegantestick1.webp" 
         id="personaje"
-        class="hidden md:block z-10 w-[290px] h-auto ml-[402px] mb-10 absolute"
+        class="hidden md:block z-10 w-[290px] h-auto ml-[396px] mb-7 absolute"
         alt="stick1">
 
+        <!-- PERSONAJE QUE ACOMPAÑA -->
         <img src="public/tagoGif.gif" 
         id="personaje2"
-        class="hidden md:block z-5 w-[280px] h-[540px] mr-[510px] mb-5 absolute"
+        class="hidden md:block z-5 w-[280px] h-[540px] mr-[505px] mb-5 absolute"
         alt="stick1">
 
         <div class="flex mt-1 md:mx-1 place-items-center flex-wrap">
@@ -156,7 +174,7 @@
   
   <audio id="spinSound" src="public/audio.mp3"></audio>
   <audio id="bell" src="public/bell_ring.mp3"></audio>
-  <img src="public/taniaConejitastick2.webp" style="display: none;" alt="Preload Image">
+  <img src="public/taniaElegantestick2.webp" style="display: none;" alt="Preload Image">
 
   <audio id="cancion"></audio>
 
@@ -166,6 +184,23 @@
   <script src="js/carrusel copy.js"></script>
   <script src="js/audios.js"></script>
 
+  <!-- <script>
+    document.addEventListener("DOMContentLoaded", function() {
+  var container = document.getElementById("animatedImageContainer");
 
+  container.classList.add("animate-in");
+
+  setTimeout(function() {
+    container.classList.add("animate-out");
+
+    setTimeout(function() {
+      container.parentNode.removeChild(container);
+    }, 500);
+  }, 4000);
+});
+
+  </script> -->
+
+  
 </body>
 </html>

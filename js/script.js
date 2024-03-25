@@ -52,16 +52,20 @@ function getColor(item, maxitem) {
   var width = 127;
   var frequency = Math.PI*2/maxitem;
 
-  // 2
-  // 0
-  // 4
-  red   = Math.sin(frequency*item+1+phase) * width + center;
-  // green = Math.sin(frequency*item+0+phase) * width + center;
-  green = Math.sin(5+0.2) * width + center;
-  blue  = Math.sin(frequency*item+2+phase) * width + center;
+  
+  red   = Math.sin(frequency * item + 3 + phase) * width + center;
+  // green = Math.sin(frequency * item + 0 + phase) * width + center;
+  green = 0;
+  blue  = Math.sin(frequency * item + 2 + phase) * width + center;
 
+   // Ajusta el canal rojo para que tenga más presencia
+   red = Math.max(red, 76); // Evita que el rojo sea demasiado bajo
+   red = Math.min(red, 254); // Limita el rojo para no sobrepasar 255
 
   return RGB2Color(red,green,blue);
+
+  // var colors = ['#FFB6C1', '#FF69B4', '#FF1493', '#DB7093', '#C71585', '#DA70D6', '#FF00FF', '#BA55D3', '#9370DB', '#8A2BE2', '#9400D3', '#9932CC', '#8B008B', '#800080', '#4B0082', '#6A5ACD', '#7B68EE', '#483D8B', '#4169E1', '#6495ED'];
+  // return colors[item % colors.length];
 }
 
 function drawRouletteWheel() {
@@ -135,9 +139,9 @@ document.getElementById("spin").addEventListener("click", spin);
 
 function spin() {
   var rightImage = document.getElementById("personaje");
-  rightImage.src = "public/taniaConejitastick2.webp";
+  rightImage.src = "public/taniaElegantestick2.webp";
   setTimeout(function () {
-    rightImage.src = "public/taniaConejitastick1.webp";
+    rightImage.src = "public/taniaElegantestick1.webp";
   }, 350); // Ajusta el tiempo según sea necesario (en milisegundos)
   
 
