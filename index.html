@@ -51,27 +51,32 @@
       padding: 4px 10px; /* Reducir el relleno */
       margin: 0; /* Eliminar los márgenes */
     }
+
+    #animatedImageContainer {
+      display: none;
+    }
   }
 
-  /* .animate-in {
-  opacity: 1;
-  transform: translateX(70%);
-  transition: transform 0.5s ease, opacity 0.5s ease;
-} */
+  .animate-in {
+    opacity: 1;
+    transform: translateX(170%);
+    transition: transform 8s ease, opacity 0.5s ease;
+  } 
 
-/* .animate-out {
-  transition: transform 0.5s ease, opacity 0.5s ease;
-  transform: translateX(-100%);
-} */
+
+  .animate-out {
+    transform: translateX(-100%);
+    transition: transform 8s ease-in-out;
+  } 
 
 
   </style>
  
 </head>
 <body>
-  <!-- <div id="animatedImageContainer" class="fixed bottom-0 -left-12 opacity-0 transition-opacity duration-500 w-16 z-50">
-    <img id="animatedImage" src="public/taniaConejitastick1.webp" alt="Imagen animada">
-  </div> -->
+  <div id="animatedImageContainer" class="absolute bottom-0 -left-12 opacity-0 transition-opacity duration-500 w-16 z-50">
+    <img id="animatedImage" src="public/DJ.gif" alt="Imagen animada">
+  </div>
   
   
   
@@ -185,22 +190,32 @@
   <script src="js/carrusel copy.js"></script>
   <script src="js/audios.js"></script>
 
-  <!-- <script>
+  <script>
     document.addEventListener("DOMContentLoaded", function() {
   var container = document.getElementById("animatedImageContainer");
 
+  // Agrega la clase "animate-in" para mostrar la imagen
   container.classList.add("animate-in");
 
-  setTimeout(function() {
-    container.classList.add("animate-out");
-
     setTimeout(function() {
-      container.parentNode.removeChild(container);
-    }, 500);
-  }, 4000);
+      // Agrega la clase "animate-out" para ocultar la imagen
+      container.classList.add("animate-out");
+
+      setTimeout(function() {
+                var image = document.getElementById("animatedImage");
+                image.src = "public/DJ2.gif";
+       }, 10);
+
+
+      setTimeout(function() {
+        // Elimina el contenedor después de la animación de salida
+        container.parentNode.removeChild(container);
+      }, 8000);
+    }, 8000); // Retraso para aplicar la transformación de espejo
+ 
 });
 
-  </script> -->
+  </script>
 
   
 </body>
