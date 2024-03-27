@@ -35,8 +35,9 @@
     box-sizing: border-box; /* Evita que el padding afecte la altura total */
   }
   
-  /* Resto de tus estilos... */
-/* Estilos para dispositivos más pequeños (menores a 600px de ancho) */
+
+  
+  /* Estilos para dispositivos más pequeños (menores a 600px de ancho) */
   @media only screen and (max-width: 1080px) {
     /* Reduce el tamaño del canvas en dispositivos móviles */
     #canvas {
@@ -57,12 +58,12 @@
     }
   }
 
+  /* DJ animations */
   .animate-in {
     opacity: 1;
     transform: translateX(170%);
     transition: transform 8s ease, opacity 0.5s ease;
   } 
-
 
   .animate-out {
     transform: translateX(-100%);
@@ -105,10 +106,10 @@
       <!-- Carrusel de Imágenes --> 
       <div class="imagesContainer w-[210px] h-auto max-w-full justify-center overflow-hidden relative ml-14">
         <div class="carousel flex transition-transform duration-1000 ease-in-out w-full box-border">
-          <img src="public/tagoDaki.webp" alt="Imagen a la izquierda" class="carousel-image flex-0 flex-grow-0 w-full max-w-full h-auto box-border">
-          <img src="public/ima5.webp" alt="Imagen a la izquierda" class="carousel-image flex-0 flex-grow-0 w-full max-w-full h-auto box-border">
-          <img src="public/ima1.webp" alt="Imagen a la izquierda" class="carousel-image flex-0 flex-grow-0 w-full max-w-full h-auto box-border">
-          <img src="public/tago2.webp" alt="Imagen a la izquierda" class="carousel-image flex-0 flex-grow-0 w-full max-w-full h-auto box-border">
+          <img src="public/tagoDaki.webp" alt="Imagen a la izquierda" class="carousel-image flex-0 flex-grow-0 w-full h-auto box-border">
+          <img src="public/ima5.webp" alt="Imagen a la izquierda"     class="carousel-image flex-0 flex-grow-0 w-full h-auto box-border">
+          <img src="public/ima1.webp" alt="Imagen a la izquierda"     class="carousel-image flex-0 flex-grow-0 w-full h-auto box-border">
+          <img src="public/tago2.webp" alt="Imagen a la izquierda"    class="carousel-image flex-0 flex-grow-0 w-full h-auto box-border">
         </div>
       </div>
     
@@ -133,8 +134,14 @@
         <!-- PERSONAJE QUE ACOMPAÑA -->
         <img src="public/tagoGif.gif" 
         id="personaje2"
-        class="hidden md:block z-5 w-[280px] h-[540px] mr-[505px] mb-5 absolute"
-        alt="stick1">
+        class="hidden md:block z-5 h-[400px] w-auto mr-[505px] mt-[84px] absolute"
+        alt="stick2">
+
+        <!-- LEJI GIRANDO -->
+        <img src="public/leji_chibi_girando.gif" 
+        id="personaje3"
+        class="hidden md:block z-20 w-[120px] h-auto ml-[610px] mb-[550px] absolute"
+        alt="stick3">
 
         <div class="flex mt-1 md:mx-1 place-items-center flex-wrap">
           <label for="numOptions"></label>
@@ -166,10 +173,10 @@
       <!-- Carrusel de Imágenes -->
       <div class="imagesContainer2 w-[210px] h-auto max-w-full justify-center overflow-hidden relative ml-16">
         <div class="carousel2 flex transition-transform duration-1000 ease-in-out w-full box-border">
-          <img src="public/tania.webp" alt="Imagen a la izquierda" class="carousel-image2 flex-0 flex-grow-0 w-full max-w-full h-auto box-border">
-          <img src="public/tania2.webp" alt="Imagen a la izquierda" class="carousel-image2 flex-0 flex-grow-0 w-full max-w-full h-auto box-border">
-          <img src="public/tania4.webp" alt="Imagen a la izquierda" class="carousel-image2 flex-0 flex-grow-0 w-full max-w-full h-auto box-border">
-          <img src="public/tania3.webp" alt="Imagen a la izquierda" class="carousel-image2 flex-0 flex-grow-0 w-full max-w-full h-auto box-border">
+          <img src="public/tania.webp" alt="Imagen a la izquierda"  class="carousel-image2 flex-0 flex-grow-0 w-full h-auto box-border">
+          <img src="public/tania2.webp" alt="Imagen a la izquierda" class="carousel-image2 flex-0 flex-grow-0 w-full h-auto box-border">
+          <img src="public/tania4.webp" alt="Imagen a la izquierda" class="carousel-image2 flex-0 flex-grow-0 w-full h-auto box-border">
+          <img src="public/tania3.webp" alt="Imagen a la izquierda" class="carousel-image2 flex-0 flex-grow-0 w-full h-auto box-border">
         </div>
       </div>
 
@@ -189,33 +196,7 @@
   <script src="js/carrusel.js"></script>
   <script src="js/carrusel copy.js"></script>
   <script src="js/audios.js"></script>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-  var container = document.getElementById("animatedImageContainer");
-
-  // Agrega la clase "animate-in" para mostrar la imagen
-  container.classList.add("animate-in");
-
-    setTimeout(function() {
-      // Agrega la clase "animate-out" para ocultar la imagen
-      container.classList.add("animate-out");
-
-      setTimeout(function() {
-                var image = document.getElementById("animatedImage");
-                image.src = "public/DJ2.gif";
-       }, 10);
-
-
-      setTimeout(function() {
-        // Elimina el contenedor después de la animación de salida
-        container.parentNode.removeChild(container);
-      }, 8000);
-    }, 8000); // Retraso para aplicar la transformación de espejo
- 
-});
-
-  </script>
+  <script src="js/dj_caminando.js"></script>
 
   
 </body>
