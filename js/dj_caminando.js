@@ -16,6 +16,6 @@ document.addEventListener("DOMContentLoaded", function () {
     setTimeout(function () {
       // Elimina el contenedor después de la animación de salida
       container.parentNode.removeChild(container);
-    }, 8000);
-  }, 8000); // Retraso para aplicar la transformación de espejo
+    }, 12000);
+  }, 12000); // Retraso para aplicar la transformación de espejo
 });

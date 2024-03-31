@@ -60,16 +60,27 @@
 
   /* DJ animations */
   .animate-in {
+    pointer-events: none;
     opacity: 1;
     transform: translateX(170%);
-    transition: transform 8s ease, opacity 0.5s ease;
+    transition: transform 12s ease, opacity 0.5s ease;
   } 
 
   .animate-out {
     transform: translateX(-100%);
-    transition: transform 8s ease-in-out;
+    transition: transform 12s ease-in-out;
   } 
 
+
+  @keyframes moverDerecha {
+        0% { left: 0; }
+        50% { left: calc(100% - 200px); } /* Ajusta 200px según el tamaño de la imagen */
+        100% { left: 0; }
+    }
+
+    .animacion-imagen {
+        animation: moverDerecha 90s linear infinite; /* Modifica 10s para cambiar la duración de la animación */
+    }
 
   </style>
  
@@ -79,9 +90,6 @@
     <img id="animatedImage" src="public/DJ.gif" alt="Imagen animada">
   </div>
   
-  
-  
-
 
   <a href="https://www.instagram.com/roldyoran" target="_blank" class="absolute top-3 left-3 hover:scale-150 transition-all">
     <svg  xmlns="http://www.w3.org/2000/svg"  width="26"  height="26"  viewBox="0 0 24 24"  fill="none"  stroke="#fd0061"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-brand-instagram"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z" /><path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M16.5 7.5l0 .01" /></svg>
@@ -98,7 +106,7 @@
  
   
 
-  <h2 class="text-center text-3xl py-1 pt-3 font-bold text-purple-900">SAIKO RULETA</h2>
+  <h2 class="text-center text-3xl py-1 pt-2 font-bold text-purple-900">SAIKO RULETA</h2>
   
 
   <div class="flex justify-between items-center mx-1">
@@ -140,7 +148,7 @@
         <!-- LEJI GIRANDO -->
         <img src="public/leji_chibi_girando.gif" 
         id="personaje3"
-        class="hidden md:block z-20 w-[150px] h-auto mb-[550px] absolute"
+        class="animacion-imagen  hidden md:block z-20 w-[150px] h-auto mb-[550px] mr-[320px] absolute"
         alt="stick3">
 
         <div class="flex mt-1 md:mx-1 place-items-center flex-wrap">
