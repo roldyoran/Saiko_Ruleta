@@ -106,7 +106,7 @@
  
   
 
-  <h2 class="text-center text-3xl py-1 pt-2 font-bold text-purple-900">SAIKO RULETA</h2>
+  <h2 class="text-center text-3xl py-1 pt-2 font-bold text-yellow-900">SAIKO RULETA</h2>
   
 
   <div class="flex justify-between items-center mx-1">
@@ -130,19 +130,19 @@
           id="canvas"
           width="500"
           height="500"
-          class="relative border border-solid shadow-purple-200 shadow-md rounded-lg"
+          class="relative border border-solid shadow-yellow-200 shadow-md rounded-lg"
         ></canvas>
         
         <!-- PERSONAJE QUE GIRA LA RULETA -->
-        <img src="public/taniaElegantestick1.webp" 
+        <img src="public/taniaBikinistick1.webp" 
         id="personaje"
-        class="hidden md:block z-10 w-[290px] h-[540px] ml-[390px] mb-11 absolute"
+        class="hidden md:block z-10 w-[195px] h-auto ml-[445px] mt-10 absolute"
         alt="stick1">
 
         <!-- PERSONAJE QUE ACOMPAÑA -->
-        <img src="public/tagoGif.gif" 
+        <img src="public/tagoLeji.gif" 
         id="personaje2"
-        class="hidden md:block z-5 h-[400px] w-auto mr-[505px] mt-[84px] absolute"
+        class="hidden md:block z-5 w-[350px] h-auto mr-[510px] mt-44 absolute"
         alt="stick2">
 
         <!-- LEJI GIRANDO -->
@@ -159,17 +159,17 @@
             min="2"
             max="44"
             value="20"
-            class="py-2 m-1 ml-auto pl-2 border-2 font-bold text-pink-900 border-pink-900 rounded-xl bg-transparent transition-all hover:bg-pink-900 hover:text-white hover:shadow-lg hover:shadow-pink-900/50 hover:-translate-y-0.5"
+            class="py-2 m-1 ml-auto pl-2 border-2 font-bold text-sky-900 border-sky-900 rounded-xl bg-transparent transition-all hover:bg-sky-900 hover:text-white hover:shadow-lg hover:shadow-sky-900/50 hover:-translate-y-0.5"
           />
           <button
             id="updateButton"
-            class="border-2 ml-auto border-purple-950 font-bold text-purple-900 hover:bg-purple-950 hover:text-white hover:-translate-y-0.5 hover:shadow-lg hover:shadow-purple-800/50 transition-all rounded-xl py-2 px-8 active:shadow-none active:translate-y-0"
+            class="border-2 ml-auto border-yellow-950 font-bold text-yellow-900 hover:bg-yellow-950 hover:text-white hover:-translate-y-0.5 hover:shadow-lg hover:shadow-yellow-800/50 transition-all rounded-xl py-2 px-8 active:shadow-none active:translate-y-0"
             onclick="updateOptions()">
             Actualizar Ruleta
           </button>
           <button
             id="spin"
-            class="border-2 m-1 mr-auto border-pink-700 font-bold text-pink-700 hover:bg-pink-700 hover:text-white hover:-translate-y-0.5 hover:shadow-lg hover:shadow-pink-700/50 transition-all rounded-xl py-2 px-14 active:shadow-none active:translate-y-0"
+            class="border-2 m-1 mr-auto border-sky-700 font-bold text-sky-700 hover:bg-sky-700 hover:text-white hover:-translate-y-0.5 hover:shadow-lg hover:shadow-sky-700/50 transition-all rounded-xl py-2 px-14 active:shadow-none active:translate-y-0"
           >
             GIRAR Ruleta
           </button>
@@ -195,7 +195,7 @@
   
   <audio id="spinSound" src="public/audio.mp3"></audio>
   <audio id="bell" src="public/bell_ring.mp3"></audio>
-  <img src="public/taniaElegantestick2.webp" style="display: none;" alt="Preload Image">
+  <img src="public/taniaBikinistick2.webp" style="display: none;" alt="Preload Image">
 
   <audio id="cancion"></audio>
 
