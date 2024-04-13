@@ -88,10 +88,36 @@
         animation: moverDerecha 90s linear infinite; /* Modifica 10s para cambiar la duración de la animación */
     }
 
+    #puta, #sofia {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+        width: auto;
+        height:  90%;
+        object-fit: cover;
+        z-index: 9999; /* Asegura que el video esté en la capa superior */
+      }
   </style>
  
 </head>
 <body>
+  <!-- PUTA MODAL EGG -->
+  <video id="puta">
+    <source src="public/stefy.mp4" type="video/mp4">
+    No se pudo reproducir el easter egg, tu navegador no lo soporto
+  </video>
+
+  <!-- sofia MODAL EGG -->
+  <video id="sofia">
+    <source src="public/sofia.mp4" type="video/mp4">
+    No se pudo reproducir el easter egg, tu navegador no lo soporto
+  </video>
+  
+
   <!-- DJ CAMINANDO -->
   <div id="animatedImageContainer" class="absolute bottom-0 -left-12 opacity-0 transition-opacity duration-500 w-16 z-50">
     <img id="animatedImage" src="public/DJ.gif" alt="Imagen animada">
@@ -219,6 +245,39 @@
   <script src="js/carrusel copy.js"></script>
   <script src="js/audios.js"></script>
   <script src="js/dj_caminando.js"></script>
+
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/egg.js/1.0/egg.min.js"></script>
+    <script type="text/javascript">
+      // Espera a que el script externo se cargue antes de ejecutar este código
+      document.addEventListener("DOMContentLoaded", function() {
+        var egg = new Egg("s,t,e,f,y", function() {
+          // console.log("cua");
+          var puta = document.getElementById("puta");
+          puta.style.display = "block"
+              puta.play();
+          setTimeout(function() {
+              puta.style.display = "none"; // O "hidden" si prefieres
+              puta.pause()
+          }, 10000); // 3000 milisegundos = 3 segundos
+        }).listen();
+      });
+    </script>
+    <script type="text/javascript">
+      // Espera a que el script externo se cargue antes de ejecutar este código
+      document.addEventListener("DOMContentLoaded", function() {
+        var egg = new Egg("s,o,f,i,a", function() {
+          // console.log("cua");
+          var puta = document.getElementById("sofia");
+          puta.style.display = "block"
+              puta.play();
+          setTimeout(function() {
+              puta.style.display = "none"; // O "hidden" si prefieres
+              puta.pause()
+          }, 6500); // 3000 milisegundos = 3 segundos
+        }).listen();
+      });
+    </script>
 
   
 </body>
