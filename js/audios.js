@@ -5,6 +5,7 @@ function playVideo() {
   const randomIndex = Math.floor(Math.random() * audioFiles.length);
   const audioSrc = "public/" + audioFiles[randomIndex];
   var audio = document.getElementById("cancion");
+  ajustarVolumen(0.3); // Esto ajustará el volumen al 50%
 
   if (audio.paused) {
     audio.src = audioSrc;
@@ -20,4 +21,12 @@ function playVideo() {
     playButton.classList.remove("text-green-600");
     playButton.classList.add("text-black");
   });
+
+  function ajustarVolumen(nuevoVolumen) {
+    // Asegúrate de que el volumen esté en el rango de 0 a 1
+    nuevoVolumen = Math.max(0, Math.min(1, nuevoVolumen));
+    // Establecer el nuevo volumen
+    audio.volume = nuevoVolumen;
+  }
+
 }
