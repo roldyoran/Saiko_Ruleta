@@ -9,7 +9,9 @@ function setNumOptions(numOptions) {
 }
 
 var options = ["1", "2", "3", "4"];
-options = Array.from({ length: getNumOptions() }, (_, i) => (i + 1).toString());
+// excluir numeros
+var excludedNumbers = ['12','20','14'];
+options = Array.from({ length: getNumOptions() }, (_, i) => (i + 1).toString()).filter(option => !excludedNumbers.includes(option));;
 
 var startAngle = 0;
 var arc = Math.PI / (options.length / 2);
@@ -22,7 +24,9 @@ var ctx;
 function updateOptions() {
   var numOptions = parseInt(document.getElementById("numOptions").value);
   if (!isNaN(numOptions) && numOptions > 0) {
-    options = Array.from({ length: numOptions }, (_, i) => (i + 1).toString());
+    // excluir numeros
+    var excludedNumbers = ['12','20','14'];
+    options = Array.from({ length: numOptions }, (_, i) => (i + 1).toString()).filter(option => !excludedNumbers.includes(option));
     arc = Math.PI / (options.length / 2);
     setNumOptions(numOptions);
     drawRouletteWheel();
@@ -52,7 +56,7 @@ function getColor(item, maxitem) {
   // red   = Math.sin(frequency * item + 3 + phase) * width + center;
 
   red =   Math.sin(frequency * item + 0 + phase) * width + center; 
-  green = Math.sin(frequency * item + 1 + phase) * width + center; 
+  green = Math.sin(frequency * item + 2 + phase) * width + center; 
   blue =  Math.sin(frequency * item + 2 + phase) * width + center; 
 
 
