@@ -146,7 +146,7 @@
  
   
 
-  <h2 class="text-center text-3xl py-1 pt-2 font-bold text-yellow-900">SAIKO RULETA</h2>
+  <h2 class="text-center text-3xl py-1 pt-2 font-bold text-red-900">SAIKO RULETA</h2>
   
 
   <div class="flex justify-between items-center mx-1">
@@ -163,14 +163,14 @@
     
     </div>
     
-    <div class="w-full md:w-1/2"> <!-- bg-blue-200 -->
+    <div class="w-full md:w-1/2"> <!-- bg-cyan-200 -->
       <!-- Contenido del objeto central -->
       <div class="grid place-items-center m-0">
         <canvas
           id="canvas"
           width="500"
           height="500"
-          class="relative border border-solid shadow-yellow-200 shadow-md rounded-lg"
+          class="relative border border-solid shadow-red-200 shadow-md rounded-lg"
         ></canvas>
         
         <!-- PERSONAJE QUE GIRA LA RULETA -->
@@ -199,17 +199,17 @@
             min="2"
             max="44"
             value="22"
-            class="py-2 m-1 ml-auto pl-2 border-2 font-bold text-sky-900 border-sky-900 rounded-xl bg-transparent transition-all hover:bg-sky-900 hover:text-white hover:shadow-lg hover:shadow-sky-900/50 hover:-translate-y-0.5"
+            class="py-2 m-1 ml-auto pl-2 border-2 font-bold text-cyan-900 border-cyan-900 rounded-xl bg-transparent transition-all hover:bg-cyan-900 hover:text-white hover:shadow-lg hover:shadow-cyan-900/50 hover:-translate-y-0.5"
           />
           <button
             id="updateButton"
-            class="border-2 ml-auto border-yellow-950 font-bold text-yellow-900 hover:bg-yellow-950 hover:text-white hover:-translate-y-0.5 hover:shadow-lg hover:shadow-yellow-800/50 transition-all rounded-xl py-2 px-8 active:shadow-none active:translate-y-0"
+            class="border-2 ml-auto border-red-950 font-bold text-red-900 hover:bg-red-950 hover:text-white hover:-translate-y-0.5 hover:shadow-lg hover:shadow-red-800/50 transition-all rounded-xl py-2 px-8 active:shadow-none active:translate-y-0"
             onclick="updateOptions()">
             Actualizar Ruleta
           </button>
           <button
             id="spin"
-            class="border-2 m-1 mr-auto border-sky-700 font-bold text-sky-700 hover:bg-sky-700 hover:text-white hover:-translate-y-0.5 hover:shadow-lg hover:shadow-sky-700/50 transition-all rounded-xl py-2 px-14 active:shadow-none active:translate-y-0"
+            class="border-2 m-1 mr-auto border-cyan-700 font-bold text-cyan-700 hover:bg-cyan-700 hover:text-white hover:-translate-y-0.5 hover:shadow-lg hover:shadow-cyan-700/50 transition-all rounded-xl py-2 px-14 active:shadow-none active:translate-y-0"
           >
             GIRAR Ruleta
           </button>
