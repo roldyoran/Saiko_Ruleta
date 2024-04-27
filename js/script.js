@@ -10,8 +10,9 @@ function setNumOptions(numOptions) {
 
 var options = ["1", "2", "3", "4"];
 // excluir numeros
-var excludedNumbers = ['12','20','14'];
-options = Array.from({ length: getNumOptions() }, (_, i) => (i + 1).toString()).filter(option => !excludedNumbers.includes(option));;
+// var excludedNumbers = ['12','20','14'];
+options = Array.from({ length: getNumOptions() }, (_, i) => (i + 1).toString())
+// .filter(option => !excludedNumbers.includes(option));;
 
 var startAngle = 0;
 var arc = Math.PI / (options.length / 2);
@@ -25,8 +26,9 @@ function updateOptions() {
   var numOptions = parseInt(document.getElementById("numOptions").value);
   if (!isNaN(numOptions) && numOptions > 0) {
     // excluir numeros
-    var excludedNumbers = ['12','20','14'];
-    options = Array.from({ length: numOptions }, (_, i) => (i + 1).toString()).filter(option => !excludedNumbers.includes(option));
+    // var excludedNumbers = ['12','20','14'];
+    options = Array.from({ length: numOptions }, (_, i) => (i + 1).toString())
+    // .filter(option => !excludedNumbers.includes(option));
     arc = Math.PI / (options.length / 2);
     setNumOptions(numOptions);
     drawRouletteWheel();
