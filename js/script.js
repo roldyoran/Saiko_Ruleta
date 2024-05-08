@@ -57,9 +57,20 @@ function getColor(item, maxitem) {
 
   // red   = Math.sin(frequency * item + 3 + phase) * width + center;
 
-  red =   Math.sin(frequency * item + 1 + phase) * width + center; 
-  green = Math.sin(frequency * item + 2 + phase) * width + center; 
-  blue =  Math.sin(frequency * item + 2 + phase) * width + center; 
+  // Ajustamos los componentes de color para obtener tonos morados
+  var red = Math.sin(frequency * item + 3 + phase) * width + center;
+  var green = Math.sin(frequency * item + 1 + phase) * width + center;
+  var blue = Math.sin(frequency * item + 2 + phase) * width + center;
+
+  // Añadimos más azul y menos rojo y verde para obtener tonos morados
+  red -= 50;
+  green -= 50;
+  blue += 110;
+
+  // Aseguramos que los valores estén en el rango correcto (0-255)
+  red = Math.min(255, Math.max(0, red));
+  green = Math.min(255, Math.max(0, green));
+  blue = Math.min(255, Math.max(0, blue));
 
 
   return RGB2Color(red, green, blue);
@@ -139,9 +150,9 @@ document.getElementById("spin").addEventListener("click", spin);
 
 function spin() {
   var rightImage = document.getElementById("personaje");
-  rightImage.src = "public/taniaBikinistick2.webp";
+  rightImage.src = "public/TaniaColegialastick2.webp";
   setTimeout(function () {
-    rightImage.src = "public/taniaBikinistick1.webp";
+    rightImage.src = "public/TaniaColegialastick1.webp";
   }, 350); // Ajusta el tiempo según sea necesario (en milisegundos)
 
   // Genera un número aleatorio entre 1 y 9 (ambos inclusive)
