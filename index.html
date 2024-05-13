@@ -11,74 +11,70 @@
   
   <style>
     html {
-		font-family: system-ui, sans-serif;
-		background: #fffcff;
-		background-size: 224px;
-	}
+    font-family: system-ui, sans-serif;
+    background: #fff8ff;
+    }
 
     /* Estilos para el contenedor de imágenes */
-.imagesContainer {
-    width: 210px;
-    height: auto;
-    max-width: 100%;
-    overflow: hidden;
-    position: relative; /* Asegura que el botón de "Ver Info Extra" y otras posiciones se ajusten correctamente */
-  }
-  
-  /* Estilos para el carrusel */
-  .carousel {
-    display: flex;
-    transition: transform 1s ease-in-out;
-    width: 100%; /* Ajusta según sea necesario */
-    box-sizing: border-box; /* Evita que el padding afecte el ancho total */
-  }
-  
-  /* Estilos para las imágenes del carrusel */
-  .carousel-image {
-    flex: 0 0 100%; /* Cada imagen ocupa el 100% del ancho del carrusel */
-    max-width: 100%; /* Evita que las imágenes sean más grandes que el contenedor */
-    height: auto;
-    box-sizing: border-box; /* Evita que el padding afecte la altura total */
-  }
-  
-
-  
-  /* Estilos para dispositivos más pequeños (menores a 600px de ancho) */
-  @media only screen and (max-width: 1080px) {
-    /* Reduce el tamaño del canvas en dispositivos móviles */
-    #canvas {
-      width: 400px; /* Puedes ajustar este valor según tus necesidades */
-      height: 400px; /* Puedes ajustar este valor según tus necesidades */
+    .imagesContainer {
+        width: 210px;
+        height: auto;
+        max-width: 100%;
+        overflow: hidden;
+        position: relative; /* Asegura que el botón de "Ver Info Extra" y otras posiciones se ajusten correctamente */
     }
 
-    #updateButton,
-    #numOptions,
-    #spin {
-      font-size: 12px; /* Reducir el tamaño de la fuente */
-      padding: 4px 10px; /* Reducir el relleno */
-      margin: 0; /* Eliminar los márgenes */
+    /* Estilos para el carrusel */
+    .carousel {
+        display: flex;
+        transition: transform 1s ease-in-out;
+        width: 100%; /* Ajusta según sea necesario */
+        box-sizing: border-box; /* Evita que el padding afecte el ancho total */
     }
 
-    #animatedImageContainer {
-      display: none;
+    /* Estilos para las imágenes del carrusel */
+    .carousel-image {
+        flex: 0 0 100%; /* Cada imagen ocupa el 100% del ancho del carrusel */
+        max-width: 100%; /* Evita que las imágenes sean más grandes que el contenedor */
+        height: auto;
+        box-sizing: border-box; /* Evita que el padding afecte la altura total */
     }
-  }
 
-  /* DJ animations */
-  .animate-in {
-    pointer-events: none;
-    opacity: 1;
-    transform: translateX(170%);
-    transition: transform 12s ease, opacity 0.5s ease;
-  } 
+    /* Estilos para dispositivos más pequeños (menores a 600px de ancho) */
+    @media only screen and (max-width: 1080px) {
+        /* purpleuce el tamaño del canvas en dispositivos móviles */
+        #canvas {
+            width: 400px; /* Puedes ajustar este valor según tus necesidades */
+            height: 400px; /* Puedes ajustar este valor según tus necesidades */
+        }
 
-  .animate-out {
-    transform: translateX(-100%);
-    transition: transform 12s ease-in-out;
-  } 
+        #updateButton,
+        #numOptions,
+        #spin {
+            font-size: 12px; /* purpleucir el tamaño de la fuente */
+            padding: 4px 10px; /* purpleucir el relleno */
+            margin: 0; /* Eliminar los márgenes */
+        }
 
+        #animatedImageContainer {
+            display: none;
+        }
+    }
 
-  @keyframes moverDerecha {
+    /* DJ animations */
+    .animate-in {
+        pointer-events: none;
+        opacity: 1;
+        transform: translateX(170%);
+        transition: transform 12s ease, opacity 0.5s ease;
+    }
+
+    .animate-out {
+        transform: translateX(-100%);
+        transition: transform 12s ease-in-out;
+    }
+
+    @keyframes moverDerecha {
         0% { left: 0; }
         50% { left: calc(100% - 200px); } /* Ajusta 200px según el tamaño de la imagen */
         100% { left: 0; }
@@ -88,7 +84,9 @@
         animation: moverDerecha 90s linear infinite; /* Modifica 10s para cambiar la duración de la animación */
     }
 
-    #puta, #sofia {
+    /* Modal */
+    #puta,
+    #sofia {
         display: none;
         position: fixed;
         top: 0;
@@ -97,10 +95,11 @@
         right: 0;
         margin: auto;
         width: auto;
-        height:  90%;
+        height: 90%;
         object-fit: cover;
         z-index: 9999; /* Asegura que el video esté en la capa superior */
-      }
+    }
+
   </style>
  
 </head>
@@ -117,11 +116,10 @@
     No se pudo reproducir el easter egg, tu navegador no lo soporto
   </video>
   
-
-  <!-- DJ CAMINANDO -->
-  <div id="animatedImageContainer" class="absolute bottom-0 -left-12 opacity-0 transition-opacity duration-500 w-16 z-50">
+  <!-- DJ CAMINANDO se elimina -->
+  <!-- <div id="animatedImageContainer" class="absolute bottom-0 -left-12 opacity-0 transition-opacity duration-500 w-16 z-50">
     <img id="animatedImage" src="public/DJ.gif" alt="Imagen animada">
-  </div>
+  </div> -->
   
   <!-- INSTAGRAM ROLDYORAN -->
   <a href="https://www.instagram.com/roldyoran" target="_blank" class="absolute top-3 left-3 hover:scale-150 transition-all">
@@ -145,8 +143,8 @@
 
  
   
-
-  <h2 class="text-center text-3xl py-1 pt-2 font-bold text-red-900">SAIKO RULETA</h2>
+  <!-- Titulo de la Pagina -->
+  <h2 class="text-center text-3xl py-1 pt-2 font-bold text-purple-900">SAIKO RULETA</h2>
   
 
   <div class="flex justify-between items-center mx-1">
@@ -160,7 +158,6 @@
           <img src="public/tania3.webp"   alt="Imagen a la izquierda"   class="carousel-image flex-0 flex-grow-0 w-full h-auto box-border">
         </div>
       </div>
-    
     </div>
     
     <div class="w-full md:w-1/2"> <!-- bg-cyan-200 -->
@@ -170,19 +167,19 @@
           id="canvas"
           width="500"
           height="500"
-          class="relative border border-solid shadow-red-200 shadow-md rounded-lg"
+          class="relative border border-solid shadow-purple-200 shadow-md rounded-lg"
         ></canvas>
         
         <!-- PERSONAJE QUE GIRA LA RULETA -->
-        <img src="public/taniaBikinistick1.webp" 
+        <img src="public/TaniaColegialastick1.webp" 
         id="personaje"
-        class="hidden md:block z-10 w-[195px] h-auto ml-[445px] mt-10 absolute"
+        class="hidden md:block z-10 w-[210px] h-auto ml-[448px] mt-8 absolute"
         alt="stick1">
 
         <!-- PERSONAJE QUE ACOMPAÑA -->
-        <img src="public/tagoLeji.gif" 
+        <img src="public/DJ_RULETA.webp" 
         id="personaje2"
-        class="hidden md:block z-5 w-[350px] h-auto mr-[510px] mt-44 absolute"
+        class="hidden md:block z-5 w-[230px] h-auto mr-[522px] mt-40 absolute"
         alt="stick2">
 
         <!-- LEJI GIRANDO -->
@@ -199,11 +196,11 @@
             min="2"
             max="44"
             value="22"
-            class="py-2 m-1 ml-auto pl-2 border-2 font-bold text-cyan-900 border-cyan-900 rounded-xl bg-transparent transition-all hover:bg-cyan-900 hover:text-white hover:shadow-lg hover:shadow-cyan-900/50 hover:-translate-y-0.5"
+            class="py-2 m-1 ml-auto pl-2 border-2 font-bold text-cyan-700 border-cyan-700 rounded-xl bg-transparent transition-all hover:bg-cyan-700 hover:text-white hover:shadow-lg hover:shadow-cyan-700/50 hover:-translate-y-0.5"
           />
           <button
             id="updateButton"
-            class="border-2 ml-auto border-red-950 font-bold text-red-900 hover:bg-red-950 hover:text-white hover:-translate-y-0.5 hover:shadow-lg hover:shadow-red-800/50 transition-all rounded-xl py-2 px-8 active:shadow-none active:translate-y-0"
+            class="border-2 ml-auto border-purple-950 font-bold text-purple-900 hover:bg-purple-950 hover:text-white hover:-translate-y-0.5 hover:shadow-lg hover:shadow-purple-800/50 transition-all rounded-xl py-2 px-8 active:shadow-none active:translate-y-0"
             onclick="updateOptions()">
             Actualizar Ruleta
           </button>
@@ -221,13 +218,12 @@
       <!-- Carrusel de Imágenes -->
       <div class="imagesContainer2 w-[210px] h-auto max-w-full justify-center overflow-hidden relative ml-16">
         <div class="carousel2 flex transition-transform duration-1000 ease-in-out w-full box-border">
-          <img src="public/tagoDaki.webp"   alt="Imagen a la derecha"   class="carousel-image2 flex-0 flex-grow-0 w-full h-auto box-border">
-          <img src="public/ima5.webp"       alt="Imagen a la derecha"   class="carousel-image2 flex-0 flex-grow-0 w-full h-auto box-border">
-          <img src="public/ima1.webp"       alt="Imagen a la derecha"   class="carousel-image2 flex-0 flex-grow-0 w-full h-auto box-border">
-          <img src="public/tago2.webp"      alt="Imagen a la derecha"   class="carousel-image2 flex-0 flex-grow-0 w-full h-auto box-border">
+          <img src="public/tania.webp"    alt="Imagen a la derecha"   class="carousel-image2 flex-0 flex-grow-0 w-full h-auto box-border">
+          <img src="public/tania2.webp"   alt="Imagen a la derecha"   class="carousel-image2 flex-0 flex-grow-0 w-full h-auto box-border">
+          <img src="public/tania4.webp"   alt="Imagen a la derecha"   class="carousel-image2 flex-0 flex-grow-0 w-full h-auto box-border">
+          <img src="public/tania3.webp"   alt="Imagen a la derecha"   class="carousel-image2 flex-0 flex-grow-0 w-full h-auto box-border">
         </div>
       </div>
-
     </div>
   </div>
 
@@ -235,7 +231,7 @@
   
   <audio id="spinSound" src="public/audio.mp3"></audio>
   <audio id="bell" src="public/bell_ring.mp3"></audio>
-  <img src="public/taniaBikinistick2.webp" style="display: none;" alt="Preload Image">
+  <img src="public/TaniaColegialastick2.webp" style="display: none;" alt="Preload Image">
 
   <audio id="cancion"></audio>
 
@@ -244,7 +240,7 @@
   <script src="js/carrusel.js"></script>
   <script src="js/carrusel copy.js"></script>
   <script src="js/audios.js"></script>
-  <script src="js/dj_caminando.js"></script>
+  <!-- <script src="js/dj_caminando.js"></script> -->
 
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/egg.js/1.0/egg.min.js"></script>
