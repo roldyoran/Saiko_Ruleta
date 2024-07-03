@@ -1,0 +1,33 @@
+{
+    "groups": {
+      "group1": {
+        "gira": {
+          "src": "../public/TaniaColegialastick1.webp",
+          "id": "personaje",
+          "class": "hidden md:block  w-[210px] h-auto ml-[448px] mt-8 absolute",
+          "alt": "TaniaColegialastick1"
+        },
+        "complementa": {
+          "src": "../public/DJ_RULETA.webp",
+          "id": "personaje2",
+          "class": "hidden md:block  w-[230px] h-auto mr-[522px] mt-40 absolute",
+          "alt": "DJ_RULETA"
+        }
+      },
+      "group2": {
+        "gira": {
+          "src": "public/AnotherImage1.webp",
+          "id": "personaje",
+          "class": "hidden md:block z-10 w-[210px] h-auto ml-[448px] mt-8 absolute",
+          "alt": "AnotherImage1"
+        },
+        "complementa": {
+          "src": "public/AnotherImage2.webp",
+          "id": "personaje2",
+          "class": "hidden md:block z-5 w-[230px] h-auto mr-[522px] mt-40 absolute",
+          "alt": "AnotherImage2"
+        }
+      }
+    }
+  }
+  
