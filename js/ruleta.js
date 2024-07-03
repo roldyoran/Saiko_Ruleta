@@ -150,9 +150,9 @@ document.getElementById("spin").addEventListener("click", spin);
 
 function spin() {
   var rightImage = document.getElementById("personaje");
-  rightImage.src = "public/TaniaColegialastick2.webp";
+  rightImage.src = "public/tania_griffit_2.webp";
   setTimeout(function () {
-    rightImage.src = "public/TaniaColegialastick1.webp";
+    rightImage.src = "public/tania_griffit_1.webp";
   }, 350); // Ajusta el tiempo según sea necesario (en milisegundos)
 
   // Genera un número aleatorio entre 1 y 9 (ambos inclusive)
