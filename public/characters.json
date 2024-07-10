@@ -16,16 +16,16 @@
       },
       "group2": {
         "gira": {
-          "src": "public/AnotherImage1.webp",
+          "src": "public/tania_griffit_1.webp",
           "id": "personaje",
-          "class": "hidden md:block z-10 w-[210px] h-auto ml-[448px] mt-8 absolute",
-          "alt": "AnotherImage1"
+          "class": "hidden md:block z-10 w-[305px] h-auto ml-[395px] mt-16 absolute",
+          "alt": "tania_griffit_1"
         },
         "complementa": {
-          "src": "public/AnotherImage2.webp",
+          "src": "public/tago_berserk.gif",
           "id": "personaje2",
-          "class": "hidden md:block z-5 w-[230px] h-auto mr-[522px] mt-40 absolute",
-          "alt": "AnotherImage2"
+          "class": "hidden md:block z-5 w-[250px] h-[480px] mr-[536px] mb-3 absolute",
+          "alt": "tago_berserk"
         }
       }
     }

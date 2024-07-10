@@ -131,7 +131,7 @@ function drawRouletteWheel() {
     }
 
     //Arrow
-    ctx.fillStyle = "black";
+    ctx.fillStyle = "white";
 
     ctx.beginPath();
     ctx.moveTo(250 - 4, 250 - (outsideRadius + 5));
@@ -206,6 +206,7 @@ function stopRotateWheel() {
   ctx.font = "bold 70px Helvetica, Arial";
   var text = options[index];
   var lineHeight = 0; // Puedes ajustar este valor según sea necesario
+  ctx.fillStyle = "white"
   if (text == "11") {
     text += "\nChupalo Entonces";
     ctx.font = "bold 22px Helvetica, Arial";
@@ -214,7 +215,10 @@ function stopRotateWheel() {
   else if (text == "13") {
     text += "\nAgarramela ";
     text += "\nque me Crece";
-    ctx.font = "bold 20px Helvetica, Arial";
+    ctx.font = "bold 20px Helvetica, Arial, White";
+    // ctx.green = 50
+    // ctx.blue = 50
+    // ctx.red = 50
     var lineHeight = 30;
   }
   var lines = text.split("\n");
