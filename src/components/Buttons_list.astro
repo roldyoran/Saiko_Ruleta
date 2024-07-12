@@ -1,0 +1,21 @@
+---
+// interface Props {
+// 	title: string;
+// 	body: string;
+// 	href: string;
+// }
+
+// const { href, title, body } = Astro.props;
+import ButtonAction from "./Button_action.astro"
+import InstaSVG from "../SVGs/Insta_svg.astro"
+import PlaySVG from "../SVGs/Play_svg.astro"
+import GaleriaSVG from "../SVGs/Galeria_svg.astro"
+import CelebracionSVG from "../SVGs/Celebracion_svg.astro"
+---
+
+<div class="absolute top-[10px] left-[10px] flex flex-col z-40 bg-cyan-500">
+    <ButtonAction><InstaSVG></InstaSVG></ButtonAction>
+    <ButtonAction><PlaySVG></PlaySVG></ButtonAction>
+    <ButtonAction><GaleriaSVG></GaleriaSVG></ButtonAction>
+    <ButtonAction><CelebracionSVG></CelebracionSVG></ButtonAction>
+</div>
