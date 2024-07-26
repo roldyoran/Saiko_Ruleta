@@ -67,16 +67,11 @@ if (!SpeechRecognition) {
             setTimeout(() => {
                 spin();
             }, 2400);
-        // REINICIAR LA RULETA
-        } else if (transcript === 'JARVIS REINICIA LA RULETA' || transcript === 'JARVIS REINÍCIAME LA RULETA' || transcript === 'ACTUALÍZALO A 22' || transcript === 'ACTUALÍZALO A VEINTIDOS') {
-            document.getElementById("numOptions").value = "21";
-            var numOptions = parseInt(document.getElementById("numOptions").value);
-            updateOptions();
         // ACTIVAR MUSICA
         } else if (transcript.includes(ponelePlay) || transcript.includes(ponelePlayTilde) || transcript.includes(ponelePlayPonle)) {
             playVideo();
         // DEPILATE TROLEO
-        } else if (transcript.includes("TE AMO")) {
+        } else if (transcript.includes("TE AMO") || transcript.includes("DEPILATE") || transcript.includes("DEPÍLATE") || transcript.includes("TEAMO") || transcript.includes("DEPILANTE")) {
             audio_depilate.src = audioSrc_speech;
             audio_depilate.play();
         
