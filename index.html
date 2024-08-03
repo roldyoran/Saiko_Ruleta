@@ -59,7 +59,7 @@
     /* Estilos para dispositivos más pequeños (menores a 600px de ancho) */
     @media only screen and (max-width: 1080px) {
 
-      /* purpleuce el tamaño del canvas en dispositivos móviles */
+      /* yellowuce el tamaño del canvas en dispositivos móviles */
       #canvas {
         width: 400px;
         /* Puedes ajustar este valor según tus necesidades */
@@ -71,9 +71,9 @@
       #numOptions,
       #spin {
         font-size: 12px;
-        /* purpleucir el tamaño de la fuente */
+        /* yellowucir el tamaño de la fuente */
         padding: 4px 10px;
-        /* purpleucir el relleno */
+        /* yellowucir el relleno */
         margin: 0;
         /* Eliminar los márgenes */
       }
@@ -169,9 +169,9 @@
 
 </head>
 
-<body class="dark:bg-gray-900">
+<body class="dark:bg-slate-800">
   <!-- BOTONES -->
-  <div class="absolute top-[10px] left-[10px] z-20 flex flex-col"> <!-- bg-cyan-400 -->
+  <div class="absolute top-[10px] left-[10px] z-20 flex flex-col"> <!-- bg-red-400 -->
     <!-- INSTAGRAM ROLDYORAN -->
     <div class="w-[36px] h-[36px] flex justify-center items-center my-[5px]">
       <a href="https://www.instagram.com/roldyoran" target="_blank" class="hover:scale-150 transition-all">
@@ -224,7 +224,7 @@
 
 
   <!-- Titulo de la Pagina -->
-  <h2 class="text-center text-3xl py-1 pt-2 font-bold text-purple-900 dark:text-emerald-200">SAIKO RULETA</h2>
+  <h2 class="text-center text-3xl py-1 pt-2 font-bold text-yellow-900 dark:text-emerald-200">SAIKO RULETA</h2>
 
   <main>
     <div class="flex justify-between items-center">
@@ -233,34 +233,38 @@
         <div class="overflow-hidden">
           <div
             class="carousel1 my-6 md:w-[190px] w-[120px] h-auto max-w-full flex transition-transform duration-1000 ease-in-out box-border">
-            <img src="public/tania3.webp" 
+            <img src="public/taniaSin.webp" 
               class="carousel-image flex-0 flex-grow-0 w-full h-auto box-border rounded-xl">
             <img src="public/taniaPortadaManga.webp"
               class="carousel-image flex-0 flex-grow-0 w-full h-auto box-border rounded-xl">
             <img src="public/taniaCerca1.webp" 
               class="carousel-image flex-0 flex-grow-0 w-full h-auto box-border rounded-xl">
-            <img src="public/taniaPortadaManga.webp"
+            <img src="public/tania3.webp"
               class="carousel-image flex-0 flex-grow-0 w-full h-auto box-border rounded-xl">
           </div>
         </div>
       </div>
 
-      <div class="w-full md:w-1/2"> <!-- bg-cyan-200 -->
+      <div class="w-full md:w-1/2"> <!-- bg-red-200 -->
         <!-- Contenido del objeto central -->
         <div class="grid place-items-center m-0">
           <canvas id="canvas" width="500" height="500"
-            class="relative border border-solid shadow-purple-200 shadow-md rounded-lg dark:shadow-none dark:border-none"></canvas>
+            class="relative border border-solid shadow-yellow-200 shadow-md rounded-lg dark:shadow-none dark:border-none"></canvas>
 
-          <!-- Contenedor para los personajes -->
-          <!-- <div id="character-container" class="z-999 relative"></div> -->
-
+          
           <!-- PERSONAJE QUE GIRA LA RULETA -->
-          <img src="public/tania_griffit_1.webp" id="personaje"
-            class="hidden md:block z-10 w-[305px] h-auto ml-[395px] mt-16 absolute" alt="stick1">
+          <img src="public/tania_deadpool_1.webp" id="personaje"
+            class="hidden md:block z-10 w-[195px] h-auto ml-[380px] mt-0 absolute" alt="stick1">
+
+            <img src="public/tania_deadpool_1.webp" id="personaje-blur"
+    class="hidden md:block z-0 w-[195px] h-auto ml-[380px] mt-0 absolute blur-[2px]" alt="stick1-blur">
 
           <!-- PERSONAJE QUE ACOMPAÑA -->
-          <img src="public/tago_berserk.gif" id="personaje2"
-            class="hidden md:block z-5 w-[250px] h-[480px] mr-[536px] mb-3 absolute" alt="stick2">
+          <img src="public/tago_and_panzer_wolwerine.webp" id="personaje2"
+            class="hidden md:block z-10 w-[320px] h-auto mr-[536px] -mb-2 absolute" alt="stick2">
+
+            <img src="public/tago_and_panzer_wolwerine.webp" id="personaje-blur2"
+            class="hidden md:block z-0 w-[320px] h-auto mr-[536px] -mb-2 absolute blur-[2px]" alt="stick2-blur">
 
           <!-- LEJI GIRANDO -->
           <img src="public/leji_chibi_girando.gif" id="personaje3"
@@ -271,19 +275,19 @@
             <!-- Cantidad en la Ruleta -->
             <label for="numOptions"></label>
             <input type="number" id="numOptions" min="2" max="44" value="7" 
-              class="py-2 m-1 ml-auto pl-2 border-2 font-bold text-cyan-700 border-cyan-700 rounded-xl bg-transparent transition-all hover:bg-cyan-700 hover:text-white hover:shadow-lg hover:shadow-cyan-700/50 hover:-translate-y-0.5
-              dark:border-cyan-700 dark:text-white dark:bg-cyan-700 dark:hover:border-cyan-500 dark:hover:bg-cyan-950" />
+              class="py-2 m-1 ml-auto pl-2 border-2 font-bold text-red-700 border-red-700 rounded-xl bg-transparent transition-all hover:bg-red-700 hover:text-white hover:shadow-lg hover:shadow-red-700/50 hover:-translate-y-0.5
+              dark:border-red-900 dark:text-white dark:bg-red-700 dark:hover:border-red-500 dark:hover:bg-red-950" />
             <!-- Actualizar la Ruleta -->
             <button id="updateButton" 
-              class="border-2 ml-auto border-purple-950 font-bold text-purple-900 hover:bg-purple-950 hover:text-white hover:-translate-y-0.5 hover:shadow-lg hover:shadow-purple-800/50 transition-all rounded-xl py-2 px-8 active:shadow-none active:translate-y-0
-              dark:border-purple-700 dark:text-white dark:bg-purple-700 dark:hover:border-purple-500"
+              class="border-2 ml-auto border-yellow-950 font-bold text-yellow-900 hover:bg-yellow-950 hover:text-white hover:-translate-y-0.5 hover:shadow-lg hover:shadow-yellow-800/50 transition-all rounded-xl py-2 px-8 active:shadow-none active:translate-y-0
+              dark:border-yellow-800 dark:text-white dark:bg-yellow-600 dark:hover:border-yellow-500"
               onclick="updateOptions()">
               Actualizar Ruleta
             </button>
             <!-- Girar la Ruleta -->
             <button id="spin" 
-              class="border-2 m-1 mr-auto border-cyan-700 font-bold text-cyan-700 hover:bg-cyan-700 hover:text-white hover:-translate-y-0.5 hover:shadow-lg hover:shadow-cyan-700/50 transition-all rounded-xl py-2 px-14 active:shadow-none active:translate-y-0
-              dark:border-cyan-700 dark:text-white dark:bg-cyan-700 dark:hover:border-cyan-500 dark:hover:bg-cyan-950">
+              class="border-2 m-1 mr-auto border-red-700 font-bold text-red-700 hover:bg-red-700 hover:text-white hover:-translate-y-0.5 hover:shadow-lg hover:shadow-red-700/50 transition-all rounded-xl py-2 px-14 active:shadow-none active:translate-y-0
+              dark:border-red-700 dark:text-white dark:bg-red-700 dark:hover:border-red-500 dark:hover:bg-red-950">
               GIRAR Ruleta
             </button>
           </div>
@@ -299,9 +303,9 @@
               class="carousel-image2 flex-0 flex-grow-0 w-full h-auto box-border rounded-xl">
             <img src="public/tago2.webp"
               class="carousel-image2 flex-0 flex-grow-0 w-full h-auto box-border rounded-xl">
-            <img src="public/tago2.webp"
-              class="carousel-image2 flex-0 flex-grow-0 w-full h-auto box-border rounded-xl">
             <img src="public/tagoDaki.webp"
+              class="carousel-image2 flex-0 flex-grow-0 w-full h-auto box-border rounded-xl">
+            <img src="public/tago2.webp"
               class="carousel-image2 flex-0 flex-grow-0 w-full h-auto box-border rounded-xl">
           </div>
         </div>
@@ -313,7 +317,7 @@
   <!-- Archivos precargados -->
   <audio id="spinSound" src="public/audio.mp3"></audio>
   <audio id="bell" src="public/bell_ring.mp3"></audio>
-  <img src="public/tania_griffit_2.webp" style="display: none;" alt="Preload Image">
+  <img src="public/tania_deadpool_2.webp" style="display: none;" alt="Preload Image">
   <audio id="cancion"></audio>
 
   <!-- Archivos JavaScript -->
