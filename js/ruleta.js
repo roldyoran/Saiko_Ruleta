@@ -54,23 +54,24 @@ function getColor(item, maxitem) {
   var center = 128;
   var width = 127;
   var frequency = (Math.PI * 2) / maxitem;
+  
 
   // red   = Math.sin(frequency * item + 3 + phase) * width + center;
 
-  // Ajustamos los componentes de color para obtener tonos morados
-  var red = Math.sin(frequency * item + 3 + phase) * width + center;
-  var green = Math.sin(frequency * item + 1 + phase) * width + center;
-  var blue = Math.sin(frequency * item + 2 + phase) * width + center;
+// Ajustamos los componentes de color para obtener tonos rojos, amarillos y naranjas
+var red = Math.sin(frequency * item + 3 + phase) * width + center;
+var green = Math.sin(frequency * item + 0.5 + phase) * width + center * 0.5; // Ajustamos verde para evitar tonos verdosos y obtener amarillos/naranjas
+var blue = 0; // Eliminamos el componente azul
 
-  // Añadimos más azul y menos rojo y verde para obtener tonos morados
-  red -= 50;
-  green -= 50;
-  blue += 110;
+// Ajustamos los tonos de rojo, amarillo y naranja
+red += 220; // Puedes ajustar este valor para obtener más o menos rojo
+green += 80; // Ajusta el verde para obtener tonos amarillos/naranjas
 
-  // Aseguramos que los valores estén en el rango correcto (0-255)
-  red = Math.min(255, Math.max(0, red));
-  green = Math.min(255, Math.max(0, green));
-  blue = Math.min(255, Math.max(0, blue));
+// Aseguramos que los valores estén en el rango correcto (0-255)
+red = Math.min(255, Math.max(0, red));
+green = Math.min(255, Math.max(0, green));
+blue = Math.min(255, Math.max(0, blue));
+
 
 
   return RGB2Color(red, green, blue);
@@ -150,9 +151,12 @@ document.getElementById("spin").addEventListener("click", spin);
 
 function spin() {
   var rightImage = document.getElementById("personaje");
-  rightImage.src = "public/tania_griffit_2.webp";
+  rightImage.src = "public/tania_deadpool_2.webp";
+  var cua = document.getElementById("personaje-blur");
+  cua.src = "public/tania_deadpool_2.webp";
   setTimeout(function () {
-    rightImage.src = "public/tania_griffit_1.webp";
+    rightImage.src = "public/tania_deadpool_1.webp";
+    cua.src = "public/tania_deadpool_1.webp";
   }, 350); // Ajusta el tiempo según sea necesario (en milisegundos)
 
   // Genera un número aleatorio entre 1 y 9 (ambos inclusive)
