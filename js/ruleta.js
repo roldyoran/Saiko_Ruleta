@@ -182,6 +182,15 @@ function spin() {
 
 function rotateWheel() {
   spinTime += 30;
+  // GIRO INFINITO PA WEAR AL CTM DEL SAIKO:
+  // function rotateWheel() {
+  //   spinTime += 30;
+  //   var spinAngle = spinAngleStart; // Mantener el ángulo de giro constante
+  //   startAngle += (spinAngle * Math.PI) / 180;
+  //   drawRouletteWheel();
+  //   spinTimeout = setTimeout(rotateWheel, 30); // Llamar a rotateWheel continuamente
+  // }
+  
   if (spinTime >= spinTimeTotal) {
     stopRotateWheel();
     return;
