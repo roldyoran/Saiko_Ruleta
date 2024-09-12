@@ -58,19 +58,19 @@ function getColor(item, maxitem) {
 
   // red   = Math.sin(frequency * item + 3 + phase) * width + center;
 
-// Ajustamos los componentes de color para obtener tonos rojos, amarillos y naranjas
-var red = Math.sin(frequency * item + 3 + phase) * width + center;
-var green = Math.sin(frequency * item + 0.5 + phase) * width + center * 0.5; // Ajustamos verde para evitar tonos verdosos y obtener amarillos/naranjas
-var blue = 0; // Eliminamos el componente azul
+  // Ajustamos los componentes de color para obtener tonos rosados y morados
+  var red = Math.sin(frequency * item + 3 + phase) * width + center;
+  var green = Math.sin(frequency * item + 4 + phase) * width + center * 0.2; // Reducimos el verde para evitar tonos verdosos
+  var blue = Math.sin(frequency * item + phase) * width + center; // Aumentamos el componente azul
 
-// Ajustamos los tonos de rojo, amarillo y naranja
-red += 220; // Puedes ajustar este valor para obtener más o menos rojo
-green += 80; // Ajusta el verde para obtener tonos amarillos/naranjas
+  // Ajustamos los tonos de rosado y morado
+  red += 200; // Ajusta este valor para obtener más o menos rojo
+  blue += 180; // Ajusta el azul para obtener más o menos morado
 
-// Aseguramos que los valores estén en el rango correcto (0-255)
-red = Math.min(255, Math.max(0, red));
-green = Math.min(255, Math.max(0, green));
-blue = Math.min(255, Math.max(0, blue));
+  // Aseguramos que los valores estén en el rango correcto (0-255)
+  red = Math.min(255, Math.max(0, red));
+  green = Math.min(255, Math.max(0, green));
+  blue = Math.min(255, Math.max(0, blue));
 
 
 
@@ -149,14 +149,16 @@ function drawRouletteWheel() {
 
 document.getElementById("spin").addEventListener("click", spin);
 
+var spinSound = document.getElementById("spinSound");
+
 function spin() {
   var rightImage = document.getElementById("personaje");
-  rightImage.src = "public/tania_deadpool_2.webp";
+  rightImage.src = "public/taniaConejitastick2.webp";
   var cua = document.getElementById("personaje-blur");
-  cua.src = "public/tania_deadpool_2.webp";
+  cua.src = "public/taniaConejitastick2.webp";
   setTimeout(function () {
-    rightImage.src = "public/tania_deadpool_1.webp";
-    cua.src = "public/tania_deadpool_1.webp";
+    rightImage.src = "public/taniaConejitastick1.webp";
+    cua.src = "public/taniaConejitastick1.webp";
   }, 350); // Ajusta el tiempo según sea necesario (en milisegundos)
 
   // Genera un número aleatorio entre 1 y 9 (ambos inclusive)
@@ -169,7 +171,7 @@ function spin() {
   spinTime = 0;
   spinTimeTotal = Math.random() * 6 + 4 * 2000; // el 4 era
 
-  var spinSound = document.getElementById("spinSound");
+  
   spinSound.currentTime = 0; // Reinicia el audio al hacer clic nuevamente
   spinSound.play();
 
