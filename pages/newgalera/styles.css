@@ -1,6 +1,19 @@
 body {
     background-color: #1e1e1e; /* Un tono oscuro más bonito */
   }
+
+  h1 {
+    width: 200px;
+    color: #fffafa;
+    height: auto;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    place-items: center;
+    /* background-color: #5b33b9; */
+    font-family: 'Arial Narrow Bold', sans-serif;
+  }
   
   .gallery {
     display: flex;
