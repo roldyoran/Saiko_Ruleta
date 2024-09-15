@@ -113,6 +113,8 @@ if (!SpeechRecognition) {
     // Manejar errores
     recognition.onerror = (event) => {
         console.error('Error de reconocimiento de voz:', event.error);
+        // Reiniciar el reconocimiento de voz al finalizar
+        recognition.start();
     };
 
     recognition.onend = () => {
@@ -123,3 +125,25 @@ if (!SpeechRecognition) {
     // Iniciar el reconocimiento de voz al cargar la página
     recognition.start();
 }
+
+
+
+// recognition.onerror = (event) => {
+//     console.error('Error de reconocimiento de voz:', event.error);
+//     setTimeout(() => {
+//         recognition.start();
+//     }, 1000); // Esperar 1 segundo antes de reiniciar
+// };
+
+// recognition.onend = () => {
+//     console.log("Reconocimiento de voz finalizado, reiniciando...");
+//     setTimeout(() => {
+//         recognition.start();
+//     }, 1000); // Esperar 1 segundo antes de reiniciar
+// };
+
+// // Reiniciar el reconocimiento cada 5 minutos para evitar problemas de tiempo
+// setInterval(() => {
+//     recognition.stop();
+//     recognition.start();
+// }, 300000); // 300,000 ms = 5 minutos
