@@ -1260,43 +1260,63 @@
         "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1726369434usagidrop.png"
     },
     {
+        "nombre": "ping-pong-the-animation",
+        "id": "272",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1726460518ping-pong-the-animation.png"
+    },
+    {
+        "nombre": "stein-gate",
+        "id": "271",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1726458446stein-gate.png"
+    },
+    {
+        "nombre": "los-caballeros-del-zodiaco",
+        "id": "273",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1726462743los-caballeros-del-zodiaco.png"
+    },
+    {
         "nombre": "jujutsukaisen",
-        "id": "001",
+        "id": "901",
         "url": "https://m.media-amazon.com/images/M/MV5BNGY4MTg3NzgtMmFkZi00NTg5LWExMmEtMWI3YzI1ODdmMWQ1XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_FMjpg_UX1000_.jpg"
     },
     {
         "nombre": "naruto",
-        "id": "002",
+        "id": "902",
         "url": "https://m.media-amazon.com/images/M/MV5BZmQ5NGFiNWEtMmMyMC00MDdiLTg4YjktOGY5Yzc2MDUxMTE1XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_FMjpg_UX1000_.jpg"
     },
     {
         "nombre": "mydressupdarling",
-        "id": "003",
+        "id": "903",
         "url": "https://m.media-amazon.com/images/M/MV5BYmJhYjgzYTQtMzMxYi00NTkyLWI2MWItNTgxNjk1NzU0YmQzXkEyXkFqcGc@._V1_QL75_UX190_CR0,2,190,281_.jpg"
     },
     {
         "nombre": "kaguysamaloveiswar",
-        "id": "004",
+        "id": "904",
         "url": "https://m.media-amazon.com/images/M/MV5BYjEwNjEwYzgtZGZkMy00MTBjLTg2MmYtNDk0MzY2NmU0MmNiXkEyXkFqcGdeQXVyMzgxODM4NjM@._V1_FMjpg_UX1000_.jpg"
     },
     {
         "nombre": "shingekinokyojin",
-        "id": "005",
+        "id": "905",
         "url": "https://m.media-amazon.com/images/M/MV5BYzMwMjllN2UtY2UwZS00MjIyLWIxYjEtYWVkYmUwZGYwNDhhXkEyXkFqcGc@._V1_.jpg"
     },
     {
         "nombre": "hunterxhunter",
-        "id": "006",
+        "id": "906",
         "url": "https://m.media-amazon.com/images/M/MV5BNGM0YTk3MWEtN2JlZC00ZmZmLWIwMDktZTMxZGE5Zjc2MGExXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_.jpg"
     },
     {
         "nombre": "kimetsunoyaiba",
-        "id": "007",
+        "id": "907",
         "url": "https://m.media-amazon.com/images/M/MV5BZDZiZTZhMzgtYTY0ZC00OGUyLWE2NzgtMmM4MjA1YjUxN2YyXkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_.jpg"
     },
     {
         "nombre": "bokunohero",
-        "id": "008",
+        "id": "908",
         "url": "https://m.media-amazon.com/images/M/MV5BNmIyMDM1ZjctMjZjYi00YTc3LThhYTQtNmMyZGQxZDkwMzE1XkEyXkFqcGc@._V1_.jpg"
+    },
+    {
+        "nombre": "fullmetalalchemist",
+        "id": "909",
+        "url": "https://m.media-amazon.com/images/M/MV5BZmEzN2YzOTItMDI5MS00MGU4LWI1NWQtOTg5ZThhNGQwYTEzXkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_.jpg"
     }
 ]
