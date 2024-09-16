@@ -1263,5 +1263,45 @@
         "nombre": "eizouken",
         "id": "000",
         "url": "https://m.media-amazon.com/images/M/MV5BYjQ3YWVlNzktYjBiYy00MzQzLWE0MGQtNTAzZTFhMWI3ZTFiXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_FMjpg_UX1000_.jpg"
+    },
+    {
+        "nombre": "jujutsukaisen",
+        "id": "001",
+        "url": "https://m.media-amazon.com/images/M/MV5BNGY4MTg3NzgtMmFkZi00NTg5LWExMmEtMWI3YzI1ODdmMWQ1XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_FMjpg_UX1000_.jpg"
+    },
+    {
+        "nombre": "naruto",
+        "id": "002",
+        "url": "https://m.media-amazon.com/images/M/MV5BZmQ5NGFiNWEtMmMyMC00MDdiLTg4YjktOGY5Yzc2MDUxMTE1XkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_FMjpg_UX1000_.jpg"
+    },
+    {
+        "nombre": "mydressupdarling",
+        "id": "003",
+        "url": "https://m.media-amazon.com/images/M/MV5BYmJhYjgzYTQtMzMxYi00NTkyLWI2MWItNTgxNjk1NzU0YmQzXkEyXkFqcGc@._V1_QL75_UX190_CR0,2,190,281_.jpg"
+    },
+    {
+        "nombre": "kaguysamaloveiswar",
+        "id": "004",
+        "url": "https://m.media-amazon.com/images/M/MV5BYjEwNjEwYzgtZGZkMy00MTBjLTg2MmYtNDk0MzY2NmU0MmNiXkEyXkFqcGdeQXVyMzgxODM4NjM@._V1_FMjpg_UX1000_.jpg"
+    },
+    {
+        "nombre": "shingekinokyojin",
+        "id": "005",
+        "url": "https://m.media-amazon.com/images/M/MV5BYzMwMjllN2UtY2UwZS00MjIyLWIxYjEtYWVkYmUwZGYwNDhhXkEyXkFqcGc@._V1_.jpg"
+    },
+    {
+        "nombre": "hunterxhunter",
+        "id": "006",
+        "url": "https://m.media-amazon.com/images/M/MV5BNGM0YTk3MWEtN2JlZC00ZmZmLWIwMDktZTMxZGE5Zjc2MGExXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_.jpg"
+    },
+    {
+        "nombre": "kimetsunoyaiba",
+        "id": "007",
+        "url": "https://m.media-amazon.com/images/M/MV5BZDZiZTZhMzgtYTY0ZC00OGUyLWE2NzgtMmM4MjA1YjUxN2YyXkEyXkFqcGdeQXVyMTA3MDk2NDg2._V1_.jpg"
+    },
+    {
+        "nombre": "bokunohero",
+        "id": "008",
+        "url": "https://m.media-amazon.com/images/M/MV5BNmIyMDM1ZjctMjZjYi00YTc3LThhYTQtNmMyZGQxZDkwMzE1XkEyXkFqcGc@._V1_.jpg"
     }
 ]
