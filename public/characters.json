@@ -1,0 +1,47 @@
+{
+    "colegialas": {
+      "group1": {
+        "gira": {
+          "src": "../public/TaniaColegialastick1.webp",
+          "id": "personaje",
+          "class": "hidden md:block  w-[210px] h-auto ml-[448px] mt-8 absolute",
+          "alt": "TaniaColegialastick1"
+        },
+        "complementa": {
+          "src": "../public/DJ_RULETA.webp",
+          "id": "personaje2",
+          "class": "hidden md:block  w-[230px] h-auto mr-[522px] mt-40 absolute",
+          "alt": "DJ_RULETA"
+        }
+      },
+      "berserk": {
+        "gira": {
+          "src": "public/tania_griffit_1.webp",
+          "id": "personaje",
+          "class": "hidden md:block z-10 w-[305px] h-auto ml-[395px] mt-16 absolute",
+          "alt": "tania_griffit_1"
+        },
+        "complementa": {
+          "src": "public/tago_berserk.gif",
+          "id": "personaje2",
+          "class": "hidden md:block z-5 w-[250px] h-[480px] mr-[536px] mb-3 absolute",
+          "alt": "tago_berserk"
+        }
+      },
+      "deadpool": {
+        "gira": {
+          "src": "public/tania_deadpool_1.webp",
+          "id": "personaje",
+          "class": "hidden md:block z-10 w-[195px] h-auto ml-[380px] mt-0 absolute",
+          "alt": "tania_deadpool_1"
+        },
+        "complementa": {
+          "src": "public/tago_and_panzer_wolwerine.webp",
+          "id": "personaje2",
+          "class": "hidden md:block z-10 w-[320px] h-auto mr-[536px] -mb-2 absolute",
+          "alt": "tago_and_panzer_wolwerine"
+        }
+      }
+    }
+  }
+  

@@ -1,68 +1,52 @@
 ---
-import { handleClick } from '../scripts/script.js';
+import Personajes from "./Personajes.astro"
 ---
 
 <!-- Contenido del objeto central -->
-<div class="grid place-items-center m-0">
-    <canvas
-      id="canvas"
-      width="500"
-      height="500"
-      class="relative border border-solid shadow-purple-200 shadow-md rounded-lg"
-    ></canvas>
+  <!-- Contenido del objeto central -->
+  <div class="grid place-items-center m-0">
+    <canvas id="canvas" width="500" height="500"
+      class="relative border border-solid shadow-yellow-200 shadow-md rounded-lg dark:shadow-none dark:border-none"></canvas>
+
     
     <!-- PERSONAJE QUE GIRA LA RULETA -->
-    <img src="TaniaColegialastick1.webp" 
-    id="personaje"
-    class="hidden md:block z-10 w-[210px] h-auto ml-[448px] mt-8 absolute"
-    alt="stick1">
+    <!-- <img src="taniaBikinistick1.webp" id="personaje" -->
+      <!-- class="hidden md:block z-10 w-[200px] h-auto ml-[410px] -mb-2 absolute" alt="stick1"> -->
+      <Personajes src="taniaBikinistick1.webp" id="personaje" z_index="z-10" class_name="hidden md:block w-[200px] h-auto ml-[410px] -mb-2 absolute" alt="tania"></Personajes>
+    
 
     <!-- PERSONAJE QUE ACOMPAÑA -->
-    <img src="DJ_RULETA.webp" 
-    id="personaje2"
-    class="hidden md:block z-5 w-[230px] h-auto mr-[522px] mt-40 absolute"
-    alt="stick2">
-
+    <Personajes src="tagoGif.gif" id="personaje2" z_index="z-10" class_name="hidden md:block w-[160px] h-auto mr-[500px] mt-14 absolute" alt="tagoGif"></Personajes>
+    
     <!-- LEJI GIRANDO -->
-    <img src="leji_chibi_girando.gif" 
-    id="personaje3"
-    class="animacion-imagen  hidden md:block z-20 w-[150px] h-auto mb-[550px] mr-[320px] absolute"
-    alt="stick3">
+    <img src="leji_chibi_girando.gif" id="personaje3"
+      class="animacion-imagen  hidden md:block z-20 w-[150px] h-auto mb-[550px] mr-[320px] absolute" alt="stick3">
 
     <!-- Botones -->
     <div class="flex mt-1 md:mx-1 place-items-center flex-wrap">
       <!-- Cantidad en la Ruleta -->
       <label for="numOptions"></label>
-      <input
-        type="number"
-        id="numOptions"
-        min="2"
-        max="44"
-        value="21"
-        class="py-2 m-1 ml-auto pl-2 border-2 font-bold text-cyan-700 border-cyan-700 rounded-xl bg-transparent transition-all hover:bg-cyan-700 hover:text-white hover:shadow-lg hover:shadow-cyan-700/50 hover:-translate-y-0.5"
-      />
+      <input type="number" id="numOptions" min="2" max="44" value="4" 
+        class="py-2 m-1 ml-auto pl-2 border-2 font-bold text-purple-700 border-purple-700 rounded-xl bg-transparent transition-all hover:bg-purple-700 hover:text-white hover:shadow-lg hover:shadow-purple-700/50 hover:-translate-y-0.5
+        dark:border-purple-900 dark:text-white dark:bg-purple-700 dark:hover:border-purple-500 dark:hover:bg-purple-950" />
       <!-- Actualizar la Ruleta -->
-      <button
-        id="updateButton"
-        class="border-2 ml-auto border-purple-950 font-bold text-purple-900 hover:bg-purple-950 hover:text-white hover:-translate-y-0.5 hover:shadow-lg hover:shadow-purple-800/50 transition-all rounded-xl py-2 px-8 active:shadow-none active:translate-y-0"
-        onclick = '{handleClick}'
+      <button id="updateOptiones" 
+        class="border-2 ml-auto border-pink-950 font-bold text-pink-900 hover:bg-pink-950 hover:text-white hover:-translate-y-0.5 hover:shadow-lg hover:shadow-pink-800/50 transition-all rounded-xl py-2 px-8 active:shadow-none active:translate-y-0
+        dark:border-pink-800 dark:text-white dark:bg-pink-600 dark:hover:border-pink-500"
         >
         Actualizar Ruleta
       </button>
       <!-- Girar la Ruleta -->
-      <button
-        id="spin"
-        class="border-2 m-1 mr-auto border-cyan-700 font-bold text-cyan-700 hover:bg-cyan-700 hover:text-white hover:-translate-y-0.5 hover:shadow-lg hover:shadow-cyan-700/50 transition-all rounded-xl py-2 px-14 active:shadow-none active:translate-y-0"
-      >
+      <button id="spin" 
+        class="border-2 m-1 mr-auto border-purple-950 font-bold text-purple-700 hover:bg-purple-700 hover:text-white hover:-translate-y-0.5 hover:shadow-lg hover:shadow-purple-700/50 transition-all rounded-xl py-2 px-14 active:shadow-none active:translate-y-0
+        dark:border-purple-950 dark:text-white dark:bg-purple-700 dark:hover:border-purple-500 dark:hover:bg-purple-950">
         GIRAR Ruleta
       </button>
     </div>
+  </div>
 
-    <img src="TaniaColegialastick2.webp" style="display: none;" alt="Preload Image">
-	<audio id="spinSound" src="audio.mp3"></audio>
-	<audio id="bell" src="bell_ring.mp3"></audio>
-</div>
 
+<script src="../scripts/ruleta.js"></script>
 
 <style>
     /* Animaciones Leji chiquito girando */
