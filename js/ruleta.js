@@ -56,28 +56,80 @@ function getColor(item, maxitem) {
   var frequency = (Math.PI * 2) / maxitem;
   
 
-  // red   = Math.sin(frequency * item + 3 + phase) * width + center;
+// // Ajustamos los componentes de color para hacer una mezcla de rojo, blanco y azul
+// var red = Math.sin(frequency * item + 1 + phase) * width + center;
+// var green = Math.sin(frequency * item + 2 + phase) * width + center;
+// var blue = Math.sin(frequency * item + 4 + phase) * width + center;
 
-  // Ajustamos los componentes de color para obtener tonos rosados y morados
-  var red = Math.sin(frequency * item + 3 + phase) * width + center;
-  var green = Math.sin(frequency * item + 4 + phase) * width + center * 0.2; // Reducimos el verde para evitar tonos verdosos
-  var blue = Math.sin(frequency * item + phase) * width + center; // Aumentamos el componente azul
+// // Ajustes para obtener una mezcla de los colores de la bandera chilena
+// // Rojo puro cuando item es bajo
+// red = Math.max(0, Math.min(255, red + 200)); // Dominancia del rojo
+// // Blanco (cuando todos los componentes se igualan) en ciertos puntos
+// green = Math.max(0, Math.min(255, green + 255 * Math.sin(frequency * item))); // Blanco en algunas partes
+// // Azul puro en otro rango
+// blue = Math.max(0, Math.min(255, blue + 200)); // Dominancia del azul
 
-  // Ajustamos los tonos de rosado y morado
-  red += 200; // Ajusta este valor para obtener más o menos rojo
-  blue += 180; // Ajusta el azul para obtener más o menos morado
+// // Aseguramos que los valores estén en el rango correcto (0-255)
+// red = Math.min(255, Math.max(0, red));
+// green = Math.min(255, Math.max(0, green));
+// blue = Math.min(255, Math.max(0, blue));
 
-  // Aseguramos que los valores estén en el rango correcto (0-255)
-  red = Math.min(255, Math.max(0, red));
-  green = Math.min(255, Math.max(0, green));
-  blue = Math.min(255, Math.max(0, blue));
-
+// // Devuelve el color como una combinación de rojo, blanco y azul
+// return RGB2Color(red, green, blue);
 
 
-  return RGB2Color(red, green, blue);
 
-  // var colors = ['#FFB6C1', '#FF69B4', '#FF1493', '#DB7093', '#C71585', '#DA70D6', '#FF00FF', '#BA55D3', '#9370DB', '#8A2BE2', '#9400D3', '#9932CC', '#8B008B', '#800080', '#4B0082', '#6A5ACD', '#7B68EE', '#483D8B', '#4169E1', '#6495ED'];
-  // return colors[item % colors.length];
+// Primero obtenemos el valor de item en un rango cíclico para controlar la mezcla de colores
+var cycle = (item % 3); // 0 para rojo, 1 para blanco, 2 para azul
+
+var red, green, blue;
+
+// Ajustamos los colores para obtener tonos pastel
+if (cycle === 0) {
+  // Rojo pastel
+  red = 250;
+  green = 50; // Aumentamos el verde y el azul para suavizar el rojo
+  blue = 80;
+} else if (cycle === 1) {
+  // Blanco pastel (es prácticamente el mismo blanco, con ligera variación)
+  red = 255;
+  green = 255;
+  blue = 255;
+} else {
+  // Azul pastel
+  red = 50; // Aumentamos el rojo y el verde para suavizar el azul
+  green = 50;
+  blue = 250;
+}
+
+// Aseguramos que los valores estén en el rango correcto (0-255)
+red = Math.min(255, Math.max(0, red));
+green = Math.min(255, Math.max(0, green));
+blue = Math.min(255, Math.max(0, blue));
+
+// Devuelve el color correspondiente (rojo, blanco o azul en tonos pastel)
+return RGB2Color(red, green, blue);
+
+
+
+
+// var colors = [
+//   '#FFFFFF', // Blanco
+//   '#F0F8FF', // Blanco más tenue
+//   '#F5F5F5', // Blanco grisáceo
+//   '#FF0000', // Rojo fuerte
+//   '#FF6347', // Rojo tomate
+//   '#FF4500', // Rojo anaranjado
+//   '#0000FF', // Azul fuerte
+//   '#1E90FF', // Azul Dodger
+//   '#4682B4', // Azul acero
+//   '#4169E1', // Azul Royal
+//   '#87CEFA', // Azul cielo claro
+//   '#B0C4DE'  // Azul pálido
+// ];
+
+// return colors[item % colors.length];
+
 }
 
 function drawRouletteWheel() {
@@ -153,12 +205,12 @@ var spinSound = document.getElementById("spinSound");
 
 function spin() {
   var rightImage = document.getElementById("personaje");
-  rightImage.src = "public/taniaConejitastick2.webp";
-  var cua = document.getElementById("personaje-blur");
-  cua.src = "public/taniaConejitastick2.webp";
+  rightImage.src = "public/Tania2_ruleta18.webp";
+  // var cua = document.getElementById("personaje-blur");
+  // cua.src = "public/Tania2_ruleta18.webp";
   setTimeout(function () {
-    rightImage.src = "public/taniaConejitastick1.webp";
-    cua.src = "public/taniaConejitastick1.webp";
+    rightImage.src = "public/Tania1_ruleta18.webp";
+    // cua.src = "public/Tania1_ruleta18.webp";
   }, 350); // Ajusta el tiempo según sea necesario (en milisegundos)
 
   // Genera un número aleatorio entre 1 y 9 (ambos inclusive)
