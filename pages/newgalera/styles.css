@@ -4,16 +4,20 @@ body {
 
   h1 {
     width: 200px;
-    color: #fffafa;
     height: auto;
     width: auto;
+    font-family: 'Arial Narrow Bold', sans-serif;
+    font-weight: 900;
     display: flex;
     align-items: center;
     justify-content: center;
     place-items: center;
-    /* background-color: #5b33b9; */
-    font-family: 'Arial Narrow Bold', sans-serif;
+    background: linear-gradient(to left, rgb(255, 109, 248), rgb(255, 152, 84));
+    background-clip: text;
+    color: transparent; 
   }
+
+  
   
   .gallery {
     display: flex;
