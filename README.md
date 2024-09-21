@@ -1,3 +1,5 @@
+# Faltan los botones de play y la otra pagina de animes vistos
+
 # Astro Starter Kit: Basics
 
 ```sh
