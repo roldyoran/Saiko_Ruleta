@@ -1,0 +1,54 @@
+---
+import {Image} from "astro:assets";
+---
+
+<div class="overflow-hidden">
+    <div
+        class="carousel my-6 md:w-[190px] w-[120px] h-auto max-w-full flex transition-transform duration-[6s] ease-linear"
+    >
+        <Image
+            src="/carousel/taniaPortadaManga.webp" alt="descriptive text" width="200" height="150" 
+            class="carousel-image flex-0 flex-grow-0 w-full h-auto box-border rounded-lg"
+        />
+        <Image
+            src="/carousel/taniaCerca1.webp" alt="descriptive text" width="200" height="150" 
+            class="carousel-image flex-0 flex-grow-0 w-full h-auto box-border rounded-lg"
+        />
+        <Image
+            src="/carousel/taniaSin.webp" alt="descriptive text" width="200" height="150"
+            class="carousel-image flex-0 flex-grow-0 w-full h-auto box-border rounded-lg"
+        />
+        <Image
+            src="/carousel/tania3.webp" alt="descriptive text" width="200" height="150" 
+            class="carousel-image flex-0 flex-grow-0 w-full h-auto box-border rounded-lg"
+        />
+    </div>
+</div>
+
+<style>
+    @keyframes slide {
+        0%,
+        20% {
+            transform: translateX(0%);
+        }
+        25%,
+        45% {
+            transform: translateX(-100%);
+        }
+        50%,
+        70% {
+            transform: translateX(-200%);
+        }
+        75%,
+        95% {
+            transform: translateX(-300%);
+        }
+        100% {
+            transform: translateX(0%);
+        }
+    }
+
+    .carousel {
+        animation: slide 24s infinite;
+    }
+</style>

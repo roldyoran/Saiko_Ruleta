@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrusel CSS</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        @keyframes slide {
+            0%, 25% {
+                transform: translateX(0%);
+            }
+            30%, 55% {
+                transform: translateX(-100%);
+            }
+            60%, 85% {
+                transform: translateX(-200%);
+            }
+            90%, 100% {
+                transform: translateX(0%);
+            }
+        }
+
+        .carousel {
+            animation: slide 18s infinite;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+
+    <div class="relative w-full max-w-lg overflow-hidden">
+        <div class="carousel flex transition-transform duration-[6s] ease-linear">
+            <img src="https://via.placeholder.com/600x300/FF5733/FFFFFF?text=Imagen+1" class="w-full flex-shrink-0 carousel-image">
+            <img src="https://via.placeholder.com/600x300/33FF57/FFFFFF?text=Imagen+2" class="w-full flex-shrink-0 carousel-image">
+            <img src="https://via.placeholder.com/600x300/3357FF/FFFFFF?text=Imagen+3" class="w-full flex-shrink-0 carousel-image">
+            <!-- Agrega más imágenes según sea necesario -->
+        </div>
+    </div>
+
+</body>
+</html>

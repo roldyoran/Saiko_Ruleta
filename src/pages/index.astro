@@ -4,24 +4,19 @@ import ButtonsList from '../components/Buttons_list.astro';
 import Content from '../components/Content.astro';
 ---
 
-<Layout title="Saiko Ruleta">
-	<main class="m-0" >
+<Layout title="Saiko Ruleta" bg_color='dark:bg-slate-700'>
+	<main class="m-0">
 		<h2 class="text-center text-3xl py-1 pt-2 font-bold text-yellow-900 dark:text-emerald-200">SAIKO RULETA</h2>
 		<ButtonsList></ButtonsList>
 		<Content></Content>
 	</main>
 
 
-	<audio id="cancion"></audio>
 	 <!-- Archivos precargados -->
-	 <audio id="spinSound" src="audio.mp3"></audio>
-	 <audio id="bell" src="bell_ring.mp3"></audio>
-	 <img src="taniaBikinistick2.webp" style="display: none;" alt="Preload Image">
+	 <audio id="spinSound" src="audios/audio.mp3"></audio>
+	 <audio id="bell" src="audios/bell_ring.mp3"></audio>
+	 <img src="stefy_cyan22/taniaBikinistick2.webp" style="display: none;" alt="Preload Image">
 	 <audio id="cancion"></audio>
 
 </Layout>
 
-
-
-<script src="../scripts/carrusel.js"></script>
-<script src="../scripts/carrusel2.js"></script>
