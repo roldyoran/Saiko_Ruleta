@@ -155,7 +155,7 @@ document.getElementById("spin").addEventListener("click", spin);
 
 var spinSound = document.getElementById("spinSound");
 
-function spin() {
+export function spin() {
   var rightImage = document.getElementById("personaje");
   rightImage.src = "stefy_cyan22/taniaBikinistick2.webp";
   var cua = document.getElementById("personaje-blur");
