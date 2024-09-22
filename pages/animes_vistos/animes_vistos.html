@@ -10,7 +10,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #121212; /* Fondo oscuro */
+            background-color: #0e0d0d; /* Fondo oscuro */
             color: #e0e0e0; /* Texto claro */
         }
         h1 {
@@ -61,7 +61,7 @@
             opacity: 0; /* Ocultar durante la transición */
         }
         #animes > div {
-            background: #1e1e1e; /* Fondo oscuro de los elementos */
+            background: #1a1a1a; /* Fondo oscuro de los elementos */
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Sombra más oscura */
             margin: 10px;
@@ -76,10 +76,9 @@
             box-shadow: 0 8px 16px rgba(0,0,0,0.5); /* Sombra más intensa al pasar el ratón */
         }
         img {
-            width: 100%;
-            height: auto;
-            border-radius: 4px;
-            border: 1px solid #333; /* Borde de imagen oscuro */
+            width: 200px;
+            height: 305px;
+            border-radius: 6px;
         }
         h2 {
             font-size: 1em;
@@ -115,6 +114,14 @@
             background-color: #555; /* Fondo de botones deshabilitados */
             cursor: not-allowed;
         }
+        footer {
+            display: flex;
+            justify-content: center;
+            color: #494848;
+            margin-top: 10px;
+            margin-bottom: 18px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -128,6 +135,9 @@
         <button id="prev-page" disabled>Anterior</button>
         <button id="next-page">Siguiente</button>
     </div>
+    <footer>Esta lista comprende todos los animes randoms vistos en el canal del Saiko 
+         y uno que otro anime que el Saiko se vio una vez por su cuenta (puede faltar alguno) <br>
+        Posdata: VIVAN LAS LESBIANAS!!!!</footer>
 
     <script>
         const animesDiv = document.getElementById('animes');
@@ -146,7 +156,9 @@
                 animesDiv.innerHTML = ''; // Limpiar el contenido existente
                 animes.forEach(anime => {
                     animesDiv.innerHTML += `<div>
-                                                <h2>${anime.nombre}</h2>
+                                                <h2>
+                                                     ${anime.nombre.length > 15 ? anime.nombre.substring(0, 14) + "..." : anime.nombre}
+                                                    </h2>
                                                 <p>ID: ${anime.id}</p>
                                                 <img src="${anime.url}" alt="${anime.nombre}">
                                             </div>`;
