@@ -1,13 +1,13 @@
 ---
-// interface Props {
-// 	href: string;
-// }
+interface Props {
+	href: string;
+}
 
-// const { href } = Astro.props;
+const { href } = Astro.props;
 ---
 
 <div class="w-[36px] h-[36px] flex justify-center items-center my-[5px]">
-    <a  href="/galeria" 
+    <a  href={href}
         target="_blank" 
         class="hover:scale-150 transition-all">
         <slot></slot>

@@ -1,4 +1,15 @@
 {
+    "Temporada #2":{
+        "reigen_ag":{
+            "imagenes":[
+                "Tago_ruleta18.webp",
+                "Tania1_ruleta18.webp"
+            ],
+            "stickers":[
+                "stickers/lejiChilenoGirando.gif"
+            ]
+        }
+    },
     "Temporada #1": {
         "roldyoran": {
             "imagenes": [

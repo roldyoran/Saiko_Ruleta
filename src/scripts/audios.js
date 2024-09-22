@@ -1,8 +1,10 @@
-function playVideo() {
+
+document.getElementById("playMusic").addEventListener("click", playMusic);
+function playMusic() {
   const playButton = document.getElementById("playButton");
   const audioFiles = ["saiko_qlao.mp3"]; // "anime_fin.mp3", "trap_fin.mp3", "rock_fin.mp3", 
   const randomIndex = Math.floor(Math.random() * audioFiles.length);
-  const audioSrc = "public/" + audioFiles[randomIndex];
+  const audioSrc = "audios/" + audioFiles[randomIndex];
   var audio = document.getElementById("cancion");
   // ajustarVolumen(0.9);
 

@@ -12,7 +12,7 @@ import data from "../assets/galeria.json";
           <div class="gallery">
             {Object.entries(usuarios).map(([usuario, contenido]) => (
               <>
-                {contenido.imagenes?.map((imagen, index) => (
+                {contenido.imagenes?.map((imagen) => (
                   <div class="image-container">
                     <img
                       src={`${usuario}/${imagen}`}
@@ -29,7 +29,7 @@ import data from "../assets/galeria.json";
                   </div>
                 ))}
                 {Array.isArray(contenido.stickers) &&
-                  contenido.stickers.map((imagen, index) => (
+                  contenido.stickers.map((imagen) => (
                     <div class="image-container">
                       <img
                         src={`${usuario}/${imagen}`}
@@ -57,8 +57,6 @@ import data from "../assets/galeria.json";
     </div>
   </main>
 </Layout>
-
-
 
 <script src="../scripts/galeria.js"></script>
 
@@ -162,6 +160,7 @@ import data from "../assets/galeria.json";
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.8);
+    transition: all;
   }
 
   .modal-content {
