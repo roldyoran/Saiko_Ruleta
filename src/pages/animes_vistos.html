@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animes Vistos</title>
+    <link rel="shortcut icon" href="../../public/saikologo.ico" type="image/x-icon" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212; /* Fondo oscuro */
+            color: #e0e0e0; /* Texto claro */
+        }
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            color: #ffffff; /* Título blanco */
+        }
+        #search-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin: 20px 0;
+        }
+        #search-input {
+            padding: 10px;
+            width: 80%;
+            max-width: 400px;
+            border: 1px solid #333; /* Borde oscuro */
+            border-radius: 4px;
+            background-color: #1e1e1e; /* Fondo de input oscuro */
+            color: #e0e0e0; /* Texto de input claro */
+            font-size: 1em;
+        }
+        #clear-button {
+            right: 0;
+            top: 0;
+            height: 100%;
+            background: #333;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            color: #e0e0e0;
+            cursor: pointer;
+            padding: 10px;
+            font-size: 0.9em;
+        }
+        #clear-button:hover {
+            background-color:#1e1e1e;
+        }
+        #animes {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 0 20px;
+            transition: opacity 0.5s ease; /* Transición suave */
+        }
+        #animes.hidden {
+            opacity: 0; /* Ocultar durante la transición */
+        }
+        #animes > div {
+            background: #1e1e1e; /* Fondo oscuro de los elementos */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Sombra más oscura */
+            margin: 10px;
+            padding: 15px;
+            max-width: 220px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            overflow: hidden;
+        }
+        #animes > div:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.5); /* Sombra más intensa al pasar el ratón */
+        }
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            border: 1px solid #333; /* Borde de imagen oscuro */
+        }
+        h2 {
+            font-size: 1em;
+            margin: 10px 0;
+            color: #ffffff; /* Títulos de anime blancos */
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        p {
+            margin: 5px 0;
+            color: #b0b0b0; /* Texto de párrafo claro */
+        }
+        #pagination {
+            text-align: center;
+            margin: 20px 0;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #ffffff; /* Texto de botones blanco */
+            background-color: #333; /* Fondo de botones oscuro */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 0 5px;
+            transition: all;
+        }
+        button:hover {
+            background-color:chocolate;
+        }
+        button:disabled {
+            background-color: #555; /* Fondo de botones deshabilitados */
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <h1>Animes Vistos</h1>
+    <div id="search-container">
+        <input type="text" id="search-input" placeholder="Buscar por nombre...">
+        <button id="clear-button" aria-label="Borrar búsqueda">✕</button>
+    </div>
+    <div id="animes" class="hidden"></div>
+    <div id="pagination">
+        <button id="prev-page" disabled>Anterior</button>
+        <button id="next-page">Siguiente</button>
+    </div>
+
+    <script>
+        const animesDiv = document.getElementById('animes');
+        const searchInput = document.getElementById('search-input');
+        const clearButton = document.getElementById('clear-button');
+        const prevPageButton = document.getElementById('prev-page');
+        const nextPageButton = document.getElementById('next-page');
+        let data = [];
+        let filteredData = [];
+        let currentPage = 0;
+        const pageSize = 50;
+
+        function displayAnimes(animes) {
+            animesDiv.classList.add('hidden'); // Inicia la ocultación para animación
+            setTimeout(() => {
+                animesDiv.innerHTML = ''; // Limpiar el contenido existente
+                animes.forEach(anime => {
+                    animesDiv.innerHTML += `<div>
+                                                <h2>${anime.nombre}</h2>
+                                                <p>ID: ${anime.id}</p>
+                                                <img src="${anime.url}" alt="${anime.nombre}">
+                                            </div>`;
+                });
+                animesDiv.classList.remove('hidden'); // Muestra el contenido después de animación
+            }, 200); // Tiempo de ocultación de 200ms para la animación
+        }
+
+        function loadAnimes() {
+            const start = currentPage * pageSize;
+            const end = start + pageSize;
+            const pageData = filteredData.slice(start, end);
+            displayAnimes(pageData);
+            prevPageButton.disabled = currentPage === 0;
+            nextPageButton.disabled = end >= filteredData.length;
+        }
+
+        fetch('https://raw.githubusercontent.com/roldyoran/Saiko_Ruleta/useTailwind/public/data/anime_list.json')
+            .then(response => response.json())
+            .then(jsonData => {
+                data = jsonData;
+                filteredData = data;
+                loadAnimes();
+            })
+            .catch(error => {
+                console.error('Error al cargar los datos:', error);
+                animesDiv.innerHTML = '<p>Hubo un error al cargar los datos.</p>';
+            });
+
+        searchInput.addEventListener('input', () => {
+            const query = searchInput.value.trim().toLowerCase();
+            filteredData = data.filter(anime =>
+                anime.nombre.toLowerCase().includes(query)
+            );
+            currentPage = 0;
+            loadAnimes();
+        });
+
+        clearButton.addEventListener('click', () => {
+            searchInput.value = '';
+            searchInput.dispatchEvent(new Event('input')); // Desencadenar evento de búsqueda para actualizar los resultados
+        });
+
+        nextPageButton.addEventListener('click', () => {
+            if (currentPage * pageSize < filteredData.length) {
+                currentPage++;
+                loadAnimes();
+            }
+        });
+
+        prevPageButton.addEventListener('click', () => {
+            if (currentPage > 0) {
+                currentPage--;
+                loadAnimes();
+            }
+        });
+    </script>
+</body>
+</html>

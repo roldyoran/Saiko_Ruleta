@@ -1,0 +1,129 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Animes Vistos" bg_color="bg-neutral-950">
+    <main class="font-mono text-zinc-300 p-6">
+        <h1 class="text-center text-white text-4xl mb-6">Animes Vistos</h1>
+
+        <div
+            id="search-container"
+            class="flex items-center justify-center mb-6 gap-1"
+        >
+            <input
+                type="text"
+                id="search-input"
+                class="p-2 w-80 max-w-xs border-zinc-400 border-2 rounded-l-md bg-zinc-900 text-zinc-300"
+                placeholder="Buscar por nombre..."
+            />
+
+            <button
+                id="clear-button"
+                class="bg-zinc-700 border-2 border-zinc-400 hover:text-white text-zinc-300 rounded-r-md p-2 hover:bg-orange-500 transition-all"
+            >
+                🗑️
+            </button>
+        </div>
+
+        <div
+            id="animes"
+            class="flex flex-wrap justify-center transition-opacity duration-500"
+        >
+        </div>
+
+        <div id="pagination" class="text-center mt-6">
+            <button
+                id="prev-page"
+                class="bg-zinc-700 text-white rounded px-4 py-2 hover:bg-orange-700 transition-all"
+                disabled>Anterior</button
+            >
+            <button
+                id="next-page"
+                class="bg-zinc-700 text-white rounded px-4 py-2 hover:bg-orange-700 transition-all"
+                >Siguiente</button
+            >
+        </div>
+    </main>
+</Layout>
+
+<script>
+    import data from "../assets/anime_list.json";
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const searchInput = document.getElementById(
+            "search-input",
+        ) as HTMLInputElement;
+        const clearButton = document.getElementById("clear-button");
+        const animesDiv = document.getElementById("animes");
+        const prevPageButton = document.getElementById(
+            "prev-page",
+        ) as HTMLButtonElement;
+        const nextPageButton = document.getElementById(
+            "next-page",
+        ) as HTMLButtonElement;
+
+        let filteredData = data;
+        let currentPage = 0;
+        const pageSize = 50;
+
+        function loadAnimes() {
+            const start = currentPage * pageSize;
+            const end = start + pageSize;
+            return filteredData.slice(start, end);
+        }
+
+        function displayAnimes() {
+            animesDiv.classList.add("opacity-0"); // Inicia con opacidad 0
+            setTimeout(() => {
+                animesDiv.innerHTML = ""; // Limpiar el contenido existente
+                loadAnimes().forEach((anime) => {
+                    animesDiv.innerHTML += `<div class="bg-zinc-900 rounded-lg shadow-lg m-2 p-4 max-w-xs text-center transition-transform duration-300 hover:shadow-xl hover:-translate-y-1">
+                                            <h2 class="text-white text-lg mt-2 mb-1">${anime.nombre.length > 14 ? anime.nombre.substring(0, 14) + "..." : anime.nombre}</h2>
+                                            <p class="text-zinc-400 text-sm pb-2">ID: ${anime.id}</p>
+                                            <img src="${anime.url}" alt="${anime.nombre}" class="w-[200px] h-[305px] rounded-lg"/>
+                                        </div>`;
+                });
+                animesDiv.classList.remove("opacity-0"); // Cambia a opacidad 1
+            }, 200); // Tiempo de retraso para la animación
+        }
+
+        searchInput.addEventListener("input", () => {
+            const query = searchInput.value.trim().toLowerCase();
+            filteredData = data.filter((anime) =>
+                anime.nombre.toLowerCase().includes(query),
+            );
+            currentPage = 0; // Resetear a la primera página
+            displayAnimes();
+            updatePaginationButtons();
+        });
+
+        clearButton.addEventListener("click", () => {
+            searchInput.value = "";
+            searchInput.dispatchEvent(new Event("input")); // Desencadenar evento de búsqueda
+        });
+
+        nextPageButton.addEventListener("click", () => {
+            if (currentPage * pageSize < filteredData.length) {
+                currentPage++;
+                displayAnimes();
+                updatePaginationButtons();
+            }
+        });
+
+        prevPageButton.addEventListener("click", () => {
+            if (currentPage > 0) {
+                currentPage--;
+                displayAnimes();
+                updatePaginationButtons();
+            }
+        });
+
+        function updatePaginationButtons() {
+            prevPageButton.disabled = currentPage === 0;
+            nextPageButton.disabled =
+                (currentPage + 1) * pageSize >= filteredData.length;
+        }
+
+        displayAnimes(); // Mostrar animes al cargar la página
+    });
+</script>
