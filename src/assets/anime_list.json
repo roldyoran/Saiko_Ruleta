@@ -1,46 +1,55 @@
 [
     {
         "nombre": "evangelionserie",
+        "nota": "goty",
         "id": "15",
         "url": "https://tiermaker.com/images/media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1704936521evangelionmovie4latino2021-185x278.png"
     },
     {
         "nombre": "fullmetalpanic",
+        "nota": "goty",
         "id": "17",
         "url": "https://tiermaker.com/images/media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1704936521fullmetalpaniclatino-185x278.png"
     },
     {
         "nombre": "zom100zombieninarumadenishitai100nokoto",
+        "nota": "goty",
         "id": "128",
         "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1710896627zom100zombieninarumadenishitai100nokotolatino-185x278.png"
     },
     {
         "nombre": "hellsing",
+        "nota": "goty",
         "id": "184",
         "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1717128046hellsing-185x278.png"
     },
     {
         "nombre": "vivyfluoriteeyessong",
+        "nota": "goty",
         "id": "193",
         "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1718335394vivyfluoriteeyessonglatino-185x278.png"
     },
     {
         "nombre": "berserkougon-jidai-hen",
+        "nota": "goty",
         "id": "117",
         "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1709434805berserkougon-jidai-henlatino-185x278.png"
     },
     {
         "nombre": "schooldays",
+        "nota": "goty",
         "id": "243",
         "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1723336833schooldayslatino-185x278.png"
     },
     {
         "nombre": "claymore",
+        "nota": "god",
         "id": "176",
         "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1716439935claymore-185x278.png"
     },
     {
         "nombre": "shamanking",
+        "nota": "god",
         "id": "192",
         "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1718240492shamankinglatino2021-185x278.png"
     },
@@ -1278,6 +1287,11 @@
         "nombre": "kujira-no-kora-wa-sajou",
         "id": "274",
         "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1726970657kujira-no-kora-wa-sajou.png"
+    },
+    {
+        "nombre": "dororo",
+        "id": "275",
+        "url": "https://m.media-amazon.com/images/M/MV5BYzk2ODAyZjctNjExNS00ZDk0LWE1ZDMtZmIyNzI2NjNjNjllXkEyXkFqcGc@._V1_.jpg"
     },
     {
         "nombre": "jujutsukaisen",
