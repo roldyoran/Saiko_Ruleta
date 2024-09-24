@@ -1,6 +1,6 @@
 function playVideo() {
   const playButton = document.getElementById("playButton");
-  const audioFiles = ["saiko_qlao.mp3"]; // "anime_fin.mp3", "trap_fin.mp3", "rock_fin.mp3", 
+  const audioFiles = ["saiko_qlao.mp3", "anime_fin.mp3", "trap_fin.mp3", "rock_fin.mp3"]; // "anime_fin.mp3", "trap_fin.mp3", "rock_fin.mp3", 
   const randomIndex = Math.floor(Math.random() * audioFiles.length);
   const audioSrc = "public/" + audioFiles[randomIndex];
   var audio = document.getElementById("cancion");
