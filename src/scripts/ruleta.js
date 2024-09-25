@@ -157,12 +157,12 @@ var spinSound = document.getElementById("spinSound");
 
 export function spin() {
   var rightImage = document.getElementById("personaje");
-  rightImage.src = "stefy_cyan22/taniaBikinistick2.webp";
-  var cua = document.getElementById("personaje-blur");
-  cua.src = "stefy_cyan22/taniaBikinistick2.webp";
+  rightImage.src = "reigen_ag/Tania2_ruleta18.webp";
+  // var cua = document.getElementById("personaje-blur");
+  // cua.src = "reigen_ag/Tania2_ruleta18.webp";
   setTimeout(function () {
-    rightImage.src = "stefy_cyan22/taniaBikinistick1.webp";
-    cua.src = "stefy_cyan22/taniaBikinistick1.webp";
+    rightImage.src = "reigen_ag/Tania1_ruleta18.webp";
+    // cua.src = "reigen_ag/Tania1_ruleta18.webp";
   }, 350); // Ajusta el tiempo según sea necesario (en milisegundos)
 
   // Genera un número aleatorio entre 1 y 9 (ambos inclusive)

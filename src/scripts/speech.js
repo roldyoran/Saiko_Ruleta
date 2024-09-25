@@ -66,10 +66,7 @@ if (!SpeechRecognition) {
             }, 1600);
             setTimeout(() => {
                 spin();
-            }, 2000);
-            setTimeout(() => {
-                spin();
-            }, 2400);
+            }, 2200);
         // ACTIVAR MUSICA
         // } else if (transcript.includes(ponelePlay) || transcript.includes(ponelePlayTilde) || transcript.includes(ponelePlayPonle)) {
         //     playVideo();
