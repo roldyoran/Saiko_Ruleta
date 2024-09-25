@@ -8,5 +8,7 @@ import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://roldyoran.github.io',
+  base: 'Saiko_Ruleta',
   integrations: [tailwind(), react(), mdx()]
 });
