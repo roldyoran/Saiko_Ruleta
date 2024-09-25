@@ -15,7 +15,7 @@ import data from "../assets/galeria.json";
                 {contenido.imagenes?.map((imagen) => (
                   <div class="image-container">
                     <img
-                      src={`${usuario}/${imagen}`}
+                      src={`../${usuario}/${imagen}`}
                       alt={`Imagen de ${usuario}`}
                     />
                     <a
@@ -32,7 +32,7 @@ import data from "../assets/galeria.json";
                   contenido.stickers.map((imagen) => (
                     <div class="image-container">
                       <img
-                        src={`${usuario}/${imagen}`}
+                        src={`../${usuario}/${imagen}`}
                         alt={`Sticker de ${usuario}`}
                       />
                       <a
