@@ -1,0 +1,3 @@
+- Quitar site y base de astroconfig.mjs
+- Cambiar la ruta de los archivos de la galeria quitando los ../
+- Quitar los /Saiko_Ruleta de lOS href de buttonlist.astro
