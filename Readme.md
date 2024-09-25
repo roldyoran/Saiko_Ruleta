@@ -2,6 +2,11 @@
 
 ¡Bienvenido a la Ruleta Aleatoria para Saiko! Esta aplicación te permite girar una ruleta para seleccionar un numero al azar entre una selección. Cada personaje está representado por un fanart único que se mueve alrededor de la ruleta para darle un toque divertido y emocionante.
 
+> **Nota Importante:** Este proyecto a sido migrado en su totalidad al framework `astro` por lo que los archivos del desarrollo se encuentran en la rama `useAstro` y los antiguos archivos se encuentran en la rama `useTailwind`.
+
+> Debido a que el framework `astro` necesita de unas configuraciones especificas en su astron.config.mjs y los href puede que no funcione al correr el proyecto en local, por lo que se recomienda que usemos la versión `useTailwind` para que funcione correctamente o consultar la documentación de `astro` para obtener más información.
+
+
 ## Contribución
 
 Si te gustaría contribuir a este proyecto, siéntete libre de hablarme a mi insta [Abrir @roldyoran](https://www.instagram.com/roldyoran) o abre un issue o envia un pull request. ¡Todas las contribuciones son bienvenidas!
