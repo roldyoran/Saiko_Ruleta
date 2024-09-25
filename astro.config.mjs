@@ -29,7 +29,9 @@ redirects_list = {
 if (isBuild) {
   BASE_URL = LIVE_URL;
   BASE_HREF = 'Saiko_Ruleta';
-  redirects_list = {};
+  redirects_list = {
+  
+  };
 }
 
 
