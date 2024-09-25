@@ -24,14 +24,13 @@ let redirects_list = {};
 redirects_list = {
   '/Saiko_Ruleta/galeria': '/galeria',
   '/Saiko_Ruleta/animes_vistos': '/animes_vistos',
+  '/Saiko_Ruleta/saikologo': '/saikologo',
   '/Saiko_Ruleta/index': '/',
 };
 if (isBuild) {
   BASE_URL = LIVE_URL;
   BASE_HREF = 'Saiko_Ruleta';
-  redirects_list = {
-  
-  };
+  redirects_list = {};
 }
 
 

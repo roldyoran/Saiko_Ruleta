@@ -1,4 +1,4 @@
-# Faltan la pagina de animes vistos
+# Documentacion Proximamente ...
 
 # Astro Starter Kit: Basics
 
