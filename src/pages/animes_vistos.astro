@@ -70,7 +70,7 @@ import TrashsSvg from "../SVGs/Trash_svg.astro";
 <script>
     // Se importa el archivo de datos de los animes
     import data from "../assets/anime_list.json";
-    
+
     // Se agregan eventos de DOMContentLoaded para que se ejecute el código cuando se cargue la página
     document.addEventListener("DOMContentLoaded", () => {
         const searchInput = document.getElementById(
@@ -105,7 +105,9 @@ import TrashsSvg from "../SVGs/Trash_svg.astro";
                             ? "text-yellow-950 bg-gradient-to-r from-yellow-500 to-orange-400 px-2 py-1 rounded-md transition-all"
                             : anime.nota === "god"
                               ? "text-white bg-green-700 px-2 py-1 rounded-md transition-all"
-                              : "text-red-100 px-2 py-1"; // Otras notas
+                              : typeof anime.nota === 'string' && anime.nota.includes("wena")
+                                ? "text-white bg-green-600 px-2 py-1 rounded-md transition-all"
+                                : "text-red-100 px-2 py-1"; // Otras notas
 
                     animesDiv.innerHTML += `
                     <div class="bg-zinc-900 rounded-lg shadow-lg m-2 p-4 max-w-xs flex flex-col items-center text-center transition-transform duration-300 hover:shadow-xl hover:-translate-y-1">
@@ -114,16 +116,13 @@ import TrashsSvg from "../SVGs/Trash_svg.astro";
                         </h2>
                         <p class="text-zinc-400 text-sm pb-2">ID: ${anime.id}</p>
                         <img src="${anime.url}" alt="${anime.nombre}" class="w-[100px] h-[160px] sm:w-[200px] sm:h-[305px] rounded-lg mb-2"/>
-                        <p class="${notaColor} font-sans text-sm mt-2 tracking-widest uppercase font-bold">${anime.nota ? anime.nota : "NI PUTA IDEA"}</p> 
+                        <p class="${notaColor} font-sans text-sm mt-2 tracking-widest uppercase font-bold">${anime.nota ? anime.nota : "..."}</p> 
                     </div>
                 `;
                 });
                 animesDiv.classList.remove("opacity-0"); // Cambia a opacidad 1
             }, 200); // Tiempo de retraso para la animación
         }
-
-        
-
 
         searchInput.addEventListener("input", () => {
             const query = searchInput.value.trim().toLowerCase();
@@ -164,4 +163,4 @@ import TrashsSvg from "../SVGs/Trash_svg.astro";
 
         displayAnimes(); // Mostrar animes al cargar la página
     });
-</script> 
+</script>
