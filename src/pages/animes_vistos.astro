@@ -6,9 +6,9 @@ import TrashsSvg from "../SVGs/Trash_svg.astro";
 ---
 
 <Layout title="Animes Vistos" bg_color="bg-neutral-950">
-    <main class="font-mono text-zinc-300 p-6 scroll-smooth">
+    <main id="top" class="font-mono text-zinc-300 p-6">
         <a
-            href="#title"
+            href="#top"
             class="fixed text-white flex items-center justify-center font-bold bottom-0 right-0 mb-2 mr-2 w-11 h-11 z-10 bg-zinc-800 rounded-full hover:bg-orange-800"
         >
             ↑
@@ -70,6 +70,44 @@ import TrashsSvg from "../SVGs/Trash_svg.astro";
     </main>
 </Layout>
 
+<style>
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* BARRA DE DESPLAZAMIENTO */
+    /* Estilos para la barra de desplazamiento en WebKit (Safari, Chrome, Opera) */
+    html::-webkit-scrollbar {
+        /*Ancho de la barra de desplazamiento*/
+        width: 10px;
+    }
+
+    html::-webkit-scrollbar-track {
+        /*Color del fondo de la barra de desplazamiento*/
+        background: #464545;
+    }
+
+    html::-webkit-scrollbar-thumb {
+        /* Color de la barra por default */
+        background: linear-gradient(
+            45deg,
+            #ff8c00,
+            #ffa500,
+            #ffb347,
+            #ffcc33,
+            #ff7043,
+            #ff5722
+        );
+        /* Radio de los bordes de la barra de desplazamiento */
+        border-radius: 5px;
+    }
+
+    html::-webkit-scrollbar-thumb:hover {
+        /* Cambio de color al pasar el mouse sobre la barra de desplazamiento */
+        background: #a5a3a3;
+        /* // background: linear-gradient(45deg, #5b33b9, #704bb6, #89379e, #b635a0, #b42655, #da2727); */
+    }
+</style>
 
 <script>
     // Se importa el archivo de datos de los animes
@@ -169,5 +207,3 @@ import TrashsSvg from "../SVGs/Trash_svg.astro";
         displayAnimes(); // Mostrar animes al cargar la página
     });
 </script>
-
-

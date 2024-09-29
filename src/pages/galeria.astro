@@ -64,7 +64,6 @@ import data from "../assets/galeria.json";
   body {
     background-color: #1e1e1e;
     /* scrollbar-color: #9b2a2a #060c25; */
-    scrollbar-width: none;
   }
 
   h1 {
@@ -190,16 +189,18 @@ import data from "../assets/galeria.json";
 
   /* BARRA DE DESPLAZAMIENTO */
   /* Estilos para la barra de desplazamiento en WebKit (Safari, Chrome, Opera) */
-  /* ::-webkit-scrollbar {
-    width: 10px; Ancho de la barra de desplazamiento
+  html::-webkit-scrollbar {
+    /*Ancho de la barra de desplazamiento*/
+    width: 10px; 
   }
 
-  ::-webkit-scrollbar-track {
-    background: #616161; Color del fondo de la barra de desplazamiento
+  html::-webkit-scrollbar-track {
+    /*Color del fondo de la barra de desplazamiento*/
+    background: #464545; 
   }
 
-  ::-webkit-scrollbar-thumb {
-    Color de la barra por default
+  html::-webkit-scrollbar-thumb {
+    /* Color de la barra por default */
     background: linear-gradient(
       45deg,
       #5b33b9,
@@ -209,12 +210,14 @@ import data from "../assets/galeria.json";
       #b42655,
       #da2727
     );
-    border-radius: 5px; Radio de los bordes de la barra de desplazamiento
+    /* Radio de los bordes de la barra de desplazamiento */
+    border-radius: 5px; 
   }
 
-  ::-webkit-scrollbar-thumb:hover {
-    background: #a5a3a3; Cambio de color al pasar el mouse sobre la barra de desplazamiento
-    // background: linear-gradient(45deg, #5b33b9, #704bb6, #89379e, #b635a0, #b42655, #da2727);
-  } */
+  html::-webkit-scrollbar-thumb:hover {
+    /* Cambio de color al pasar el mouse sobre la barra de desplazamiento */
+    background: #a5a3a3; 
+    /* // background: linear-gradient(45deg, #5b33b9, #704bb6, #89379e, #b635a0, #b42655, #da2727); */
+  }
   
 </style>
