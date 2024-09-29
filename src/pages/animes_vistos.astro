@@ -6,13 +6,16 @@ import TrashsSvg from "../SVGs/Trash_svg.astro";
 ---
 
 <Layout title="Animes Vistos" bg_color="bg-neutral-950">
-    <main class="font-mono text-zinc-300 p-6">
-        <!-- <div
-            class="fixed text-white flex items-center justify-center font-bold bottom-0 right-0 mb-3 mr-2 w-11 h-11 z-10 bg-zinc-500 rounded-full hover:bg-orange-800"
+    <main class="font-mono text-zinc-300 p-6 scroll-smooth">
+        <a
+            href="#title"
+            class="fixed text-white flex items-center justify-center font-bold bottom-0 right-0 mb-2 mr-2 w-11 h-11 z-10 bg-zinc-800 rounded-full hover:bg-orange-800"
         >
             ↑
-        </div> -->
-        <h1 class="text-center text-white text-4xl mb-6">Animes Vistos</h1>
+        </a>
+        <h1 id="title" class="text-center text-white text-4xl mb-6">
+            Animes Vistos
+        </h1>
         <div
             id="search-container"
             class="flex items-center justify-center mb-6 gap-1"
@@ -67,6 +70,7 @@ import TrashsSvg from "../SVGs/Trash_svg.astro";
     </main>
 </Layout>
 
+
 <script>
     // Se importa el archivo de datos de los animes
     import data from "../assets/anime_list.json";
@@ -105,7 +109,8 @@ import TrashsSvg from "../SVGs/Trash_svg.astro";
                             ? "text-yellow-950 bg-gradient-to-r from-yellow-500 to-orange-400 px-2 py-1 rounded-md transition-all"
                             : anime.nota === "god"
                               ? "text-white bg-green-700 px-2 py-1 rounded-md transition-all"
-                              : typeof anime.nota === 'string' && anime.nota.includes("wena")
+                              : typeof anime.nota === "string" &&
+                                  anime.nota.includes("wena")
                                 ? "text-white bg-green-600 px-2 py-1 rounded-md transition-all"
                                 : "text-red-100 px-2 py-1"; // Otras notas
 
@@ -164,3 +169,5 @@ import TrashsSvg from "../SVGs/Trash_svg.astro";
         displayAnimes(); // Mostrar animes al cargar la página
     });
 </script>
+
+
