@@ -153,12 +153,12 @@ import TrashsSvg from "../SVGs/Trash_svg.astro";
                                 : "text-red-100 px-2 py-1"; // Otras notas
 
                     animesDiv.innerHTML += `
-                    <div class="bg-zinc-900 rounded-lg shadow-lg m-2 p-4 max-w-xs flex flex-col items-center text-center transition-transform duration-300 hover:shadow-xl hover:-translate-y-1">
-                        <h2 class="text-white text-lg mt-1 mb-1 truncate w-20 md:w-full">
+                    <div class="bg-zinc-900 rounded-lg shadow-lg p-4 md:m-2 m-1 md:max-w-xs flex flex-col items-center text-center transition-transform duration-300 hover:shadow-xl hover:-translate-y-1">
+                        <h2 class="text-white text-lg mt-1 mb-1 truncate  md:w-full">
                             ${anime.nombre.length > 14 ? anime.nombre.substring(0, 14) + "..." : anime.nombre}
                         </h2>
                         <p class="text-zinc-400 text-sm pb-2">ID: ${anime.id}</p>
-                        <img src="${anime.url}" alt="${anime.nombre}" class="w-[100px] h-[160px] sm:w-[200px] sm:h-[305px] rounded-lg mb-2"/>
+                        <img src="${anime.url}" alt="${anime.nombre}" class="w-[180px] h-[260px] sm:w-[200px] sm:h-[305px] rounded-lg mb-2"/>
                         <p class="${notaColor} font-sans text-sm mt-2 tracking-widest uppercase font-bold">${anime.nota ? anime.nota : "..."}</p> 
                     </div>
                 `;
