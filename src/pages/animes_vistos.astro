@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import ArrowLSvg from "../SVGs/Arrow_L_svg.astro";
 import ArrowRSvg from "../SVGs/Arrow_R_svg.astro";
 import TrashsSvg from "../SVGs/Trash_svg.astro";
+
 ---
 
 <Layout title="Animes Vistos" bg_color="bg-neutral-950">
@@ -36,6 +37,25 @@ import TrashsSvg from "../SVGs/Trash_svg.astro";
         </div>
 
         <div
+            id="pagination"
+            class="flex justify-center items-center space-x-4 mt-6 mb-3 text-sm"
+        >
+            <button
+                id="prev-page"
+                class="bg-zinc-800 text-white rounded-md py-2.5 pr-4 pl-3 hover:bg-orange-800 transition-all flex items-center gap-1 disabled:opacity-50 disabled:hover:bg-zinc-800"
+                disabled
+            >
+                <ArrowLSvg /> Anterior
+            </button>
+            <button
+                id="next-page"
+                class="bg-zinc-800 text-white rounded-md py-2.5 pr-3 pl-4 hover:bg-orange-800 transition-all flex items-center gap-1 disabled:opacity-50 disabled:hover:bg-zinc-800"
+            >
+                Siguiente <ArrowRSvg />
+            </button>
+        </div>
+
+        <div
             id="animes"
             class="flex flex-wrap justify-center transition-opacity duration-500"
         >
@@ -54,7 +74,7 @@ import TrashsSvg from "../SVGs/Trash_svg.astro";
             </button>
             <button
                 id="next-page"
-                class="bg-zinc-800 text-white rounded-md m- py-2.5 pr-3 pl-4 hover:bg-orange-800 transition-all flex items-center gap-1 disabled:opacity-50 disabled:hover:bg-zinc-800"
+                class="bg-zinc-800 text-white rounded-md py-2.5 pr-3 pl-4 hover:bg-orange-800 transition-all flex items-center gap-1 disabled:opacity-50 disabled:hover:bg-zinc-800"
             >
                 Siguiente <ArrowRSvg />
             </button>
