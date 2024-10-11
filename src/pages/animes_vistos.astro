@@ -87,6 +87,8 @@ import TrashsSvg from "../SVGs/Trash_svg.astro";
             (puede faltar alguno) <br />
             Postdata: VIVAN LAS LESBIANAS!!!!
         </footer>
+        <link rel="preconnect" href="https://tiermaker.com">
+        <link rel="preconnect" href="https://m.media-amazon.com">
     </main>
 </Layout>
 
@@ -178,7 +180,7 @@ import TrashsSvg from "../SVGs/Trash_svg.astro";
                             ${anime.nombre.length > 14 ? anime.nombre.substring(0, 14) + "..." : anime.nombre}
                         </h2>
                         <p class="text-zinc-400 text-sm pb-2">ID: ${anime.id}</p>
-                        <img src="${anime.url}" alt="${anime.nombre}" class="w-[120px] h-[200px] sm:w-[200px] sm:h-[305px] rounded-lg mb-2"/>
+                        <img rel="preload" loading="lazy" src="${anime.url}" alt="${anime.nombre}" width="120" height="200" class="w-[120px] h-[200px] sm:w-[200px] sm:h-[305px] rounded-lg mb-2"/>
                         <p class="${notaColor} font-sans text-sm mt-2 tracking-widest uppercase font-bold">${anime.nota ? anime.nota : "..."}</p> 
                     </div>
                 `;
