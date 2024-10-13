@@ -21,7 +21,7 @@ const ponelePlay = "PONELE PLAY"
 const ponelePlayTilde = "PÓNELE PLAY"
 const ponelePlayPonle = "PONLE PLAY"
 
-const girar1 = "TANIA GIRALDO"
+const girar1 = "GIRALDO"
 const girar2 = "GÍRALO"
 
 
