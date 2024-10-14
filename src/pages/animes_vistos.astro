@@ -3,7 +3,6 @@ import Layout from "../layouts/Layout.astro";
 import ArrowLSvg from "../SVGs/Arrow_L_svg.astro";
 import ArrowRSvg from "../SVGs/Arrow_R_svg.astro";
 import TrashsSvg from "../SVGs/Trash_svg.astro";
-
 ---
 
 <Layout title="Animes Vistos" bg_color="bg-neutral-950">
@@ -66,14 +65,14 @@ import TrashsSvg from "../SVGs/Trash_svg.astro";
             class="flex justify-center items-center space-x-4 mt-6"
         >
             <button
-                id="prev-page"
+                id="prev-page2"
                 class="bg-zinc-800 text-white rounded-md py-2.5 pr-4 pl-3 hover:bg-orange-800 transition-all flex items-center gap-1 disabled:opacity-50 disabled:hover:bg-zinc-800"
                 disabled
             >
                 <ArrowLSvg /> Anterior
             </button>
             <button
-                id="next-page"
+                id="next-page2"
                 class="bg-zinc-800 text-white rounded-md py-2.5 pr-3 pl-4 hover:bg-orange-800 transition-all flex items-center gap-1 disabled:opacity-50 disabled:hover:bg-zinc-800"
             >
                 Siguiente <ArrowRSvg />
@@ -87,8 +86,8 @@ import TrashsSvg from "../SVGs/Trash_svg.astro";
             (puede faltar alguno) <br />
             Postdata: VIVAN LAS LESBIANAS!!!!
         </footer>
-        <link rel="preconnect" href="https://tiermaker.com">
-        <link rel="preconnect" href="https://m.media-amazon.com">
+        <link rel="preconnect" href="https://tiermaker.com" />
+        <link rel="preconnect" href="https://m.media-amazon.com" />
     </main>
 </Layout>
 
@@ -147,6 +146,12 @@ import TrashsSvg from "../SVGs/Trash_svg.astro";
         ) as HTMLButtonElement;
         const nextPageButton = document.getElementById(
             "next-page",
+        ) as HTMLButtonElement;
+        const prevPageButton2 = document.getElementById(
+            "prev-page2",
+        ) as HTMLButtonElement;
+        const nextPageButton2 = document.getElementById(
+            "next-page2",
         ) as HTMLButtonElement;
 
         let filteredData = data;
@@ -220,9 +225,28 @@ import TrashsSvg from "../SVGs/Trash_svg.astro";
             }
         });
 
+        nextPageButton2.addEventListener("click", () => {
+            if (currentPage * pageSize < filteredData.length) {
+                currentPage++;
+                displayAnimes();
+                updatePaginationButtons();
+            }
+        });
+
+        prevPageButton2.addEventListener("click", () => {
+            if (currentPage > 0) {
+                currentPage--;
+                displayAnimes();
+                updatePaginationButtons();
+            }
+        });
+
         function updatePaginationButtons() {
             prevPageButton.disabled = currentPage === 0;
+            prevPageButton2.disabled = currentPage === 0;
             nextPageButton.disabled =
+                (currentPage + 1) * pageSize >= filteredData.length;
+            nextPageButton2.disabled =
                 (currentPage + 1) * pageSize >= filteredData.length;
         }
 
