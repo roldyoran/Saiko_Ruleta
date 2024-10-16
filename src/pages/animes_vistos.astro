@@ -195,10 +195,17 @@ import TrashsSvg from "../SVGs/Trash_svg.astro";
         }
 
         searchInput.addEventListener("input", () => {
-            const query = searchInput.value.trim().toLowerCase();
+            // Obtener el valor de la búsqueda, eliminar espacios en blanco y convertir a minúsculas
+            let query = searchInput.value.trim().toLowerCase();
+
+            // Reemplazar espacios en blanco con guiones
+            query = query.replace(/\s+/g, "-");
+
+            // Filtrar los datos en función del nombre del anime
             filteredData = data.filter((anime) =>
                 anime.nombre.toLowerCase().includes(query),
             );
+
             currentPage = 0; // Resetear a la primera página
             displayAnimes();
             updatePaginationButtons();
