@@ -23,6 +23,8 @@ const ponelePlayPonle = "PONLE PLAY"
 
 const girar1 = "GIRALDO"
 const girar2 = "GÍRALO"
+const girar3 = "MÍRALO"
+const girar4 = "TÍRALO"
 
 
 // const message_ia_amor = 'YO TAMBIEN TE AMO';
@@ -53,7 +55,7 @@ if (!SpeechRecognition) {
         console.log("Transcripción recibida: ", transcript);
 
         // GIRAR LA RULETA
-        if (transcript.includes(girar1) || transcript.includes(girar2)) {
+        if (transcript.includes(girar1) || transcript.includes(girar2) || transcript.includes(girar3) || transcript.includes(girar4) ) {
             spin();
             setTimeout(() => {
                 spin();
