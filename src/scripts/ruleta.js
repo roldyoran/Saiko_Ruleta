@@ -157,11 +157,11 @@ var spinSound = document.getElementById("spinSound");
 
 export function spin() {
   var rightImage = document.getElementById("personaje");
-  rightImage.src = "reigen_ag/Tania2_ruleta18.webp";
+  rightImage.src = "stefy_cyan22/tania_bruja_2.webp";
   // var cua = document.getElementById("personaje-blur");
   // cua.src = "reigen_ag/Tania2_ruleta18.webp";
   setTimeout(function () {
-    rightImage.src = "reigen_ag/Tania1_ruleta18.webp";
+    rightImage.src = "stefy_cyan22/tania_bruja_1.webp";
     // cua.src = "reigen_ag/Tania1_ruleta18.webp";
   }, 350); // Ajusta el tiempo según sea necesario (en milisegundos)
 

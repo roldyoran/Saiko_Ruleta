@@ -3,10 +3,19 @@
         "reigen_ag":{
             "imagenes":[
                 "Tago_ruleta18.webp",
-                "Tania1_ruleta18.webp"
+                "Tania1_ruleta18.webp",
+                "Tago_ruleta_vampiro.webp"
             ],
             "stickers":[
                 "stickers/lejiChilenoGirando.gif"
+            ]
+        },
+        "stefy_cyan22": {
+            "imagenes": [
+                "tania_bruja_2.webp"
+            ],
+            "stickers": [
+
             ]
         }
     },
