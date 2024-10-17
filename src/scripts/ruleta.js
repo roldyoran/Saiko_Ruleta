@@ -58,30 +58,28 @@ function getColor(item, maxitem) {
   var center = 128;
   var width = 127;
   var frequency = (Math.PI * 2) / maxitem;
-  
 
-  // red   = Math.sin(frequency * item + 3 + phase) * width + center;
+  // Definir los colores de naranja y morado específicos
+  var orangeColor = { red: 255, green: 140, blue: 0 };  // Naranja
+  var purpleColor = { red: 128, green: 0, blue: 120 };  // Morado
 
-  // Ajustamos los componentes de color para obtener tonos rosados y morados
-  var red = Math.sin(frequency * item + 3 + phase) * width + center;
-  var green = Math.sin(frequency * item + 4 + phase) * width + center * 0.2; // Reducimos el verde para evitar tonos verdosos
-  var blue = Math.sin(frequency * item + phase) * width + center; // Aumentamos el componente azul
-
-  // Ajustamos los tonos de rosado y morado
-  red += 200; // Ajusta este valor para obtener más o menos rojo
-  blue += 180; // Ajusta el azul para obtener más o menos morado
+  // Alternar entre morado y naranja
+  var color;
+  if (item % 2 === 0) {
+    // Color morado
+    color = purpleColor;
+  } else {
+    // Color naranja
+    color = orangeColor;
+  }
 
   // Aseguramos que los valores estén en el rango correcto (0-255)
-  red = Math.min(255, Math.max(0, red));
-  green = Math.min(255, Math.max(0, green));
-  blue = Math.min(255, Math.max(0, blue));
-
-
+  var red = Math.min(255, Math.max(0, color.red));
+  var green = Math.min(255, Math.max(0, color.green));
+  var blue = Math.min(255, Math.max(0, color.blue));
 
   return RGB2Color(red, green, blue);
 
-  // var colors = ['#FFB6C1', '#FF69B4', '#FF1493', '#DB7093', '#C71585', '#DA70D6', '#FF00FF', '#BA55D3', '#9370DB', '#8A2BE2', '#9400D3', '#9932CC', '#8B008B', '#800080', '#4B0082', '#6A5ACD', '#7B68EE', '#483D8B', '#4169E1', '#6495ED'];
-  // return colors[item % colors.length];
 }
 
 function drawRouletteWheel() {
@@ -175,7 +173,7 @@ export function spin() {
   spinTime = 0;
   spinTimeTotal = Math.random() * 6 + 4 * 2000; // el 4 era
 
-  
+
   spinSound.currentTime = 0; // Reinicia el audio al hacer clic nuevamente
   spinSound.play();
 
