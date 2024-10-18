@@ -15,17 +15,17 @@ import Content from "../components/Content.astro";
 		<Content />
 	</main>
 
-	<div>
-		<div class="wave"></div>
-		<div class="wave"></div>
-		<div class="wave"></div>
-	</div>
-
 	<!-- Archivos precargados -->
 	<audio id="spinSound" src="audios/audio.mp3"></audio>
 	<audio id="bell" src="audios/bell_ring.mp3"></audio>
 	<img src="stefy_cyan22/tania_bruja_2.webp" alt="tania" class="hidden" />
 	<audio id="cancion"></audio>
+
+	<div>
+		<div class="wave"></div>
+		<div class="wave"></div>
+		<div class="wave"></div>
+	</div>
 </Layout>
 
 <style>
@@ -35,10 +35,10 @@ import Content from "../components/Content.astro";
 		/* overflow: auto; */
 		background: linear-gradient(
 			315deg,
-			rgb(31, 4, 29) 3%,
-			rgb(19, 7, 24) 38%,
-			rgb(6, 7, 29) 68%,
-			rgb(3, 34, 39) 98%
+			rgb(31, 4, 29) 0%,
+			rgb(19, 7, 24) 30%,
+			rgb(6, 7, 29) 60%,
+			rgb(3, 34, 39) 100%
 		);
 		animation: gradient 30s ease infinite;
 		background-size: 400% 400%;
