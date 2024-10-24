@@ -1394,6 +1394,36 @@
         "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1729137798lovely-complex.png"
     },
     {
+        "nombre": "bakugan",
+        "id": "294",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1729309262bakugan.png"
+    },
+    {
+        "nombre": "oi-tonbo",
+        "id": "295",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1729388289img5234.png"
+    },
+    {
+        "nombre": "nichijou",
+        "id": "296",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1729478644nichijou.png"
+    },
+    {
+        "nombre": "onii-chan-wa-oshimai",
+        "id": "297",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1729481517onii-chan-wa-oshimai.png"
+    },
+    {
+        "nombre": "sidonia-no-kishi",
+        "id": "301",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1729565308sidonia-no-kishi.png"
+    },
+    {
+        "nombre": "roboticsnotes",
+        "id": "302",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1729668834roboticsnotes.png"
+    },
+    {
         "nombre": "jujutsukaisen",
         "id": "901",
         "url": "https://m.media-amazon.com/images/M/MV5BNGY4MTg3NzgtMmFkZi00NTg5LWExMmEtMWI3YzI1ODdmMWQ1XkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_FMjpg_UX1000_.jpg"
@@ -1437,5 +1467,11 @@
         "nombre": "fullmetalalchemist",
         "id": "909",
         "url": "https://m.media-amazon.com/images/M/MV5BZmEzN2YzOTItMDI5MS00MGU4LWI1NWQtOTg5ZThhNGQwYTEzXkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_.jpg"
+    },
+    {
+        "nombre": "ranma_y_medio",
+        "nota": "wena",
+        "id": "910",
+        "url": "https://m.media-amazon.com/images/M/MV5BYjg3ZWY4YmMtYjU1OS00ZmU4LWJmODMtMjBlNmE2ZjkyNzJjXkEyXkFqcGc@._V1_.jpg"
     }
 ]
