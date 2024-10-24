@@ -42,6 +42,12 @@
         "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1723336833schooldayslatino-185x278.png"
     },
     {
+        "nombre": "lovely-complex",
+        "nota": "goty<br/>🤍",
+        "id": "293",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1729137798lovely-complex.png"
+    },
+    {
         "nombre": "claymore",
         "nota": "god",
         "id": "176",
@@ -1255,6 +1261,7 @@
     },
     {
         "nombre": "wonderegg",
+        "nota": "horrible",
         "id": "205",
         "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1719812870wonderegglatino2021-185x278.png"
     },
@@ -1388,12 +1395,6 @@
         "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1729043199super-sonico-the-animation.png"
     },
     {
-        "nombre": "lovely-complex",
-        "nota": "goty ❤️",
-        "id": "293",
-        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1729137798lovely-complex.png"
-    },
-    {
         "nombre": "bakugan",
         "id": "294",
         "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1729309262bakugan.png"
@@ -1473,5 +1474,10 @@
         "nota": "wena",
         "id": "910",
         "url": "https://m.media-amazon.com/images/M/MV5BYjg3ZWY4YmMtYjU1OS00ZmU4LWJmODMtMjBlNmE2ZjkyNzJjXkEyXkFqcGc@._V1_.jpg"
+    },
+    {
+        "nombre": "rent-a-girlfriend",
+        "id": "911",
+        "url": "https://m.media-amazon.com/images/M/MV5BYmIzYzNhZDUtZTU3OC00NDA2LTgyOWYtZjA3N2EwMjdkZjRiXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
     }
 ]
