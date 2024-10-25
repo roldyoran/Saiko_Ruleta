@@ -13,6 +13,13 @@ import TrashsSvg from "../SVGs/Trash_svg.astro";
         >
             ↑
         </a>
+        <a
+            href="https://tiermaker.com/create/animes-random-saikomic-16203118"
+            target="_blank"
+            class="absolute hidden md:block text-white top-7 right-16 transition-all hover:text-gray-500"
+        >
+            Tiermaker
+        </a>
         <h1 id="title" class="text-center text-white text-4xl mb-6">
             Animes Vistos
         </h1>
@@ -37,7 +44,7 @@ import TrashsSvg from "../SVGs/Trash_svg.astro";
 
         <div
             id="pagination"
-            class="flex justify-center items-center space-x-4 mt-6 mb-3 text-sm"
+            class="flex justify-center items-center space-x-4 mt-6 mb-4 text-sm"
         >
             <button
                 id="prev-page"
@@ -195,7 +202,7 @@ import TrashsSvg from "../SVGs/Trash_svg.astro";
                         <img rel="preload" loading="lazy" src="${anime.url}" alt="${anime.nombre}" width="120" height="200" class="w-[120px] h-[200px] sm:w-[200px] sm:h-[305px] rounded-lg mb-2"/>
 
                         <p class="${notaColor} rounded-xl z-20 md:z-0 font-sans text-sm mt-2 tracking-widest uppercase font-bold absolute left-3 top-2 transform -translate-x-1/2 -translate-y-1/2 -rotate-45 select-none">
-                            ${anime.nota ? anime.nota : "..."}
+                            ${anime.nota ? anime.nota : ". . ."}
                         </p> 
                     </div>
                 `;
