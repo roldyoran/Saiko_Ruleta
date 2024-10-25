@@ -23,13 +23,13 @@ import TrashsSvg from "../SVGs/Trash_svg.astro";
             <input
                 type="text"
                 id="search-input"
-                class="p-2 w-80 max-w-xs border-zinc-400 border-2 rounded-l-md bg-zinc-900 text-zinc-300"
+                class="p-2 w-80 max-w-xs border-zinc-400 border-2 rounded-l-md bg-transparent text-zinc-300"
                 placeholder="Buscar por nombre..."
             />
 
             <button
                 id="clear-button"
-                class="bg-zinc-700 border-2 border-zinc-400 hover:text-white text-zinc-300 rounded-r-md p-2 hover:bg-orange-800 transition-all"
+                class="border-2 border-zinc-400 hover:text-white text-zinc-300 rounded-r-md p-2 hover:bg-orange-800 transition-all"
             >
                 <TrashsSvg />
             </button>
@@ -171,24 +171,32 @@ import TrashsSvg from "../SVGs/Trash_svg.astro";
                 loadAnimes().forEach((anime) => {
                     const notaColor =
                         typeof anime.nota === "string" &&
-                            anime.nota.includes("goty")
+                        anime.nota.includes("goty")
                             ? "text-white bg-gradient-to-r from-yellow-600/90 to-orange-500/90 px-2 py-1 transition-all"
-                            : typeof anime.nota === "string" &&
-                                (anime.nota.includes("god") || anime.nota.includes("wena")) || anime.nota === "piola"
+                            : (typeof anime.nota === "string" &&
+                                    (anime.nota.includes("god") ||
+                                        anime.nota.includes("wena"))) ||
+                                anime.nota === "piola"
                               ? "text-white bg-green-700/90 px-2 py-1 transition-all"
                               : typeof anime.nota === "string" &&
-                                  (anime.nota.includes("no me gusto") || anime.nota.includes("mala"))
+                                  (anime.nota.includes("no me gusto") ||
+                                      anime.nota.includes("mala"))
                                 ? "text-white bg-red-700/90 px-2 py-1 transition-all"
                                 : "bg-gray-600/90 text-white-200 px-2 py-1"; // Otras notas
 
                     animesDiv.innerHTML += `
-                    <div class="bg-zinc-900 rounded-lg shadow-lg p-4 md:m-2 m-0.5 md:max-w-xs flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-1 relative">
+                    <div class="bg-zinc-900 rounded-lg shadow-lg p-4 md:m-2 m-0.5 md:max-w-xs flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-1 relative group">
                         <h2 class="text-white text-lg mt-1 mb-1 truncate w-24 md:w-full">
                             ${anime.nombre.length > 14 ? anime.nombre.substring(0, 14) + "..." : anime.nombre}
                         </h2>
+
                         <p class="text-zinc-400 text-sm pb-2">ID: ${anime.id}</p>
+
                         <img rel="preload" loading="lazy" src="${anime.url}" alt="${anime.nombre}" width="120" height="200" class="w-[120px] h-[200px] sm:w-[200px] sm:h-[305px] rounded-lg mb-2"/>
-                        <p class="${notaColor} rounded-xl z-20 md:z-0 font-sans text-sm mt-2 tracking-widest uppercase font-bold absolute left-3 top-2 transform -translate-x-1/2 -translate-y-1/2 rotate-45 -rotate-45">${anime.nota ? anime.nota : "..."}</p> 
+
+                        <p class="${notaColor} rounded-xl z-20 md:z-0 font-sans text-sm mt-2 tracking-widest uppercase font-bold absolute left-3 top-2 transform -translate-x-1/2 -translate-y-1/2 -rotate-45 select-none">
+                            ${anime.nota ? anime.nota : "..."}
+                        </p> 
                     </div>
                 `;
                 });
