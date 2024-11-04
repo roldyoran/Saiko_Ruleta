@@ -3,6 +3,8 @@ import Layout from "../layouts/Layout.astro";
 import ArrowLSvg from "../SVGs/Arrow_L_svg.astro";
 import ArrowRSvg from "../SVGs/Arrow_R_svg.astro";
 import TrashsSvg from "../SVGs/Trash_svg.astro";
+
+
 ---
 
 <Layout title="Animes Vistos" bg_color=" bg-neutral-900">
@@ -179,7 +181,7 @@ import TrashsSvg from "../SVGs/Trash_svg.astro";
                     const notaColor =
                         typeof anime.nota === "string" &&
                         anime.nota.includes("goty")
-                            ? "text-white bg-gradient-to-r from-yellow-700 to-orange-600 px-2 py-1 transition-all"
+                            ? "text-white bg-gradient-to-r from-yellow-600 to-orange-600 px-2 py-1 transition-all"
                             : (typeof anime.nota === "string" &&
                                     (anime.nota.includes("god") ||
                                         anime.nota.includes("wena"))) ||
@@ -195,14 +197,14 @@ import TrashsSvg from "../SVGs/Trash_svg.astro";
     <div class="rounded-lg shadow-lg p-0 md:m-2 m-0.5 md:max-w-xs flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-1 relative group w-[110px] h-[180px] md:w-[210px] md:h-[310px]">
         <img rel="preload" loading="lazy" src="${anime.url}" alt="${anime.nombre}" width="120" height="200" class="w-full h-full object-cover rounded-lg"/>
 
-        <div class="absolute inset-x-0 bottom-0 bg-black/90 flex flex-col items-center p-2">
-            <h2 class="text-white text-lg mb-1 truncate w-24 md:w-full">
+        <div class="absolute inset-x-0 bottom-0 bg-black/80 flex flex-col items-center p-2">
+            <h2 class="text-white text-sm md:text-lg mb-1 truncate w-24 md:w-full">
                 ${anime.nombre.length > 14 ? anime.nombre.substring(0, 14) + "..." : anime.nombre}
             </h2>
-            <p class="text-zinc-300 text-sm">ID: ${anime.id}</p>
+            <p class="text-zinc-300 hidden md:block text-sm">ID: ${anime.id}</p>
         </div>
 
-        <p class="${notaColor} rounded-xl z-20 md:z-0 font-sans text-sm mt-2 tracking-widest uppercase font-bold absolute px-2 left-1 -top-1 select-none">
+        <p class="${notaColor} rounded-xl z-20 md:z-0 font-sans text-xs md:text-sm mt-2 tracking-widest uppercase font-bold absolute px-2 left-1 -top-1 select-none">
             ${anime.nota ? anime.nota : ". . ."}
         </p>
     </div>`;
