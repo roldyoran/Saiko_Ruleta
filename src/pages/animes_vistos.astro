@@ -5,7 +5,7 @@ import ArrowRSvg from "../SVGs/Arrow_R_svg.astro";
 import TrashsSvg from "../SVGs/Trash_svg.astro";
 ---
 
-<Layout title="Animes Vistos" bg_color="bg-neutral-950">
+<Layout title="Animes Vistos" bg_color=" bg-neutral-900">
     <main id="top" class="font-mono text-zinc-300 p-6">
         <a
             href="#top"
@@ -44,7 +44,7 @@ import TrashsSvg from "../SVGs/Trash_svg.astro";
 
         <div
             id="pagination"
-            class="flex justify-center items-center space-x-4 mt-6 mb-4 text-sm"
+            class="flex justify-center items-center space-x-4 mt-6 mb-6 text-sm"
         >
             <button
                 id="prev-page"
@@ -179,33 +179,33 @@ import TrashsSvg from "../SVGs/Trash_svg.astro";
                     const notaColor =
                         typeof anime.nota === "string" &&
                         anime.nota.includes("goty")
-                            ? "text-white bg-gradient-to-r from-yellow-600/90 to-orange-500/90 px-2 py-1 transition-all"
+                            ? "text-white bg-gradient-to-r from-yellow-700 to-orange-600 px-2 py-1 transition-all"
                             : (typeof anime.nota === "string" &&
                                     (anime.nota.includes("god") ||
                                         anime.nota.includes("wena"))) ||
                                 anime.nota === "piola"
-                              ? "text-white bg-green-700/90 px-2 py-1 transition-all"
+                              ? "text-white bg-green-800 px-2 py-1 transition-all"
                               : typeof anime.nota === "string" &&
                                   (anime.nota.includes("no me gusto") ||
                                       anime.nota.includes("mala"))
-                                ? "text-white bg-red-700/90 px-2 py-1 transition-all"
-                                : "bg-gray-600/90 text-white-200 px-2 py-1"; // Otras notas
+                                ? "text-white bg-red-800 px-2 py-1 transition-all"
+                                : "bg-gray-700/90 text-white-200 px-2 py-1"; // Otras notas
 
                     animesDiv.innerHTML += `
-                    <div class="bg-zinc-900 rounded-lg shadow-lg p-4 md:m-2 m-0.5 md:max-w-xs flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-1 relative group">
-                        <h2 class="text-white text-lg mt-1 mb-1 truncate w-24 md:w-full">
-                            ${anime.nombre.length > 14 ? anime.nombre.substring(0, 14) + "..." : anime.nombre}
-                        </h2>
+    <div class="rounded-lg shadow-lg p-0 md:m-2 m-0.5 md:max-w-xs flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-1 relative group w-[110px] h-[180px] md:w-[210px] md:h-[310px]">
+        <img rel="preload" loading="lazy" src="${anime.url}" alt="${anime.nombre}" width="120" height="200" class="w-full h-full object-cover rounded-lg"/>
 
-                        <p class="text-zinc-400 text-sm pb-2">ID: ${anime.id}</p>
+        <div class="absolute inset-x-0 bottom-0 bg-black/90 flex flex-col items-center p-2">
+            <h2 class="text-white text-lg mb-1 truncate w-24 md:w-full">
+                ${anime.nombre.length > 14 ? anime.nombre.substring(0, 14) + "..." : anime.nombre}
+            </h2>
+            <p class="text-zinc-300 text-sm">ID: ${anime.id}</p>
+        </div>
 
-                        <img rel="preload" loading="lazy" src="${anime.url}" alt="${anime.nombre}" width="120" height="200" class="w-[120px] h-[200px] sm:w-[200px] sm:h-[305px] rounded-lg mb-2"/>
-
-                        <p class="${notaColor} rounded-xl z-20 md:z-0 font-sans text-sm mt-2 tracking-widest uppercase font-bold absolute left-3 top-2 transform -translate-x-1/2 -translate-y-1/2 -rotate-45 select-none">
-                            ${anime.nota ? anime.nota : ". . ."}
-                        </p> 
-                    </div>
-                `;
+        <p class="${notaColor} rounded-xl z-20 md:z-0 font-sans text-sm mt-2 tracking-widest uppercase font-bold absolute px-2 left-1 -top-1 select-none">
+            ${anime.nota ? anime.nota : ". . ."}
+        </p>
+    </div>`;
                 });
                 animesDiv.classList.remove("opacity-0"); // Cambia a opacidad 1
             }, 200); // Tiempo de retraso para la animación
