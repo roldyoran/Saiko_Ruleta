@@ -2,7 +2,7 @@
 document.getElementById("playMusic").addEventListener("click", playMusic);
 function playMusic() {
   const playButton = document.getElementById("playButton");
-  const audioFiles = ["anime_fin.mp3", "trap_fin.mp3", "saiko_qlao.mp3",  "Tomboygod.mp3", "diatranquilo.mp3", "Isekai_Isekai.mp3"]; // "op_random2.mp3", "anime_fin.mp3", "trap_fin.mp3", "rock_fin.mp3", "yugi_op.mp3",
+  const audioFiles = ["anime_fin.mp3", "trap_fin.mp3", "saiko_qlao.mp3",  "Tomboygod.mp3", "diatranquilo.mp3", "Isekai_Isekai.mp3", "saikomicarts.mp3"]; // "op_random2.mp3", "anime_fin.mp3", "trap_fin.mp3", "rock_fin.mp3", "yugi_op.mp3",
   const randomIndex = Math.floor(Math.random() * audioFiles.length);
   const audioSrc = "audios/" + audioFiles[randomIndex];
   var audio = document.getElementById("cancion");
