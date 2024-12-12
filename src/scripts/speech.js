@@ -1,4 +1,4 @@
-import { spin } from './ruleta.js';
+import { spin, updateOptions } from './ruleta.js';
 
 
 // Frases a reconocer con .includes
@@ -25,6 +25,7 @@ const girar1 = "GIRALDO"
 const girar2 = "GÍRALO"
 const girar3 = "MÍRALO"
 const girar4 = "TÍRALO"
+const girar5 = "GIRALO"
 
 
 // const message_ia_amor = 'YO TAMBIEN TE AMO';
@@ -55,7 +56,7 @@ if (!SpeechRecognition) {
         console.log("Transcripción recibida: ", transcript);
 
         // GIRAR LA RULETA
-        if (transcript.includes(girar1) || transcript.includes(girar2) || transcript.includes(girar3) || transcript.includes(girar4) ) {
+        if (transcript.includes(girar1) || transcript.includes(girar2) || transcript.includes(girar3) || transcript.includes(girar4)  || transcript.includes(girar5) ) {
             spin();
             setTimeout(() => {
                 spin();

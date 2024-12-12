@@ -26,7 +26,7 @@ var ctx;
 
 document.getElementById("updateOptiones").addEventListener("click", updateOptions);
 
-function updateOptions() {
+export function updateOptions() {
   var numOptions = parseInt(document.getElementById("numOptions").value);
   if (!isNaN(numOptions) && numOptions > 0) {
     // excluir numeros
@@ -171,11 +171,11 @@ var spinSound = document.getElementById("spinSound");
 
 export function spin() {
   var rightImage = document.getElementById("personaje");
-  rightImage.src = "stefy_cyan22/tania_bruja_2.webp";
+  rightImage.src = "roldyoran/TaniaColegialastick2.webp";
   // var cua = document.getElementById("personaje-blur");
   // cua.src = "reigen_ag/Tania2_ruleta18.webp";
   setTimeout(function () {
-    rightImage.src = "stefy_cyan22/tania_bruja_1.webp";
+    rightImage.src = "roldyoran/TaniaColegialastick1.webp";
     // cua.src = "reigen_ag/Tania1_ruleta18.webp";
   }, 350); // Ajusta el tiempo según sea necesario (en milisegundos)
 
