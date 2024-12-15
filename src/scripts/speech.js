@@ -1,6 +1,12 @@
 import { spin, updateOptions } from './ruleta.js';
 
 
+
+// Función auxiliar para verificar si el transcript incluye alguna de las frases
+function includesAny(transcript, phrases) {
+    return phrases.some(phrase => transcript.includes(phrase));
+}
+
 // Frases a reconocer con .includes
 const fraseRec2 = "ACTUALÍZALO A DOS";
 const fraseRec2_2 = "ACTUALÍZALO A 2";
@@ -16,6 +22,17 @@ const fraseRec7 = "ACTUALÍZALO A 7";
 const fraseRec7_2 = "ACTUALÍZALO A SIETE";
 const fraseRec8 = "ACTUALÍZALO A 8";
 const fraseRec8_2 = "ACTUALÍZALO A OCHO";
+
+// Frases agrupadas en un objeto para facilitar el manejo
+const phrasesMap = {
+    2: [fraseRec2, fraseRec2_2],
+    3: [fraseRec3, fraseRec3_2],
+    4: [fraseRec4, fraseRec4_2],
+    5: [fraseRec5, fraseRec5_2],
+    6: [fraseRec6, fraseRec6_2],
+    7: [fraseRec7, fraseRec7_2],
+    8: [fraseRec8, fraseRec8_2],
+};
 
 const ponelePlay = "PONELE PLAY"
 const ponelePlayTilde = "PÓNELE PLAY"
@@ -39,6 +56,7 @@ var audio_depilate = document.getElementById("cancion");
 
 // Comprobar si el navegador soporta la API de reconocimiento de voz
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
 if (!SpeechRecognition) {
     alert("Tu navegador no soporta la API de reconocimiento de voz");
 } else {
@@ -46,6 +64,9 @@ if (!SpeechRecognition) {
     recognition.lang = 'es-ES';
     recognition.continuous = true;
     recognition.interimResults = false; // Solo queremos resultados finales
+
+    // Variable para evitar múltiples llamadas a `start`
+    let isRecognizing = false;
 
     // Evento que se activa cuando se recibe una transcripción
     recognition.onresult = (event) => {
@@ -56,7 +77,7 @@ if (!SpeechRecognition) {
         console.log("Transcripción recibida: ", transcript);
 
         // GIRAR LA RULETA
-        if (transcript.includes(girar1) || transcript.includes(girar2) || transcript.includes(girar3) || transcript.includes(girar4)  || transcript.includes(girar5) ) {
+        if (transcript.includes(girar1) || transcript.includes(girar2) || transcript.includes(girar3) || transcript.includes(girar4) || transcript.includes(girar5)) {
             spin();
             setTimeout(() => {
                 spin();
@@ -70,83 +91,82 @@ if (!SpeechRecognition) {
             setTimeout(() => {
                 spin();
             }, 2200);
-        // ACTIVAR MUSICA
-        // } else if (transcript.includes(ponelePlay) || transcript.includes(ponelePlayTilde) || transcript.includes(ponelePlayPonle)) {
-        //     playVideo();
-        // DEPILATE TROLEO
+            
+            // DEPILATE TROLEO
         } else if (transcript.includes("TE AMO") || transcript.includes("DEPILATE") || transcript.includes("DEPÍLATE") || transcript.includes("TEAMO") || transcript.includes("DEPILANTE")) {
             audio_depilate.src = audioSrc_speech;
             audio_depilate.play();
-        
-        // ACTUALIZA LA RULETA AL NUMERO ESPECIFICADO
-        // NOTA
-        // Cambiar por Switch
-        } else if (transcript.includes(fraseRec2)) {
-            // console.log("frase 2");
+
+        } else if (includesAny(transcript, phrasesMap[2])) {
+            // console.log("frase 2", phrasesMap[2]);   
             document.getElementById("numOptions").value = "2";
-            var numOptions = parseInt(document.getElementById("numOptions").value);
             updateOptions();
-        } else if (transcript.includes(fraseRec3) || transcript.includes(fraseRec3_2)) {
-            // console.log("frase 3");
+        } else if (includesAny(transcript, phrasesMap[3])) {
+            // console.log("frase 3", phrasesMap[3]);   
             document.getElementById("numOptions").value = "3";
             updateOptions();
-        } else if (transcript.includes(fraseRec4) || transcript.includes(fraseRec4_2)) {
-            // console.log("frase 4");
+        } else if (includesAny(transcript, phrasesMap[4])) {
+            // console.log("frase 4", phrasesMap[4]);   
             document.getElementById("numOptions").value = "4";
             updateOptions();
-        } else if (transcript.includes(fraseRec5) || transcript.includes(fraseRec5_2)) {
-            // console.log("frase 5");
+        } else if (includesAny(transcript, phrasesMap[5])) {
+            // console.log("frase 5", phrasesMap[5]);
             document.getElementById("numOptions").value = "5";
             updateOptions();
-        } else if (transcript.includes(fraseRec6) || (transcript.includes(fraseRec6_2))) {
-            // console.log("frase 6");
+        } else if (includesAny(transcript, phrasesMap[6])) {
+            // console.log("frase 6", phrasesMap[6]);   
             document.getElementById("numOptions").value = "6";
             updateOptions();
-        } else if (transcript.includes(fraseRec7) || transcript.includes(fraseRec7_2)) {
-            // console.log("frase 7");
+        } else if (includesAny(transcript, phrasesMap[7])) {
+            // console.log("frase 7", phrasesMap[7]);   
             document.getElementById("numOptions").value = "7";
             updateOptions();
-        } else if (transcript.includes(fraseRec8) || transcript.includes(fraseRec8_2)) {
-            // console.log("frase 8");
+        } else if (includesAny(transcript, phrasesMap[8])) {
+            // console.log("frase 8", phrasesMap[8]);   
             document.getElementById("numOptions").value = "8";
             updateOptions();
         }
     };
 
     // Manejar errores
+    // recognition.onerror = (event) => {
+    //     console.error('Error de reconocimiento de voz:', event.error);
+    //     // Reiniciar el reconocimiento de voz al finalizar
+    //     recognition.start();
+    // };
+
+    // recognition.onend = () => {
+    //     // Reiniciar el reconocimiento de voz al finalizar
+    //     recognition.start();
+    // };
+
+    // // Iniciar el reconocimiento de voz al cargar la página
+    // recognition.start();
+
+    // Manejar errores
     recognition.onerror = (event) => {
-        console.error('Error de reconocimiento de voz:', event.error);
-        // Reiniciar el reconocimiento de voz al finalizar
-        recognition.start();
+        console.error("Error de reconocimiento de voz:", event.error);
+
+        // Reiniciar solo si no está activo
+        if (!isRecognizing) {
+            recognition.start();
+        }
     };
 
+    // Reiniciar el reconocimiento cuando finalice
     recognition.onend = () => {
-        // Reiniciar el reconocimiento de voz al finalizar
+        isRecognizing = false;
+
+        // Reiniciar el reconocimiento
         recognition.start();
+        isRecognizing = true;
     };
 
-    // Iniciar el reconocimiento de voz al cargar la página
-    recognition.start();
+    // Iniciar el reconocimiento al cargar la página
+    if (!isRecognizing) {
+        recognition.start();
+        isRecognizing = true;
+    }
+
 }
 
-
-
-// recognition.onerror = (event) => {
-//     console.error('Error de reconocimiento de voz:', event.error);
-//     setTimeout(() => {
-//         recognition.start();
-//     }, 1000); // Esperar 1 segundo antes de reiniciar
-// };
-
-// recognition.onend = () => {
-//     console.log("Reconocimiento de voz finalizado, reiniciando...");
-//     setTimeout(() => {
-//         recognition.start();
-//     }, 1000); // Esperar 1 segundo antes de reiniciar
-// };
-
-// // Reiniciar el reconocimiento cada 5 minutos para evitar problemas de tiempo
-// setInterval(() => {
-//     recognition.stop();
-//     recognition.start();
-// }, 300000); // 300,000 ms = 5 minutos
