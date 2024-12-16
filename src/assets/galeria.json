@@ -2,13 +2,16 @@
     "Temporada #2":{
         "reigen_ag":{
             "imagenes":[
+                "Tago_ruleta_navidad.webp",
+                "Tania1_navidad.webp",
                 "Tago_ruleta18.webp",
                 "Tania1_ruleta18.webp",
                 "Tago_ruleta_vampiro.webp"
             ],
             "stickers":[
                 "stickers/lejiChilenoGirando.gif",
-                "stickers/leji_halo.gif"
+                "stickers/leji_halo.gif",
+                "stickers/leji_navidad.gif"
             ]
         },
         "stefy_cyan22": {
