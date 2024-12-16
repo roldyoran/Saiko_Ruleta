@@ -59,40 +59,44 @@ function getColor(item, maxitem) {
   var width = 127;
   var frequency = (Math.PI * 2) / maxitem;
 
+  // Definir los colores de rojo, verde y blanco específicos
+  var redColor = { red: 255, green: 0, blue: 0 };    // Rojo vibrante
+  var greenColor = { red: 0, green: 240, blue: 0 };  // Verde intenso
+  var whiteColor = { red: 255, green: 255, blue: 255 }; // Blanco puro
 
-  // // Definir los colores de naranja y morado específicos
-  // var orangeColor = { red: 255, green: 165, blue: 0 };    // Naranja más vibrante
-  // var purpleColor = { red: 138, green: 43, blue: 226 };   // Morado intenso
-
-  // // Alternar entre morado y naranja
-  // var color;
-  // if (item % 2 === 0) {
-  //   // Color morado
-  //   color = purpleColor;
-  // } else {
-  //   // Color naranja
-  //   color = orangeColor;
-  // }
-
-  // // Aseguramos que los valores estén en el rango correcto (0-255)
-  // var red = Math.min(255, Math.max(0, color.red));
-  // var green = Math.min(255, Math.max(0, color.green));
-  // var blue = Math.min(255, Math.max(0, color.blue));
-
-  // return RGB2Color(red, green, blue);
-
-
-  // Calcular los valores RGB usando funciones seno y coseno para crear un gradiente arcoíris
-  var red = Math.sin(frequency * item + 0 + phase) * width + center;
-  var green = Math.sin(frequency * item + 2 + phase) * width + center;
-  var blue = Math.sin(frequency * item + 4 + phase) * width + center;
+  // Alternar entre rojo, verde y blanco
+  var color;
+  if (item % 3 === 0) {
+    // Color rojo
+    color = redColor;
+  } else if (item % 3 === 1) {
+    // Color verde
+    color = greenColor;
+  } else {
+    // Color blanco
+    color = whiteColor;
+  }
 
   // Aseguramos que los valores estén en el rango correcto (0-255)
-  red = Math.min(255, Math.max(0, Math.round(red)));
-  green = Math.min(255, Math.max(0, Math.round(green)));
-  blue = Math.min(255, Math.max(0, Math.round(blue)));
+  var red = Math.min(255, Math.max(0, color.red));
+  var green = Math.min(255, Math.max(0, color.green));
+  var blue = Math.min(255, Math.max(0, color.blue));
 
   return RGB2Color(red, green, blue);
+
+
+
+  // // Calcular los valores RGB usando funciones seno y coseno para crear un gradiente arcoíris
+  // var red = Math.sin(frequency * item + 0 + phase) * width + center;
+  // var green = Math.sin(frequency * item + 2 + phase) * width + center;
+  // var blue = Math.sin(frequency * item + 4 + phase) * width + center;
+
+  // // Aseguramos que los valores estén en el rango correcto (0-255)
+  // red = Math.min(255, Math.max(0, Math.round(red)));
+  // green = Math.min(255, Math.max(0, Math.round(green)));
+  // blue = Math.min(255, Math.max(0, Math.round(blue)));
+
+  // return RGB2Color(red, green, blue);
 
 
 
@@ -171,11 +175,11 @@ var spinSound = document.getElementById("spinSound");
 
 export function spin() {
   var rightImage = document.getElementById("personaje");
-  rightImage.src = "roldyoran/TaniaColegialastick2.webp";
+  rightImage.src = "reigen_ag/Tania2_navidad.webp";
   // var cua = document.getElementById("personaje-blur");
   // cua.src = "reigen_ag/Tania2_ruleta18.webp";
   setTimeout(function () {
-    rightImage.src = "roldyoran/TaniaColegialastick1.webp";
+    rightImage.src = "reigen_ag/Tania1_navidad.webp";
     // cua.src = "reigen_ag/Tania1_ruleta18.webp";
   }, 350); // Ajusta el tiempo según sea necesario (en milisegundos)
 
