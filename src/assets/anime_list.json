@@ -1378,12 +1378,6 @@
         "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1728786909giji-harem.png"
     },
     {
-        "nombre": "prision-school",
-        "nota": "god 🤨",
-        "id": "291",
-        "url": "https://m.media-amazon.com/images/M/MV5BYmM3ODQxNzYtZTY4NS00NzE2LWIwNGMtM2E3YjUxYjZjNDVhXkEyXkFqcGc@._V1_.jpg"
-    },
-    {
         "nombre": "mis-aventuras-con-superman",
         "nota": "mala",
         "id": "291",
@@ -1416,6 +1410,12 @@
         "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1729481517onii-chan-wa-oshimai.png"
     },
     {
+        "nombre": "prision-school",
+        "nota": "god 🤨",
+        "id": "299",
+        "url": "https://m.media-amazon.com/images/M/MV5BYmM3ODQxNzYtZTY4NS00NzE2LWIwNGMtM2E3YjUxYjZjNDVhXkEyXkFqcGc@._V1_.jpg"
+    },
+    {
         "nombre": "sidonia-no-kishi",
         "id": "301",
         "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1729565308sidonia-no-kishi.png"
@@ -1424,6 +1424,206 @@
         "nombre": "roboticsnotes",
         "id": "302",
         "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1729668834roboticsnotes.png"
+    },
+    {
+        "nombre": "chi-chikyuu-no-undou-ni-tsuite",
+        "id": "303",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1729738757chi-chikyuu-no-undou-ni-tsuite.png"
+    },
+    {
+        "nombre": "sket-dance",
+        "id": "304",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1729827744sket-dance.png"
+    },
+    {
+        "nombre": "bartender",
+        "id": "305",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1729914956bartender.png"
+    },
+    {
+        "nombre": "levius",
+        "id": "306",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1730002305levius.png"
+    },
+    {
+        "nombre": "dandadan",
+        "id": "307",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1730091174dandadan.png"
+    },
+    {
+        "nombre": "initial-d",
+        "id": "308",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1730236760initial-d.png"
+    },
+    {
+        "nombre": "alien-",
+        "id": "309",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1730782457alien-9.png"
+    },
+    {
+        "nombre": "kuutei-dragons",
+        "id": "310",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1730860009kuutei-dragons.png"
+    },
+    {
+        "nombre": "great-teacher-onizuka",
+        "id": "311",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1730951531great-teacher-onizuka.png"
+    },
+    {
+        "nombre": "coluboccoro",
+        "id": "312",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1731031474coluboccoro.png"
+    },
+    {
+        "nombre": "img",
+        "id": "314",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1731120358img6119.png"
+    },
+    {
+        "nombre": "img",
+        "id": "315",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1731205336img6149.png"
+    },
+    {
+        "nombre": "ore-monogatari",
+        "id": "316",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1731294821ore-monogatari.png"
+    },
+    {
+        "nombre": "revisions",
+        "id": "317",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1731378458revisions.png"
+    },
+    {
+        "nombre": "hitoribocchi-no-isekai-kouryaku",
+        "id": "318",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1731464562hitoribocchi-no-isekai-kouryaku.png"
+    },
+    {
+        "nombre": "kaiji",
+        "id": "319",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1731553508kaiji.png"
+    },
+    {
+        "nombre": "",
+        "id": "320",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-173163953125-jigen-no-ririsa.png"
+    },
+    {
+        "nombre": "img",
+        "id": "321",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1731725124img6375.png"
+    },
+    {
+        "nombre": "img",
+        "id": "322",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1731814308img6463.png"
+    },
+    {
+        "nombre": "img",
+        "id": "323",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1731899555img6535.png"
+    },
+    {
+        "nombre": "pandora-hearts",
+        "id": "324",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1731982629pandora-hearts.png"
+    },
+    {
+        "nombre": "img",
+        "id": "325",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1732073558img6662.png"
+    },
+    {
+        "nombre": "inazuma-eleven-ares-no-tenbin",
+        "id": "326",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1732158810inazuma-eleven-ares-no-tenbin.png"
+    },
+    {
+        "nombre": "img",
+        "id": "327",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1732669946img6911.png"
+    },
+    {
+        "nombre": "img",
+        "id": "328",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1732672661img6912.png"
+    },
+    {
+        "nombre": "yamada-kun-to-7-nin-no-majo",
+        "id": "329",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1732753917yamada-kun-to-7-nin-no-majo.png"
+    },
+    {
+        "nombre": "godzilla-singular-point",
+        "id": "330",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1732855014godzilla-singular-point.png"
+    },
+    {
+        "nombre": "img",
+        "id": "331",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1732922450img6993.png"
+    },
+    {
+        "nombre": "img",
+        "id": "332",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1733024475img7046.png"
+    },
+    {
+        "nombre": "boku-dake-ga-inai-machi",
+        "id": "333",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1733109436boku-dake-ga-inai-machi.png"
+    },
+    {
+        "nombre": "kono-sekai-wa-fukanzen-sugiru",
+        "id": "334",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1733191628kono-sekai-wa-fukanzen-sugiru.png"
+    },
+    {
+        "nombre": "back-street-girls-gokudolls",
+        "id": "335",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1733278633back-street-girls-gokudolls.png"
+    },
+    {
+        "nombre": "yuri-kuma-arashi",
+        "id": "336",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1733364120yuri-kuma-arashi.png"
+    },
+    {
+        "nombre": "dance-in-the-vampire-bund",
+        "id": "337",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1733453140dance-in-the-vampire-bund.png"
+    },
+    {
+        "nombre": "sakugan",
+        "id": "338",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1733543319sakugan.png"
+    },
+    {
+        "nombre": "hi-no-tori-fnix",
+        "id": "339",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1733625584hi-no-tori-fnix.png"
+    },
+    {
+        "nombre": "zatch-bell",
+        "id": "340",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1733716086zatch-bell.png"
+    },
+    {
+        "nombre": "nige-jouzu-no-wakagimi",
+        "id": "341",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1733802146nige-jouzu-no-wakagimi.png"
+    },
+    {
+        "nombre": "exception",
+        "id": "342",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1733888240exception.png"
+    },
+    {
+        "nombre": "yozakura-san-chi-no-daisakusen",
+        "id": "343",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1733888864yozakura-san-chi-no-daisakusen.png"
     },
     {
         "nombre": "jujutsukaisen",
@@ -1446,7 +1646,8 @@
         "url": "https://m.media-amazon.com/images/M/MV5BYjEwNjEwYzgtZGZkMy00MTBjLTg2MmYtNDk0MzY2NmU0MmNiXkEyXkFqcGdeQXVyMzgxODM4NjM@._V1_FMjpg_UX1000_.jpg"
     },
     {
-        "nombre": "shingekinokyojin",
+        "nombre": "shingeki-no-kyojin",
+        "nota": "god",
         "id": "905",
         "url": "https://m.media-amazon.com/images/M/MV5BYzMwMjllN2UtY2UwZS00MjIyLWIxYjEtYWVkYmUwZGYwNDhhXkEyXkFqcGc@._V1_.jpg"
     },
