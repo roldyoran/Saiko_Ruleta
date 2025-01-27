@@ -43,6 +43,9 @@ const girar2 = "GÍRALO"
 const girar3 = "MÍRALO"
 const girar4 = "TÍRALO"
 const girar5 = "GIRALO"
+const girar6 = "TANIA"
+const girar7 = "TANIÁ"
+const girar8 = "TANIA"
 
 
 // const message_ia_amor = 'YO TAMBIEN TE AMO';
@@ -77,7 +80,7 @@ if (!SpeechRecognition) {
         console.log("Transcripción recibida: ", transcript);
 
         // GIRAR LA RULETA
-        if (transcript.includes(girar1) || transcript.includes(girar2) || transcript.includes(girar3) || transcript.includes(girar4) || transcript.includes(girar5)) {
+        if (transcript.includes(girar1) || transcript.includes(girar2) || transcript.includes(girar3) || transcript.includes(girar4) || transcript.includes(girar5) || transcript.includes(girar6) || transcript.includes(girar7) || transcript.includes(girar8)) {
             spin();
             setTimeout(() => {
                 spin();
