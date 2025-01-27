@@ -60,9 +60,9 @@ function getColor(item, maxitem) {
   var frequency = (Math.PI * 2) / maxitem;
 
   // Definir los colores de rojo, verde y blanco específicos
-  var redColor = { red: 255, green: 0, blue: 0 };    // Rojo vibrante
-  var greenColor = { red: 0, green: 240, blue: 0 };  // Verde intenso
-  var whiteColor = { red: 255, green: 255, blue: 255 }; // Blanco puro
+  var redColor = { red: 255, green: 0, blue: 0 };    // Rojo vibrante// Nuevos colores
+  var turquoiseColor = { red: 64, green: 224, blue: 208 }; // Turquesa
+  var purpleColor = { red: 128, green: 0, blue: 128 };    // Morado
 
   // Alternar entre rojo, verde y blanco
   var color;
@@ -71,10 +71,10 @@ function getColor(item, maxitem) {
     color = redColor;
   } else if (item % 3 === 1) {
     // Color verde
-    color = greenColor;
+    color = turquoiseColor;
   } else {
     // Color blanco
-    color = whiteColor;
+    color = purpleColor;
   }
 
   // Aseguramos que los valores estén en el rango correcto (0-255)
@@ -175,12 +175,12 @@ var spinSound = document.getElementById("spinSound");
 
 export function spin() {
   var rightImage = document.getElementById("personaje");
-  rightImage.src = "roldyoran/TaniaColegialastick2.webp";
+  rightImage.src = "reigen_ag/Tania_ruleta_DDD2.webp";
   // var cua = document.getElementById("personaje-blur");
-  // cua.src = "roldyoran/Tania2_ruleta18.webp";
+  // cua.src = "reigen_ag/Tania2_ruleta18.webp";
   setTimeout(function () {
-    rightImage.src = "roldyoran/TaniaColegialastick1.webp";
-    // cua.src = "roldyoran/Tania1_ruleta18.webp";
+    rightImage.src = "reigen_ag/Tania_ruleta_DDD1.webp";
+    // cua.src = "reigen_ag/Tania1_ruleta18.webp";
   }, 350); // Ajusta el tiempo según sea necesario (en milisegundos)
 
   // Genera un número aleatorio entre 1 y 9 (ambos inclusive)
