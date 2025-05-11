@@ -26,4 +26,4 @@ pnpm-debug.log*
 #otros
 script-anime-list/venv
 
-bun.lockb
+# bun.lockb
