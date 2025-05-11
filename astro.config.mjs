@@ -2,9 +2,7 @@ import { defineConfig } from 'astro/config';
 
 import tailwind from "@astrojs/tailwind";
 
-import react from "@astrojs/react";
-
-import mdx from "@astrojs/mdx";
+import vue from '@astrojs/vue';
 
 
 
@@ -43,5 +41,5 @@ export default defineConfig({
   site: BASE_URL,
   base: BASE_HREF,
   // trailingSlash: "never",
-  integrations: [tailwind(), react(), mdx()]
+  integrations: [tailwind(), vue()]
 });
