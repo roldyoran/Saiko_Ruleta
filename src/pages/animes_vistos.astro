@@ -12,5 +12,32 @@ import AnimeList from "@/components/anime/AnimeList.vue";
             TierMaker
         </a>
     </div>
+    <button
+        id="scroll-to-top"
+        class="fixed bottom-8 right-8 p-3 bg-zinc-800/80 hover:bg-zinc-700/80 text-orange-300/80 rounded-full shadow-lg transition-all duration-300 transform translate-y-20 opacity-0 backdrop-blur-sm z-50"
+        aria-label="Volver arriba"
+    >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+    </button>
+    
     <AnimeList client:load />
 </Layout>
+
+<script>
+    const scrollButton = document.getElementById('scroll-to-top');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            scrollButton.classList.remove('translate-y-20', 'opacity-0');
+        } else {
+            scrollButton.classList.add('translate-y-20', 'opacity-0');
+        }
+    });
+    scrollButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+</script>
