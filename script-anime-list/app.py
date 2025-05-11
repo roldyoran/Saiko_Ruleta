@@ -77,8 +77,8 @@ try:
                     anime['url'] = original_anime['url']
                     print(Fore.BLUE + f'URL actualizada para ID {anime["id"]}' + Style.RESET_ALL)
                 
-                # Actualizar nombre si la URL original contiene 'img'
-                if 'img' in original_anime['nombre'].lower():
+                # Actualizar Nombre si es diferente
+                if original_anime['nombre'] != anime['nombre']:
                     anime['nombre'] = original_anime['nombre']
                     print(Fore.GREEN + f'Nombre actualizado para ID {anime["id"]}: {anime["nombre"]}' + Style.RESET_ALL)
 

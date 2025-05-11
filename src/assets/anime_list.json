@@ -1,8 +1,8 @@
 [
     {
-        "nombre": "evangelionmovie4",
+        "nombre": "evangelion",
         "id": "15",
-        "url": "https://m.media-amazon.com/images/M/MV5BNWYzOTRlYzItMmM5Ni00NjQxLWIwYjUtYTFhYTVhOWRhYWEyXkEyXkFqcGc@._V1_.jpg",
+        "url": "https://preview.redd.it/nyvyh9na3uv61.png?width=640&crop=smart&auto=webp&s=17b49ba49f02d079e5d5121eebd1196f3dc10d46",
         "nota": "goty"
     },
     {
@@ -12,7 +12,7 @@
         "nota": "goty"
     },
     {
-        "nombre": "zom100zombieninarumadenishitai100nokoto",
+        "nombre": "zom100",
         "id": "128",
         "url": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/648f48ef-3ea2-432e-9734-436c59f406cc/dg9e5ep-38f34c55-bf1f-4998-9770-172868ced576.png/v1/fill/w_855,h_935,q_70,strp/shizuka_and_beatrix__ep8_by_evgeniy_ferante_dg9e5ep-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MjEwMCIsInBhdGgiOiJcL2ZcLzY0OGY0OGVmLTNlYTItNDMyZS05NzM0LTQzNmM1OWY0MDZjY1wvZGc5ZTVlcC0zOGYzNGM1NS1iZjFmLTQ5OTgtOTc3MC0xNzI4NjhjZWQ1NzYucG5nIiwid2lkdGgiOiI8PTE5MjAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.Hq_jwSx4Sl5r9cUbLrYhTDzGaMVmIcxYhlhsEjJkz8s",
         "nota": "goty"
@@ -26,7 +26,7 @@
     {
         "nombre": "vivyfluoriteeyessong",
         "id": "193",
-        "url": "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=1200,height=675/catalog/crunchyroll/41c3eec54958204f4c962defffd948c7.jpe",
+        "url": "https://preview.redd.it/art-vivy-fluorite-eyes-song-volume-1-2-cover-v0-ayuagiw69tq81.jpg?width=640&crop=smart&auto=webp&s=affec20ad77f15ecc3c1c2e777b231abe062d4cd",
         "nota": "goty"
     },
     {
@@ -40,16 +40,6 @@
         "id": "243",
         "url": "https://www.justwatch.com/images/poster/174037786/s332/school-days",
         "nota": "goty"
-    },
-    {
-        "nombre": "katekyohitmanreborn",
-        "id": "196",
-        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1718767536katekyohitmanrebornlatino-185x278.png"
-    },
-    {
-        "nombre": "tpbon",
-        "id": "225",
-        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1722047252tpbonlatino-185x278.png"
     },
     {
         "nombre": "campeoneshaciaelmundialoliverybenji",
@@ -81,6 +71,11 @@
         "nota": "god"
     },
     {
+        "nombre": "tpbon",
+        "id": "225",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1722047252tpbonlatino-185x278.png"
+    },
+    {
         "nombre": "bleach",
         "id": "74",
         "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1705115784bleachlatino-185x278.png"
@@ -99,6 +94,12 @@
         "nombre": "samuraichamploo",
         "id": "41",
         "url": "https://tiermaker.com/images/media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1704936668samuraichamploolatino-185x278.png"
+    },
+    {
+        "nombre": "katekyohitmanreborn",
+        "id": "196",
+        "url": "https://tiermaker.com/images//media/template_images/2024/16203118/animes-random-saikomic-16203118/zzzzz-1718767536katekyohitmanrebornlatino-185x278.png",
+        "nota": "mierda"
     },
     {
         "nombre": "nazonokanojox",
