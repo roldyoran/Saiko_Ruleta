@@ -68,7 +68,7 @@ Postdata: VIVAN LAS LESBIANAS!!!!
 
 <script setup>
 import { ref, computed, watch } from 'vue'
-import animeData from '../../assets/anime_list.json'
+import animeData from '@/assets/anime_list.json'
 
 const searchQuery = ref("")
 const categoryFilter = ref("todas")

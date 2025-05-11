@@ -8,10 +8,10 @@
 // const { href, title, body } = Astro.props;
 import ButtonAction from "./Button_action.astro"
 import ButtonPlayMusic from "./Button_playMusic.astro"
-import InstaSVG from "../SVGs/Insta_svg.astro"
-import PlaySVG from "../SVGs/Play_svg.astro"
-import GaleriaSVG from "../SVGs/Galeria_svg.astro"
-import ListSvg from "../SVGs/List_svg.astro"
+import InstaSVG from "@/SVGs/Insta_svg.astro"
+import PlaySVG from "@/SVGs/Play_svg.astro"
+import GaleriaSVG from "@/SVGs/Galeria_svg.astro"
+import ListSvg from "@/SVGs/List_svg.astro"
 ---
 
 <div class="absolute top-[10px] left-[15px] flex flex-col z-40">
@@ -21,4 +21,4 @@ import ListSvg from "../SVGs/List_svg.astro"
     <ButtonAction href="/Saiko_Ruleta/animes_vistos"><ListSvg></ListSvg></ButtonAction>
 </div>
 
-<script src="../scripts/audios.js"></script>
+<script src="@/scripts/audios.js"></script>

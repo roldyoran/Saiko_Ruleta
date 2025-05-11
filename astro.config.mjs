@@ -41,5 +41,12 @@ export default defineConfig({
   site: BASE_URL,
   base: BASE_HREF,
   // trailingSlash: "never",
-  integrations: [tailwind(), vue()]
+  integrations: [tailwind(), vue()],
+  vite: {
+    resolve: {
+      alias: {
+        '@': '/src'
+      }
+    }
+  }
 });
