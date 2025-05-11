@@ -54,7 +54,40 @@ for cua in characteres:
         data.append(character_data)
 
 
-# Guardar los datos en un archivo JSON
+# Cargar datos del archivo original.json
+try:
+    with open('original.json', 'r', encoding='utf-8') as original_file:
+        original_data = json.load(original_file)
+        
+        # Crear un diccionario para búsqueda rápida por ID
+        original_dict = {item['id']: item for item in original_data}
+        
+        # Actualizar datos desde el archivo original
+        for anime in data:
+            if anime['id'] in original_dict:
+                original_anime = original_dict[anime['id']]
+                
+                # Actualizar nota si existe en el original
+                if 'nota' in original_anime:
+                    anime['nota'] = original_anime['nota']
+                    print(Fore.YELLOW + f'Nota actualizada para ID {anime["id"]}: {anime["nota"]}' + Style.RESET_ALL)
+                
+                # Actualizar URL si es diferente
+                if original_anime['url'] != anime['url']:
+                    anime['url'] = original_anime['url']
+                    print(Fore.BLUE + f'URL actualizada para ID {anime["id"]}' + Style.RESET_ALL)
+                
+                # Actualizar nombre si la URL original contiene 'img'
+                if 'img' in original_anime['nombre'].lower():
+                    anime['nombre'] = original_anime['nombre']
+                    print(Fore.GREEN + f'Nombre actualizado para ID {anime["id"]}: {anime["nombre"]}' + Style.RESET_ALL)
+
+except FileNotFoundError:
+    print(Fore.RED + '\nArchivo original.json no encontrado' + Style.RESET_ALL)
+except Exception as e:
+    print(Fore.RED + f'\nError al procesar original.json: {str(e)}' + Style.RESET_ALL)
+
+# Guardar los datos actualizados en un archivo JSON
 with open('anime_list.json', 'w') as json_file:
     json.dump(data, json_file, indent=4)
     print('\nCantidad de Animes: ',len(characteres))
