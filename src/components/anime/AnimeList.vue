@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-zinc-900 via-zinc-800 to-black p-6 flex flex-col items-center font-sans">
+  <div class="min-h-screen bg-gradient-to-br from-zinc-950 via-zinc-800 to-black p-6 flex flex-col items-center font-sans">
     <h1 class="text-4xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 mb-10 text-center drop-shadow-lg select-none">
       ANIMES VISTOS
     </h1>
@@ -44,7 +44,7 @@
              :class="notaBgClass(anime.nota)">
           {{ (anime.nota || 'N/A').toUpperCase() }}
         </div>
-        <div class="p-4 flex-1 flex flex-col justify-end">
+        <div class="p-4 flex-1 flex flex-col justify-end" :title="anime.nombre">
           <h2 class="text-orange-100 font-semibold text-base md:text-lg truncate mb-1">{{ anime.nombre }}</h2>
           <p class="text-orange-200/70 text-xs">ID: {{ anime.id }}</p>
         </div>
@@ -142,6 +142,7 @@ function clearFilters() {
 </script>
 
 <style scoped>
+/* Estilos de la barra de desplazamiento */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -151,5 +152,82 @@ function clearFilters() {
 }
 ::-webkit-scrollbar-track {
   background: #27272a;
+}
+
+/* Animaciones para los elementos de la lista */
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animación del título */
+h1 {
+  animation: slideInFromBottom 0.8s ease-out;
+}
+
+/* Animación de los controles de búsqueda */
+.w-full.max-w-2xl > * {
+  animation: fadeInScale 0.5s ease-out;
+}
+
+/* Animaciones para las tarjetas de anime */
+.grid > div {
+  animation: fadeInScale 0.5s ease-out;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.grid > div:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(251, 146, 60, 0.2);
+}
+
+/* Animación para los botones de paginación */
+button {
+  transition: all 0.3s ease;
+}
+
+button:not(:disabled):hover {
+  transform: scale(1.05);
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Animación para el footer */
+footer {
+  animation: slideInFromBottom 1s ease-out;
+  transition: background-color 0.3s ease;
+}
+
+footer:hover {
+  background-color: rgba(39, 39, 42, 0.5);
+}
+
+/* Animación para la etiqueta de nota */
+.absolute.top-3 {
+  transition: all 0.3s ease;
+}
+
+.absolute.top-3:hover {
+  transform: scale(1.1) rotate(-2deg);
 }
 </style>
