@@ -111,7 +111,12 @@ const filteredAnimes = computed(() => {
   const category = categoryFilter.value
   return animeData.filter(anime => {
     const matchesName = anime.nombre.toLowerCase().includes(query)
-    const matchesCategory = category === "todas" || (anime.nota && anime.nota.toLowerCase() === category)
+    // Limpiar y normalizar la nota del anime de la misma manera que en notaBgClass
+    const notaLimpia = anime.nota ? anime.nota.toString()
+      .replace(/[\u{1F300}-\u{1F9FF}]|[\u{1F600}-\u{1F64F}]|[\u{1F680}-\u{1F6FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]|[\u{1F900}-\u{1F9FF}]|[\u{1F1E0}-\u{1F1FF}]/gu, '')
+      .trim()
+      .toLowerCase() : ''
+    const matchesCategory = category === "todas" || (notaLimpia && notaLimpia.includes(category))
     return matchesName && matchesCategory
   })
 })
