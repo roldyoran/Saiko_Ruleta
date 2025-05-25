@@ -91,7 +91,7 @@ except Exception as e:
 with open('anime_list.json', 'w') as json_file:
     json.dump(data, json_file, indent=4)
     print('\nCantidad de Animes: ',len(characteres))
-    print(Style.BRIGHT + Fore.GREEN + '*--> Datos Guardados Correctamente <--*' + '\n')
+    print(Style.BRIGHT + Fore.GREEN + '*--> Datos Guardados Correctamente en el archivo: anime_list.json <--*' + '\n')
 
 
 # # Imprimir los datos extraídos
