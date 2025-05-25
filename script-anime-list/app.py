@@ -66,22 +66,24 @@ try:
         for anime in data:
             if anime['id'] in original_dict:
                 original_anime = original_dict[anime['id']]
-                
                 # Actualizar nota si existe en el original
                 if 'nota' in original_anime:
                     anime['nota'] = original_anime['nota']
                     print(Fore.YELLOW + f'Nota actualizada para ID {anime["id"]}: {anime["nota"]}' + Style.RESET_ALL)
-                
                 # Actualizar URL si es diferente
                 if original_anime['url'] != anime['url']:
                     anime['url'] = original_anime['url']
                     print(Fore.BLUE + f'URL actualizada para ID {anime["id"]}' + Style.RESET_ALL)
-                
                 # Actualizar Nombre si es diferente
                 if original_anime['nombre'] != anime['nombre']:
                     anime['nombre'] = original_anime['nombre']
                     print(Fore.GREEN + f'Nombre actualizado para ID {anime["id"]}: {anime["nombre"]}' + Style.RESET_ALL)
-
+        # Agregar animes que están en original.json pero no en data
+        data_ids = {anime['id'] for anime in data}
+        for orig_anime in original_data:
+            if orig_anime['id'] not in data_ids:
+                data.append(orig_anime)
+                print(Fore.MAGENTA + f'Anime agregado desde original.json: ID {orig_anime["id"]}, Nombre: {orig_anime["nombre"]}' + Style.RESET_ALL)
 except FileNotFoundError:
     print(Fore.RED + '\nArchivo original.json no encontrado' + Style.RESET_ALL)
 except Exception as e:
