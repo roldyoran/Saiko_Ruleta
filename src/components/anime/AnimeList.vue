@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-zinc-950 via-zinc-800 to-black p-6 flex flex-col items-center font-sans">
+  <div class="min-h-screen bg-gradient-to-br from-zinc-950 via-zinc-900 to-black p-6 flex flex-col items-center font-sans">
     <h1 class="text-4xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 mb-10 text-center drop-shadow-lg select-none">
       ANIMES VISTOS
     </h1>
@@ -12,7 +12,7 @@
       />
       <select
         v-model="categoryFilter"
-        class="w-40 px-5 py-3 rounded-xl bg-zinc-800/80 text-orange-100 focus:outline-none focus:ring-2 focus:ring-orange-500 transition uppercase cursor-pointer"
+        class="w-full md:w-40 px-5 py-3 rounded-xl bg-zinc-800/80 text-orange-100 focus:outline-none focus:ring-2 focus:ring-orange-500 transition uppercase cursor-pointer"
       >
         <option value="todas">Todas</option>
         <option value="goty">goty</option>
@@ -22,7 +22,7 @@
         <option value="no me gusto">no me gusto</option>
         <option value="mala">mala</option>
         <option value="horrible">horrible</option>
-        <option value="no me gusto">la peor de todas</option>
+        <option value="la peor de todas">la peor de todas</option>
       </select>
       <button @click="clearFilters" class="px-5 py-3 rounded-xl bg-orange-500 text-white font-bold hover:bg-orange-400 transition shadow-md">
         Limpiar
@@ -90,7 +90,7 @@ function notaBgClass(nota) {
   if (n.includes('GOTY')) return 'bg-gradient-to-br from-orange-500 to-orange-600'
   if (['GOD', 'WENA', 'PIOLA'].some(term => n.includes(term))) return 'bg-gradient-to-br from-green-500 to-green-700'
   if (['NO ME GUSTO', 'MALA'].some(term => n.includes(term))) return 'bg-gradient-to-br from-red-500 to-red-700'
-  if (n.includes('HORRIBLE')) return 'bg-gradient-to-br from-fuchsia-800 to-yellow-900'
+  if (['HORRIBLE', 'LA PEOR DE TODAS'].some(term => n.includes(term)))  return 'bg-gradient-to-br from-fuchsia-800 to-yellow-900'
   return 'bg-gradient-to-br from-zinc-700 to-zinc-900'
 }
 
@@ -103,14 +103,16 @@ watch([searchQuery, categoryFilter], ([newSearch, newCategory], [oldSearch, oldC
 })
 
 const filteredAnimes = computed(() => {
-  const query = searchQuery.value.trim().toLowerCase()
+  let query = searchQuery.value.trim().toLowerCase()
+  // Sustituir espacios por guiones
+  query = query.replace(/\s+/g, "-")
   // Si hay texto en la búsqueda, solo filtra por nombre
   if (query.length > 0) {
-    return animeData.filter(anime => anime.nombre.toLowerCase().includes(query))
+    return animeData.filter(anime => anime.nombre.toLowerCase().replace(/\s+/g, "-").includes(query))
   }
   const category = categoryFilter.value
   return animeData.filter(anime => {
-    const matchesName = anime.nombre.toLowerCase().includes(query)
+    const matchesName = anime.nombre.toLowerCase().replace(/\s+/g, "-").includes(query)
     // Limpiar y normalizar la nota del anime de la misma manera que en notaBgClass
     const notaLimpia = anime.nota ? anime.nota.toString()
       .replace(/[\u{1F300}-\u{1F9FF}]|[\u{1F600}-\u{1F64F}]|[\u{1F680}-\u{1F6FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]|[\u{1F900}-\u{1F9FF}]|[\u{1F1E0}-\u{1F1FF}]/gu, '')
