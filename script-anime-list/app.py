@@ -60,7 +60,7 @@ async def main():
         # Panel de inicio
         console.print(Panel.fit("[bold cyan]Iniciando proceso de scraping de animes[/]", 
                                border_style="cyan", title="[white]Saiko Ruleta[/]", 
-                               subtitle="[white]Script de Anime List[/]"))
+                               subtitle="[white]Script de Anime List[/]\n"))
         
         # Usar Progress para mostrar el progreso de navegación
         with Progress(
@@ -78,13 +78,13 @@ async def main():
                 
                 # Esperar a que la página cargue completamente
                 loading_task = progress.add_task("[cyan]Esperando a que la página cargue completamente...", total=1)
-                await page.wait_for_timeout(10000)  # Esperar 10 segundos
+                await page.wait_for_timeout(12000)  # Esperar 10 segundos
                 progress.update(loading_task, completed=1)
                 
                 # Intentar esperar a que aparezcan los elementos que necesitamos
                 try:
                     element_task = progress.add_task("[cyan]Esperando a que aparezcan los elementos 'character'...", total=1)
-                    await page.wait_for_selector('div.character', timeout=15000)  # 15 segundos para encontrar elementos
+                    await page.wait_for_selector('div.character', timeout=16000)  # 15 segundos para encontrar elementos
                     progress.update(element_task, completed=1)
                     console.print("[bold green]✓[/] Elementos 'character' encontrados")
                 except Exception as element_error:
@@ -183,7 +183,7 @@ async def main():
         updated_table.add_column("Tipo", style="yellow")
         updated_table.add_column("Valor", style="blue")
         
-        added_table = Table(title="Animes Agregados", show_header=True, header_style="bold magenta")
+        added_table = Table(title="\nAnimes Agregados", show_header=True, header_style="bold magenta")
         added_table.add_column("ID", style="cyan", justify="center")
         added_table.add_column("Nombre", style="green")
         
@@ -269,7 +269,7 @@ async def main():
                 progress.update(save_task, completed=1)
         
         # Crear tabla de resumen
-        summary_table = Table(title="Resumen de la Operación", show_header=True, header_style="bold cyan")
+        summary_table = Table(title="\nResumen de la Operación", show_header=True, header_style="bold magenta")
         summary_table.add_column("Métrica", style="cyan")
         summary_table.add_column("Valor", style="green", justify="right")
         
@@ -282,9 +282,8 @@ async def main():
         
         # Panel de finalización
         console.print(Panel.fit(
-            "[bold green]Datos Guardados Correctamente en el archivo: anime_list.json[/]", 
-            title="[green]Proceso Completado[/]", 
-            subtitle="[green]Saiko Ruleta[/]",
+            "\n\n[bold green]Datos Guardados Correctamente en el archivo: anime_list.json[/]", 
+            title="[green]Proceso Completado[/]\n\n",
             border_style="green"
         ))
 
