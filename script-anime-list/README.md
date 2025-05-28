@@ -1,76 +1,128 @@
-# Descripción general
+# Manual Técnico - app.py
 
-Este programa (`app.py`) automatiza la extracción de información sobre personajes de anime desde una página de Tiermaker usando Selenium y BeautifulSoup. Luego, compara y actualiza estos datos con un archivo local (`original.json`) y guarda el resultado en `anime_list.json`. El script también muestra mensajes de estado en la consola usando colorama para facilitar la visualización de cambios y errores.
+## Descripción General
+El script `app.py` es una aplicación de web scraping diseñada para extraer información de personajes de anime desde Tiermaker. Utiliza tecnologías modernas de automatización web y procesamiento de datos para recopilar, actualizar y mantener una lista de personajes de anime.
 
-## Explicación del código parte por parte
+## Tecnologías Utilizadas
+- **asyncio**: Para manejo de operaciones asíncronas
+- **playwright**: Framework de automatización web
+- **BeautifulSoup4**: Para parsing de HTML
+- **rich**: Biblioteca para interfaces de terminal mejoradas
+- **re**: Módulo de expresiones regulares de Python
+- **json**: Para manejo de archivos JSON
 
-### 1. Importaciones
+## Arquitectura del Sistema
+
+### 1. Configuración del Navegador
 ```python
-from selenium import webdriver
-from bs4 import BeautifulSoup
-from colorama import Fore, Style
-import re
-import json
+browser = await playwright.chromium.launch(
+    headless=True,
+    args=[
+        '--disable-blink-features=AutomationControlled',
+        '--disable-features=IsolateOrigins,site-per-process',
+        # User-Agent personalizado
+    ]
+)
 ```
-Se importan las librerías necesarias para la automatización web, el análisis de HTML, la coloración de la consola, el manejo de expresiones regulares y la manipulación de archivos JSON.
+Implementa técnicas anti-detección de bots incluyendo:
+- Modo headless
+- Headers personalizados
+- User-Agent modificado
+- Scripts de evasión de detección
 
-### 2. Inicialización del navegador y obtención de la página
-```python
-driver = webdriver.Chrome()
-url = "https://tiermaker.com/create/animes-random-saikomic-16203118"
-driver.get(url)
-html = driver.page_source
-soup = BeautifulSoup(html, 'html.parser')
-```
-Se abre el navegador Chrome, se accede a la URL de Tiermaker y se obtiene el HTML de la página para analizarlo con BeautifulSoup.
+### 2. Manejo de Cloudflare
+El sistema incluye lógica para detectar y manejar la protección de Cloudflare:
+- Detección de página de verificación
+- Espera automática para bypass
+- Reintentos configurables
 
-### 3. Extracción de personajes
-```python
-characteres = soup.find_all('div', class_="character")
-data = []
-```
-Se buscan todos los elementos HTML que representan personajes y se inicializa una lista para almacenar los datos extraídos.
+### 3. Extracción de Datos
+Utiliza patrones regex específicos para extraer:
+- URLs de imágenes
+- Nombres de personajes
+- IDs únicos
 
-### 4. Procesamiento de cada personaje
+Patrones principales:
 ```python
-for cua in characteres:
-    # ...
+url_pattern = r'url\("([^"]+)"\)'
+name_pattern = r'zzzzz-\d+([a-zA-Z]+.*?)(?:\d+)?\-185'
+name_pattern_fallback = r'zzzzz-\d+([a-zA-Z]+.*?)(?:\d+)?\.png'
 ```
-Para cada personaje, se extrae la URL de la imagen y el nombre usando expresiones regulares. Se limpia el nombre eliminando la palabra "latino" y se crea un diccionario con el nombre, id y url de la imagen.
 
-### 5. Carga y comparación con datos originales
-```python
-try:
-    with open('original.json', 'r', encoding='utf-8') as original_file:
-        original_data = json.load(original_file)
-        # ...
-```
-Se intenta cargar el archivo `original.json`. Si existe, se compara cada personaje extraído con los datos originales para actualizar la nota, la URL o el nombre si han cambiado. Se muestran mensajes de color en la consola para cada actualización.
+### 4. Procesamiento de Datos
+Implementa un sistema de actualización que:
+- Mantiene datos existentes de `original.json`
+- Actualiza entradas modificadas
+- Agrega nuevos personajes
+- Preserva notas y URLs personalizadas
 
-### 6. Manejo de errores
-```python
-except FileNotFoundError:
-    print(Fore.RED + '\nArchivo original.json no encontrado' + Style.RESET_ALL)
-except Exception as e:
-    print(Fore.RED + f'\nError al procesar original.json: {str(e)}' + Style.RESET_ALL)
-```
-Si no se encuentra el archivo o hay un error al procesarlo, se muestra un mensaje de error en rojo.
+### 5. Sistema de Logging
+Utiliza la biblioteca `rich` para proporcionar:
+- Barras de progreso interactivas
+- Tablas de resumen
+- Paneles informativos
+- Logging con colores
 
-### 7. Guardado de resultados
-```python
-with open('anime_list.json', 'w') as json_file:
-    json.dump(data, json_file, indent=4)
-    print('\nCantidad de Animes: ',len(characteres))
-    print(Style.BRIGHT + Fore.GREEN + '*--> Datos Guardados Correctamente <--*' + '\n')
-```
-Se guardan los datos actualizados en `anime_list.json` y se muestra un mensaje de éxito.
+## Flujo de Ejecución
+1. Inicialización del navegador con configuraciones anti-detección
+2. Navegación a la URL de Tiermaker
+3. Manejo de protección Cloudflare
+4. Extracción de datos de personajes
+5. Carga y procesamiento de datos existentes
+6. Actualización y fusión de información
+7. Generación de reportes
+8. Guardado de datos actualizados
 
-### 8. Código comentado para impresión
-```python
-# for character in data:
-#     print(Fore.GREEN + "NOMBRE: ", character["nombre"])
-#     print(Fore.MAGENTA + 'ID: ' + character["id"])
-#     print(Fore.CYAN + 'URL: ' + character["url"])
-#     print('')
+## Estructura de Datos
+
+### Formato de Entrada (original.json)
+```json
+[
+    {
+        "id": "string",
+        "nombre": "string",
+        "url": "string",
+        "nota": "string (opcional)"
+    }
+]
 ```
-Este bloque, actualmente comentado, serviría para imprimir en consola los datos extraídos de cada personaje.
+
+### Formato de Salida (anime_list.json)
+```json
+[
+    {
+        "id": "string",
+        "nombre": "string",
+        "url": "string",
+        "nota": "string (si existe en original)"
+    }
+]
+```
+
+## Manejo de Errores
+- Captura de errores de navegación
+- Generación de screenshots en caso de error
+- Logging detallado de problemas
+- Fallbacks para patrones de extracción
+
+## Métricas y Reportes
+Genera reportes detallados incluyendo:
+- Total de personajes encontrados
+- Número de actualizaciones
+- Nuevas adiciones
+- Cambios en URLs y nombres
+
+## Requisitos del Sistema
+- Python 3.7+
+- Playwright
+- BeautifulSoup4
+- Rich
+- Conexión a Internet estable
+- Memoria suficiente para procesamiento de datos
+
+## Limitaciones Conocidas
+- Dependencia de la estructura HTML de Tiermaker
+- Sensibilidad a cambios en la protección anti-bot
+- Necesidad de conexión estable a Internet
+- Tiempo de espera para bypass de Cloudflare
+        
