@@ -3,23 +3,60 @@ from playwright.async_api import async_playwright
 from bs4 import BeautifulSoup
 import re
 import json
+from rich.console import Console
+from rich.progress import Progress, SpinnerColumn, TextColumn
 
-async def fetch_page_content(url):
-    async with async_playwright() as p:
-        browser = await p.chromium.launch(
-            headless=True, 
-            args=[
-                '--disable-blink-features=AutomationControlled',
-                '--disable-features=IsolateOrigins,site-per-process',
-                '--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36'
-            ])
-        page = await browser.new_page()
-        await page.goto(url, wait_until="load")  # 16 segundos
-        await page.wait_for_timeout(12000)  # Esperar 10 segundos
-        await page.wait_for_selector('div.character', timeout=16000)  # 16 segundos
-        content = await page.content()
-        await browser.close()
-    return content
+# Inicializar Rich Console
+console = Console()
+
+async def fetch_page_content(url, max_retries=3):
+    for attempt in range(max_retries):
+        try:
+            async with async_playwright() as p:
+                console.print(f"[yellow]Intento {attempt + 1} de {max_retries}[/yellow]")
+                browser = await p.chromium.launch(
+                    headless=True, 
+                    args=[
+                        '--disable-blink-features=AutomationControlled',
+                        '--disable-features=IsolateOrigins,site-per-process',
+                        '--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36'
+                    ])
+                try:
+                    page = await browser.new_page()
+                    await page.goto(url, wait_until="load", timeout=30000)
+                    await page.wait_for_timeout(12000)
+                    
+                    # Verificar si la página está bloqueada por Cloudflare
+                    if await page.title() == "Just a moment, please...":
+                        console.print("[red]Detectada protección de Cloudflare. Esperando bypass...[/red]")
+                        await page.wait_for_timeout(10000)  # Esperar más tiempo para el bypass
+                    
+                    # Esperar por el selector con mensaje de progreso
+                    try:
+                        await page.wait_for_selector('div.character', timeout=16000)
+                    except Exception as e:
+                        console.print("[red]Error: No se encontraron elementos de anime en la página[/red]")
+                        raise Exception("No se encontraron elementos de anime") from e
+                    
+                    content = await page.content()
+                    return content
+                
+                except Exception as e:
+                    console.print(f"[red]Error durante la navegación: {str(e)}[/red]")
+                    if attempt < max_retries - 1:
+                        console.print("[yellow]Reintentando...[/yellow]")
+                        await page.wait_for_timeout(5000)  # Esperar antes de reintentar
+                    else:
+                        raise
+                finally:
+                    await browser.close()
+        
+        except Exception as e:
+            if attempt == max_retries - 1:
+                console.print("[red bold]Error: Máximo número de intentos alcanzado[/red bold]")
+                console.print(f"[red]Detalles del error: {str(e)}[/red]")
+                raise Exception(f"Error al obtener datos después de {max_retries} intentos: {str(e)}")
+            await asyncio.sleep(5)  # Esperar 5 segundos antes de reintentar
 
 
 def extract_data(content):
@@ -129,16 +166,27 @@ def save_to_json(anime_data_list, filename):
 
 async def main():
     URL = "https://tiermaker.com/create/animes-random-saikomic-16203118"
-    content = await fetch_page_content(URL)
-    anime_data_list = extract_data(content)
-
-    # Compara los datos extraídos con los del archivo original
-    updated_anime_data = compare_anime_data(anime_data_list, 'original.json')
-    # Guardar los datos actualizados en un nuevo archivo JSON
-    save_to_json(updated_anime_data, 'animes_updated.json')
-
-    # imprimir mensaje de éxito
-    print("Datos extraídos y guardados en 'animes_updated.json'.")
+    
+    with Progress(
+        SpinnerColumn(),
+        TextColumn("[progress.description]{task.description}"),
+        transient=True
+    ) as progress:
+        # Tareas con barra de progreso
+        progress.add_task("[cyan]Obteniendo datos de Tiermaker...", total=None)
+        content = await fetch_page_content(URL)
+        
+        progress.add_task("[green]Procesando datos...", total=None)
+        anime_data_list = extract_data(content)
+        
+        progress.add_task("[yellow]Actualizando información...", total=None)
+        updated_anime_data = compare_anime_data(anime_data_list, 'original.json')
+        
+        progress.add_task("[blue]Guardando datos...", total=None)
+        save_to_json(updated_anime_data, 'animes_updated.json')
+    
+    # Mensaje de éxito con estilo
+    console.print("\n[bold green]✨ Datos extraídos y guardados exitosamente en[/bold green] [bold cyan]'animes_updated.json'[/bold cyan][bold green]![/bold green]")
 
 if __name__ == "__main__":
     asyncio.run(main())

@@ -1,53 +1,73 @@
-# Manual Técnico - app.py
+# Script de Actualización de Lista de Animes
 
 ## Descripción General
-El script `app.py` es una aplicación de web scraping diseñada para extraer información de personajes de anime desde Tiermaker. Utiliza tecnologías modernas de automatización web y procesamiento de datos para recopilar, actualizar y mantener una lista de personajes de anime.
+Este script `app.py` es una herramienta automatizada diseñada para extraer y actualizar información de animes desde Tiermaker. El script mantiene una lista actualizada de animes mientras preserva datos personalizados como notas y URLs específicas.
 
-## Tecnologías Utilizadas
-- **asyncio**: Para manejo de operaciones asíncronas
-- **playwright**: Framework de automatización web
-- **BeautifulSoup4**: Para parsing de HTML
-- **rich**: Biblioteca para interfaces de terminal mejoradas
-- **re**: Módulo de expresiones regulares de Python
-- **json**: Para manejo de archivos JSON
+## Características Principales
+- Extracción automática de datos de Tiermaker
+- Preservación de datos personalizados existentes
+- Manejo asíncrono de operaciones web
+- Sistema robusto de extracción de datos mediante expresiones regulares
+- Actualización inteligente de registros existentes
 
-## Arquitectura del Sistema
-
-### 1. Configuración del Navegador
-```python
-browser = await playwright.chromium.launch(
-    headless=True,
-    args=[
-        '--disable-blink-features=AutomationControlled',
-        '--disable-features=IsolateOrigins,site-per-process',
-        # User-Agent personalizado
-    ]
-)
+## Requisitos
 ```
-Implementa técnicas anti-detección de bots incluyendo:
-- Modo headless
-- Headers personalizados
-- User-Agent modificado
-- Scripts de evasión de detección
-
-### 2. Manejo de Cloudflare
-El sistema incluye lógica para detectar y manejar la protección de Cloudflare:
-- Detección de página de verificación
-- Espera automática para bypass
-- Reintentos configurables
-
-### 3. Extracción de Datos
-Utiliza patrones regex específicos para extraer:
-- URLs de imágenes
-- Nombres de personajes
-- IDs únicos
-
-Patrones principales:
-```python
-url_pattern = r'url\("([^"]+)"\)'
-name_pattern = r'zzzzz-\d+([a-zA-Z]+.*?)(?:\d+)?\-185'
-name_pattern_fallback = r'zzzzz-\d+([a-zA-Z]+.*?)(?:\d+)?\.png'
+playwright
+beautifulsoup4
+asyncio
 ```
+
+## Funciones Principales
+
+### `fetch_page_content(url)`
+- Función asíncrona que obtiene el contenido de la página
+- Utiliza Playwright para la navegación web automatizada
+- Implementa esperas inteligentes para asegurar la carga completa
+- Configuración anti-detección de bots
+
+### `extract_data(content)`
+- Procesa el HTML para extraer información de animes
+- Utiliza BeautifulSoup para el parsing
+- Extrae URLs de imágenes y nombres mediante regex
+- Limpia y formatea los nombres de animes
+
+### `compare_anime_data(anime_data_list, filename)`
+- Compara y actualiza datos con el archivo original
+- Preserva notas existentes
+- Mantiene URLs personalizadas
+- Maneja casos especiales de reordenamiento
+
+### `save_to_json(anime_data_list, filename)`
+- Guarda los datos actualizados en formato JSON
+- Preserva el formato UTF-8 para caracteres especiales
+
+## Estructura de Datos
+
+### Formato del Archivo JSON
+```json
+[
+    {
+        "id": "string",       // Identificador único del anime
+        "nombre": "string",   // Nombre del anime
+        "url": "string",      // URL de la imagen
+        "nota": "string"      // Nota opcional personalizada
+    }
+]
+```
+
+## Uso
+1. Asegúrate de tener los requisitos instalados
+2. Ejecuta el script:
+   ```bash
+   python app.py
+   ```
+3. El script generará/actualizará `animes_updated.json`
+
+## Notas Importantes
+- El script requiere conexión a internet
+- Mantén un archivo `original.json` con la estructura correcta
+- Las notas y URLs personalizadas se preservarán durante la actualización
+- El script incluye un manejo especial para reordenar ciertos animes específicos (IDs: 458 y 225)
 
 ### 4. Procesamiento de Datos
 Implementa un sistema de actualización que:
