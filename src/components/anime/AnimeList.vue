@@ -227,7 +227,7 @@ async function fetchAnimeData() {
     if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
     const data = await res.json()
     animeData.value = Array.isArray(data) ? data : Object.values(data)
-    console.log(animeData.value)
+    // console.log(animeData.value)
   } catch (err) {
     error.value = err.message
     console.error("Error cargando datos de anime:", err)
