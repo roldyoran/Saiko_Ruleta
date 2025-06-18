@@ -3,6 +3,8 @@
     <h1 class="text-4xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 mb-10 text-center drop-shadow-lg select-none">
       ANIMES VISTOS
     </h1>
+
+    <!-- Filtros -->
     <div class="w-full max-w-2xl flex flex-col md:flex-row gap-4 mb-8">
       <input
         v-model="searchQuery"
@@ -15,28 +17,32 @@
         class="w-full md:w-40 px-5 py-3 rounded-xl bg-zinc-800/80 text-orange-100 focus:outline-none focus:ring-2 focus:ring-orange-500 transition uppercase cursor-pointer"
       >
         <option value="todas">Todas</option>
-        <option value="goty">goty</option>
-        <option value="god">god</option>
-        <option value="wena">wena</option>
-        <option value="piola">piola</option>
-        <option value="no me gusto">no me gusto</option>
-        <option value="mala">mala</option>
-        <option value="horrible">horrible</option>
-        <option value="la peor de todas">la peor de todas</option>
+        <option value="goty">GOTY</option>
+        <option value="god">GOD</option>
+        <option value="wena">WENA</option>
+        <option value="piola">PIOLA</option>
+        <option value="no me gusto">NO ME GUSTO</option>
+        <option value="mala">MALA</option>
+        <option value="horrible">HORRIBLE</option>
+        <option value="la peor de todas">LA PEOR DE TODAS</option>
       </select>
       <button @click="clearFilters" class="px-5 py-3 rounded-xl bg-orange-500 text-white font-bold hover:bg-orange-400 transition shadow-md">
         Limpiar
       </button>
     </div>
+
+    <!-- Paginación -->
     <div v-if="totalPages > 1" class="flex justify-center items-center gap-4 mb-8">
       <button @click="prevPage" :disabled="currentPage === 0" class="px-4 py-2 rounded-lg bg-zinc-700/70 text-orange-200 font-medium hover:bg-orange-500/30 disabled:opacity-40 transition">
         Anterior
       </button>
       <span class="text-orange-300 font-bold">Página {{ currentPage + 1 }} de {{ totalPages }}</span>
-      <button @click="nextPage" :disabled="currentPage === totalPages - 1" class="px-4 py-2 rounded-lg bg-zinc-700/70 text-orange-200 font-medium hover:bg-orange-500/30 disabled:opacity-40 transition">
+      <button @click="nextPage" :disabled="currentPage >= totalPages - 1" class="px-4 py-2 rounded-lg bg-zinc-700/70 text-orange-200 font-medium hover:bg-orange-500/30 disabled:opacity-40 transition">
         Siguiente
       </button>
     </div>
+
+    <!-- Tarjetas de animes -->
     <div class="w-full max-w-6xl grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
       <div v-for="anime in paginatedAnimes" :key="anime.id" class="bg-zinc-800/80 rounded-2xl overflow-hidden shadow-lg hover:shadow-orange-500/30 transition group relative flex flex-col">
         <img :src="anime.url" :alt="anime.nombre" class="w-full aspect-[2/3] object-cover group-hover:scale-105 transition duration-300" loading="lazy" />
@@ -50,76 +56,66 @@
         </div>
       </div>
     </div>
-    <div v-if="totalPages > 1" class="flex justify-center items-center gap-4 mt-8">
-      <button @click="prevPage" :disabled="currentPage === 0" class="px-4 py-2 rounded-lg bg-zinc-700/70 text-orange-200 font-medium hover:bg-orange-500/30 disabled:opacity-40 transition">
-        Anterior
-      </button>
-      <span class="text-orange-300 font-bold">Página {{ currentPage + 1 }} de {{ totalPages }}</span>
-      <button @click="nextPage" :disabled="currentPage === totalPages - 1" class="px-4 py-2 rounded-lg bg-zinc-700/70 text-orange-200 font-medium hover:bg-orange-500/30 disabled:opacity-40 transition">
-        Siguiente
-      </button>
-    </div>
+
+    <!-- Footer -->
     <footer class="text-orange-300/80 text-center text-xs mt-12 mb-4 tracking-wide font-medium bg-zinc-800/30 backdrop-blur-sm py-4 rounded-2xl max-w-2xl mx-auto px-6">
       Esta lista comprende todos los animes randoms vistos en el canal del Saiko y uno que otro anime que el SAIKO se vio una vez por su cuenta (puede faltar alguno) <br><br>
-Postdata: VIVAN LAS LESBIANAS!!!!
+      Postdata: VIVAN LAS LESBIANAS!!!!
     </footer>
   </div>
 </template>
 
 <script setup>
-import { ref, computed, watch } from 'vue'
-import animeData from '@/assets/anime_list.json'
+import { ref, computed, watch, onMounted } from 'vue'
+
+const animeData = ref([])
+const isLoading = ref(true)
+const error = ref(null)
 
 const searchQuery = ref("")
 const categoryFilter = ref("todas")
 const currentPage = ref(0)
 const pageSize = 30
 
+async function fetchAnimeData() {
+  try {
+    const res = await fetch('https://raw.githubusercontent.com/roldyoran/scrap-tiermaker/master/animes_updated.json')
+    if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`)
+    const data = await res.json()
+    animeData.value = Array.isArray(data) ? data : Object.values(data)
+  } catch (err) {
+    error.value = err.message
+    console.error("Error cargando datos de anime:", err)
+  } finally {
+    isLoading.value = false
+  }
+}
+
+onMounted(fetchAnimeData)
 
 function notaBgClass(nota) {
-  // Handle null/undefined values
-  if (!nota) return 'bg-gradient-to-br from-zinc-700 to-zinc-900'
-  
-  // Convert to string, remove emojis, and normalize text
-  const n = nota.toString()
-    .replace(/[\u{1F300}-\u{1F9FF}]|[\u{1F600}-\u{1F64F}]|[\u{1F680}-\u{1F6FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]|[\u{1F900}-\u{1F9FF}]|[\u{1F1E0}-\u{1F1FF}]/gu, '')
-    .trim()
-    .toUpperCase()
-
-  // Return color based on cleaned text
-  if (n.includes('GOTY')) return 'bg-gradient-to-br from-orange-500 to-orange-600'
-  if (['GOD', 'WENA', 'PIOLA'].some(term => n.includes(term))) return 'bg-gradient-to-br from-green-500 to-green-700'
-  if (['NO ME GUSTO', 'MALA'].some(term => n.includes(term))) return 'bg-gradient-to-br from-red-500 to-red-700'
-  if (['HORRIBLE', 'LA PEOR DE TODAS'].some(term => n.includes(term)))  return 'bg-gradient-to-br from-fuchsia-800 to-yellow-900'
+  const clean = (nota || '').toString().replace(/[\p{Emoji_Presentation}\p{Extended_Pictographic}]/gu, '').trim().toUpperCase()
+  if (clean.includes('GOTY')) return 'bg-gradient-to-br from-orange-500 to-orange-600'
+  if (['GOD', 'WENA', 'PIOLA'].some(term => clean.includes(term))) return 'bg-gradient-to-br from-green-500 to-green-700'
+  if (['NO ME GUSTO', 'MALA'].some(term => clean.includes(term))) return 'bg-gradient-to-br from-red-500 to-red-700'
+  if (['HORRIBLE', 'LA PEOR DE TODAS'].some(term => clean.includes(term))) return 'bg-gradient-to-br from-fuchsia-800 to-yellow-900'
   return 'bg-gradient-to-br from-zinc-700 to-zinc-900'
 }
 
-
-watch([searchQuery, categoryFilter], ([newSearch, newCategory], [oldSearch, oldCategory]) => {
-  const ambosVacios = (!newSearch || newSearch.trim() === "") && (!newCategory || newCategory === "todas");
-  if (!ambosVacios && ((newSearch && newSearch !== oldSearch) || (newCategory && newCategory !== oldCategory))) {
-    currentPage.value = 0;
-  }
+watch([searchQuery, categoryFilter], () => {
+  currentPage.value = 0
 })
 
 const filteredAnimes = computed(() => {
-  let query = searchQuery.value.trim().toLowerCase()
-  // Sustituir espacios por guiones
-  query = query.replace(/\s+/g, "-")
-  // Si hay texto en la búsqueda, solo filtra por nombre
-  if (query.length > 0) {
-    return animeData.filter(anime => anime.nombre.toLowerCase().replace(/\s+/g, "-").includes(query))
-  }
-  const category = categoryFilter.value
-  return animeData.filter(anime => {
-    const matchesName = anime.nombre.toLowerCase().replace(/\s+/g, "-").includes(query)
-    // Limpiar y normalizar la nota del anime de la misma manera que en notaBgClass
-    const notaLimpia = anime.nota ? anime.nota.toString()
-      .replace(/[\u{1F300}-\u{1F9FF}]|[\u{1F600}-\u{1F64F}]|[\u{1F680}-\u{1F6FF}]|[\u{2600}-\u{26FF}]|[\u{2700}-\u{27BF}]|[\u{1F900}-\u{1F9FF}]|[\u{1F1E0}-\u{1F1FF}]/gu, '')
-      .trim()
-      .toLowerCase() : ''
-    const matchesCategory = category === "todas" || (notaLimpia && notaLimpia.includes(category))
-    return matchesName && matchesCategory
+  const query = searchQuery.value.trim().toLowerCase().replace(/\s+/g, "-")
+  const category = categoryFilter.value.toLowerCase()
+
+  return animeData.value.filter(anime => {
+    const nombre = anime.nombre?.toLowerCase().replace(/\s+/g, "-") || ''
+    const nota = anime.nota?.toString().toLowerCase() || ''
+    const nombreMatch = nombre.includes(query)
+    const categoriaMatch = category === "todas" || nota.includes(category)
+    return nombreMatch && categoriaMatch
   })
 })
 
@@ -133,102 +129,74 @@ const paginatedAnimes = computed(() => {
 function prevPage() {
   if (currentPage.value > 0) currentPage.value--
 }
+
 function nextPage() {
   if (currentPage.value < totalPages.value - 1) currentPage.value++
 }
+
 function clearFilters() {
-  searchQuery.value = ''
-  categoryFilter.value = 'todas'
+  searchQuery.value = ""
+  categoryFilter.value = "todas"
   currentPage.value = 0
 }
 </script>
 
 <style scoped>
-/* Estilos de la barra de desplazamiento */
+/* Scrollbar personalizada */
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #fb923c 0%, #f59e42 50%, #ea580c 100%);
+  background: linear-gradient(135deg, #fb923c, #ea580c);
   border-radius: 8px;
 }
 ::-webkit-scrollbar-track {
   background: #27272a;
 }
 
-/* Animaciones para los elementos de la lista */
+/* Animaciones */
 @keyframes fadeInScale {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
 }
-
 @keyframes slideInFromBottom {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
-
-/* Animación del título */
 h1 {
   animation: slideInFromBottom 0.8s ease-out;
 }
-
-/* Animación de los controles de búsqueda */
 .w-full.max-w-2xl > * {
   animation: fadeInScale 0.5s ease-out;
 }
-
-/* Animaciones para las tarjetas de anime */
 .grid > div {
   animation: fadeInScale 0.5s ease-out;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .grid > div:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 20px rgba(251, 146, 60, 0.2);
 }
-
-/* Animación para los botones de paginación */
 button {
   transition: all 0.3s ease;
 }
-
 button:not(:disabled):hover {
   transform: scale(1.05);
 }
-
 button:disabled {
   opacity: 0.4;
   cursor: not-allowed;
 }
-
-/* Animación para el footer */
 footer {
   animation: slideInFromBottom 1s ease-out;
   transition: background-color 0.3s ease;
 }
-
 footer:hover {
   background-color: rgba(39, 39, 42, 0.5);
 }
-
-/* Animación para la etiqueta de nota */
 .absolute.top-3 {
   transition: all 0.3s ease;
 }
-
 .absolute.top-3:hover {
   transform: scale(1.1) rotate(-2deg);
 }
