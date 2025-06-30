@@ -4,8 +4,8 @@ import { animate, stagger, delay, spring } from "motion";
 const title = document.querySelector("#title");
 
 animate(title,
-  { opacity: [0, 1], y: [-100, 20], easing: spring()},
-  { delay: 6 }
+  { opacity: [0, 1], y: [-100, 20] },
+  { delay: 6, easing: spring() }
 );
 
 

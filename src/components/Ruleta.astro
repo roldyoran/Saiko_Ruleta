@@ -1,15 +1,11 @@
 ---
 import Personajes from "./Personajes.astro";
+import Roulette from '@/components/vue/Roulette.vue'
 ---
 
-<!-- Contenido del objeto central --><!-- Contenido del objeto central -->
+<!-- Contenido del objeto central -->
 <div class="grid place-items-center m-0">
-  <canvas
-    id="canvas"
-    width="500"
-    height="500"
-    class="relative"
-  ></canvas>
+  <Roulette client:load />
 
   <!-- PERSONAJE QUE GIRA LA RULETA -->
   <Personajes
@@ -37,37 +33,6 @@ import Personajes from "./Personajes.astro";
     class="animacion-imagen hidden md:block z-20 w-[150px] h-auto mb-[550px] mr-[320px] absolute"
     alt="lejiChilenoGirando"
   />
-
-  <!-- Botones -->
-  <div class="flex mt-1 md:mx-1 place-items-center flex-wrap">
-    <!-- Cantidad en la Ruleta -->
-    <label for="numOptions"></label>
-    <input
-      type="number"
-      id="numOptions"
-      min="2"
-      max="44"
-      value="9"
-      class="py-2 m-1 text-sm md:text-base  ml-auto pl-2 border-2 font-bold text-purple-700 border-purple-700 rounded-xl bg-transparent transition-all hover:bg-purple-700 hover:text-white hover:shadow-lg hover:shadow-purple-700/50 hover:-translate-y-0.5
-        dark:border-purple-900 dark:text-white dark:bg-purple-700 dark:hover:border-purple-500 dark:hover:bg-purple-950"
-    />
-    <!-- Actualizar la Ruleta -->
-    <button
-      id="updateOptiones"
-      class="border-2 text-sm md:text-base ml-auto border-orange-950 font-bold text-orange-900 hover:bg-orange-950 hover:text-white hover:-translate-y-0.5 hover:shadow-lg hover:shadow-orange-800/50 transition-all rounded-xl py-2 px-4 md:px-8 active:shadow-none active:translate-y-0
-        dark:border-orange-800 dark:text-white dark:bg-orange-600 dark:hover:border-orange-500"
-    >
-      Actualizar
-    </button>
-    <!-- Girar la Ruleta -->
-    <button
-      id="spin"
-      class="border-2 text-sm md:text-base m-1 mr-auto border-purple-950 font-bold text-purple-700 hover:bg-purple-700 hover:text-white hover:-translate-y-0.5 hover:shadow-lg hover:shadow-purple-700/50 transition-all rounded-xl py-2 px-8 md:px-14 active:shadow-none active:translate-y-0
-        dark:border-purple-950 dark:text-white dark:bg-purple-700 dark:hover:border-purple-500 dark:hover:bg-purple-950"
-    >
-      GIRAR
-    </button>
-  </div>
 </div>
 
 

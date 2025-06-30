@@ -1,175 +1,106 @@
-import { spin, updateOptions } from './ruleta.js';
-
-
-
-// Función auxiliar para verificar si el transcript incluye alguna de las frases
-function includesAny(transcript, phrases) {
-    return phrases.some(phrase => transcript.includes(phrase));
-}
-
-// Frases a reconocer con .includes
-const fraseRec2 = "ACTUALÍZALO A DOS";
-const fraseRec2_2 = "ACTUALÍZALO A 2";
-const fraseRec3 = "ACTUALÍZALO A TRES";
-const fraseRec3_2 = "ACTUALÍZALO A 3";
-const fraseRec4 = "ACTUALÍZALO A CUATRO";
-const fraseRec4_2 = "ACTUALÍZALO A 4";
-const fraseRec5 = "ACTUALÍZALO A 5";
-const fraseRec5_2 = "ACTUALÍZALO A CINCO";
-const fraseRec6 = "ACTUALÍZALO A SEIS";
-const fraseRec6_2 = "ACTUALÍZALO A 6";
-const fraseRec7 = "ACTUALÍZALO A 7";
-const fraseRec7_2 = "ACTUALÍZALO A SIETE";
-const fraseRec8 = "ACTUALÍZALO A 8";
-const fraseRec8_2 = "ACTUALÍZALO A OCHO";
-
-// Frases agrupadas en un objeto para facilitar el manejo
-const phrasesMap = {
-    2: [fraseRec2, fraseRec2_2],
-    3: [fraseRec3, fraseRec3_2],
-    4: [fraseRec4, fraseRec4_2],
-    5: [fraseRec5, fraseRec5_2],
-    6: [fraseRec6, fraseRec6_2],
-    7: [fraseRec7, fraseRec7_2],
-    8: [fraseRec8, fraseRec8_2],
-};
-
-const ponelePlay = "PONELE PLAY"
-const ponelePlayTilde = "PÓNELE PLAY"
-const ponelePlayPonle = "PONLE PLAY"
-
-const girar1 = "GIRALDO"
-const girar2 = "GÍRALO"
-const girar3 = "MÍRALO"
-const girar4 = "TÍRALO"
-const girar5 = "GIRALO"
-const girar6 = "TANIA"
-const girar7 = "TANIÁ"
-const girar8 = "TANIA"
-
-
-// const message_ia_amor = 'YO TAMBIEN TE AMO';
-// const audio_ia_amor = new Audio(`https://api.streamelements.com/kappa/v2/speech?voice=Mia&text=${encodeURIComponent(message_ia_amor)}`);
-
-// Audio Depilate Trolleo
-const audioFiles_speech = ["depilate.mp3"];
-const audioSrc_speech = "audios/" + audioFiles_speech[0];
-var audio_depilate = document.getElementById("cancion");
-
-
-// Comprobar si el navegador soporta la API de reconocimiento de voz
-const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-
-if (!SpeechRecognition) {
-    alert("Tu navegador no soporta la API de reconocimiento de voz");
-} else {
-    const recognition = new SpeechRecognition();
-    recognition.lang = 'es-ES';
-    recognition.continuous = true;
-    recognition.interimResults = false; // Solo queremos resultados finales
-
-    // Variable para evitar múltiples llamadas a `start`
-    let isRecognizing = false;
-
-    // Evento que se activa cuando se recibe una transcripción
-    recognition.onresult = (event) => {
-        // Obtener el último resultado
-        const lastResultIndex = event.results.length - 1;
-        const transcript = event.results[lastResultIndex][0].transcript.trim().toUpperCase();
-        // Imprimir la transcripción para depuración
-        console.log("Transcripción recibida: ", transcript);
-
-        // GIRAR LA RULETA
-        if (transcript.includes(girar1) || transcript.includes(girar2) || transcript.includes(girar3) || transcript.includes(girar4) || transcript.includes(girar5) || transcript.includes(girar6) || transcript.includes(girar7) || transcript.includes(girar8)) {
-            spin();
-            setTimeout(() => {
-                spin();
-            }, 1000);
-            setTimeout(() => {
-                spin();
-            }, 1500);
-            setTimeout(() => {
-                spin();
-            }, 1600);
-            setTimeout(() => {
-                spin();
-            }, 2200);
-            
-            // DEPILATE TROLEO
-        } else if (transcript.includes("TE AMO") || transcript.includes("DEPILATE") || transcript.includes("DEPÍLATE") || transcript.includes("TEAMO") || transcript.includes("DEPILANTE")) {
-            audio_depilate.src = audioSrc_speech;
-            audio_depilate.play();
-
-        } else if (includesAny(transcript, phrasesMap[2])) {
-            // console.log("frase 2", phrasesMap[2]);   
-            document.getElementById("numOptions").value = "2";
-            updateOptions();
-        } else if (includesAny(transcript, phrasesMap[3])) {
-            // console.log("frase 3", phrasesMap[3]);   
-            document.getElementById("numOptions").value = "3";
-            updateOptions();
-        } else if (includesAny(transcript, phrasesMap[4])) {
-            // console.log("frase 4", phrasesMap[4]);   
-            document.getElementById("numOptions").value = "4";
-            updateOptions();
-        } else if (includesAny(transcript, phrasesMap[5])) {
-            // console.log("frase 5", phrasesMap[5]);
-            document.getElementById("numOptions").value = "5";
-            updateOptions();
-        } else if (includesAny(transcript, phrasesMap[6])) {
-            // console.log("frase 6", phrasesMap[6]);   
-            document.getElementById("numOptions").value = "6";
-            updateOptions();
-        } else if (includesAny(transcript, phrasesMap[7])) {
-            // console.log("frase 7", phrasesMap[7]);   
-            document.getElementById("numOptions").value = "7";
-            updateOptions();
-        } else if (includesAny(transcript, phrasesMap[8])) {
-            // console.log("frase 8", phrasesMap[8]);   
-            document.getElementById("numOptions").value = "8";
-            updateOptions();
-        }
-    };
-
-    // Manejar errores
-    // recognition.onerror = (event) => {
-    //     console.error('Error de reconocimiento de voz:', event.error);
-    //     // Reiniciar el reconocimiento de voz al finalizar
-    //     recognition.start();
-    // };
-
-    // recognition.onend = () => {
-    //     // Reiniciar el reconocimiento de voz al finalizar
-    //     recognition.start();
-    // };
-
-    // // Iniciar el reconocimiento de voz al cargar la página
-    // recognition.start();
-
-    // Manejar errores
-    recognition.onerror = (event) => {
-        console.error("Error de reconocimiento de voz:", event.error);
-
-        // Reiniciar solo si no está activo
-        if (!isRecognizing) {
-            recognition.start();
-        }
-    };
-
-    // Reiniciar el reconocimiento cuando finalice
-    recognition.onend = () => {
-        isRecognizing = false;
-
-        // Reiniciar el reconocimiento
-        recognition.start();
-        isRecognizing = true;
-    };
-
-    // Iniciar el reconocimiento al cargar la página
-    if (!isRecognizing) {
-        recognition.start();
-        isRecognizing = true;
+if (annyang) {
+    // Función para eliminar tildes
+    function eliminarTildes(texto) {
+        return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     }
 
-}
+    // Definir comandos
+    const commands = {
+        // Comandos para girar la ruleta
+        'giralo': () => spinRuleta(),
+        'miralo': () => spinRuleta(),
+        'tiralo': () => spinRuleta(),
 
+        // Comandos para el troleo "depilate"
+        'te amo': () => playAudio('depilate.mp3'),
+        'depilate': () => playAudio('depilate.mp3'),
+
+        // Comando para actualizar opciones
+        'actualizalo': actualizarOpciones,
+        'actualiza': actualizarOpciones,
+    };
+
+    function actualizarOpciones() {
+        const transcription = eliminarTildes(phrases[0].toLowerCase());
+        const numeros = {
+            'dos': 2, 'tres': 3, 'cuatro': 4, 'cinco': 5,
+            'seis': 6, 'siete': 7, 'ocho': 8, 'nueve': 9,
+            'diez': 10, 'once': 11, 'doce': 12, 'trece': 13,
+            'catorce': 14, 'quince': 15, 'dieciseis': 16,
+            'diecisiete': 17, 'dieciocho': 18, 'diecinueve': 19,
+            'veinte': 20, 'veintiuno': 21, 'veintidos': 22,
+            'veintitres': 23, 'veinticuatro': 24, 'veinticinco': 25,
+            'veintiseis': 26, 'veintisiete': 27, 'veintiocho': 28,
+            'veintinueve': 29, 'treinta': 30, 'treinta y uno': 31,
+            'treinta y dos': 32, 'treinta y tres': 33,
+            'treinta y cuatro': 34, 'treinta y cinco': 35,
+            'treinta y seis': 36, 'treinta y siete': 37,
+            'treinta y ocho': 38, 'treinta y nueve': 39,
+            'cuarenta': 40, 'cuarenta y uno': 41,
+            'cuarenta y dos': 42, 'cuarenta y tres': 43,
+            'cuarenta y cuatro': 44
+        };                                                           
+        
+        // Buscar números escritos
+        for (const [palabra, numero] of Object.entries(numeros)) {
+            if (transcription.includes(palabra)) {
+                updateOptions(numero);
+                return;
+            }
+        }
+        
+        // Buscar números en dígitos
+        const numeroDigito = transcription.match(/\b([2-9]|[1-3][0-9]|4[0-4])\b/);
+        if (numeroDigito) {
+            const num = parseInt(numeroDigito[0]);
+            if (num >= 2 && num <= 44) {
+                updateOptions(num);
+            }
+        }
+    }
+
+    // Añadir comandos y empezar
+    annyang.addCommands(commands);
+    annyang.setLanguage('es-ES');
+    
+    // Variable global para almacenar la última transcripción
+    let phrases = [];
+
+    // Agregar evento para mostrar la transcripción y ejecutar comandos
+    annyang.addCallback('result', function(currentPhrases) {
+        phrases = currentPhrases;
+        const transcription = eliminarTildes(phrases[0].toLowerCase());
+        console.log('Transcripción:', transcription);
+
+        // Revisar si la transcripción contiene alguno de los comandos
+        for (const [command, action] of Object.entries(commands)) {
+            if (transcription.includes(eliminarTildes(command.toLowerCase()))) {
+                console.log('Comando detectado:', command);
+                action();
+                break; // Ejecutar solo el primer comando que coincida
+            }
+        }
+    });
+    
+    annyang.start();
+    console.log("Comandos de voz activados");
+
+    // Funciones auxiliares
+    function spinRuleta() {
+        window.dispatchEvent(new CustomEvent('ruleta-spin'));
+        setTimeout(() => window.dispatchEvent(new CustomEvent('ruleta-spin')), 1200);
+        setTimeout(() => window.dispatchEvent(new CustomEvent('ruleta-spin')), 1500);
+        setTimeout(() => window.dispatchEvent(new CustomEvent('ruleta-spin')), 1900);
+        setTimeout(() => window.dispatchEvent(new CustomEvent('ruleta-spin')), 2200);
+    }
+
+    function playAudio(audioFile) {
+        window.dispatchEvent(new CustomEvent('ruleta-play-audio', { detail: audioFile }));
+    }
+
+    function updateOptions(num) {
+        window.dispatchEvent(new CustomEvent('ruleta-update-options', { detail: num }));
+    }
+} else {
+    alert("El reconocimiento de voz no es compatible con tu navegador.");
+}
