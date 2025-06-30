@@ -8,6 +8,7 @@ if (annyang) {
     const commands = {
         // Comandos para girar la ruleta
         'giralo': () => spinRuleta(),
+        'giraldo': () => spinRuleta(),
         'miralo': () => spinRuleta(),
         'tiralo': () => spinRuleta(),
 
