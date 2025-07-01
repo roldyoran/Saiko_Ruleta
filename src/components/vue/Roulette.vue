@@ -2,20 +2,23 @@
   <div class="flex flex-col items-center relative">
     <audio id="cancion"></audio>
     <div class="relative">
-      <canvas ref="canvasRef" width="500" height="500" class="relative"></canvas>
+      <canvas ref="canvasRef" width="500" height="500" class="relativE"></canvas>
       
       <!-- Mostrar ganador con Vue -->
       <transition name="fade-scale">
         <div 
-          v-if="isShowingWinner" 
-          class="absolute inset-0 flex flex-col items-center justify-center bg-black/20 rounded-full backdrop-blur-sm shadow-lg"
-          :class="{
-                'bg-black/85': currentWinner === '11' || currentWinner === '13'
-              }"
-        >
+  v-if="isShowingWinner" 
+  class="absolute inset-0 flex flex-col items-center justify-center bg-black/40 rounded-full 
+         backdrop-blur-sm shadow-[0_0_20px_10px_rgba(0,0,0,0.3)]"
+  :class="{
+    'bg-black/85': currentWinner === '11' || currentWinner === '13'
+  }"
+>
           <template v-if="isNamesMode">
             <!-- <p class="text-4xl font-bold text-white mb-4">¡GANADOR!</p> -->
-            <p class="text-4xl font-bold text-white uppercase">{{ currentWinner }}</p>
+            <p class="text-4xl font-bold text-white uppercase text-shadow">
+              {{ currentWinner }}
+            </p>
           </template>
           <template v-else >
             <p 
@@ -59,6 +62,7 @@
       </template>
     </button>
 
+    <transition name="fade-scale">
     <!-- Panel de nombres -->
     <div
       v-if="showNamesList"
@@ -79,7 +83,10 @@
           :key="index"
           class="flex justify-between items-center mb-2 px-2 py-1 bg-zinc-50 dark:bg-zinc-700/95 rounded"
         >
-          <span class="dark:text-white">{{ name }}</span>
+          <span class="dark:text-white text-wrap ">
+            {{ name.length > 23 ? name.slice(0, 23) + '-' : name }}
+            <span v-if="name.length > 23"><br>{{ name.slice(23) }}</span>
+          </span>
           <button
             @click="removeName(index)"
             class="text-red-500 hover:text-red-700 font-bold"
@@ -89,52 +96,47 @@
         </div>
       </div>
     </div>
+    </transition>
     
     <!-- Contenedor de botones -->
-    <div class="flex flex-col sm:flex-row gap-2 mt-4 w-full max-w-md justify-between items-center">
-      <!-- Control de cantidad (visible solo en modo números) -->
-      <div v-if="!isNamesMode" class="flex-1 min-w-[120px] w-full sm:w-auto">
-        <label for="numOptionsInput" class="sr-only">Número de opciones</label>
-        <input
-          id="numOptionsInput"
-          ref="numOptionsInput"
-          type="number"
-          min="2"
-          max="44"
-          :value="numOptions"
-          @input="handleInputChange"
-          class="w-full py-2 px-3 text-center text-sm md:text-base border-2 font-bold text-rose-700 border-rose-700 rounded-xl bg-transparent transition-all hover:bg-rose-700 hover:text-white hover:shadow-lg hover:shadow-rose-700/50 hover:-translate-y-0.5
-            focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-transparent
-            dark:border-rose-900 dark:text-white dark:bg-rose-700 dark:hover:border-rose-500 dark:hover:bg-rose-950"
-        />
-      </div>
+<div class="flex flex-col sm:flex-row gap-2 mt-4 w-full max-w-md justify-between items-center">
+  <!-- Control de cantidad (visible solo en modo números) -->
+  <div v-if="!isNamesMode" class="flex-1 min-w-[120px] w-full sm:w-auto">
+    <label for="numOptionsInput" class="sr-only">Número de opciones</label>
+    <input
+      id="numOptionsInput"
+      ref="numOptionsInput"
+      type="number"
+      min="2"
+      max="44"
+      :value="numOptions"
+      @input="handleInputChange"
+      class="w-full py-2 px-3 text-center text-sm md:text-base border-2 font-bold text-white border-rose-900 rounded-xl bg-rose-700 transition-all hover:bg-rose-950 hover:text-white hover:shadow-lg hover:shadow-rose-700/50 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-transparent"
+    />
+  </div>
 
-      <!-- Botón Actualizar (visible solo en modo números) -->
-      <button
-        v-if="!isNamesMode"
-        @click="handleUpdate"
-        class="flex-1 min-w-[120px] w-full sm:w-auto border-2 text-sm md:text-base border-red-700 font-bold text-red-700 hover:bg-red-700 hover:text-white hover:-translate-y-0.5 hover:shadow-lg hover:shadow-red-700/50 transition-all rounded-xl py-2 px-4 active:shadow-none active:translate-y-0
-          focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50
-          dark:border-red-600 dark:text-white dark:bg-red-600 dark:hover:border-red-500 dark:hover:bg-red-800"
-      >
-        Actualizar
-      </button>
+  <!-- Botón Actualizar (visible solo en modo números) -->
+  <button
+    v-if="!isNamesMode"
+    @click="handleUpdate"
+    class="flex-1 min-w-[120px] w-full sm:w-auto border-2 text-sm md:text-base border-red-600 font-bold text-white bg-red-600 hover:bg-red-900 hover:text-white hover:-translate-y-0.5 hover:shadow-lg hover:shadow-red-700/50 transition-all rounded-xl py-2 px-4 active:shadow-none active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
+  >
+    Actualizar
+  </button>
 
-      <!-- Botón Girar -->
-      <button
-        @click="handleSpin"
-        :disabled="isNamesMode && namesList.length < 2"
-        :class="{
-          'opacity-50 cursor-not-allowed w-full': isNamesMode && namesList.length < 2,
-          'w-full': isNamesMode && namesList.length >= 2
-        }"
-        class="md:min-w-[120px] py-2 px-3 text-center text-sm md:text-base border-2 font-bold text-rose-700 border-rose-700 rounded-xl bg-transparent transition-all hover:bg-rose-700 hover:text-white hover:shadow-lg hover:shadow-rose-700/50 hover:-translate-y-0.5
-            focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-transparent
-            dark:border-rose-900 dark:text-white dark:bg-rose-700 dark:hover:border-rose-500 dark:hover:bg-rose-950"
-      >
-        GIRAR
-      </button>
-    </div>
+  <!-- Botón Girar -->
+  <button
+    @click="handleSpin"
+    :disabled="isNamesMode && namesList.length < 2"
+    :class="{
+      'opacity-50 cursor-not-allowed w-full': isNamesMode && namesList.length < 2,
+      'w-full': isNamesMode && namesList.length >= 2
+    }"
+    class="md:min-w-[120px] py-2 px-3 text-center text-sm md:text-base border-2 font-bold text-white border-rose-900 rounded-xl bg-rose-700 transition-all hover:bg-rose-950 hover:text-white hover:shadow-lg hover:shadow-rose-700/50 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:border-transparent"
+  >
+    GIRAR
+  </button>
+</div>
   </div>
 </template>
 
@@ -161,10 +163,14 @@ const isShowingWinner = ref(false);
 const currentWinner = ref('');
 const textAngule = ref(2);
 
-// Constantes
-const OUTSIDE_RADIUS = 200;
-const TEXT_RADIUS = 160;
-let INSIDE_RADIUS = 120;
+// Ruleta Radios 
+const insideRadius = ref(120);
+const textRadius = ref(190);
+// Constantes Radios
+const OUTSIDE_RADIUS = 240;
+insideRadius.value = isNamesMode.value ? 90 : 140;
+
+// Constantes de tiempo
 const WINNER_DISPLAY_DURATION = 40000; // 16 segundos
 
 // Computed
@@ -180,13 +186,15 @@ const toggleNamesList = () => {
     if (namesList.value.length > 0) {
       options.value = [...namesList.value];
     }
-    INSIDE_RADIUS = 75; // Reducir el radio interior en modo nombres
-    textAngule.value = 15; // Ajustar el ángulo del texto
+    insideRadius.value = 20; // Reducir el radio interior en modo nombres
+    textAngule.value = 45; // Ajustar el ángulo del texto
+    textRadius.value = 170; // Ajustar el radio del texto
   } else {
     // Volver a modo números
     updateOptions(numOptions.value);
-    INSIDE_RADIUS = 120;
+    insideRadius.value = 120;
     textAngule.value = 2; // Ajustar el ángulo del texto
+    textRadius.value = 190; // Ajustar el radio del texto
   }
   drawRouletteWheel();
 };
@@ -195,6 +203,11 @@ const addName = () => {
   if (newName.value.trim()) {
     namesList.value.push(newName.value.trim().toUpperCase());
     newName.value = '';
+     // quitar ganador de pantalla
+  if (winnerDisplayTimeout.value) {
+    clearTimeout(winnerDisplayTimeout.value);
+    isShowingWinner.value = false;
+  }
     if (isNamesMode.value) {
       options.value = [...namesList.value];
       drawRouletteWheel();
@@ -203,6 +216,12 @@ const addName = () => {
 };
 
 const removeName = (index) => {
+  // quitar ganador de pantalla
+  if (winnerDisplayTimeout.value) {
+    clearTimeout(winnerDisplayTimeout.value);
+    isShowingWinner.value = false;
+  }
+
   namesList.value.splice(index, 1);
   if (isNamesMode.value) {
     options.value = [...namesList.value];
@@ -224,10 +243,12 @@ const getColor = (item, maxitem) => {
   const colors = [
     { red: 255, green: 0, blue: 85 },     // Rosa intenso (amor/pasión)
     { red: 255, green: 255, blue: 255 },  // Blanco (pureza/contraste)
-    { red: 180, green: 0, blue: 30 }      // Rojo oscuro (amor)
+    { red: 180, green: 0, blue: 30 },      // Rojo oscuro (amor)
+    { red: 255, green: 182, blue: 193 }, // Rosa claro
+    { red: 100, green: 0, blue: 30 } // Vino tinto oscuro
   ];
 
-  const color = colors[item % 3];
+  const color = colors[item % colors.length];
   return RGB2Color(
     Math.min(255, Math.max(0, color.red)),
     Math.min(255, Math.max(0, color.green)),
@@ -251,7 +272,7 @@ const drawRouletteWheel = () => {
     // Dibujar segmento
     ctx.value.beginPath();
     ctx.value.arc(250, 250, OUTSIDE_RADIUS, angle, angle + arc.value, false);
-    ctx.value.arc(250, 250, INSIDE_RADIUS, angle + arc.value, angle, true);
+    ctx.value.arc(250, 250, insideRadius.value, angle + arc.value, angle, true);
     ctx.value.lineWidth = 4;
     ctx.value.stroke();
     ctx.value.fill();
@@ -267,14 +288,44 @@ const drawRouletteWheel = () => {
     ctx.value.fillStyle = "white";
 
     ctx.value.translate(
-      250 + Math.cos(angle + arc.value / 2) * TEXT_RADIUS,
-      250 + Math.sin(angle + arc.value / 2) * TEXT_RADIUS
+      250 + Math.cos(angle + arc.value / 2) * textRadius.value,
+      250 + Math.sin(angle + arc.value / 2) * textRadius.value
     );
     ctx.value.rotate(angle + arc.value / 2 + Math.PI / textAngule.value);
     
     const text = options.value[i];
-    ctx.value.strokeText(text, -ctx.value.measureText(text).width / 2, 0);
-    ctx.value.fillText(text, -ctx.value.measureText(text).width / 2, 0);
+
+    // Medir el ancho del texto
+   const maxTextWidth = arc.value * textRadius.value * 0.9;
+const textWidth = ctx.value.measureText(text).width;
+
+    // Si es muy largo, escalarlo para que quepa en el segmento
+    if (textWidth > maxTextWidth) {
+  const scaleFactor = maxTextWidth / textWidth;
+  ctx.value.scale(scaleFactor, scaleFactor);
+}
+
+    // Centrar el texto
+    ctx.value.textAlign = "center";
+    ctx.value.textBaseline = "middle";
+
+    // Dibujar texto centrado
+    ctx.value.strokeText(text, 0, 0);
+    ctx.value.fillText(text, 0, 0);
+
+    // Restaurar escala si fue aplicada
+    if (textWidth > arc.value * textRadius.value) {
+      ctx.value.setTransform(1, 0, 0, 1, 0, 0); // Reset transform
+      ctx.value.translate(
+        250 + Math.cos(angle + arc.value / 2) * textRadius.value,
+        250 + Math.sin(angle + arc.value / 2) * textRadius.value
+      );
+      ctx.value.rotate(angle + arc.value / 2 + Math.PI / textAngule.value);
+    }
+
+
+
+
     ctx.value.restore();
   }
 
@@ -349,6 +400,13 @@ const stopRotateWheel = () => {
 
 // Métodos principales
 const updateOptions = (newNumOptions) => {
+  
+  // quitar ganador de pantalla
+  if (winnerDisplayTimeout.value) {
+    clearTimeout(winnerDisplayTimeout.value);
+    isShowingWinner.value = false;
+  }
+
   if (!isNaN(newNumOptions)) {
     numOptions.value = Math.min(44, Math.max(2, newNumOptions));
     options.value = Array.from({ length: numOptions.value }, (_, i) => (i + 1).toString());
@@ -359,6 +417,7 @@ const updateOptions = (newNumOptions) => {
 const spin = () => {
   if (isNamesMode.value && namesList.value.length < 2) {
     alert("Agrega al menos 2 nombres para girar la ruleta");
+    
     return;
   }
 
@@ -453,8 +512,9 @@ const handleSpinFromSpeech = () => {
   spin();
 };
 
+
 const handleUpdateOptionsFromSpeech = (n) => {
-  updateOptions(n);
+  updateOptionsinNameStatus(n);
 };
 
 const handlePlayAudio = (audioFile) => {
@@ -462,6 +522,15 @@ const handlePlayAudio = (audioFile) => {
   if (audio) {
     audio.src = `audios/${audioFile}`;
     audio.play();
+  }
+};
+
+const updateOptionsinNameStatus = (n) => {
+  if (isNamesMode.value) {
+    toggleNamesList();
+    updateOptions(n);
+  } else {
+    updateOptions(n);
   }
 };
 </script>
@@ -485,5 +554,15 @@ const handlePlayAudio = (audioFile) => {
   justify-content: center;
   border-radius: 50%;
   z-index: 10;
+}
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+  padding-right: 10px;
+}
+
+.text-shadow {
+  text-shadow: 2px 2px 0 #000, -2px 2px 0 #000, 2px -2px 0 #000, -2px -2px 0 #000, 0px 2px 0 #000, 2px 0px 0 #000, 0px -2px 0 #000, -2px 0px 0 #000;
 }
 </style>

@@ -1,4 +1,8 @@
+import annyang from 'annyang';
+
 if (annyang) {
+
+
     // Función para eliminar tildes
     function eliminarTildes(texto) {
         return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
