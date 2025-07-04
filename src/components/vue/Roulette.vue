@@ -50,12 +50,12 @@
     <button
       @click="toggleNamesList"
       class="fixed top-4 right-4 z-50 flex items-center gap-2 px-2 py-1 bg-zinc-800/80 rounded-full shadow-lg transition-all duration-200 border-2 border-zinc-700"
-      :class="{ 'bg-rose-700/90 border-rose-700': isNamesMode, 'bg-zinc-800/80 border-zinc-700': !isNamesMode }"
+      :class="{ '!bg-rose-700/90 !border-rose-700': isNamesMode, 'bg-zinc-800/80 border-zinc-700': !isNamesMode }"
       style="min-width:64px;"
     >
       <span
       class="flex items-center justify-center w-8 h-8 rounded-full transition-all duration-200"
-      :class="isNamesMode ? 'bg-rose-600 text-white scale-110 shadow-md' : 'bg-zinc-700 text-zinc-300'"
+      :class="isNamesMode ? '!bg-rose-600 text-white scale-110 shadow-md' : 'bg-zinc-700 text-zinc-300'"
       >
         <!-- SVG modo nombres -->
         <svg v-if="isNamesMode" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-user-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /><path d="M16 19h6" /><path d="M19 16v6" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4" /></svg>
@@ -67,7 +67,7 @@
       >
       <span
         class="absolute left-0 top-0 h-5 w-5 rounded-full bg-white shadow-md transition-all duration-200"
-        :class="isNamesMode ? 'translate-x-5 bg-rose-400' : 'translate-x-0 bg-white'"
+        :class="isNamesMode ? 'translate-x-5 !bg-rose-400' : 'translate-x-0 bg-white'"
         style="box-shadow:0 2px 8px 0 rgba(0,0,0,0.15);"
       ></span>
       </span>
