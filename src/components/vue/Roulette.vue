@@ -1,5 +1,5 @@
 <template>
-  <div class="relative flex flex-col items-center ">
+  <div class="relative flex flex-col items-center">
     <audio id="cancion"></audio>
     <div class="relative">
       <canvas ref="canvasRef" width="500" height="500" class="relativE"></canvas>
@@ -146,7 +146,7 @@
 
     <!-- Contenedor de botones -->
     <div
-      class="mt-4 flex w-full px-2 flex-col gap-2 sm:flex-row sm:items-stretch sm:justify-between"
+      class="mt-4 flex w-full flex-col gap-2 px-2 sm:flex-row sm:items-stretch sm:justify-between"
     >
       <!-- Control de cantidad (visible solo en modo números) -->
       <div v-if="!isNamesMode" class="w-full sm:flex-1 sm:basis-0">

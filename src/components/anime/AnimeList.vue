@@ -185,10 +185,10 @@
           <button
             @click="currentPage = totalPages - 1"
             :disabled="currentPage >= totalPages - 1"
-            class="flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-700/50 bg-zinc-800/80 font-medium text-orange-200 backdrop-blur-sm transition-all duration-200 hover:border-orange-500/30 hover:bg-orange-500/20 hover:text-orange-100 active:scale-95 disabled:cursor-not-allowed disabled:opacity-40 sm:h-auto sm:w-auto sm:px-3 sm:py-2"
+                                  class="flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-700/50 bg-zinc-800/80 font-medium text-orange-200 backdrop-blur-sm transition-all duration-200 hover:border-orange-500/30 hover:bg-orange-500/20 hover:text-orange-100 active:scale-95 disabled:cursor-not-allowed disabled:opacity-40 sm:h-auto sm:w-auto sm:px-3 sm:py-2"
             :class="{ 'ring-2 ring-orange-500/30': currentPage >= totalPages - 1 }"
           >
-            <span class="text-xs sm:text-sm">»»</span>
+                          <span class="text-xs sm:text-sm">»»</span>
           </button>
         </div>
 
