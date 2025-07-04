@@ -1,22 +1,21 @@
 ---
 import Personajes from "./Personajes.astro";
-import Roulette from '@/components/vue/Roulette.vue'
+import Roulette from "@/components/vue/Roulette.vue";
 ---
 
 <!-- Contenido del objeto central -->
-<div class="grid place-items-center m-0">
-  
+<div class="m-0 grid place-items-center">
   <!-- PERSONAJE QUE GIRA LA RULETA -->
   <Personajes
-  src="roldyoran/TaniaColegialastick1.webp"
-  id="personaje"
-  z_index="z-10"
-  class_name="hidden md:block  w-[210px] h-auto ml-[540px] mt-8 absolute"
-  alt="Tania_ruleta_DDD1"
+    src="roldyoran/TaniaColegialastick1.webp"
+    id="personaje"
+    z_index="z-10"
+    class_name="hidden md:block  w-[210px] h-auto ml-[540px] mt-8 absolute"
+    alt="Tania_ruleta_DDD1"
   />
-  
+
   <Roulette client:load />
- 
+
   <!-- PERSONAJE QUE ACOMPAÑA -->
   <Personajes
     src="roldyoran/DJ_RULETA.webp"
@@ -30,12 +29,10 @@ import Roulette from '@/components/vue/Roulette.vue'
   <img
     src="reigen_ag/stickers/lejiChilenoGirando.gif"
     id="personaje3"
-    class="animacion-imagen hidden md:block z-20 w-[150px] h-auto mb-[550px] mr-[320px] absolute"
+    class="animacion-imagen absolute z-20 mb-[550px] mr-[320px] hidden h-auto w-[150px] md:block"
     alt="lejiChilenoGirando"
   />
 </div>
-
-
 
 <style>
   /* Animaciones Leji chiquito girando */

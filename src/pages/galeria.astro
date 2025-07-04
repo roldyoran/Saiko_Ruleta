@@ -8,16 +8,13 @@ import data from "@/assets/galeria.json";
     {
       Object.entries(data).map(([temporada, usuarios]) => (
         <section>
-          <h1 class="text-3xl py-4">{temporada}</h1>
+          <h1 class="py-4 text-3xl">{temporada}</h1>
           <div class="gallery">
             {Object.entries(usuarios).map(([usuario, contenido]) => (
               <>
                 {contenido.imagenes?.map((imagen) => (
                   <div class="image-container">
-                    <img
-                      src={`/${usuario}/${imagen}`}
-                      alt={`Imagen de ${usuario}`}
-                    />
+                    <img src={`/${usuario}/${imagen}`} alt={`Imagen de ${usuario}`} />
                     <a
                       href={`https://www.instagram.com/${usuario}`}
                       target="_blank"
@@ -31,10 +28,7 @@ import data from "@/assets/galeria.json";
                 {Array.isArray(contenido.stickers) &&
                   contenido.stickers.map((imagen) => (
                     <div class="image-container">
-                      <img
-                        src={`/${usuario}/${imagen}`}
-                        alt={`Sticker de ${usuario}`}
-                      />
+                      <img src={`/${usuario}/${imagen}`} alt={`Sticker de ${usuario}`} />
                       <a
                         href={`https://www.instagram.com/${usuario}`}
                         target="_blank"
@@ -51,8 +45,8 @@ import data from "@/assets/galeria.json";
         </section>
       ))
     }
-   <section class="flex flex-col justify-center items-center text-white/40 my-4">
-    <!-- <h4 class="text-center text-lg text-white/40 py-5">Tamaño de Imagenes para la Ruleta</h4>
+    <section class="my-4 flex flex-col items-center justify-center text-white/40">
+      <!-- <h4 class="text-center text-lg text-white/40 py-5">Tamaño de Imagenes para la Ruleta</h4>
     <ul class="space-y-1 text-sm">
       <li class="text-center">
         <h4>Para el personaje que gira la Ruleta: 800x720px</h4>
@@ -62,10 +56,9 @@ import data from "@/assets/galeria.json";
       </li>
     </ul>
     <p class="text-md mt-4">(Tomar en cuenta tamaños de hombre y mujer)*</p> -->
-    <footer class="text-center mt-6">VIVAN LAS LESBIANAS!!!!</footer>
-  </section>
-  
-  
+      <footer class="mt-6 text-center">VIVAN LAS LESBIANAS!!!!</footer>
+    </section>
+
     <div class="modal">
       <span class="close">&times;</span>
       <img class="modal-content" id="modal-img" />
@@ -155,15 +148,7 @@ import data from "@/assets/galeria.json";
   .instagram-link:hover {
     transform: translateY(-2px);
     box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
-    background: linear-gradient(
-      45deg,
-      #5e36bd,
-      #794acf,
-      #89379e,
-      #9c2a89,
-      #c23363,
-      #e63535
-    );
+    background: linear-gradient(45deg, #5e36bd, #794acf, #89379e, #9c2a89, #c23363, #e63535);
   }
 
   .modal {
@@ -200,39 +185,28 @@ import data from "@/assets/galeria.json";
     color: #999;
   }
 
-
-
   /* BARRA DE DESPLAZAMIENTO */
   /* Estilos para la barra de desplazamiento en WebKit (Safari, Chrome, Opera) */
   html::-webkit-scrollbar {
     /*Ancho de la barra de desplazamiento*/
-    width: 10px; 
+    width: 10px;
   }
 
   html::-webkit-scrollbar-track {
     /*Color del fondo de la barra de desplazamiento*/
-    background: #464545; 
+    background: #464545;
   }
 
   html::-webkit-scrollbar-thumb {
     /* Color de la barra por default */
-    background: linear-gradient(
-      45deg,
-      #5b33b9,
-      #704bb6,
-      #89379e,
-      #b635a0,
-      #b42655,
-      #da2727
-    );
+    background: linear-gradient(45deg, #5b33b9, #704bb6, #89379e, #b635a0, #b42655, #da2727);
     /* Radio de los bordes de la barra de desplazamiento */
-    border-radius: 5px; 
+    border-radius: 5px;
   }
 
   html::-webkit-scrollbar-thumb:hover {
     /* Cambio de color al pasar el mouse sobre la barra de desplazamiento */
-    background: #a5a3a3; 
+    background: #a5a3a3;
     /* // background: linear-gradient(45deg, #5b33b9, #704bb6, #89379e, #b635a0, #b42655, #da2727); */
   }
-  
 </style>

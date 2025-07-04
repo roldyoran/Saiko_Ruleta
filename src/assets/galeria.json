@@ -1,94 +1,76 @@
 {
-    "Temporada #2":{
-        "reigen_ag":{
-            "imagenes":[
-                "Tago_ruleta_navidad.webp",
-                "Tania1_navidad.webp",
-                "Tago_ruleta18.webp",
-                "Tania1_ruleta18.webp",
-                "Tago_ruleta_vampiro.webp",
-                "Tago_ruleta_DDD.webp",
-                "Tania_ruleta_DDD1.webp"
-            ],
-            "stickers":[
-                "stickers/lejiChilenoGirando.gif",
-                "stickers/leji_halo.gif",
-                "stickers/leji_navidad.gif"
-            ]
-        },
-        "stefy_cyan22": {
-            "imagenes": [
-                "tania_bruja_2.webp"
-            ],
-            "stickers": [
-
-            ]
-        }
+  "Temporada #2": {
+    "reigen_ag": {
+      "imagenes": [
+        "Tago_ruleta_navidad.webp",
+        "Tania1_navidad.webp",
+        "Tago_ruleta18.webp",
+        "Tania1_ruleta18.webp",
+        "Tago_ruleta_vampiro.webp",
+        "Tago_ruleta_DDD.webp",
+        "Tania_ruleta_DDD1.webp"
+      ],
+      "stickers": [
+        "stickers/lejiChilenoGirando.gif",
+        "stickers/leji_halo.gif",
+        "stickers/leji_navidad.gif"
+      ]
     },
-    "Temporada #1": {
-        "roldyoran": {
-            "imagenes": [
-                "taniastikc1.webp",
-                "TaniaColegialastick1.webp",
-                "DJ_RULETA.webp"
-            ],
-            "stickers": [
-                
-            ]
-        },
-        "saikomic" : {
-            "imagenes" : [
-                "stick1.webp"
-            ],
-            "stickers": [
-                
-            ]
-        },
-        "reigen_ag": {
-            "imagenes":[
-
-            ],
-            "stickers":[
-                "stickers/leji_chibi_girando.gif"
-            ]
-        },
-        "stefy_cyan22": {
-            "imagenes": [
-                "taniaBikinistick1.webp",
-                "taniaConejitastick1.webp",
-                "taniaElegantestick1.webp",
-                "tania_deadpool_1.webp",
-                "tania_griffit_1.png",
-                "tagoGif.gif",
-                "tagoLeji.gif",
-                "tago_and_panzer_wolwerine.webp",
-                "tago_berserk.gif"
-            ],
-            "stickers": [
-                "stickers/Bloodborne_pn.webp",
-                "stickers/Bruja_pn.webp",
-                "stickers/Camilo_pn.webp",
-                "stickers/chasquilla_pn.webp",
-                "stickers/Deadpool_Tania_pn.webp",
-                "stickers/dj_chibi.png",
-                "stickers/Esric_pn.webp",
-                "stickers/hermanos_chibis.png",
-                "stickers/leji_chibi.png",
-                "stickers/Megan_pn.webp",
-                "stickers/megan_y_amigas_pn.webp",
-                "stickers/Panzer_pn.webp",
-                "stickers/Personaje_pn.webp",
-                "stickers/ruco_pn.webp",
-                "stickers/Stefy_gracias.png",
-                "stickers/Tago 100 gif.gif",
-                "stickers/Tago-Tania-Hellsing_pn.webp",
-                "stickers/tago_chibi.png",
-                "stickers/Tago_Garou_pn.webp",
-                "stickers/Tago_wolverine_pn.webp",
-                "stickers/tania_chibi.png",
-                "stickers/Tania_Tago_School_Days_pn.webp",
-                "stickers/Yang_pn.webp"
-            ]
-        }
+    "stefy_cyan22": {
+      "imagenes": ["tania_bruja_2.webp"],
+      "stickers": []
     }
+  },
+  "Temporada #1": {
+    "roldyoran": {
+      "imagenes": ["taniastikc1.webp", "TaniaColegialastick1.webp", "DJ_RULETA.webp"],
+      "stickers": []
+    },
+    "saikomic": {
+      "imagenes": ["stick1.webp"],
+      "stickers": []
+    },
+    "reigen_ag": {
+      "imagenes": [],
+      "stickers": ["stickers/leji_chibi_girando.gif"]
+    },
+    "stefy_cyan22": {
+      "imagenes": [
+        "taniaBikinistick1.webp",
+        "taniaConejitastick1.webp",
+        "taniaElegantestick1.webp",
+        "tania_deadpool_1.webp",
+        "tania_griffit_1.png",
+        "tagoGif.gif",
+        "tagoLeji.gif",
+        "tago_and_panzer_wolwerine.webp",
+        "tago_berserk.gif"
+      ],
+      "stickers": [
+        "stickers/Bloodborne_pn.webp",
+        "stickers/Bruja_pn.webp",
+        "stickers/Camilo_pn.webp",
+        "stickers/chasquilla_pn.webp",
+        "stickers/Deadpool_Tania_pn.webp",
+        "stickers/dj_chibi.png",
+        "stickers/Esric_pn.webp",
+        "stickers/hermanos_chibis.png",
+        "stickers/leji_chibi.png",
+        "stickers/Megan_pn.webp",
+        "stickers/megan_y_amigas_pn.webp",
+        "stickers/Panzer_pn.webp",
+        "stickers/Personaje_pn.webp",
+        "stickers/ruco_pn.webp",
+        "stickers/Stefy_gracias.png",
+        "stickers/Tago 100 gif.gif",
+        "stickers/Tago-Tania-Hellsing_pn.webp",
+        "stickers/tago_chibi.png",
+        "stickers/Tago_Garou_pn.webp",
+        "stickers/Tago_wolverine_pn.webp",
+        "stickers/tania_chibi.png",
+        "stickers/Tania_Tago_School_Days_pn.webp",
+        "stickers/Yang_pn.webp"
+      ]
+    }
+  }
 }

@@ -1,17 +1,15 @@
 ---
 interface Props {
-	src: string;
-    id: string,
-	class_name: string;
-	alt: string;
-    z_index: string;
+  src: string;
+  id: string;
+  class_name: string;
+  alt: string;
+  z_index: string;
 }
 
 const { src, id, class_name, alt, z_index } = Astro.props;
 ---
 
-
-<img src={src} id={id}
-      class={class_name + " " + z_index} alt={alt}>
+<img src={src} id={id} class={class_name + " " + z_index} alt={alt} />
 <!-- <img src={src} id={id+"-blur"}
       class={class_name+" blur-[2px] z-0"} alt={alt}> -->

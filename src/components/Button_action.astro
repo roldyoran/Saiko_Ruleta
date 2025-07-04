@@ -1,15 +1,13 @@
 ---
 interface Props {
-	href: string;
+  href: string;
 }
 
 const { href } = Astro.props;
 ---
 
-<div class="w-[36px] h-[36px] flex justify-center items-center my-[5px]">
-    <a  href={href}
-        target="_blank" 
-        class="hover:scale-150 transition-all">
-        <slot></slot>
-    </a>
+<div class="my-[5px] flex h-[36px] w-[36px] items-center justify-center">
+  <a href={href} target="_blank" class="transition-all hover:scale-150">
+    <slot />
+  </a>
 </div>
