@@ -49,17 +49,28 @@
     <!-- Botón flotante de lista -->
     <button
       @click="toggleNamesList"
-      class="fixed top-4 right-4 z-50 p-3 bg-rose-600/20 text-white rounded-2xl shadow-lg hover:bg-rose-800 transition-all transform hover:scale-110"
-      :class="{ 'bg-rose-900': showNamesList }"
+      class="fixed top-4 right-4 z-50 flex items-center gap-2 px-2 py-1 bg-zinc-800/80 rounded-full shadow-lg transition-all duration-200 border-2 border-zinc-700"
+      :class="{ 'bg-rose-700/90 border-rose-700': isNamesMode, 'bg-zinc-800/80 border-zinc-700': !isNamesMode }"
+      style="min-width:64px;"
     >
-      <template v-if="isNamesMode">
-      <!-- SVG modo nombres -->
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-user-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /><path d="M16 19h6" /><path d="M19 16v6" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4" /></svg>
-      </template>
-      <template v-else>
-      <!-- SVG modo números -->
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-number-123"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 10l2 -2v8" /><path d="M9 8h3a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-2a1 1 0 0 0 -1 1v2a1 1 0 0 0 1 1h3" /><path d="M17 8h2.5a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1 -1.5 1.5h-1.5h1.5a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1 -1.5 1.5h-2.5" /></svg>
-      </template>
+      <span
+      class="flex items-center justify-center w-8 h-8 rounded-full transition-all duration-200"
+      :class="isNamesMode ? 'bg-rose-600 text-white scale-110 shadow-md' : 'bg-zinc-700 text-zinc-300'"
+      >
+        <!-- SVG modo nombres -->
+        <svg v-if="isNamesMode" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-user-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" /><path d="M16 19h6" /><path d="M19 16v6" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4" /></svg>
+        <!-- SVG modo números -->
+        <svg v-else xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-number-123"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 10l2 -2v8" /><path d="M9 8h3a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-2a1 1 0 0 0 -1 1v2a1 1 0 0 0 1 1h3" /><path d="M17 8h2.5a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1 -1.5 1.5h-1.5h1.5a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1 -1.5 1.5h-2.5" /></svg>
+        </span>
+      <span
+      class="relative flex items-center w-10 h-5 bg-zinc-600 rounded-full transition-all duration-200 mx-1"
+      >
+      <span
+        class="absolute left-0 top-0 h-5 w-5 rounded-full bg-white shadow-md transition-all duration-200"
+        :class="isNamesMode ? 'translate-x-5 bg-rose-400' : 'translate-x-0 bg-white'"
+        style="box-shadow:0 2px 8px 0 rgba(0,0,0,0.15);"
+      ></span>
+      </span>
     </button>
 
     <transition name="fade-scale">

@@ -5,17 +5,17 @@ import Roulette from '@/components/vue/Roulette.vue'
 
 <!-- Contenido del objeto central -->
 <div class="grid place-items-center m-0">
-  <Roulette client:load />
-
+  
   <!-- PERSONAJE QUE GIRA LA RULETA -->
   <Personajes
-    src="roldyoran/TaniaColegialastick1.webp"
-    id="personaje"
-    z_index="z-10"
-    class_name="hidden md:block  w-[210px] h-auto ml-[540px] mt-8 absolute"
-    alt="Tania_ruleta_DDD1"
-    />
-
+  src="roldyoran/TaniaColegialastick1.webp"
+  id="personaje"
+  z_index="z-10"
+  class_name="hidden md:block  w-[210px] h-auto ml-[540px] mt-8 absolute"
+  alt="Tania_ruleta_DDD1"
+  />
+  
+  <Roulette client:load />
  
   <!-- PERSONAJE QUE ACOMPAÑA -->
   <Personajes
