@@ -1,5 +1,5 @@
 <template>
-  <div class="relative flex flex-col items-center">
+  <div class="relative flex flex-col items-center ">
     <audio id="cancion"></audio>
     <div class="relative">
       <canvas ref="canvasRef" width="500" height="500" class="relativE"></canvas>
@@ -15,7 +15,7 @@
         >
           <template v-if="isNamesMode">
             <!-- <p class="text-4xl font-bold text-white mb-4">¡GANADOR!</p> -->
-            <p class="text-shadow text-4xl font-bold uppercase text-white">
+            <p class="text-shadow text-4xl font-bold text-white uppercase">
               {{ currentWinner }}
             </p>
           </template>
@@ -42,9 +42,9 @@
     <!-- Botón flotante de lista -->
     <button
       @click="toggleNamesList"
-      class="fixed right-4 top-4 z-50 flex items-center gap-2 rounded-full border-2 border-zinc-700 bg-zinc-800/80 px-2 py-1 shadow-lg transition-all duration-200"
+      class="fixed top-4 right-4 z-50 flex cursor-pointer items-center gap-2 rounded-full border-2 border-zinc-700 bg-zinc-800/80 px-2 py-1 shadow-lg transition-all duration-200"
       :class="{
-        '!border-rose-700 !bg-rose-700/90': isNamesMode,
+        '!border-rose-700 !bg-rose-800/90': isNamesMode,
         'border-zinc-700 bg-zinc-800/80': !isNamesMode,
       }"
       style="min-width: 64px"
@@ -52,7 +52,7 @@
       <span
         class="flex h-8 w-8 items-center justify-center rounded-full transition-all duration-200"
         :class="
-          isNamesMode ? 'scale-110 bg-rose-300 text-white shadow-md' : 'bg-zinc-700 text-zinc-300'
+          isNamesMode ? 'scale-110 bg-rose-500 text-white shadow-md' : 'bg-zinc-700 text-zinc-300'
         "
       >
         <!-- SVG modo nombres -->
@@ -101,8 +101,8 @@
         class="relative mx-1 flex h-5 w-10 items-center rounded-full bg-zinc-600 transition-all duration-200"
       >
         <span
-          class="absolute left-0 top-0 h-5 w-5 rounded-full bg-white shadow-md transition-all duration-200"
-          :class="isNamesMode ? 'translate-x-5 !bg-rose-400' : 'translate-x-0 bg-white'"
+          class="absolute top-0 left-0 h-5 w-5 rounded-full bg-white shadow-md transition-all duration-200"
+          :class="isNamesMode ? 'translate-x-5 !bg-rose-100' : 'translate-x-0 bg-white'"
           style="box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.15)"
         ></span>
       </span>
@@ -112,7 +112,7 @@
       <!-- Panel de nombres -->
       <div
         v-if="showNamesList"
-        class="fixed right-4 top-16 z-40 w-80 overflow-x-hidden rounded-lg border border-zinc-200/20 bg-zinc-900/90 p-4 shadow-xl backdrop-blur-sm"
+        class="fixed top-16 right-4 z-40 w-80 overflow-x-hidden rounded-lg border border-zinc-200/20 bg-zinc-900/90 p-4 shadow-xl backdrop-blur-sm"
       >
         <div class="mb-4">
           <input
@@ -120,7 +120,7 @@
             v-model="newName"
             @keyup.enter="addName"
             placeholder="Ingresa un nombre..."
-            class="w-full overflow-x-hidden rounded-md border border-zinc-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-rose-500 dark:border-zinc-600 dark:bg-zinc-700/95 dark:text-white"
+            class="w-full overflow-x-hidden rounded-md border border-zinc-300 px-3 py-2 focus:ring-2 focus:ring-rose-500 focus:outline-none dark:border-zinc-600 dark:bg-zinc-700/95 dark:text-white"
           />
         </div>
         <div class="custom-scrollbar max-h-60 overflow-y-auto">
@@ -133,7 +133,10 @@
               {{ name.length > 23 ? name.slice(0, 23) + "-" : name }}
               <span v-if="name.length > 23"><br />{{ name.slice(23) }}</span>
             </span>
-            <button @click="removeName(index)" class="font-bold text-red-500 hover:text-red-700">
+            <button
+              @click="removeName(index)"
+              class="cursor-pointer font-bold text-red-500 hover:text-red-700"
+            >
               ✕
             </button>
           </div>
@@ -142,27 +145,77 @@
     </transition>
 
     <!-- Contenedor de botones -->
-    <div class="mt-4 flex w-full max-w-md flex-col items-center justify-between gap-2 sm:flex-row">
+    <div
+      class="mt-4 flex w-full px-2 flex-col gap-2 sm:flex-row sm:items-stretch sm:justify-between"
+    >
       <!-- Control de cantidad (visible solo en modo números) -->
-      <div v-if="!isNamesMode" class="w-full min-w-[120px] flex-1 sm:w-auto">
+      <div v-if="!isNamesMode" class="w-full sm:flex-1 sm:basis-0">
         <label for="numOptionsInput" class="sr-only">Número de opciones</label>
-        <input
-          id="numOptionsInput"
-          ref="numOptionsInput"
-          type="number"
-          min="2"
-          max="44"
-          :value="numOptions"
-          @input="handleInputChange"
-          class="w-full rounded-xl border-2 border-rose-900 bg-rose-700 px-3 py-2 text-center text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-rose-950 hover:text-white hover:shadow-lg hover:shadow-rose-700/50 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-rose-500 md:text-base"
-        />
+        <div
+          class="flex items-stretch overflow-hidden rounded-xl border-2 border-rose-900 bg-rose-700 text-sm font-bold text-white shadow-md md:text-base"
+        >
+          <!-- Botón "-" -->
+          <button
+            type="button"
+            @click="numOptions > 2 && updateOptions(numOptions - 1)"
+            class="flex items-center justify-center px-3 font-bold transition-all hover:bg-rose-800 focus:ring-2 focus:ring-rose-500 focus:outline-none disabled:opacity-50"
+            :disabled="numOptions <= 2"
+            aria-label="Disminuir"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
+            </svg>
+          </button>
+
+          <!-- Input numérico -->
+          <input
+            id="numOptionsInput"
+            ref="numOptionsInput"
+            type="number"
+            min="2"
+            max="44"
+            :value="numOptions"
+            @input="handleInputChange"
+            class="no-spin w-16 border-0 bg-transparent px-2 py-2 text-center focus:ring-0 focus:outline-none"
+          />
+
+          <!-- Botón "+" -->
+          <button
+            type="button"
+            @click="numOptions < 44 && updateOptions(numOptions + 1)"
+            class="flex items-center justify-center px-3 transition-all hover:bg-rose-800 focus:ring-2 focus:ring-rose-500 focus:outline-none disabled:opacity-50"
+            :disabled="numOptions >= 44"
+            aria-label="Aumentar"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 4v16m8-8H4"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
 
       <!-- Botón Actualizar (visible solo en modo números) -->
       <button
         v-if="!isNamesMode"
         @click="handleUpdate"
-        class="w-full min-w-[120px] flex-1 rounded-xl border-2 border-red-600 bg-red-600 px-4 py-2 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-red-900 hover:text-white hover:shadow-lg hover:shadow-red-700/50 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 active:translate-y-0 active:shadow-none sm:w-auto md:text-base"
+        class="w-full rounded-xl border-2 border-red-600 bg-red-600 px-4 py-2 text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-red-900 hover:text-white hover:shadow-lg hover:shadow-red-700/50 focus:ring-2 focus:ring-red-500 focus:outline-none active:translate-y-0 active:shadow-none sm:flex-1 sm:basis-0 md:text-base"
       >
         Actualizar
       </button>
@@ -172,10 +225,9 @@
         @click="handleSpin"
         :disabled="isNamesMode && namesList.length < 2"
         :class="{
-          'w-full cursor-not-allowed opacity-50': isNamesMode && namesList.length < 2,
-          'w-full': isNamesMode && namesList.length >= 2,
+          'cursor-not-allowed opacity-50': isNamesMode && namesList.length < 2,
         }"
-        class="rounded-xl border-2 border-rose-900 bg-rose-700 px-3 py-2 text-center text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-rose-950 hover:text-white hover:shadow-lg hover:shadow-rose-700/50 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-rose-500 md:min-w-[120px] md:text-base"
+        class="w-full rounded-xl border-2 border-rose-900 bg-rose-700 px-3 py-2 text-center text-sm font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-rose-950 hover:text-white hover:shadow-lg hover:shadow-rose-700/50 focus:border-transparent focus:ring-2 focus:ring-rose-500 focus:outline-none sm:flex-1 sm:basis-0 md:text-base"
       >
         GIRAR
       </button>
@@ -617,5 +669,12 @@
       2px 0px 0 #000,
       0px -2px 0 #000,
       -2px 0px 0 #000;
+  }
+
+  /* Oculta las flechas del input[type=number] en Chrome, Safari, Edge */
+  input[type="number"].no-spin::-webkit-inner-spin-button,
+  input[type="number"].no-spin::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
 </style>

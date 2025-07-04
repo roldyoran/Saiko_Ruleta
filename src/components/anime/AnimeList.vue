@@ -3,7 +3,7 @@
     class="flex min-h-screen flex-col items-center bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-950 p-6"
   >
     <h1
-      class="mb-10 select-none bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-center text-4xl font-extrabold text-transparent drop-shadow-lg md:text-6xl"
+      class="mb-10 bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-center text-4xl font-extrabold text-transparent drop-shadow-lg select-none md:text-6xl"
     >
       ANIMES VISTOS
     </h1>
@@ -36,13 +36,13 @@
           v-model="searchQuery"
           type="text"
           placeholder="Buscar por nombre..."
-          class="flex-1 rounded-xl bg-zinc-800/80 px-5 py-3 text-orange-100 placeholder-zinc-400 transition focus:outline-none focus:ring-2 focus:ring-orange-500"
+          class="flex-1 rounded-xl bg-zinc-800/80 px-5 py-3 text-orange-100 placeholder-zinc-400 transition focus:ring-2 focus:ring-orange-500 focus:outline-none"
           :disabled="categoryFilter !== 'todas'"
         />
         <div class="relative">
           <select
             v-model="categoryFilter"
-            class="w-full cursor-pointer appearance-none rounded-xl bg-zinc-800/80 px-5 py-3 pr-12 uppercase text-orange-100 transition focus:outline-none focus:ring-2 focus:ring-orange-500 md:w-40"
+            class="w-full cursor-pointer appearance-none rounded-xl bg-zinc-800/80 px-5 py-3 pr-12 text-orange-100 uppercase transition focus:ring-2 focus:ring-orange-500 focus:outline-none md:w-40"
           >
             <option value="todas">Todas</option>
             <option value="goty">GOTY</option>
@@ -55,7 +55,7 @@
             <option value="la peor de todas">LA PEOR DE TODAS</option>
           </select>
           <!-- Icono personalizado del select -->
-          <div class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 transform">
+          <div class="pointer-events-none absolute top-1/2 right-4 -translate-y-1/2 transform">
             <svg
               class="h-4 w-4 text-orange-300"
               fill="none"
@@ -128,13 +128,13 @@
             <div class="relative">
               <select
                 v-model="currentPage"
-                class="min-w-[80px] cursor-pointer appearance-none rounded-lg border border-zinc-700/50 bg-zinc-800/80 px-3 py-2 pr-8 text-center text-orange-100 backdrop-blur-sm transition-all duration-200 hover:border-orange-500/30 focus:border-orange-500/50 focus:outline-none focus:ring-2 focus:ring-orange-500/50"
+                class="min-w-[80px] cursor-pointer appearance-none rounded-lg border border-zinc-700/50 bg-zinc-800/80 px-3 py-2 pr-8 text-center text-orange-100 backdrop-blur-sm transition-all duration-200 hover:border-orange-500/30 focus:border-orange-500/50 focus:ring-2 focus:ring-orange-500/50 focus:outline-none"
               >
                 <option v-for="page in totalPages" :key="page - 1" :value="page - 1">
                   {{ page }}
                 </option>
               </select>
-              <div class="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 transform">
+              <div class="pointer-events-none absolute top-1/2 right-2 -translate-y-1/2 transform">
                 <svg
                   class="h-3 w-3 text-orange-300"
                   fill="none"
@@ -197,13 +197,13 @@
           <div class="relative w-full">
             <select
               v-model="currentPage"
-              class="w-full cursor-pointer appearance-none rounded-lg border border-zinc-700/50 bg-zinc-800/80 px-4 py-3 pr-10 text-center font-medium text-orange-100 backdrop-blur-sm transition-all duration-200 hover:border-orange-500/30 focus:border-orange-500/50 focus:outline-none focus:ring-2 focus:ring-orange-500/50"
+              class="w-full cursor-pointer appearance-none rounded-lg border border-zinc-700/50 bg-zinc-800/80 px-4 py-3 pr-10 text-center font-medium text-orange-100 backdrop-blur-sm transition-all duration-200 hover:border-orange-500/30 focus:border-orange-500/50 focus:ring-2 focus:ring-orange-500/50 focus:outline-none"
             >
               <option v-for="page in totalPages" :key="page - 1" :value="page - 1">
                 Página {{ page }}
               </option>
             </select>
-            <div class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 transform">
+            <div class="pointer-events-none absolute top-1/2 right-3 -translate-y-1/2 transform">
               <svg
                 class="h-4 w-4 text-orange-300"
                 fill="none"
@@ -255,7 +255,7 @@
             loading="lazy"
           />
           <div
-            class="absolute left-3 top-3 rounded-full px-3 py-1 text-xs font-bold text-white shadow transition group-hover:scale-110"
+            class="absolute top-3 left-3 rounded-full px-3 py-1 text-xs font-bold text-white shadow transition group-hover:scale-110"
             :class="notaBgClass(anime.nota)"
           >
             {{ (anime.nota || "N/A").toUpperCase() }}
@@ -271,7 +271,7 @@
 
       <!-- Footer -->
       <footer
-        class="mx-auto mb-4 mt-12 max-w-2xl rounded-2xl bg-zinc-800/30 px-6 py-4 text-center text-xs font-medium tracking-wide text-orange-300/80 backdrop-blur-sm"
+        class="mx-auto mt-12 mb-4 max-w-2xl rounded-2xl bg-zinc-800/30 px-6 py-4 text-center text-xs font-medium tracking-wide text-orange-300/80 backdrop-blur-sm"
       >
         Esta lista comprende todos los animes randoms vistos en el canal del Saiko y uno que otro
         anime visto fuera de la dinamica (puede faltar alguno) <br /><br />
