@@ -293,6 +293,49 @@
   const currentPage = ref(0);
   const pageSize = 30;
 
+  // Función para obtener parámetros de la URL
+  function getUrlParams() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return {
+      search: urlParams.get('search') || '',
+      category: urlParams.get('category') || 'todas',
+      page: parseInt(urlParams.get('page')) || 0
+    };
+  }
+
+  // Función para actualizar la URL
+  function updateUrl() {
+    const params = new URLSearchParams();
+    
+    if (searchQuery.value.trim()) {
+      params.set('search', searchQuery.value.trim());
+    }
+    
+    if (categoryFilter.value !== 'todas') {
+      params.set('category', categoryFilter.value);
+    }
+    
+    if (currentPage.value > 0) {
+      let page = currentPage.value + 1; // Convertir a 1-indexed para la URL
+      params.set('page', page.toString());
+    }
+
+    const newUrl = params.toString() ? 
+      `${window.location.pathname}?${params.toString()}` : 
+      window.location.pathname;
+    
+    // Actualizar la URL sin recargar la página
+    window.history.replaceState({}, '', newUrl);
+  }
+
+  // Inicializar valores desde la URL
+  function initializeFromUrl() {
+    const params = getUrlParams();
+    searchQuery.value = params.search;
+    categoryFilter.value = params.category;
+    currentPage.value = params.page;
+  }
+
   async function fetchAnimeData() {
     isLoading.value = true;
     error.value = null;
@@ -304,7 +347,6 @@
       if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
       const data = await res.json();
       animeData.value = Array.isArray(data) ? data : Object.values(data);
-      // console.log(animeData.value)
     } catch (err) {
       error.value = err.message;
       console.error("Error cargando datos de anime:", err);
@@ -314,7 +356,16 @@
   }
 
   onMounted(async () => {
+    // Primero inicializar desde la URL
+    initializeFromUrl();
+    
+    // Luego cargar los datos
     await fetchAnimeData();
+
+    // Escuchar cambios en la URL (para botón atrás/adelante del navegador)
+    window.addEventListener('popstate', () => {
+      initializeFromUrl();
+    });
   });
 
   function notaBgClass(nota) {
@@ -333,17 +384,22 @@
     return "bg-gradient-to-br from-zinc-700 to-zinc-900";
   }
 
-  // Limpiar búsqueda cuando se cambia la categoría
+  // Watchers para actualizar la URL cuando cambian los valores
+  watch(searchQuery, () => {
+    currentPage.value = 0;
+    updateUrl();
+  });
+
   watch(categoryFilter, (newCategory) => {
     if (newCategory !== "todas") {
       searchQuery.value = "";
     }
     currentPage.value = 0;
+    updateUrl();
   });
 
-  // Solo resetear página cuando cambia la búsqueda
-  watch(searchQuery, () => {
-    currentPage.value = 0;
+  watch(currentPage, () => {
+    updateUrl();
   });
 
   const filteredAnimes = computed(() => {
@@ -388,6 +444,7 @@
     searchQuery.value = "";
     categoryFilter.value = "todas";
     currentPage.value = 0;
+    // La URL se actualizará automáticamente por los watchers
   }
 </script>
 
