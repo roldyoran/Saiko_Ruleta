@@ -1,6 +1,12 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import data from "@/assets/galeria.json";
+
+let isDev = import.meta.env.ISDEV || "";
+let baseLinkImage = "/Saiko_Ruleta";
+if (isDev) {
+  baseLinkImage = "";
+}
 ---
 
 <Layout title="Galería de Imágenes" bg_color="">
@@ -14,7 +20,7 @@ import data from "@/assets/galeria.json";
               <>
                 {contenido.imagenes?.map((imagen) => (
                   <div class="image-container">
-                    <img src={`/${usuario}/${imagen}`} alt={`Imagen de ${usuario}`} />
+                    <img src={`${baseLinkImage}/${usuario}/${imagen}`} alt={`Imagen de ${usuario}`} />
                     <a
                       href={`https://www.instagram.com/${usuario}`}
                       target="_blank"
@@ -28,7 +34,7 @@ import data from "@/assets/galeria.json";
                 {Array.isArray(contenido.stickers) &&
                   contenido.stickers.map((imagen) => (
                     <div class="image-container">
-                      <img src={`/${usuario}/${imagen}`} alt={`Sticker de ${usuario}`} />
+                      <img src={`${baseLinkImage}/${usuario}/${imagen}`} alt={`Sticker de ${usuario}`} />
                       <a
                         href={`https://www.instagram.com/${usuario}`}
                         target="_blank"
