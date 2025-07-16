@@ -3,7 +3,7 @@
     class="flex min-h-screen flex-col items-center bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-950 p-6"
   >
     <h1
-      class="mb-10 bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-center text-4xl font-extrabold text-transparent drop-shadow-lg select-none md:text-6xl"
+      class="mb-10 bg-gradient-to-r from-orange-600 via-orange-500 to-orange-600 bg-clip-text text-center text-4xl font-extrabold text-transparent drop-shadow-lg select-none md:text-6xl"
     >
       ANIMES VISTOS
     </h1>
@@ -185,10 +185,10 @@
           <button
             @click="currentPage = totalPages - 1"
             :disabled="currentPage >= totalPages - 1"
-                                  class="flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-700/50 bg-zinc-800/80 font-medium text-orange-200 backdrop-blur-sm transition-all duration-200 hover:border-orange-500/30 hover:bg-orange-500/20 hover:text-orange-100 active:scale-95 disabled:cursor-not-allowed disabled:opacity-40 sm:h-auto sm:w-auto sm:px-3 sm:py-2"
+            class="flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-700/50 bg-zinc-800/80 font-medium text-orange-200 backdrop-blur-sm transition-all duration-200 hover:border-orange-500/30 hover:bg-orange-500/20 hover:text-orange-100 active:scale-95 disabled:cursor-not-allowed disabled:opacity-40 sm:h-auto sm:w-auto sm:px-3 sm:py-2"
             :class="{ 'ring-2 ring-orange-500/30': currentPage >= totalPages - 1 }"
           >
-                          <span class="text-xs sm:text-sm">»»</span>
+            <span class="text-xs sm:text-sm">»»</span>
           </button>
         </div>
 
@@ -246,7 +246,7 @@
         <div
           v-for="anime in paginatedAnimes"
           :key="anime.id"
-          class="group relative flex flex-col overflow-hidden rounded-2xl bg-zinc-800/80 shadow-lg transition hover:shadow-orange-500/30"
+          class="group relative flex flex-col overflow-hidden rounded-2xl bg-zinc-800/80 transition-all "
         >
           <img
             :src="anime.url"
@@ -297,35 +297,35 @@
   function getUrlParams() {
     const urlParams = new URLSearchParams(window.location.search);
     return {
-      search: urlParams.get('search') || '',
-      category: urlParams.get('category') || 'todas',
-      page: parseInt(urlParams.get('page')) || 0
+      search: urlParams.get("search") || "",
+      category: urlParams.get("category") || "todas",
+      page: parseInt(urlParams.get("page")) || 0,
     };
   }
 
   // Función para actualizar la URL
   function updateUrl() {
     const params = new URLSearchParams();
-    
+
     if (searchQuery.value.trim()) {
-      params.set('search', searchQuery.value.trim());
-    }
-    
-    if (categoryFilter.value !== 'todas') {
-      params.set('category', categoryFilter.value);
-    }
-    
-    if (currentPage.value > 0) {
-      let page = currentPage.value + 1; // Convertir a 1-indexed para la URL
-      params.set('page', page.toString());
+      params.set("search", searchQuery.value.trim());
     }
 
-    const newUrl = params.toString() ? 
-      `${window.location.pathname}?${params.toString()}` : 
-      window.location.pathname;
-    
+    if (categoryFilter.value !== "todas") {
+      params.set("category", categoryFilter.value);
+    }
+
+    if (currentPage.value > 0) {
+      let page = currentPage.value + 1; // Convertir a 1-indexed para la URL
+      params.set("page", page.toString());
+    }
+
+    const newUrl = params.toString()
+      ? `${window.location.pathname}?${params.toString()}`
+      : window.location.pathname;
+
     // Actualizar la URL sin recargar la página
-    window.history.replaceState({}, '', newUrl);
+    window.history.replaceState({}, "", newUrl);
   }
 
   // Inicializar valores desde la URL
@@ -358,30 +358,29 @@
   onMounted(async () => {
     // Primero inicializar desde la URL
     initializeFromUrl();
-    
+
     // Luego cargar los datos
     await fetchAnimeData();
 
     // Escuchar cambios en la URL (para botón atrás/adelante del navegador)
-    window.addEventListener('popstate', () => {
+    window.addEventListener("popstate", () => {
       initializeFromUrl();
     });
   });
 
+  // Función JavaScript actualizada
   function notaBgClass(nota) {
     const clean = (nota || "")
       .toString()
       .replace(/[\p{Emoji_Presentation}\p{Extended_Pictographic}]/gu, "")
       .trim()
       .toUpperCase();
-    if (clean.includes("GOTY")) return "bg-gradient-to-br from-orange-500 to-orange-600";
-    if (["GOD", "WENA", "PIOLA"].some((term) => clean.includes(term)))
-      return "bg-gradient-to-br from-green-500 to-green-700";
-    if (["NO ME GUSTO", "MALA"].some((term) => clean.includes(term)))
-      return "bg-gradient-to-br from-red-500 to-red-700";
+    if (clean.includes("GOTY")) return "goty-gold-animated";
+    if (["GOD", "WENA", "PIOLA"].some((term) => clean.includes(term))) return "god-tier-animated";
+    if (["NO ME GUSTO", "MALA"].some((term) => clean.includes(term))) return "bad-tier-animated";
     if (["HORRIBLE", "LA PEOR DE TODAS"].some((term) => clean.includes(term)))
-      return "bg-gradient-to-br from-fuchsia-800 to-yellow-900";
-    return "bg-gradient-to-br from-zinc-700 to-zinc-900";
+      return "horrible-tier-animated";
+    return "default-tier-animated";
   }
 
   // Watchers para actualizar la URL cuando cambian los valores
@@ -513,10 +512,10 @@
       transform 0.3s ease,
       box-shadow 0.3s ease;
   }
-  .grid > div:hover {
-    transform: translateY(-5px);
+  /* .grid > div:hover {
+    transform: translateY(-1px);
     box-shadow: 0 10px 20px rgba(251, 146, 60, 0.2);
-  }
+  } */
   button {
     transition: all 0.3s ease;
   }
@@ -547,4 +546,158 @@
     cursor: not-allowed;
     background-color: rgba(39, 39, 42, 0.5);
   }
+
+  /* CSS que debes agregar a tu archivo de estilos */
+  .goty-gold-animated {
+    background: linear-gradient(
+      135deg,
+      #d97706 0%,
+      #f5900b 25%,
+      #f76211 50%,
+      #f06b13 75%,
+      #d97706 100%
+    );
+    background-size: 200% 200%;
+    animation: goldShimmer 6s ease-in-out infinite;
+    position: absolute;
+    overflow: hidden;
+  }
+
+  .goty-gold-animated::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      45deg,
+      transparent 40%,
+      rgba(255, 255, 255, 0.3) 50%,
+      transparent 60%
+    );
+    animation: goldSweep 4s ease-in-out infinite;
+  }
+
+  .god-tier-animated {
+    background: linear-gradient(135deg, #038157 0%, #0c8055 50%, #057450 100%);
+    background-size: 200% 200%;
+    animation: greenPulse 2.5s ease-in-out infinite;
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+  }
+
+  .bad-tier-animated {
+    background: linear-gradient(135deg, #dc2626 0%, #ef4444 50%, #991b1b 100%);
+    background-size: 200% 200%;
+    animation: redPulse 2s ease-in-out infinite;
+    box-shadow: 0 0 15px rgba(220, 38, 38, 0.3);
+  }
+
+  .horrible-tier-animated {
+    background: linear-gradient(
+      135deg,
+      #86198f 0%,
+      #c026d3 25%,
+      #920e8c 50%,
+      #920e8c 75%,
+      #c026d3 100%
+    );
+    background-size: 300% 300%;
+    animation: horrorWave 1.5s ease-in-out infinite;
+    box-shadow: 0 0 25px rgba(134, 25, 143, 0.5);
+  }
+
+  .default-tier-animated {
+    background: linear-gradient(135deg, #3f3f46 0%, #52525b 50%, #18181b 100%);
+    background-size: 200% 200%;
+    animation: subtleShift 4s ease-in-out infinite;
+  }
+
+  /* Animaciones */
+  @keyframes goldShimmer {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  @keyframes goldSweep {
+    0% {
+      transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+    100% {
+      transform: translateX(100%) translateY(100%) rotate(45deg);
+    }
+  }
+
+  @keyframes greenPulse {
+    0%,
+    100% {
+      background-position: 0% 50%;
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
+    }
+    50% {
+      background-position: 100% 50%;
+      box-shadow: 0 0 30px rgba(16, 185, 129, 0.6);
+    }
+  }
+
+  @keyframes redPulse {
+    0%,
+    100% {
+      background-position: 0% 50%;
+      box-shadow: 0 0 15px rgba(220, 38, 38, 0.3);
+    }
+    50% {
+      background-position: 100% 50%;
+      box-shadow: 0 0 25px rgba(220, 38, 38, 0.5);
+    }
+  }
+
+  @keyframes horrorWave {
+    0%,
+    100% {
+      background-position: 0% 50%;
+      box-shadow: 0 0 25px rgba(134, 25, 143, 0.5);
+    }
+    33% {
+      background-position: 100% 0%;
+      box-shadow: 0 0 35px rgba(134, 25, 143, 0.7);
+    }
+    66% {
+      background-position: 0% 100%;
+      box-shadow: 0 0 20px rgba(217, 119, 6, 0.6);
+    }
+  }
+
+  @keyframes subtleShift {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  /* Efectos adicionales para hover (opcional)
+  .goty-gold-animated:hover {
+    animation-duration: 1.5s;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+  }
+
+  .god-tier-animated:hover {
+    animation-duration: 1.5s;
+  }
+
+  .bad-tier-animated:hover {
+    animation-duration: 1s;
+  }
+
+  .horrible-tier-animated:hover {
+    animation-duration: 1s;
+  } */
 </style>
