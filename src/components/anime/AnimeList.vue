@@ -1,9 +1,7 @@
 <template>
-  <div
-    class="flex min-h-screen flex-col items-center bg-gradient-to-br from-zinc-950 via-zinc-900 to-zinc-950 p-6"
-  >
+  <div class="body-two flex min-h-screen flex-col items-center bg-zinc-950">
     <h1
-      class="mb-10 bg-gradient-to-r from-orange-600 via-orange-500 to-orange-600 bg-clip-text text-center text-4xl font-extrabold text-transparent drop-shadow-lg select-none md:text-6xl"
+      class="mt-8 mb-10 bg-gradient-to-r from-orange-600 via-orange-500 to-orange-600 bg-clip-text text-center text-4xl font-extrabold text-transparent drop-shadow-lg select-none md:text-6xl"
     >
       ANIMES VISTOS
     </h1>
@@ -241,12 +239,12 @@
       <!-- Tarjetas de animes -->
       <div
         v-else
-        class="mx-auto grid w-full max-w-6xl grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
+        class="mx-auto grid max-w-6xl grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
       >
         <div
           v-for="anime in paginatedAnimes"
           :key="anime.id"
-          class="group relative flex flex-col overflow-hidden rounded-2xl bg-zinc-800/80 transition-all "
+          class="group relative flex flex-col overflow-hidden rounded-xl bg-zinc-800/20 tracking-widest transition-all"
         >
           <img
             :src="anime.url"
@@ -255,26 +253,26 @@
             loading="lazy"
           />
           <div
-            class="absolute top-3 left-3 rounded-full px-3 py-1 text-xs font-bold text-white shadow transition group-hover:scale-110"
+            class="absolute top-3 left-3 rounded-full px-3 py-1 text-xs font-extrabold text-white shadow transition text-shadow-sm text-shadow-white/60 group-hover:scale-110"
             :class="notaBgClass(anime.nota)"
           >
             {{ (anime.nota || "N/A").toUpperCase() }}
           </div>
           <div class="flex flex-1 flex-col justify-end p-4" :title="anime.nombre">
-            <h2 class="mb-1 truncate text-base font-semibold text-orange-100 md:text-lg">
+            <h2 class="mb-1 truncate text-base font-semibold text-orange-50 md:text-lg">
               {{ anime.nombre }}
             </h2>
-            <p class="text-xs text-orange-200/70">ID: {{ anime.id }}</p>
+            <p class="text-xs text-zinc-200/70">ID: {{ anime.id }}</p>
           </div>
         </div>
       </div>
 
       <!-- Footer -->
       <footer
-        class="mx-auto mt-12 mb-4 max-w-2xl rounded-2xl bg-zinc-800/30 px-6 py-4 text-center text-xs font-medium tracking-wide text-orange-300/80 backdrop-blur-sm"
+        class="mx-auto mt-12 mb-10 max-w-2xl rounded-2xl bg-zinc-800/30 px-6 py-4 text-center text-xs font-medium tracking-wide text-orange-300/70 backdrop-blur-sm"
       >
         Esta lista comprende todos los animes randoms vistos en el canal del Saiko y uno que otro
-        anime visto fuera de la dinamica (puede faltar alguno) <br /><br />
+        anime visto fuera de la dinamica ( puede faltar alguno ) <br /><br />
         Postdata: VIVAN LAS LESBIANAS!!!!
       </footer>
     </div>
@@ -448,6 +446,11 @@
 </script>
 
 <style scoped>
+  .body-two {
+    font-family: "Courier New", Courier, monospace;
+    text-transform: uppercase;
+  }
+
   /* Loader personalizado */
   .loader {
     width: 60px;
@@ -547,20 +550,26 @@
     background-color: rgba(39, 39, 42, 0.5);
   }
 
-  /* CSS que debes agregar a tu archivo de estilos */
   .goty-gold-animated {
     background: linear-gradient(
       135deg,
-      #d97706 0%,
-      #f5900b 25%,
-      #f76211 50%,
-      #f06b13 75%,
-      #d97706 100%
+      #da570c 0%,
+      #ff9800 25%,
+      #ff6f00 50%,
+      #d46904 75%,
+      #e47309 100%
     );
     background-size: 200% 200%;
     animation: goldShimmer 6s ease-in-out infinite;
     position: absolute;
     overflow: hidden;
+    /* Borde negro en las letras */
+    /* text-shadow:
+      0 0 1px #000,
+      0 1px 2px #000,
+      1px 0 2px #000,
+      -1px 0 2px #000,
+      0 -1px 2px #000; */
   }
 
   .goty-gold-animated::before {
@@ -583,14 +592,12 @@
     background: linear-gradient(135deg, #038157 0%, #0c8055 50%, #057450 100%);
     background-size: 200% 200%;
     animation: greenPulse 2.5s ease-in-out infinite;
-    box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
   }
 
   .bad-tier-animated {
     background: linear-gradient(135deg, #dc2626 0%, #ef4444 50%, #991b1b 100%);
     background-size: 200% 200%;
     animation: redPulse 2s ease-in-out infinite;
-    box-shadow: 0 0 15px rgba(220, 38, 38, 0.3);
   }
 
   .horrible-tier-animated {
@@ -637,11 +644,9 @@
     0%,
     100% {
       background-position: 0% 50%;
-      box-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
     }
     50% {
       background-position: 100% 50%;
-      box-shadow: 0 0 30px rgba(16, 185, 129, 0.6);
     }
   }
 
@@ -649,11 +654,9 @@
     0%,
     100% {
       background-position: 0% 50%;
-      box-shadow: 0 0 15px rgba(220, 38, 38, 0.3);
     }
     50% {
       background-position: 100% 50%;
-      box-shadow: 0 0 25px rgba(220, 38, 38, 0.5);
     }
   }
 
