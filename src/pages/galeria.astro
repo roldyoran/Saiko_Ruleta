@@ -20,7 +20,10 @@ if (isDev) {
               <>
                 {contenido.imagenes?.map((imagen) => (
                   <div class="image-container">
-                    <img src={`${baseLinkImage}/${usuario}/${imagen}`} alt={`Imagen de ${usuario}`} />
+                    <img
+                      src={`${baseLinkImage}/${usuario}/${imagen}`}
+                      alt={`Imagen de ${usuario}`}
+                    />
                     <a
                       href={`https://www.instagram.com/${usuario}`}
                       target="_blank"
@@ -34,7 +37,10 @@ if (isDev) {
                 {Array.isArray(contenido.stickers) &&
                   contenido.stickers.map((imagen) => (
                     <div class="image-container">
-                      <img src={`${baseLinkImage}/${usuario}/${imagen}`} alt={`Sticker de ${usuario}`} />
+                      <img
+                        src={`${baseLinkImage}/${usuario}/${imagen}`}
+                        alt={`Sticker de ${usuario}`}
+                      />
                       <a
                         href={`https://www.instagram.com/${usuario}`}
                         target="_blank"
