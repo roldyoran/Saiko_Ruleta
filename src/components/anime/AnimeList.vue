@@ -1,5 +1,5 @@
 <template>
-  <div class="body-two flex min-h-screen flex-col items-center bg-zinc-950">
+  <div class="body-two flex min-h-screen flex-col items-center bg-zinc-950 px-6 md:px-0">
     <h1
       class="mt-8 mb-10 bg-gradient-to-r from-orange-600 via-orange-500 to-orange-600 bg-clip-text text-center text-4xl font-extrabold text-transparent drop-shadow-lg select-none md:text-6xl"
     >
