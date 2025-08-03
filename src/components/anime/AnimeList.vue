@@ -77,158 +77,11 @@
         </button>
       </div>
 
-      <!-- Paginación Responsive Mejorada -->
-      <div v-if="totalPages > 1" class="mb-8 flex flex-col items-center gap-4 px-4">
-        <!-- Información de página (móvil) -->
-        <div class="flex w-full items-center justify-center sm:hidden">
-          <div
-            class="flex items-center gap-2 rounded-full border border-zinc-700/50 bg-zinc-800/60 px-4 py-2 backdrop-blur-sm"
-          >
-            <span class="text-sm font-medium text-orange-300">Página</span>
-            <span class="font-semibold text-orange-100">{{ currentPage + 1 }}</span>
-            <span class="text-sm text-orange-300/70">de</span>
-            <span class="font-semibold text-orange-100">{{ totalPages }}</span>
-          </div>
-        </div>
-
-        <!-- Controles principales -->
-        <div class="flex w-full max-w-md items-center justify-center gap-2">
-          <!-- Botón primera página -->
-          <button
-            @click="currentPage = 0"
-            :disabled="currentPage === 0"
-            class="flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-700/50 bg-zinc-800/80 font-medium text-orange-200 backdrop-blur-sm transition-all duration-200 hover:border-orange-500/30 hover:bg-orange-500/20 hover:text-orange-100 active:scale-95 disabled:cursor-not-allowed disabled:opacity-40 sm:h-auto sm:w-auto sm:px-3 sm:py-2"
-            :class="{ 'ring-2 ring-orange-500/30': currentPage === 0 }"
-          >
-            <span class="text-xs sm:text-sm">««</span>
-          </button>
-
-          <!-- Botón anterior -->
-          <button
-            @click="prevPage"
-            :disabled="currentPage === 0"
-            class="flex items-center justify-center rounded-lg border border-zinc-700/50 bg-zinc-800/80 px-3 py-2 font-medium text-orange-200 backdrop-blur-sm transition-all duration-200 hover:border-orange-500/30 hover:bg-orange-500/20 hover:text-orange-100 active:scale-95 disabled:cursor-not-allowed disabled:opacity-40 sm:px-4"
-          >
-            <svg class="h-4 w-4 sm:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M15 19l-7-7 7-7"
-              ></path>
-            </svg>
-            <span class="hidden text-sm sm:inline">Anterior</span>
-          </button>
-
-          <!-- Selector de página (desktop) -->
-          <div class="hidden items-center gap-3 px-4 sm:flex">
-            <span class="text-sm font-medium text-orange-300">Página</span>
-            <div class="relative">
-              <select
-                v-model="currentPage"
-                class="min-w-[80px] cursor-pointer appearance-none rounded-lg border border-zinc-700/50 bg-zinc-800/80 px-3 py-2 pr-8 text-center text-orange-100 backdrop-blur-sm transition-all duration-200 hover:border-orange-500/30 focus:border-orange-500/50 focus:ring-2 focus:ring-orange-500/50 focus:outline-none"
-              >
-                <option v-for="page in totalPages" :key="page - 1" :value="page - 1">
-                  {{ page }}
-                </option>
-              </select>
-              <div class="pointer-events-none absolute top-1/2 right-2 -translate-y-1/2 transform">
-                <svg
-                  class="h-3 w-3 text-orange-300"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M19 9l-7 7-7-7"
-                  ></path>
-                </svg>
-              </div>
-            </div>
-            <span class="flex gap-1.5 text-sm font-medium text-orange-300"
-              ><span>de</span> {{ totalPages }}</span
-            >
-          </div>
-
-          <!-- Indicador de página móvil central -->
-          <div
-            class="flex min-w-[60px] items-center justify-center rounded-lg border border-orange-500/30 bg-gradient-to-r from-orange-500/20 to-orange-600/20 px-3 py-2 backdrop-blur-sm sm:hidden"
-          >
-            <span class="text-sm font-bold text-orange-100"
-              >{{ currentPage + 1 }}/{{ totalPages }}</span
-            >
-          </div>
-
-          <!-- Botón siguiente -->
-          <button
-            @click="nextPage"
-            :disabled="currentPage >= totalPages - 1"
-            class="flex items-center justify-center rounded-lg border border-zinc-700/50 bg-zinc-800/80 px-3 py-2 font-medium text-orange-200 backdrop-blur-sm transition-all duration-200 hover:border-orange-500/30 hover:bg-orange-500/20 hover:text-orange-100 active:scale-95 disabled:cursor-not-allowed disabled:opacity-40 sm:px-4"
-          >
-            <span class="hidden text-sm sm:inline">Siguiente</span>
-            <svg class="h-4 w-4 sm:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M9 5l7 7-7 7"
-              ></path>
-            </svg>
-          </button>
-
-          <!-- Botón última página -->
-          <button
-            @click="currentPage = totalPages - 1"
-            :disabled="currentPage >= totalPages - 1"
-            class="flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-700/50 bg-zinc-800/80 font-medium text-orange-200 backdrop-blur-sm transition-all duration-200 hover:border-orange-500/30 hover:bg-orange-500/20 hover:text-orange-100 active:scale-95 disabled:cursor-not-allowed disabled:opacity-40 sm:h-auto sm:w-auto sm:px-3 sm:py-2"
-            :class="{ 'ring-2 ring-orange-500/30': currentPage >= totalPages - 1 }"
-          >
-            <span class="text-xs sm:text-sm">»»</span>
-          </button>
-        </div>
-
-        <!-- Selector de página móvil -->
-        <div class="flex w-full max-w-xs sm:hidden">
-          <div class="relative w-full">
-            <select
-              v-model="currentPage"
-              class="w-full cursor-pointer appearance-none rounded-lg border border-zinc-700/50 bg-zinc-800/80 px-4 py-3 pr-10 text-center font-medium text-orange-100 backdrop-blur-sm transition-all duration-200 hover:border-orange-500/30 focus:border-orange-500/50 focus:ring-2 focus:ring-orange-500/50 focus:outline-none"
-            >
-              <option v-for="page in totalPages" :key="page - 1" :value="page - 1">
-                Página {{ page }}
-              </option>
-            </select>
-            <div class="pointer-events-none absolute top-1/2 right-3 -translate-y-1/2 transform">
-              <svg
-                class="h-4 w-4 text-orange-300"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"
-                ></path>
-              </svg>
-            </div>
-          </div>
-        </div>
-
-        <!-- Indicador de progreso -->
-        <div class="w-full max-w-xs sm:max-w-sm">
-          <div class="h-1.5 w-full overflow-hidden rounded-full bg-zinc-800/60">
-            <div
-              class="h-full rounded-full bg-gradient-to-r from-orange-500 to-orange-600 transition-all duration-300 ease-out"
-              :style="{ width: `${((currentPage + 1) / totalPages) * 100}%` }"
-            ></div>
-          </div>
-        </div>
-      </div>
+      <!-- Paginación -->
+      <PaginationControls 
+        v-model:current-page="currentPage"
+        :total-pages="totalPages"
+      />
 
       <!-- Mensaje sin resultados -->
       <div v-if="filteredAnimes.length === 0" class="py-12 text-center text-orange-300">
@@ -239,7 +92,7 @@
       <!-- Tarjetas de animes -->
       <div
         v-else
-        class="mx-auto grid max-w-6xl grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
+        class="mx-auto grid max-w-6xl grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 mb-10"
       >
         <div
           v-for="anime in paginatedAnimes"
@@ -267,13 +120,22 @@
         </div>
       </div>
 
+       <!-- Paginación -->
+      <PaginationControls 
+        v-model:current-page="currentPage"
+        :total-pages="totalPages"
+      />
+
+
       <!-- Footer -->
       <footer
         class="mx-auto mt-12 mb-10 max-w-2xl rounded-2xl bg-zinc-800/30 px-6 py-4 text-center text-xs font-medium tracking-wide text-orange-300/70 backdrop-blur-sm"
       >
         Esta lista comprende todos los animes randoms vistos en el canal del Saiko y uno que otro
         anime visto fuera de la dinamica ( puede faltar alguno ) <br /><br />
-        Postdata: VIVAN LAS LESBIANAS!!!!
+        <span class="font-bold text-lg tracking-widest text-orange-200">
+          VIVAN LAS LESBIANAS!!!!
+        </span> 
       </footer>
     </div>
   </div>
@@ -281,6 +143,7 @@
 
 <script setup>
   import { ref, computed, watch, onMounted } from "vue";
+  import PaginationControls from "./PaginationControls.vue";
 
   const animeData = ref([]);
   const isLoading = ref(true);
@@ -428,14 +291,6 @@
     const start = currentPage.value * pageSize;
     return filteredAnimes.value.slice(start, start + pageSize);
   });
-
-  function prevPage() {
-    if (currentPage.value > 0) currentPage.value--;
-  }
-
-  function nextPage() {
-    if (currentPage.value < totalPages.value - 1) currentPage.value++;
-  }
 
   function clearFilters() {
     searchQuery.value = "";
