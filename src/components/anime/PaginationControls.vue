@@ -155,57 +155,57 @@
 </template>
 
 <script setup>
-const props = defineProps({
-  currentPage: {
-    type: Number,
-    required: true
-  },
-  totalPages: {
-    type: Number,
-    required: true
+  const props = defineProps({
+    currentPage: {
+      type: Number,
+      required: true,
+    },
+    totalPages: {
+      type: Number,
+      required: true,
+    },
+  });
+
+  const emit = defineEmits(["update:currentPage"]);
+
+  function goToFirstPage() {
+    emit("update:currentPage", 0);
   }
-});
 
-const emit = defineEmits(['update:currentPage']);
-
-function goToFirstPage() {
-  emit('update:currentPage', 0);
-}
-
-function goToLastPage() {
-  emit('update:currentPage', props.totalPages - 1);
-}
-
-function prevPage() {
-  if (props.currentPage > 0) {
-    emit('update:currentPage', props.currentPage - 1);
+  function goToLastPage() {
+    emit("update:currentPage", props.totalPages - 1);
   }
-}
 
-function nextPage() {
-  if (props.currentPage < props.totalPages - 1) {
-    emit('update:currentPage', props.currentPage + 1);
+  function prevPage() {
+    if (props.currentPage > 0) {
+      emit("update:currentPage", props.currentPage - 1);
+    }
   }
-}
 
-function handlePageSelect(event) {
-  const newPage = parseInt(event.target.value);
-  emit('update:currentPage', newPage);
-}
+  function nextPage() {
+    if (props.currentPage < props.totalPages - 1) {
+      emit("update:currentPage", props.currentPage + 1);
+    }
+  }
+
+  function handlePageSelect(event) {
+    const newPage = parseInt(event.target.value);
+    emit("update:currentPage", newPage);
+  }
 </script>
 
 <style scoped>
-/* Estilos de botones reutilizados del componente padre */
-button {
-  transition: all 0.3s ease;
-}
+  /* Estilos de botones reutilizados del componente padre */
+  button {
+    transition: all 0.3s ease;
+  }
 
-button:not(:disabled):hover {
-  transform: scale(1.05);
-}
+  button:not(:disabled):hover {
+    transform: scale(1.05);
+  }
 
-button:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-}
+  button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
 </style>

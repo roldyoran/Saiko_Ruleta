@@ -14,8 +14,8 @@ button {
 }
 
 @font-face {
-  font-family: 'OpenSans-Medium';
-  src: url('../fonts/OpenSans-Medium.ttf') format('woff2');
+  font-family: "OpenSans-Medium";
+  src: url("../fonts/OpenSans-Medium.ttf") format("woff2");
   font-weight: normal;
   font-style: normal;
 }

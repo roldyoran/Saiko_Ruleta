@@ -14,8 +14,8 @@
 </template>
 
 <script setup>
-const props = defineProps({
-  error: { type: String, required: true }
-});
-const emit = defineEmits(['retry']);
+  const props = defineProps({
+    error: { type: String, required: true },
+  });
+  const emit = defineEmits(["retry"]);
 </script>

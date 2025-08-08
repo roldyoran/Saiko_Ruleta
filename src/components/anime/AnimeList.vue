@@ -1,7 +1,7 @@
 <template>
-  <div class="body-two flex min-h-screen flex-col items-center bg-midnight-500 px-6 md:px-0">
+  <div class="body-two bg-midnight-500 flex min-h-screen flex-col items-center px-6 md:px-0">
     <h1
-      class="mt-8 mb-10 bg-gradient-to-r text-white bg-clip-text text-center text-4xl font-extrabold drop-shadow-lg select-none md:text-6xl"
+      class="mt-8 mb-10 bg-gradient-to-r bg-clip-text text-center text-4xl font-extrabold text-white drop-shadow-lg select-none md:text-6xl"
     >
       Animes Vistos
     </h1>
@@ -18,16 +18,13 @@
       <AnimeFilters
         :searchQuery="searchQuery"
         :categoryFilter="categoryFilter"
-        @update:searchQuery="val => searchQuery = val"
-        @update:categoryFilter="val => categoryFilter = val"
+        @update:searchQuery="(val) => (searchQuery = val)"
+        @update:categoryFilter="(val) => (categoryFilter = val)"
         @clear-filters="clearFilters"
       />
 
       <!-- Paginación -->
-      <PaginationControls 
-        v-model:current-page="currentPage"
-        :total-pages="totalPages"
-      />
+      <PaginationControls v-model:current-page="currentPage" :total-pages="totalPages" />
 
       <!-- Mensaje sin resultados -->
       <AnimeEmpty v-if="filteredAnimes.length === 0" />
@@ -35,7 +32,7 @@
       <!-- Tarjetas de animes -->
       <div
         v-else
-        class="mx-auto grid max-w-6xl grid-cols-2 gap-6 gap-y-7 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 mb-10"
+        class="mx-auto mb-10 grid max-w-6xl grid-cols-2 gap-6 gap-y-7 p-0 sm:grid-cols-3 md:grid-cols-4 md:px-8 lg:grid-cols-5 xl:px-0"
       >
         <AnimeCard
           v-for="anime in paginatedAnimes"
@@ -45,22 +42,18 @@
         />
       </div>
 
-       <!-- Paginación -->
-      <PaginationControls 
-        v-model:current-page="currentPage"
-        :total-pages="totalPages"
-      />
-
+      <!-- Paginación -->
+      <PaginationControls v-model:current-page="currentPage" :total-pages="totalPages" />
 
       <!-- Footer -->
       <footer
-        class="mx-auto mt-12 mb-10 max-w-2xl rounded-2xl bg-zinc-800/30 px-6 py-4 text-center text-xs font-medium tracking-wide text-indigo-200/70 border border-indigo-500/40"
+        class="mx-auto mt-12 mb-10 max-w-2xl rounded-2xl border border-indigo-500/40 bg-zinc-800/30 px-6 py-4 text-center text-xs font-medium tracking-wide text-indigo-200/70"
       >
         Esta lista comprende todos los animes randoms vistos en el canal del Saiko y uno que otro
         anime visto fuera de la dinamica ( puede faltar alguno ) <br /><br />
-        <span class="font-bold text-lg tracking-widest text-indigo-300">
+        <span class="text-lg font-bold tracking-widest text-indigo-300">
           VIVAN LAS LESBIANAS!!!!
-        </span> 
+        </span>
       </footer>
     </div>
   </div>
@@ -232,7 +225,7 @@
 
 <style>
   .body-two {
-    font-family:  "OpenSans-Medium", Courier, monospace;
+    font-family: "OpenSans-Medium", Courier, monospace;
     /* text-transform: uppercase; */
   }
 
@@ -346,31 +339,8 @@
     );
     background-size: 200% 200%;
     animation: goldShimmer 6s ease-in-out infinite;
-    position: absolute;
-    overflow: hidden;
-    /* Borde negro en las letras */
-    /* text-shadow:
-      0 0 1px #000,
-      0 1px 2px #000,
-      1px 0 2px #000,
-      -1px 0 2px #000,
-      0 -1px 2px #000; */
-  }
-
-  .goty-gold-animated::before {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-      45deg,
-      transparent 40%,
-      rgba(255, 255, 255, 0.3) 50%,
-      transparent 60%
-    );
-    animation: goldSweep 4s ease-in-out infinite;
+    position: relative;
+    /* Sin efecto de brillo móvil */
   }
 
   .god-tier-animated {
@@ -413,15 +383,6 @@
     }
     50% {
       background-position: 100% 50%;
-    }
-  }
-
-  @keyframes goldSweep {
-    0% {
-      transform: translateX(-100%) translateY(-100%) rotate(45deg);
-    }
-    100% {
-      transform: translateX(100%) translateY(100%) rotate(45deg);
     }
   }
 
