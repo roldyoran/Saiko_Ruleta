@@ -1,81 +1,27 @@
 <template>
-  <div class="body-two flex min-h-screen flex-col items-center bg-zinc-950 px-6 md:px-0">
+  <div class="body-two flex min-h-screen flex-col items-center bg-midnight-500 px-6 md:px-0">
     <h1
-      class="mt-8 mb-10 bg-gradient-to-r from-orange-600 via-orange-500 to-orange-600 bg-clip-text text-center text-4xl font-extrabold text-transparent drop-shadow-lg select-none md:text-6xl"
+      class="mt-8 mb-10 bg-gradient-to-r text-white bg-clip-text text-center text-4xl font-extrabold drop-shadow-lg select-none md:text-6xl"
     >
-      ANIMES VISTOS
+      Animes Vistos
     </h1>
 
     <!-- Loader -->
-    <div v-if="isLoading" class="flex min-h-[400px] flex-col items-center justify-center">
-      <div class="loader mb-4"></div>
-      <p class="text-lg font-medium text-orange-300">Cargando animes...</p>
-    </div>
+    <AnimeLoader v-if="isLoading" />
 
     <!-- Error -->
-    <div v-else-if="error" class="flex min-h-[400px] flex-col items-center justify-center">
-      <div class="text-center text-red-400">
-        <h2 class="mb-2 text-2xl font-bold">Error al cargar los datos</h2>
-        <p class="text-red-300">{{ error }}</p>
-        <button
-          @click="fetchAnimeData"
-          class="mt-4 rounded-lg bg-orange-500 px-6 py-2 text-white transition hover:bg-orange-400"
-        >
-          Reintentar
-        </button>
-      </div>
-    </div>
+    <AnimeError v-else-if="error" :error="error" @retry="fetchAnimeData" />
 
     <!-- Contenido principal -->
     <div v-else class="w-full">
       <!-- Filtros -->
-      <div class="mx-auto mb-8 flex w-full max-w-2xl flex-col gap-4 md:flex-row">
-        <input
-          v-model="searchQuery"
-          type="text"
-          placeholder="Buscar por nombre..."
-          class="flex-1 rounded-xl bg-zinc-800/80 px-5 py-3 text-orange-100 placeholder-zinc-400 transition focus:ring-2 focus:ring-orange-500 focus:outline-none"
-          :disabled="categoryFilter !== 'todas'"
-        />
-        <div class="relative">
-          <select
-            v-model="categoryFilter"
-            class="w-full cursor-pointer appearance-none rounded-xl bg-zinc-800/80 px-5 py-3 pr-12 text-orange-100 uppercase transition focus:ring-2 focus:ring-orange-500 focus:outline-none md:w-40"
-          >
-            <option value="todas">Todas</option>
-            <option value="goty">GOTY</option>
-            <option value="god">GOD</option>
-            <option value="wena">WENA</option>
-            <option value="piola">PIOLA</option>
-            <option value="no me gusto">NO ME GUSTO</option>
-            <option value="mala">MALA</option>
-            <option value="horrible">HORRIBLE</option>
-            <option value="la peor de todas">LA PEOR DE TODAS</option>
-          </select>
-          <!-- Icono personalizado del select -->
-          <div class="pointer-events-none absolute top-1/2 right-4 -translate-y-1/2 transform">
-            <svg
-              class="h-4 w-4 text-orange-300"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M19 9l-7 7-7-7"
-              ></path>
-            </svg>
-          </div>
-        </div>
-        <button
-          @click="clearFilters"
-          class="rounded-xl bg-orange-500 px-5 py-3 font-bold text-white shadow-md transition hover:bg-orange-400"
-        >
-          Limpiar
-        </button>
-      </div>
+      <AnimeFilters
+        :searchQuery="searchQuery"
+        :categoryFilter="categoryFilter"
+        @update:searchQuery="val => searchQuery = val"
+        @update:categoryFilter="val => categoryFilter = val"
+        @clear-filters="clearFilters"
+      />
 
       <!-- Paginación -->
       <PaginationControls 
@@ -84,40 +30,19 @@
       />
 
       <!-- Mensaje sin resultados -->
-      <div v-if="filteredAnimes.length === 0" class="py-12 text-center text-orange-300">
-        <h3 class="mb-2 text-xl font-semibold">No se encontraron animes</h3>
-        <p class="text-orange-400">Intenta con otros filtros de búsqueda</p>
-      </div>
+      <AnimeEmpty v-if="filteredAnimes.length === 0" />
 
       <!-- Tarjetas de animes -->
       <div
         v-else
-        class="mx-auto grid max-w-6xl grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 mb-10"
+        class="mx-auto grid max-w-6xl grid-cols-2 gap-6 gap-y-7 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 mb-10"
       >
-        <div
+        <AnimeCard
           v-for="anime in paginatedAnimes"
           :key="anime.id"
-          class="group relative flex flex-col overflow-hidden rounded-xl bg-zinc-800/20 tracking-widest transition-all"
-        >
-          <img
-            :src="anime.url"
-            :alt="anime.nombre"
-            class="aspect-[2/3] w-full object-cover transition duration-300 group-hover:scale-105"
-            loading="lazy"
-          />
-          <div
-            class="absolute top-3 left-3 rounded-full px-3 py-1 text-xs font-extrabold text-white shadow transition text-shadow-sm text-shadow-white/60 group-hover:scale-110"
-            :class="notaBgClass(anime.nota)"
-          >
-            {{ (anime.nota || "N/A").toUpperCase() }}
-          </div>
-          <div class="flex flex-1 flex-col justify-end p-4" :title="anime.nombre">
-            <h2 class="mb-1 truncate text-base font-semibold text-orange-50 md:text-lg">
-              {{ anime.nombre }}
-            </h2>
-            <p class="text-xs text-zinc-200/70">ID: {{ anime.id }}</p>
-          </div>
-        </div>
+          :anime="anime"
+          :notaBgClass="notaBgClass"
+        />
       </div>
 
        <!-- Paginación -->
@@ -129,11 +54,11 @@
 
       <!-- Footer -->
       <footer
-        class="mx-auto mt-12 mb-10 max-w-2xl rounded-2xl bg-zinc-800/30 px-6 py-4 text-center text-xs font-medium tracking-wide text-orange-300/70 backdrop-blur-sm"
+        class="mx-auto mt-12 mb-10 max-w-2xl rounded-2xl bg-zinc-800/30 px-6 py-4 text-center text-xs font-medium tracking-wide text-indigo-200/70 border border-indigo-500/40"
       >
         Esta lista comprende todos los animes randoms vistos en el canal del Saiko y uno que otro
         anime visto fuera de la dinamica ( puede faltar alguno ) <br /><br />
-        <span class="font-bold text-lg tracking-widest text-orange-200">
+        <span class="font-bold text-lg tracking-widest text-indigo-300">
           VIVAN LAS LESBIANAS!!!!
         </span> 
       </footer>
@@ -144,6 +69,11 @@
 <script setup>
   import { ref, computed, watch, onMounted } from "vue";
   import PaginationControls from "./PaginationControls.vue";
+  import AnimeCard from "./AnimeCard.vue";
+  import AnimeFilters from "./AnimeFilters.vue";
+  import AnimeLoader from "./AnimeLoader.vue";
+  import AnimeError from "./AnimeError.vue";
+  import AnimeEmpty from "./AnimeEmpty.vue";
 
   const animeData = ref([]);
   const isLoading = ref(true);
@@ -157,10 +87,11 @@
   // Función para obtener parámetros de la URL
   function getUrlParams() {
     const urlParams = new URLSearchParams(window.location.search);
+    const pageFromUrl = parseInt(urlParams.get("page")) || 1;
     return {
       search: urlParams.get("search") || "",
       category: urlParams.get("category") || "todas",
-      page: parseInt(urlParams.get("page")) || 0,
+      page: pageFromUrl > 0 ? pageFromUrl - 1 : 0, // Convertir de 1-indexed a 0-indexed
     };
   }
 
@@ -177,8 +108,7 @@
     }
 
     if (currentPage.value > 0) {
-      let page = currentPage.value + 1; // Convertir a 1-indexed para la URL
-      params.set("page", page.toString());
+      params.set("page", (currentPage.value + 1).toString());
     }
 
     const newUrl = params.toString()
@@ -300,10 +230,10 @@
   }
 </script>
 
-<style scoped>
+<style>
   .body-two {
-    font-family: "Courier New", Courier, monospace;
-    text-transform: uppercase;
+    font-family:  "OpenSans-Medium", Courier, monospace;
+    /* text-transform: uppercase; */
   }
 
   /* Loader personalizado */

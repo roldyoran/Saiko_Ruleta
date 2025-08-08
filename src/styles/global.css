@@ -3,3 +3,29 @@
 button {
   cursor: pointer;
 }
+
+/* 
+#18141c */
+
+@theme {
+  --color-midnight-500: #18141c;
+  --color-tahiti: #3ab7bf;
+  --color-bermuda: #78dcca;
+}
+
+@font-face {
+  font-family: 'OpenSans-Medium';
+  src: url('../fonts/OpenSans-Medium.ttf') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* @font-face {
+  font-family: 'MyFont2';
+  src: url('/fonts/MyFont2.woff2') format('woff2'),
+       url('/fonts/MyFont2.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+} */
+
+/* Agrega más @font-face según las fuentes que tengas en /fonts */
