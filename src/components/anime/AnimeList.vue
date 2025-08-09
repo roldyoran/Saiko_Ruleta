@@ -1,7 +1,7 @@
 <template>
   <div class="body-two bg-midnight-500 flex min-h-screen flex-col items-center px-6 md:px-0">
     <h1
-      class="mt-8 mb-10 bg-gradient-to-r bg-clip-text text-center text-4xl font-extrabold text-white drop-shadow-lg select-none md:text-6xl"
+      class="mt-8 mb-10 bg-gradient-to-r bg-clip-text text-center text-4xl font-extrabold text-white drop-shadow-lg select-none md:text-6xl tracking-wider"
     >
       Animes Vistos
     </h1>
@@ -47,11 +47,11 @@
 
       <!-- Footer -->
       <footer
-        class="mx-auto mt-12 mb-10 max-w-2xl rounded-2xl border border-indigo-500/40 bg-zinc-800/30 px-6 py-4 text-center text-xs font-medium tracking-wide text-indigo-200/70"
+        class="mx-auto mt-12 mb-10 max-w-2xl rounded-2xl border border-rose-500/40 bg-zinc-800/30 px-6 py-4 text-center text-xs font-medium tracking-wide text-rose-200/70"
       >
         Esta lista comprende todos los animes randoms vistos en el canal del Saiko y uno que otro
         anime visto fuera de la dinamica ( puede faltar alguno ) <br /><br />
-        <span class="text-lg font-bold tracking-widest text-indigo-300">
+        <span class="text-lg font-bold tracking-widest text-rose-300">
           VIVAN LAS LESBIANAS!!!!
         </span>
       </footer>

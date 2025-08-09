@@ -6,10 +6,10 @@
         @input="emit('update:searchQuery', $event.target.value)"
         type="text"
         placeholder="Buscar por nombre..."
-        class="w-full rounded-lg bg-zinc-800/80 py-3 pr-5 pl-11 text-indigo-100 placeholder-zinc-400 transition focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+        class="w-full rounded-lg bg-zinc-800/80 py-3 pr-5 pl-11 text-rose-100 placeholder-zinc-400 transition focus:ring-2 focus:ring-rose-500 focus:outline-none"
         :disabled="categoryFilter !== 'todas'"
       />
-      <div class="pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-indigo-300">
+      <div class="pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-rose-300">
         <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
           <circle cx="11" cy="11" r="7" stroke="currentColor" />
           <line
@@ -27,13 +27,13 @@
       <select
         :value="categoryFilter"
         @change="emit('update:categoryFilter', $event.target.value)"
-        class="w-full cursor-pointer appearance-none rounded-lg bg-zinc-800/80 px-5 py-3 pr-12 text-indigo-100 uppercase transition focus:ring-2 focus:ring-indigo-500 focus:outline-none md:w-40"
+        class="w-full cursor-pointer appearance-none rounded-lg bg-zinc-800/80 px-5 py-3 pr-12 text-rose-100 uppercase transition focus:ring-2 focus:ring-rose-500 focus:outline-none md:w-40"
       >
-        <option value="todas" class="bg-zinc-800 text-indigo-100">Todas</option>
+        <option value="todas" class="bg-zinc-800 text-rose-100">Todas</option>
         <option value="goty" class="bg-zinc-800 font-bold text-yellow-400">GOTY</option>
         <option value="god" class="bg-zinc-800 font-bold text-green-400">GOD</option>
         <option value="wena" class="bg-zinc-800 text-green-300">WENA</option>
-        <option value="piola" class="bg-zinc-800 text-indigo-200">PIOLA</option>
+        <option value="piola" class="bg-zinc-800 text-rose-200">PIOLA</option>
         <option value="no me gusto" class="bg-zinc-800 text-red-300">NO ME GUSTO</option>
         <option value="mala" class="bg-zinc-800 text-red-400">MALA</option>
         <option value="horrible" class="bg-zinc-800 text-purple-400">HORRIBLE</option>
@@ -42,7 +42,7 @@
         </option>
       </select>
       <div class="pointer-events-none absolute top-1/2 right-4 -translate-y-1/2 transform">
-        <svg class="h-4 w-4 text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="h-4 w-4 text-rose-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path
             stroke-linecap="round"
             stroke-linejoin="round"
@@ -54,7 +54,7 @@
     </div>
     <button
       @click="$emit('clear-filters')"
-      class="rounded-lg border border-zinc-700/50 bg-zinc-800 px-5 py-3 text-indigo-200 shadow-md transition hover:border-indigo-500/30 hover:bg-indigo-500/20 hover:text-white"
+      class="rounded-lg border border-zinc-700/50 bg-zinc-800 px-5 py-3 text-rose-200 shadow-md transition hover:border-rose-500/30 hover:bg-rose-500/20 hover:text-white"
     >
       <span class="md:hidden">Limpiar</span>
       <svg

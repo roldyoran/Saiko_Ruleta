@@ -5,7 +5,7 @@
       <p class="text-red-300">{{ error }}</p>
       <button
         @click="$emit('retry')"
-        class="mt-4 rounded-lg bg-indigo-500 px-6 py-2 text-white transition hover:bg-indigo-400"
+        class="mt-4 rounded-lg bg-rose-500 px-6 py-2 text-white transition hover:bg-rose-400"
       >
         Reintentar
       </button>

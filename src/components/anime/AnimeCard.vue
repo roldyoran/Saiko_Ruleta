@@ -26,7 +26,7 @@
     </div>
 
     <div class="flex flex-1 flex-col justify-end py-3" :title="anime.nombre">
-      <h2 class="mb-1 truncate text-base font-semibold text-indigo-50 capitalize md:text-lg">
+      <h2 class="mb-1 truncate text-base font-semibold text-rose-50 capitalize md:text-lg">
         {{ anime.nombre }}
       </h2>
       <p class="text-xs text-zinc-200/70">ID: {{ anime.id }}</p>
