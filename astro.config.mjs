@@ -52,7 +52,7 @@ export default defineConfig({
       }
     }
   },
-   redirects: {
-    '/animes_vistos': '/animes-vistos',
-  }
+  //  redirects: {
+  //   '/animes_vistos': '/animes-vistos',
+  // }
 });
