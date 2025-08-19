@@ -51,5 +51,8 @@ export default defineConfig({
         '@': '/src'
       }
     }
+  },
+   redirects: {
+    '/animes_vistos': '/animes-vistos',
   }
 });
