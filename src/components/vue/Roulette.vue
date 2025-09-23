@@ -523,9 +523,9 @@
     // Animación del personaje (si existe)
     const rightImage = document.getElementById("personaje");
     if (rightImage) {
-      rightImage.src = "roldyoran/TaniaColegialastick2.webp";
+      rightImage.src = "reigen_ag/Tania2_ruleta18.webp";
       setTimeout(() => {
-        rightImage.src = "roldyoran/TaniaColegialastick1.webp";
+        rightImage.src = "reigen_ag/Tania1_ruleta18.webp";
       }, 350);
     }
 
