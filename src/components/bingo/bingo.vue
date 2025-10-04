@@ -126,7 +126,7 @@
           <button
             @click="generateBingo"
             :disabled="!canGenerateBingo"
-            class="px-6 py-3 bg-zinc-600 hover:bg-zinc-500 disabled:bg-zinc-700 disabled:text-zinc-400 disabled:cursor-not-allowed text-white rounded-md font-medium transition-colors"
+            class="px-6 py-3 bg-green-600 hover:bg-green-400 disabled:bg-zinc-700 disabled:text-zinc-400 disabled:cursor-not-allowed text-white rounded-md font-medium transition-colors"
           >
             Generar Bingo
           </button>
