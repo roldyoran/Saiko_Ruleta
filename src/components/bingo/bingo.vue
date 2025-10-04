@@ -29,20 +29,47 @@
         <!-- Agregar opciones -->
         <div class="mb-3">
           <label class="block text-zinc-300 mb-2">Agregar opción:</label>
-          <div class="flex gap-2">
-            <input
-              v-model="newOption"
-              @keypress.enter="addOption"
-              type="text"
-              placeholder="Escribe una opción..."
-              class="flex-1 px-3 py-2 bg-zinc-700 text-zinc-100 rounded-md border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-zinc-600"
-            />
-            <button
-              @click="addOption"
-              class="px-4 py-2 bg-zinc-600 hover:bg-zinc-500 text-white rounded-md transition-colors"
-            >
-              Agregar
-            </button>
+          <div class="flex gap-2 items-start w-full">
+            <!-- Single-line input or multiline textarea depending on mode -->
+            <div class="flex-1">
+              <input
+                v-if="!multiLineMode"
+                v-model="newOption"
+                @keypress.enter.prevent="addOption"
+                type="text"
+                placeholder="Escribe una opción..."
+                class="w-full px-3 py-2 bg-zinc-700 text-zinc-100 rounded-md border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-zinc-600"
+              />
+
+              <textarea
+                v-else
+                v-model="multiText"
+                placeholder="Pega o escribe opciones, una por línea"
+                class="w-full px-3 py-2 bg-zinc-700 text-zinc-100 rounded-md border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-zinc-600 h-24 resize-vertical"
+              ></textarea>
+            </div>
+
+            <div class="flex flex-col gap-2">
+              <button
+                @click="addOption"
+                class="px-4 py-2 bg-zinc-600 hover:bg-zinc-500 text-white rounded-md transition-colors whitespace-nowrap"
+                title="Agregar opción(es)"
+              >
+                Agregar
+              </button>
+
+              <!-- Mode toggle button -->
+              <button
+                @click="multiLineMode = !multiLineMode"
+                :title="multiLineMode ? 'Modo línea' : 'Modo multilínea'"
+                :class="[
+                  'px-3 py-1 text-sm rounded-md transition-colors',
+                  multiLineMode ? 'bg-yellow-600 hover:bg-yellow-500 text-white' : 'bg-blue-700 hover:bg-blue-600 text-zinc-100'
+                ]"
+              >
+                {{ multiLineMode ? 'Linea' : 'Multi' }}
+              </button>
+            </div>
           </div>
         </div>
 
@@ -357,6 +384,8 @@ interface BingoCell {
 // Estado reactivo
 const options = ref<string[]>([])
 const newOption = ref('')
+const multiLineMode = ref(false)
+const multiText = ref('')
 const boardSize = ref(5)
 const bingoGrid = ref<BingoCell[]>([])
 const showFullscreen = ref(false)
@@ -570,10 +599,20 @@ const loadFromUrl = async (): Promise<void> => {
 
 // Funciones de opciones
 const addOption = (): void => {
-  const trimmed = newOption.value.trim()
-  if (trimmed && !options.value.includes(trimmed)) {
-    options.value.push(trimmed)
-    newOption.value = ''
+  if (multiLineMode.value) {
+    // Split by newline, trim, filter empty and dedupe
+    const lines = multiText.value.split(/\r?\n/).map(l => l.trim()).filter(Boolean)
+    for (const line of lines) {
+      if (!options.value.includes(line)) options.value.push(line)
+    }
+    // clear textarea after adding
+    multiText.value = ''
+  } else {
+    const trimmed = newOption.value.trim()
+    if (trimmed && !options.value.includes(trimmed)) {
+      options.value.push(trimmed)
+      newOption.value = ''
+    }
   }
 }
 
