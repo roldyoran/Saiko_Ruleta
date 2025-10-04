@@ -280,10 +280,10 @@
         @click.self="closeFullscreen"
       >
         <div class="absolute top-0 left-0 w-sm hidden md:block">
-          <img src="reigen_ag/stickers/leji_halo.gif" alt="leji girando">
+          <img src="https://github.com/roldyoran/Saiko_Ruleta/blob/main/public/reigen_ag/stickers/leji_halo.gif?raw=true" alt="leji girando">
         </div>
         <div class="absolute bottom-0 right-8 w-64 hidden md:block">
-          <img src="roldyoran/DJ_RULETA.webp" alt="DJRULETA" class="w-full h-auto" style="transform: scaleX(-1);" />
+          <img src="https://github.com/roldyoran/Saiko_Ruleta/blob/main/public/roldyoran/DJ_RULETA.webp?raw=true" alt="DJRULETA" class="w-full h-auto" style="transform: scaleX(-1);" />
         </div>
         <!-- Header del modal -->
         <div class="absolute top-4 left-4 right-4 flex justify-between items-center z-10">
