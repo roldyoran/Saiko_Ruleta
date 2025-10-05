@@ -1,24 +1,39 @@
 <template>
   <div class="min-h-screen bg-zinc-900 p-4 font-sans text-zinc-100">
     <div class="max-w-6xl mx-auto">
-      <h1 class="text-5xl font-bold text-white mb-6 text-center">Bingo</h1>
+  <h1 class="text-5xl font-bold text-white mb-6 text-center ">Bingo</h1>
       
       <!-- Panel de configuración -->
-  <div class="bg-zinc-800 rounded-lg p-4 mb-6 shadow-sm border border-zinc-700">
+  <div class="card bg-zinc-800 rounded-lg p-4 mb-6 shadow-sm border border-zinc-700">
         <h2 class="text-xl font-semibold text-white mb-3">Configuración del Bingo</h2>
         
         <!-- Tamaño del bingo -->
         <div class="mb-4">
           <label class="block text-zinc-300 mb-2">Tamaño del tablero (cuadrado):</label>
+
           <div class="max-w-xs">
-            <input
-              v-model.number="boardSize"
-              type="number"
-              min="2"
-              max="10"
-              class="w-full px-3 py-2 bg-zinc-700 text-zinc-100 rounded-md border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-zinc-600"
-              placeholder="Ej: 5 para un tablero de 5x5"
-            />
+            <div class="flex items-center gap-3">
+              <label for="boardSizeInput" class="sr-only">Tamaño del tablero</label>
+              <input
+                id="boardSizeInput"
+                v-model.number="boardSize"
+                type="number"
+                min="2"
+                max="10"
+                aria-label="Tamaño del tablero (número)"
+                class="w-20 px-3 py-2 bg-zinc-700 text-zinc-100 rounded-md border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-zinc-600"
+                placeholder="Ej: 5"
+              />
+
+              <input
+                v-model.number="boardSize"
+                type="range"
+                min="2"
+                max="10"
+                aria-label="Tamaño del tablero (deslizador)"
+                class="w-full accent-emerald-500"
+              />
+            </div>
             <p class="text-zinc-400 text-xs mt-1">
               Un tablero de {{ boardSize }}x{{ boardSize }} necesita {{ totalCells }} opciones
             </p>
@@ -85,13 +100,24 @@
                 +{{ options.length - totalCells }} extra
               </span>
             </h3>
-            <button
+            <!-- <button
               v-if="options.length > 0"
               @click="clearAllOptions"
               class="px-3 py-1 bg-zinc-700 hover:bg-zinc-600 text-zinc-100 rounded-md text-sm transition-colors border border-zinc-700"
             >
               Limpiar todas
-            </button>
+            </button> -->
+          </div>
+
+          <!-- Progress bar: cuántas opciones hay vs las necesarias -->
+          <div class="mb-3" aria-hidden="true">
+            <div class="w-full bg-zinc-700 rounded h-2 overflow-hidden">
+              <div class="bg-emerald-500 h-2 transition-all" :style="{ width: percentOptions + '%' }"></div>
+            </div>
+            <div class="flex justify-between text-xs text-zinc-400 mt-1">
+              <span>{{ options.length }} disponibles</span>
+              <span>{{ totalCells }} necesarias</span>
+            </div>
           </div>
           
           <div 
@@ -132,8 +158,9 @@
               v-else 
               class="text-center py-6 text-zinc-400 bg-zinc-800 rounded-lg border-2 border-dashed border-zinc-700"
             >
-              <p class="text-sm">No hay opciones agregadas</p>
-              <p class="text-xs mt-1">Agrega al menos {{ totalCells }} opciones para generar el bingo</p>
+                <p class="text-sm">No hay opciones agregadas</p>
+                <p class="text-xs mt-1">Agrega al menos {{ totalCells }} opciones para generar el bingo</p>
+                <p class="text-xs mt-2 text-zinc-500">Consejo: puedes pegar varias líneas en el modo 'Multi' para añadir varias opciones a la vez.</p>
             </div>
           
           <!-- Mensaje informativo sobre opciones extra -->
@@ -148,16 +175,27 @@
           </div>
         </div>
 
-        <!-- Botones de acción -->
-        <div class="flex gap-4 flex-wrap">
+        <!-- Botones de acción (principal) -->
+        <div class="flex gap-4 flex-wrap" role="toolbar" aria-label="Acciones principales">
           <button
             @click="generateBingo"
             :disabled="!canGenerateBingo"
+            aria-label="Generar bingo"
             class="px-6 py-3 bg-green-600 hover:bg-green-400 disabled:bg-zinc-700 disabled:text-zinc-400 disabled:cursor-not-allowed text-white rounded-md font-medium transition-colors"
           >
             Generar Bingo
           </button>
-          <!-- (Guardar, Reordenar y Limpiar se muestran debajo del tablero en la vista principal) -->
+          <button
+            @click="clearAllOptions"
+            aria-label="Limpiar todas las opciones"
+            class="px-4 py-3 bg-rose-600 hover:bg-rose-500 text-white rounded-md font-medium transition-colors"
+          >
+            Limpiar Opciones
+          </button>
+          <div class="ml-auto text-xs text-zinc-400 flex items-center gap-2">
+            <span class="px-2 py-1 bg-zinc-700 rounded">Opciones: {{ options.length }}</span>
+            <span class="px-2 py-1 bg-zinc-700 rounded">Necesarias: {{ totalCells }}</span>
+          </div>
         </div>
 
         <!-- Sección de compartir (siempre visible, compacto) -->
@@ -200,12 +238,18 @@
             </p>
           </div>
         </div>
+
+        <!-- Area de estado accesible -->
+        <div class="sr-only" role="status" aria-live="polite" aria-atomic="true">
+          <span v-if="savedBoard">Tablero guardado</span>
+          <span v-else-if="copied">Enlace copiado al portapapeles</span>
+        </div>
       </div>
 
       <!-- Vista previa del Tablero de Bingo (siempre visible) -->
-      <div class="bg-zinc-800 rounded-lg p-4 border border-zinc-700">
+  <div class="card bg-zinc-800 rounded-lg p-4 border border-zinc-700">
         
-        <div class="flex justify-between items-center mb-4">
+        <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-3 mb-4">
           <h2 class="text-xl font-semibold text-zinc-100">
             Tablero de Bingo
             <span class="text-sm text-zinc-300 ml-2">({{ boardSize }}x{{ boardSize }})</span>
@@ -227,33 +271,38 @@
         <!-- Contenido del tablero o placeholder -->
         <div class="flex justify-center items-center">
           <div v-if="bingoGrid.length > 0"
-            class="grid gap-1"
+            class="grid gap-1 preview-grid"
             :style="{ 
               gridTemplateColumns: `repeat(${boardSize}, 1fr)`,
               gridTemplateRows: `repeat(${boardSize}, 1fr)`,
-              width: '400px',
-              height: '400px'
+              width: previewGridSize + 'px',
+              height: previewGridSize + 'px'
             }"
           >
             <div
               v-for="(cell, index) in bingoGrid"
               :key="index"
               @click="toggleCell(index)"
-              class="relative bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 rounded cursor-pointer transition-all duration-200 flex items-center justify-center overflow-hidden group"
+              @keydown="handleCellKey(index, $event)"
+              tabindex="0"
+              role="button"
+              :aria-pressed="cell.marked"
+              :data-cell="index"
+              class="relative cell bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 rounded cursor-pointer transition-all duration-200 flex items-center justify-center overflow-hidden group focus:outline-none"
                 :class="{
                   'bg-zinc-700 border-zinc-600': cell.marked,
                   'hover:scale-[1.02]': !cell.marked,
                   'scale-[0.98]': cell.marked
                 }"
             >
-                <span class="text-zinc-100 text-center font-medium leading-tight px-1 break-words hyphens-auto select-none text-xs">
+                <span :style="getPreviewTextStyle(cell.text)" class="text-zinc-100 text-center font-medium leading-tight px-1 break-words hyphens-auto select-none">
                 {{ cell.text }}
               </span>
               <div
                 v-if="cell.marked"
                 class="absolute inset-0 flex items-center justify-center pointer-events-none"
               >
-                  <span class="text-red-500 text-6xl font-extrabold opacity-95 drop-shadow leading-none">✕</span>
+                  <span class="x-mark">✕</span>
               </div>
             </div>
           </div>
@@ -269,7 +318,7 @@
             <button
               v-if="bingoGrid.length > 0"
               @click="shuffleBingo"
-              class="px-3 py-1 text-sm bg-zinc-700 hover:bg-zinc-600 text-zinc-100 rounded-md transition-colors border border-zinc-700"
+              class="px-3 py-1 text-sm bg-zinc-800 hover:bg-zinc-600 text-zinc-100 rounded-md transition-colors border border-zinc-700"
               title="Reordenar las opciones actuales"
             >
               🔀 Reordenar
@@ -278,7 +327,7 @@
             <button
               v-if="bingoGrid.length > 0"
               @click="saveBoard"
-              class="px-3 py-1 text-sm bg-zinc-700 hover:bg-zinc-600 text-zinc-100 rounded-md transition-colors border border-zinc-700"
+              class="px-3 py-1 text-sm bg-zinc-800 hover:bg-zinc-600 text-zinc-100 rounded-md transition-colors border border-zinc-700"
               :title="'Guardar tablero en local'"
             >
               💾 Guardar
@@ -287,7 +336,7 @@
             <button
               v-if="bingoGrid.length > 0"
               @click="resetBingo"
-              class="px-3 py-1 text-sm bg-zinc-700 hover:bg-zinc-600 text-zinc-100 rounded-md transition-colors border border-zinc-700"
+              class="px-3 py-1 text-sm bg-zinc-800 hover:bg-zinc-600 text-zinc-100 rounded-md transition-colors border border-zinc-700"
             >
               🗑️ Limpiar
             </button>
@@ -408,6 +457,27 @@ const fullscreenGridSize = computed(() => {
   const h = windowSize.value.height || 0
   const size = Math.min(Math.max(h - 150, 0), Math.max(w - 100, 0), 900) * 0.9
   return Math.max(500, size)
+})
+
+// UI helpers
+const percentOptions = computed(() => {
+  if (totalCells.value <= 0) return 0
+  const pct = Math.round((options.value.length / totalCells.value) * 100)
+  return Math.min(100, Math.max(0, pct))
+})
+
+// Compute a preview grid size that fits nicely in common viewports while keeping square cells
+const previewGridSize = computed(() => {
+  const maxPreview = 520
+  const minPreview = 200
+  const w = windowSize.value.width || 800
+  const h = windowSize.value.height || 600
+
+  // prefer width but also respect height
+  const candidate = Math.min(maxPreview, Math.max(minPreview, Math.min(w * 0.7, h * 0.55)))
+  // snap to cell size to avoid fractional pixels
+  const cell = Math.max(24, Math.floor(candidate / Math.max(boardSize.value, 1)))
+  return cell * boardSize.value
 })
 
 // debug helpers removed
@@ -768,6 +838,40 @@ const getFullscreenMarkStyle = () => {
   return { fontSize: `${Math.max(cellSize * 0.7, 24)}px` }
 }
 
+// Keyboard navigation between cells + space/enter handling
+const handleCellKey = (index: number, event: KeyboardEvent): void => {
+  const cols = boardSize.value
+  if (event.key === 'Enter' || event.key === ' ') {
+    event.preventDefault()
+    toggleCell(index)
+    return
+  }
+
+  // Arrow navigation
+  let targetIndex: number | null = null
+  if (event.key === 'ArrowRight') targetIndex = (index + 1) % bingoGrid.value.length
+  else if (event.key === 'ArrowLeft') targetIndex = (index - 1 + bingoGrid.value.length) % bingoGrid.value.length
+  else if (event.key === 'ArrowDown') targetIndex = Math.min(bingoGrid.value.length - 1, index + cols)
+  else if (event.key === 'ArrowUp') targetIndex = Math.max(0, index - cols)
+
+  if (targetIndex !== null) {
+    event.preventDefault()
+    // focus the target cell
+    const el = document.querySelector(`[data-cell=\"${targetIndex}\"]`) as HTMLElement | null
+    if (el) el.focus()
+  }
+}
+
+// Preview text sizing: similar to fullscreen but tighter bounds
+const getPreviewTextStyle = (text: string): CSSProperties => {
+  const gridPx = previewGridSize.value
+  const cellSize = gridPx / Math.max(boardSize.value, 1)
+  let fontSize = Math.min(18, Math.max(11, Math.floor(cellSize * 0.15)))
+  if (text.length > 80) fontSize = Math.max(10, Math.floor(fontSize * 0.6))
+  else if (text.length > 50) fontSize = Math.max(11, Math.floor(fontSize * 0.75))
+  return { fontSize: `${fontSize}px`, lineHeight: '1.05', padding: '6px', textAlign: 'center' } as CSSProperties
+}
+
 // Watchers
 watch([options, boardSize, bingoGrid], () => {
   saveToStorage()
@@ -803,3 +907,97 @@ onUnmounted(() => {
 
 
 </script>
+
+<style scoped>
+/* Focus ring for interactive cells */
+.group:focus-within,
+[role="button"]:focus {
+  box-shadow: 0 0 0 3px rgba(34,197,94,0.12), 0 0 0 1px rgba(34,197,94,0.06);
+  outline: none;
+}
+
+/* Smooth slider accent on modern browsers */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  background: transparent;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 6px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 999px;
+}
+input[type="range"]::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: #10b981; /* emerald-500 */
+  box-shadow: 0 2px 6px rgba(16,185,129,0.2);
+  margin-top: -5px;
+}
+
+/* progress bar animations */
+.transition-all { transition: width 350ms cubic-bezier(.2,.9,.2,1); }
+
+/* Responsive small screens: make grid narrower */
+@media (max-width: 640px) {
+  .grid[style] {
+    width: 90vw !important;
+    height: 90vw !important;
+  }
+  .text-5xl { font-size: 2rem }
+}
+
+/* Slight hover and focus polish for buttons */
+button:focus { box-shadow: 0 0 0 3px rgba(255,255,255,0.04); }
+
+/* Card visual polish */
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent 60%);
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+}
+
+/* Cell visuals */
+.cell {
+  transition: transform 180ms ease, box-shadow 180ms ease, background-color 120ms ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  min-width: 0;
+}
+.cell:focus {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 8px 20px rgba(2,6,23,0.5), 0 0 0 4px rgba(16,185,129,0.06);
+}
+
+.x-mark {
+  color: #ef4444; /* red-500 */
+  font-size: 3.8rem;
+  font-weight: 800;
+  opacity: 0.95;
+  filter: drop-shadow(0 6px 18px rgba(0,0,0,0.6));
+  line-height: 1;
+}
+
+.preview-grid { border-radius: 8px; overflow: hidden; }
+
+/* Keyboard hint styling */
+kbd {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.03);
+  color: #e6edf3;
+  font-size: 0.75rem;
+}
+
+/* Toolbar tweaks */
+[role="toolbar"] button { min-width: 120px }
+
+
+</style>
