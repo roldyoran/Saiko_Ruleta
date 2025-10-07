@@ -15,7 +15,7 @@
         >
           <template v-if="isNamesMode">
             <!-- <p class="text-4xl font-bold text-white mb-4">¡GANADOR!</p> -->
-            <p class="text-shadow text-4xl font-bold text-white uppercase">
+            <p class="text-shadow shadow-2xl text-4xl font-bold text-white uppercase">
               {{ currentWinner }}
             </p>
           </template>
