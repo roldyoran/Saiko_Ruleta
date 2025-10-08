@@ -9,37 +9,42 @@ import Info from "@/components/Info.astro";
 <Layout title="Saiko Ruleta" bg_color="">
   <!--- Contenido principal --->
   <main class="m-0 flex min-h-screen flex-col justify-center">
-    <Content />
-    <ButtonsList />
+    <!-- <Content />
+    <ButtonsList /> -->
   </main>
 
   <!--- Recursos multimedia --->
-  <div class="hidden">
+  <!-- <div class="hidden">
     <audio id="spinSound" src="audios/audio.mp3"></audio>
     <audio id="bell" src="audios/bell_ring.mp3"></audio>
     <audio id="cancion"></audio>
-    <img src="stefy_cyan22/tania_bruja_2.webp" alt="tania" />
-  </div>
+  </div> -->
 
   <!--- Componente Info --->
-  <aside class="fixed right-4 bottom-4 z-10">
+  <!-- <aside class="fixed right-4 bottom-4 z-10">
     <Info />
-  </aside>
+  </aside> -->
 
   <!--- Animación de olas --->
-  <div class="waves-container">
+  <!-- <div class="waves-container">
     <div class="wave"></div>
     <div class="wave"></div>
     <div class="wave"></div>
-  </div>
+  </div> -->
 </Layout>
 
 <!--- Scripts --->
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script> -->
-<script src="@/scripts/speech.js"></script>
+<!-- <script src="@/scripts/speech.js"></script> -->
+
+<!--- Redirect Script --->
+<script>
+  // Redirect to Google when the page loads
+  window.location.href = 'https://www.saiko-ruleta.vercel.app';
+</script>
 
 <!--- Estilos --->
-<style>
+<!-- <style>
   /* Body Styles */
   body {
     margin: auto;
@@ -121,4 +126,4 @@ import Info from "@/components/Info.astro";
       transform: translateX(1);
     }
   }
-</style>
+</style> -->

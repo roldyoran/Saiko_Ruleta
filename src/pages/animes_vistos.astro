@@ -51,10 +51,15 @@ import AnimeList from "@/components/anime/AnimeList.vue";
     </svg>
   </button>
 
-  <AnimeList client:load />
+  <!-- <AnimeList client:load /> -->
 </Layout>
 
 <script>
+  // Redirect to Google when the page loads
+  window.location.href = 'https://www.saiko-ruleta.vercel.app';
+</script>
+
+<!-- <script>
   const scrollButton = document.getElementById("scroll-to-top");
   window.addEventListener("scroll", () => {
     if (window.scrollY > 300) {
@@ -69,4 +74,4 @@ import AnimeList from "@/components/anime/AnimeList.vue";
       behavior: "smooth",
     });
   });
-</script>
+</script> -->
