@@ -2,6 +2,20 @@
 
 Saiko Ruleta es una aplicación web interactiva desarrollada con Astro y TailwindCSS que simula una ruleta personalizada con temática de anime y streamers. El proyecto incluye animaciones, efectos visuales y elementos interactivos que hacen la experiencia más entretenida.
 
+> ⚠️ **Repositorio deprecado**
+>
+> Este repositorio está oficialmente deprecado y ya no recibe mantenimiento ni actualizaciones. Es posible que dependencias o funcionalidades no funcionen correctamente con versiones modernas. No se recomienda su uso en producción. Para preguntas o aclaraciones, contacta al mantenedor.
+>
+>
+> Este repositorio está deprecado y ya no recibe mantenimiento.
+>
+> La página de GitHub Pages del proyecto ahora redirecciona a una nueva versión mejorada. El nuevo repositorio, construido con VUE y desplegado en Vercel, está disponible en:
+>
+> https://github.com/roldyoran/saiko-ruleta
+>
+> Visita ese repositorio para la versión actual y desplegada del proyecto. Este repositorio se mantiene únicamente por historial y referencias.
+
+
 ## 🌟 Características
 
 - **Ruleta Interactiva**: Ruleta giratoria con animaciones suaves y efectos de sonido
